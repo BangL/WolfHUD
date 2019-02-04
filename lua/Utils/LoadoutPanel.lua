@@ -1023,7 +1023,7 @@ function LoadoutWeaponItem:arrange()
 		self._rarity:set_center_y(self._panel:h() / 2 + ((self._text:visible() and self._text:h() or 0) * 0.5))
 	end
 
-		for i, perk in ipairs(self._perks or {}) do
+	for i, perk in ipairs(self._perks or {}) do
 		if alive(perk) and perk:visible() then
 			local size = math.min(self._panel:h() / 4, self._panel:w() / #self._perks, 16)
 			perk:set_w(size)

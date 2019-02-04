@@ -1,5 +1,3 @@
---TODO: Add bots? Add player support for standalone version?
-
 if string.lower(RequiredScript) == "lib/units/beings/player/huskplayermovement" then
 
 	local _perform_movement_action_enter_bleedout_original = HuskPlayerMovement._perform_movement_action_enter_bleedout

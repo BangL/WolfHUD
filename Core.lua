@@ -788,7 +788,7 @@ if not _G.WolfHUD then
 	local menu_options = WolfHUD.options_menu_data
 
 	-- Setup and register option menus
-	Hooks:Add("MenuManagerSetupCustomMenus", "MenuManagerSetupCustomMenus_WolfHUD", function( menu_manager, nodes )
+	Hooks:Add("MenuManagerSetupCustomMenus", "MenuManagerSetupCustomMenus_WolfHUDCore", function( menu_manager, nodes )
 		local function create_menu(menu_table, parent_id)
 			for i, data in ipairs(menu_table) do
 				if data.type == "menu" then
@@ -802,7 +802,7 @@ if not _G.WolfHUD then
 	end)
 
 	--Populate options menus
-	Hooks:Add("MenuManagerPopulateCustomMenus", "MenuManagerPopulateCustomMenus_WolfHUD", function(menu_manager, nodes)
+	Hooks:Add("MenuManagerPopulateCustomMenus", "MenuManagerPopulateCustomMenus_WolfHUDCore", function(menu_manager, nodes)
 		-- Called on setting change
 		local function change_setting(setting, value)
 			if WolfHUD:getSetting(setting, nil) ~= value and WolfHUD:setSetting(setting, value) then
@@ -1187,7 +1187,7 @@ if not _G.WolfHUD then
 	end)
 
 	-- Create callbacks and finalize menus
-	Hooks:Add("MenuManagerBuildCustomMenus", "MenuManagerBuildCustomMenus_WolfHUD", function(menu_manager, nodes)
+	Hooks:Add("MenuManagerBuildCustomMenus", "MenuManagerBuildCustomMenus_WolfHUDCore", function(menu_manager, nodes)
 		local back_clbk = "wolfhud_back_clbk"
 		local focus_clbk = "wolfhud_focus_clbk"
 		local reset_clbk = "wolfhud_reset_clbk"
@@ -1290,7 +1290,7 @@ if not _G.WolfHUD then
 	end)
 
 	--Add localiszation strings
-	Hooks:Add("LocalizationManagerPostInit", "LocalizationManagerPostInit_WolfHUD", function(loc)
+	Hooks:Add("LocalizationManagerPostInit", "LocalizationManagerPostInit_WolfHUDCore", function(loc)
         local loc_path = WolfHUD.mod_path .. "loc/"
 		if file.DirectoryExists( loc_path ) then
 			loc:load_localization_file(string.format("%s/%s.json", loc_path, WolfHUD:getSetting({"LANGUAGE"}, "english")))
@@ -1318,5 +1318,24 @@ if not _G.WolfHUD then
 			end
 		end
 		loc:add_localized_strings(localized_strings)
+	end)
+	
+	Hooks:Add("MenuManagerOnOpenMenu", "MenuManagerOnOpenMenu_WolfHUDCore", function(menu_manager, menu_name, position)
+		if menu_name == "menu_main" then
+			local mod = BLT and BLT.Mods:GetMod(WolfHUD.identifier or "")
+
+			if mod and not mod.supermod then
+				local title = "[WolfHUD] No SuperBLT detected!"
+				local text = "WolfHUD requires SuperBLT in order to work.\nSuperBLT is a fork of the BLT mod-loading hook for PAYDAY 2, with a number of major improvements. \nIt is fully backwards-compatable with regular BLT mods.\n\nYou can find further information and installation instructions here: \nhttps://superblt.znix.xyz"
+
+				QuickMenu:new( 
+					title, 
+					text, 
+					{
+						{ text = managers.localization:text("dialog_ok"), is_cancel_button = true }
+					}, true 
+				)
+			end
+		end
 	end)
 end

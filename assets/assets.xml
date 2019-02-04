@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<assets base_path="assets/" load="startup">
+	<group name="guis/textures/wolfhud/" path="assets/">
+		<file :name="hudlist/weapon_charge.texture" :path="hudlist/weapon_charge.texture"/>
+
+		<group :name="drivinghud/" :path="drivinghud/">
+			<file :name="legend.texture" :path="legend.texture"/>
+
+			<file :name="bike.texture" :path="bike.texture"/>
+			<file :name="blackhawk.texture" :path="blackhawk.texture"/>
+			<file :name="boat.texture" :path="boat.texture"/>
+			<file :name="falcogini.texture" :path="falcogini.texture"/>
+			<file :name="forklift.texture" :path="forklift.texture"/>
+			<file :name="longfellow.texture" :path="longfellow.texture"/>
+			<file :name="truck.texture" :path="truck.texture"/>
+		</group>
+	</group>
+</assets>

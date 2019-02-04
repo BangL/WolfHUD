@@ -5564,8 +5564,8 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 			ignore = false,
 		},
 		weapon_charge = {
-			texture = "guis/textures/contact_vlad",
-			texture_rect = {1984, 0, 64, 64},
+			texture = "guis/textures/wolfhud/hudlist/weapon_charge",
+			--texture_rect = {1984, 0, 64, 64},
 			class = "TimedBuffItem",
 			priority = 15,
 			color = HUDList.BuffItemBase.ICON_COLOR.STANDARD,
