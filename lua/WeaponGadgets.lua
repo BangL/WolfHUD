@@ -117,7 +117,7 @@ elseif RequiredScript == "lib/units/weapons/weaponlaser" then
 
 	function WeaponLaser:color()	--OVERWRITE
 		local theme = self._themes[self._theme_type] or self._themes.default
-		
+
 		if theme and theme.brush then
 			return Color(theme.brush:unpack())
 		end
@@ -215,7 +215,7 @@ elseif RequiredScript == "lib/units/weapons/weaponflashlight" then
 
 	function WeaponFlashLight:color()	--OVERWRITE
 		local theme = self._themes[self._theme_type]
-		
+
 		if theme and theme.light then
 			return Color(theme.light:unpack())
 		end
@@ -275,7 +275,7 @@ elseif RequiredScript == "lib/units/weapons/weaponflashlight" then
 	function WeaponFlashLight:_set_colors(light)
 		local theme = self._themes[self._theme_type]
 		local light = light or theme and theme.light
-		
+
 		if light then
 			--self._light:set_color(light * (theme.brightness or 1) * (self._current_intensity or 1) * (self._intensity_modifier or 1))
 			local light_color = Color(light.x, light.y, light.z) * (theme.brightness or 1) * (self._current_intensity or 1) * (self._intensity_modifier or 1)
@@ -348,12 +348,12 @@ if string.lower(RequiredScript) == "lib/units/weapons/newraycastweaponbase" then
 	function NewRaycastWeaponBase:_setup_laser()
 		if self._gadgets then
 			for i, part_id in ipairs(self._gadgets) do
-                local unit = self._parts[part_id] and self._parts[part_id].unit
+				local unit = self._parts[part_id] and self._parts[part_id].unit
 				local base = unit and unit:base()
 				if base and base.GADGET_TYPE and base.GADGET_TYPE == (WeaponLaser.GADGET_TYPE or "") then
 					self:set_gadget_on(i or 0, false, self._gadgets)
 					self._last_gadget_idx = self._gadget_on
-					
+
 					local owner = managers.player:player_unit()
 					if owner then
 						owner:inventory()._was_gadget_on = self._gadget_on	-- Prevent inventory from restoring wrong gadget state
@@ -460,7 +460,7 @@ elseif string.lower(RequiredScript) == "lib/units/beings/player/states/playersta
 	PlayerStandard.ANGELED_SIGHTS = {
 		wpn_fps_upg_o_45iron = true,
 		wpn_fps_upg_o_45rds = true,
-        wpn_fps_upg_o_45rds_v2 = true,
+		wpn_fps_upg_o_45rds_v2 = true,
 	}
 
 	function PlayerStandard:_stance_entered(...)

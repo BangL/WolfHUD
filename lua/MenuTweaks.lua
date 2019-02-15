@@ -91,7 +91,7 @@ if string.lower(RequiredScript) == "lib/managers/menumanager" then
 
 		local results = { MenuCrimeNetContractInitiator_modify_node_orig(self, original_node, data, ...) }
 		local node = table.remove(results, 1)
-		
+
 		if data.customize_contract then
 			local diff_item = node:item("difficulty")
 			if diff_item then
@@ -103,7 +103,7 @@ if string.lower(RequiredScript) == "lib/managers/menumanager" then
 				od_item:set_value(data.one_down and "on" or "off")
 			end
 		end
-		
+
 		return node, unpack(results or {})
 	end
 elseif string.lower(RequiredScript) == "lib/managers/menu/blackmarketgui" then

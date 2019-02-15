@@ -416,7 +416,7 @@ elseif requiredScript == "lib/managers/preplanningmanager" then
 						local available, err_code = self:can_reserve_mission_element(data.type, peer_id)
 						if available then
 							self:reserve_mission_element(data.type, id)
-                            something_loaded = true
+							something_loaded = true
 						elseif err_code == 1 then
 							missing_money = true
 						elseif err_code == 2 then
@@ -427,7 +427,7 @@ elseif requiredScript == "lib/managers/preplanningmanager" then
 					end
 				else
 					-- Asset already unlocked
-                    something_loaded = true
+					something_loaded = true
 				end
 			end
 
@@ -450,7 +450,7 @@ elseif requiredScript == "lib/managers/preplanningmanager" then
 					error_msg = string.format("%s%s %s", error_msg, ((missing_skill or missing_favours) and ";" or ""), managers.localization:text("wolfhud_preplanning_msg_loaded_missing_money"))
 				end
 				managers.preplanning:notify_user("wolfhud_preplanning_msg_loaded_partitially", {ERRORMSG = error_msg}, true)
-            else
+			else
 				managers.preplanning:notify_user("wolfhud_preplanning_msg_loaded_failed", {}, true)
 			end
 		end

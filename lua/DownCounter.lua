@@ -4,11 +4,11 @@ if string.lower(RequiredScript) == "lib/units/beings/player/huskplayermovement" 
 
 	function HuskPlayerMovement:_perform_movement_action_enter_bleedout(...)
 		if not self._bleedout then
-            local crim_data = managers.criminals:character_data_by_unit(self._unit)
-            if crim_data and crim_data.panel_id then
-                managers.hud:increment_teammate_downs(crim_data.panel_id)
-            end
-        end
+			local crim_data = managers.criminals:character_data_by_unit(self._unit)
+			if crim_data and crim_data.panel_id then
+				managers.hud:increment_teammate_downs(crim_data.panel_id)
+			end
+		end
 
 		return _perform_movement_action_enter_bleedout_original(self, ...)
 	end
@@ -181,15 +181,15 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudteammate" and not HU
 	end
 
 	HUDTeammate.set_detection = HUDTeammate.set_detection or function(self, risk)
-        if not risk then
-            if self._main_player then
+		if not risk then
+			if self._main_player then
 				risk = tonumber(string.format("%.0f", managers.blackmarket:get_suspicion_offset_of_local(tweak_data.player.SUSPICION_OFFSET_LERP or 0.75) * 100))
 			elseif self:peer_id() then
 				risk = tonumber(string.format("%.0f", managers.blackmarket:get_suspicion_offset_of_peer(managers.network:session():peer(self:peer_id()), tweak_data.player.SUSPICION_OFFSET_LERP or 0.75) * 100))
 			end
-        end
+		end
 		if not self._risk or risk and risk ~= self._risk then
-            self._risk = risk
+			self._risk = risk
 			if self._risk then
 				local color = self._risk < 50 and Color(1, 0, 0.8, 1) or Color(1, 1, 0.2, 0)
 				self._detection_counter:set_text(utf8.char(57363) .. tostring(self._risk))

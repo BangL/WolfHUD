@@ -160,7 +160,7 @@ if string.lower(RequiredScript) == "lib/managers/hud/newhudstatsscreen" then
 			local stats_panel = ExtendedPanel:new(self._right, { w = self._right:w(), h = self._right:h() })
 			self:_create_stat_list(stats_panel)
 			self:_update_stats_list(stats_panel)
-		
+
 			if self._create_player_info then -- Enhanced Crew Loadout compatability
 				self:_create_player_info()
 			end
@@ -612,7 +612,7 @@ if string.lower(RequiredScript) == "lib/managers/hud/newhudstatsscreen" then
 				font = tweak_data.hud_stats.objectives_font,
 				font_size = tweak_data.hud_stats.loot_size,
 				text = managers.localization:to_upper_text(managers.skirmish:is_weekly_skirmish() and "hud_weekly_skirmish" or "hud_skirmish"),
-				color = tweak_data.screen_colors.skirmish_color 
+				color = tweak_data.screen_colors.skirmish_color
 			}))
 
 			placer:new_row(8)
@@ -628,7 +628,7 @@ if string.lower(RequiredScript) == "lib/managers/hud/newhudstatsscreen" then
 			end
 
 			difficulty_text = managers.localization:to_upper_text("hud_assault_waves", {current = managers.skirmish:current_wave_number(), max = #tweak_data.skirmish.ransom_amounts})
-			difficulty_color = tweak_data.screen_colors.skirmish_color 
+			difficulty_color = tweak_data.screen_colors.skirmish_color
 		else
 			local job_chain = managers.job:current_job_chain_data()
 			local is_ghostable = managers.job:is_level_ghostable(managers.job:current_level_id())

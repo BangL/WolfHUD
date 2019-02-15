@@ -80,7 +80,7 @@ if RequiredScript == "lib/managers/platformmanager" then
 			Steam:set_rich_presence("status", self:build_status_string(display, game_state, game_mode, game_heist, game_heistday, game_difficulty))
 		end
 	end
-	
+
 	local suffixList = {
 		"_prof$",
 		"_day$",
@@ -115,7 +115,7 @@ if RequiredScript == "lib/managers/platformmanager" then
 
 		return level_id or self:get_current_job_id()
 	end
-	
+
 	function WinPlatformManager:build_status_string(display, state, mode, heist, day, difficulty)
 		local tokens = {
 			["#raw_status"] =				"{#State_%game:state%}",
@@ -352,7 +352,7 @@ if RequiredScript == "lib/managers/platformmanager" then
 
 		s = populate_data(s, tokens, data)
 		log(string.format("Steam RP updated: %s", s))
-		return s 
+		return s
 	end
 elseif RequiredScript == "lib/managers/skirmishmanager" then
 	local update_matchmake_attributes_original = SkirmishManager.update_matchmake_attributes

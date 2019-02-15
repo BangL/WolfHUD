@@ -597,9 +597,9 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/newhudstatsscreen" then
 	HUDStatsScreen._LOADOUT_H = 215
 	function HUDStatsScreen:recreate_right(...)
 		self:_destroy_player_info()
-		
+
 		recreate_right_original(self, ...)
-		
+
 		self:_create_player_info()
 	end
 
@@ -616,7 +616,7 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/newhudstatsscreen" then
 
 				self._peer_loadout = self._peer_loadout or {}
 				self:populate_loadout_panel(self._loadout_data)
-				
+
 				for peer_id = 1, 4  do
 					self:update_loadout_panel(peer_id)
 				end
@@ -645,7 +645,7 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/newhudstatsscreen" then
 				end
 			end
 		end
-		
+
 		return update_original(self, t, dt, ...)
 	end
 

@@ -11,7 +11,7 @@ function WolfHUDTweakData:init()
 	----------------------------------------------------------------------------------------------------------------------
 
 	-- Determines which messages get logged
-	self.LOG_MODE = { 
+	self.LOG_MODE = {
 		error = true, 		-- log errors
 		warning = true, 	-- log warnings
 		info = false, 		-- log infos

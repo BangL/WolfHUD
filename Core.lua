@@ -178,7 +178,7 @@ if not _G.WolfHUD then
 				SHOW_IN_LOBBY							= true,
 				SHOW_IN_CS_LOBBY 						= true,
 				SHOW_ON_STATS_PANEL						= true,
-                REPLACE_PROFILE_MENU                    = true,
+				REPLACE_PROFILE_MENU                    = true,
 			},
 			HUDList = {
 				ENABLED	 								= true,
@@ -208,7 +208,7 @@ if not _G.WolfHUD then
 						show_own_minions_only				= false,	--Only show player-owned minions
 					show_pagers 							= true,  	--Show currently active pagers
 					show_tape_loop 							= true,  	--Show active tape loop duration
-					timer_in_seconds						= false,	--Timer format in just seconds, as opposed to minutes and seconds									
+					timer_in_seconds						= false,	--Timer format in just seconds, as opposed to minutes and seconds
 				},
 				RIGHT_LIST = {
 					show_enemies 							= true,		--Currently spawned enemies
@@ -606,7 +606,7 @@ if not _G.WolfHUD then
 	end
 
 	function WolfHUD:getVersion()
-        local mod = BLT and BLT.Mods:GetMod(WolfHUD.identifier or "")
+		local mod = BLT and BLT.Mods:GetMod(WolfHUD.identifier or "")
 		return tostring(mod and mod:GetVersion() or "(n/a)")
 	end
 
@@ -1291,7 +1291,7 @@ if not _G.WolfHUD then
 
 	--Add localiszation strings
 	Hooks:Add("LocalizationManagerPostInit", "LocalizationManagerPostInit_WolfHUDCore", function(loc)
-        local loc_path = WolfHUD.mod_path .. "loc/"
+		local loc_path = WolfHUD.mod_path .. "loc/"
 		if file.DirectoryExists( loc_path ) then
 			loc:load_localization_file(string.format("%s/%s.json", loc_path, WolfHUD:getSetting({"LANGUAGE"}, "english")))
 			loc:load_localization_file(string.format("%s/english.json", loc_path), false)
@@ -1319,7 +1319,7 @@ if not _G.WolfHUD then
 		end
 		loc:add_localized_strings(localized_strings)
 	end)
-	
+
 	Hooks:Add("MenuManagerOnOpenMenu", "MenuManagerOnOpenMenu_WolfHUDCore", function(menu_manager, menu_name, position)
 		if menu_name == "menu_main" then
 			local mod = BLT and BLT.Mods:GetMod(WolfHUD.identifier or "")
@@ -1328,12 +1328,12 @@ if not _G.WolfHUD then
 				local title = "[WolfHUD] No SuperBLT detected!"
 				local text = "WolfHUD requires SuperBLT in order to work.\nSuperBLT is a fork of the BLT mod-loading hook for PAYDAY 2, with a number of major improvements. \nIt is fully backwards-compatable with regular BLT mods.\n\nYou can find further information and installation instructions here: \nhttps://superblt.znix.xyz"
 
-				QuickMenu:new( 
-					title, 
-					text, 
+				QuickMenu:new(
+					title,
+					text,
 					{
 						{ text = managers.localization:text("dialog_ok"), is_cancel_button = true }
-					}, true 
+					}, true
 				)
 			end
 		end

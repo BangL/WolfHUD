@@ -275,7 +275,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 		fbi = 						{ type_id = "cop",			category = "enemies",	long_name = "wolfhud_enemy_fbi" 					},
 		swat = 						{ type_id = "cop",			category = "enemies",	long_name = "wolfhud_enemy_swat" 					},
 		heavy_swat = 				{ type_id = "cop",			category = "enemies",	long_name = "wolfhud_enemy_heavy_swat" 				},
-        heavy_swat_sniper =         { type_id = "cop",			category = "enemies",	long_name = "wolfhud_enemy_heavy_swat_sniper"   	},
+		heavy_swat_sniper =         { type_id = "cop",			category = "enemies",	long_name = "wolfhud_enemy_heavy_swat_sniper"   	},
 		fbi_swat = 					{ type_id = "cop",			category = "enemies",	long_name = "wolfhud_enemy_swat" 					},
 		fbi_heavy_swat = 			{ type_id = "cop",			category = "enemies",	long_name = "wolfhud_enemy_heavy_swat" 				},
 		city_swat = 				{ type_id = "cop",			category = "enemies",	long_name = "wolfhud_enemy_city_swat" 				},
@@ -3523,7 +3523,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 			self:_set_colors(new_color)
 		end
 	end
-	
+
 	function HUDList.TimerItem:_update_distance()
 		if self._show_distance then
 			self._distance_text:set_text(get_distance_to_player(self._unit))
@@ -3671,7 +3671,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 	HUDList.SecurityTimerItem = HUDList.SecurityTimerItem or class(HUDList.TimerItem)
 	function HUDList.SecurityTimerItem:init(parent, name, data)
 		data.show_distance = false	-- Disabled, we show current and total bars there.
-		
+
 		HUDList.SecurityTimerItem.super.init(self, parent, name, data)
 
 		self._bars = { current = data.current_bar or 1, total = data.total_bars or 3}
@@ -6332,12 +6332,12 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 			chico_injector = function(value)
 				local player = managers.player:player_unit()
 				local health_ratio = alive(player) and player:character_damage():health_ratio() or 1
-                if managers.player:has_category_upgrade("player", "chico_injector_low_health_multiplier") then
-                    local upg_values = managers.player:upgrade_value("player", "chico_injector_low_health_multiplier")
-                    if health_ratio < upg_values[1] then
-                        value = value + upg_values[2]
-                    end
-                end
+				if managers.player:has_category_upgrade("player", "chico_injector_low_health_multiplier") then
+					local upg_values = managers.player:upgrade_value("player", "chico_injector_low_health_multiplier")
+					if health_ratio < upg_values[1] then
+						value = value + upg_values[2]
+					end
+				end
 				return 1 - value
 			end,
 			frenzy = function(value)
@@ -6401,13 +6401,13 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 	function HUDList.TotalDodgeChanceBuff:init(...)
 		HUDList.TotalDodgeChanceBuff.super.init(self, ...)
 
-        self._member_buffs["base_dodge"] = { value = (tweak_data.player.damage.DODGE_INIT or 0) + managers.player:body_armor_value("dodge") }
+		self._member_buffs["base_dodge"] = { value = (tweak_data.player.damage.DODGE_INIT or 0) + managers.player:body_armor_value("dodge") }
 		self._member_buffs["crook_dodge"] = { value = managers.player:upgrade_value("player", "passive_dodge_chance", 0)
 												+ managers.player:upgrade_value("player", tostring(managers.blackmarket:equipped_armor(true, true)) .. "_dodge_addend", 0) -- Crook Perk
 											}
 		self._member_buffs["burglar_dodge"] = { value = managers.player:upgrade_value("player", "tier_dodge_chance", 0) }	 -- Burglar Perk
 		self._member_buffs["jail_diet"] = { value = managers.player:get_value_from_risk_upgrade(managers.player:upgrade_value("player", "detection_risk_add_dodge_chance"))}
-        self._member_buffs["henchman_dodge"] = { value = managers.player:upgrade_value("team", "crew_add_dodge", 0) }
+		self._member_buffs["henchman_dodge"] = { value = managers.player:upgrade_value("team", "crew_add_dodge", 0) }
 
 		self._buff_effects = {
 		}

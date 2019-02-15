@@ -580,7 +580,7 @@ lounge		100421		100448			102049
 			loose_ammo_give_team = "ammo_give_out_debuff",
 			armor_break_invulnerable = "armor_break_invulnerable_debuff",
 			single_shot_fast_reload = "aggressive_reload_aced",
-            unseen_strike = "unseen_strike",
+			unseen_strike = "unseen_strike",
 			pocket_ecm_kill_dodge =	"pocket_ecm_kill_dodge",
 
 			--"properties"
@@ -1377,9 +1377,9 @@ lounge		100421		100448			102049
 
 		if event == "activate" then
 			self:_buff_event("set_duration", id, { t = data.t, duration = data.duration, expire_t = data.expire_t })
-            if data.expire_t or (data.t and data.duration) then
-                self:_add_player_timer_expiration(id, id, data.expire_t or (data.t + data.duration), self._timed_buff_expire_clbk)
-            end
+			if data.expire_t or (data.t and data.duration) then
+				self:_add_player_timer_expiration(id, id, data.expire_t or (data.t + data.duration), self._timed_buff_expire_clbk)
+			end
 		elseif event == "deactivate" then
 			self:_remove_player_timer_expiration(id)
 		elseif self._buffs[id] then
@@ -2067,7 +2067,7 @@ if string.lower(RequiredScript) == "lib/network/handlers/unitnetworkhandler" the
 
 		if self._verify_character(unit) then
 			local key = tostring(unit:key())
-            local peer = owner_id and owner_id ~= managers.network:session():local_peer():id() and managers.network:session():peer(owner_id)
+			local peer = owner_id and owner_id ~= managers.network:session():local_peer():id() and managers.network:session():peer(owner_id)
 			local owner_base = peer and peer:unit() and peer:unit():base() or managers.player
 			local damage_mult = (owner_base:upgrade_value("player", "convert_enemies_damage_multiplier", 1) or 1) --* (owner_base:upgrade_value("player", "passive_convert_enemies_damage_multiplier", 1) or 1)
 
@@ -3183,7 +3183,7 @@ if string.lower(RequiredScript) == "lib/managers/playermanager" then
 		end
 
 		return replenish_grenades_original(self, cooldown, ...)
- 	end
+	end
 
 	function PlayerManager:_on_grenade_cooldown_end(...)
 		local id = managers.blackmarket:equipped_grenade()
@@ -3375,12 +3375,12 @@ if string.lower(RequiredScript) == "lib/units/beings/player/playermovement" then
 			end
 
 			if not LAST_BASE_DODGE or LAST_BASE_DODGE ~= base_dodge then
-                if base_dodge > 0 then
-                    managers.gameinfo:event("buff", "activate", "movement_dodge")
-                    managers.gameinfo:event("buff", "set_value", "movement_dodge", { value = base_dodge })
-                else
-                    managers.gameinfo:event("buff", "deactivate", "movement_dodge")
-                end
+				if base_dodge > 0 then
+					managers.gameinfo:event("buff", "activate", "movement_dodge")
+					managers.gameinfo:event("buff", "set_value", "movement_dodge", { value = base_dodge })
+				else
+					managers.gameinfo:event("buff", "deactivate", "movement_dodge")
+				end
 				LAST_BASE_DODGE = base_dodge
 			end
 
