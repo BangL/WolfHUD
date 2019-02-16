@@ -49,7 +49,7 @@ The BLT log can be found at **PAYDAY 2/mods/logs/**.
 * [No Spam](http://steamcommunity.com/app/218620/discussions/15/618457398976607330/) made by **Ahab**, **Seven**, **AmEyeBlind** & **money123451**, updated by **Kamikaze94**
 * [DrivingHUD](https://modworkshop.net/mydownloads.php?action=view_down&did=12982) made by **ViciousWalrus** and **Great Big Bushy Beard**, rewritten by **Kamikaze94**
 * [Real Weapon Names](http://modworkshop.net/mydownloads.php?action=view_down&did=15433) made by **(AD) Jaqueto**, updated by **Terminator01**
-* [Buy all Assets](http://steamcommunity.com/app/218620/discussions/15/618458030689719683/) made by **=TBM= BangL**, rewritten by **Kamikaze94**
+* [Buy all Assets](http://steamcommunity.com/app/218620/discussions/15/618458030689719683/) rewritten by **Kamikaze94**
 * PrePlanManager made by **Kamikaze94**
 * ProfileMenu made by **Kamikaze94**
 * Equipment Tweaks made by **Kamikaze94**
