@@ -2,7 +2,6 @@ if not _G.WolfHUD then
 	_G.WolfHUD = {}
 	WolfHUD.mod_path = ModPath
 	WolfHUD.save_path = SavePath
-	WolfHUD.assets_path = "./assets/mod_overrides/"
 	WolfHUD.settings_path = WolfHUD.save_path .. "WolfHUD_v2.json"
 	WolfHUD.tweak_file = "WolfHUDTweakData.lua"
 	WolfHUD.identifier = string.match(WolfHUD.mod_path, "[\\/]([%w_-]+)[\\/]$") or "WolfHUD"
@@ -773,10 +772,6 @@ if not _G.WolfHUD then
 				end
 			end,
 		}
-	end
-
-	if not WolfHUD:DirectoryExists(WolfHUD.assets_path) then
-		WolfHUD:print_log("Folder '%s' doesn't exist, creating....\t%s", WolfHUD.assets_path, tostring(WolfHUD:createDirectory(WolfHUD.assets_path)), "warining")
 	end
 
 	WolfHUD:Reset()	-- Populate settings table
