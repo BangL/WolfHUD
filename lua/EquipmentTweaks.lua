@@ -19,7 +19,7 @@ if string.lower(RequiredScript) == "lib/units/weapons/sentrygunweapon" then
 		self._laser_align = self._unit:get_object(Idstring("fire"))
 		self:set_laser_enabled(laser_theme)
 
-		if WolfHUD:getSetting({"EQUIPMENT", "SENTRY_AUTO_AP"}, true) and enable_ap then
+		if JimHUD:getSetting({"EQUIPMENT", "SENTRY_AUTO_AP"}, true) and enable_ap then
 			if alive(self._fire_mode_unit) and alive(self._unit) then
 				local firemode_interaction = self._fire_mode_unit:interaction()
 				if firemode_interaction and firemode_interaction:can_interact(managers.player:player_unit()) then
@@ -41,7 +41,7 @@ elseif string.lower(RequiredScript) == "lib/units/equipment/ecm_jammer/ecmjammer
 	local destroy_original = ECMJammerBase.destroy
 	function ECMJammerBase:setup(...)
 		setup_original(self, ...)
-		if WolfHUD:getSetting({"EQUIPMENT", "ECM_FEEDBACK_STEALTH_DISABLED"}, true) and managers.groupai:state():whisper_mode() then
+		if JimHUD:getSetting({"EQUIPMENT", "ECM_FEEDBACK_STEALTH_DISABLED"}, true) and managers.groupai:state():whisper_mode() then
 			local owner_unit = self:owner()
 			local player_unit = managers.player:player_unit()
 			if alive(owner_unit) and alive(player_unit) and owner_unit:key() == player_unit:key() then
@@ -51,7 +51,7 @@ elseif string.lower(RequiredScript) == "lib/units/equipment/ecm_jammer/ecmjammer
 	end
 
 	function ECMJammerBase:contour_interaction(...)
-		if not (managers.groupai:state():whisper_mode() and WolfHUD:getSetting({"EQUIPMENT", "ECM_FEEDBACK_STEALTH_DISABLED"}, true)) then
+		if not (managers.groupai:state():whisper_mode() and JimHUD:getSetting({"EQUIPMENT", "ECM_FEEDBACK_STEALTH_DISABLED"}, true)) then
 			contour_interaction_original(self, ...)
 		end
 	end
@@ -67,8 +67,8 @@ elseif string.lower(RequiredScript) == "lib/units/equipment/ecm_jammer/ecmjammer
 		end
 	end
 elseif string.lower(RequiredScript) == "lib/units/interactions/interactionext" then
-	BaseInteractionExt.SHAPED_CHARGE_TIMEOUT = WolfHUD:getTweakEntry("STEALTH_SHAPED_CHARGE_TIMEOUT", "number", 0.25)		--Timeout for 2 InteractKey pushes, to prevent accidents in stealth
-	BaseInteractionExt.KEYCARD_DOORS_TIMEOUT = WolfHUD:getTweakEntry("KEYCARD_DOORS_TIMEOUT", "number", 0.25)		--Timeout for 2 InteractKey pushes, to prevent accidents in hoxton breakout day 2
+	BaseInteractionExt.SHAPED_CHARGE_TIMEOUT = JimHUD:getTweakEntry("STEALTH_SHAPED_CHARGE_TIMEOUT", "number", 0.25)		--Timeout for 2 InteractKey pushes, to prevent accidents in stealth
+	BaseInteractionExt.KEYCARD_DOORS_TIMEOUT = JimHUD:getTweakEntry("KEYCARD_DOORS_TIMEOUT", "number", 0.25)		--Timeout for 2 InteractKey pushes, to prevent accidents in hoxton breakout day 2
 
 	local BaseInteraction_interact_start_original = BaseInteractionExt.interact_start
 	local ECMJammerInteaction_can_interact_original = ECMJammerInteractionExt.can_interact
@@ -76,13 +76,13 @@ elseif string.lower(RequiredScript) == "lib/units/interactions/interactionext" t
 
 	function BaseInteractionExt:interact_start(player, data, ...)
 		local t = Application:time()
-		if WolfHUD:getSetting({"EQUIPMENT", "SHAPED_CHARGE_STEALTH_DISABLED"}, true) and managers.groupai:state():whisper_mode()
+		if JimHUD:getSetting({"EQUIPMENT", "SHAPED_CHARGE_STEALTH_DISABLED"}, true) and managers.groupai:state():whisper_mode()
 				and self._tweak_data.required_deployable and self._tweak_data.required_deployable == "trip_mine"
 				and (t - (self._last_shaped_charge_t or 0) >= BaseInteractionExt.SHAPED_CHARGE_TIMEOUT) then
 			self._last_shaped_charge_t = t
 			return false
 		end
-		if WolfHUD:getSetting({"EQUIPMENT", "KEYCARD_DOORS_DISABLED"}, true)
+		if JimHUD:getSetting({"EQUIPMENT", "KEYCARD_DOORS_DISABLED"}, true)
 				and self.tweak_data and self.tweak_data == "hold_close_keycard"
 				and (t - (self._last_hold_close_keycard_t or 0) >= BaseInteractionExt.KEYCARD_DOORS_TIMEOUT) then
 			self._last_hold_close_keycard_t = t
@@ -92,14 +92,14 @@ elseif string.lower(RequiredScript) == "lib/units/interactions/interactionext" t
 	end
 
 	function ECMJammerInteractionExt:can_interact(...)
-		if WolfHUD:getSetting({"EQUIPMENT", "ECM_FEEDBACK_STEALTH_DISABLED"}, true) and managers.groupai:state():whisper_mode() then
+		if JimHUD:getSetting({"EQUIPMENT", "ECM_FEEDBACK_STEALTH_DISABLED"}, true) and managers.groupai:state():whisper_mode() then
 			return false
 		end
 		return ECMJammerInteaction_can_interact_original(self, ...)
 	end
 
 	function ECMJammerInteractionExt:can_select(...)
-		if WolfHUD:getSetting({"EQUIPMENT", "ECM_FEEDBACK_STEALTH_DISABLED"}, true) and managers.groupai:state():whisper_mode() then
+		if JimHUD:getSetting({"EQUIPMENT", "ECM_FEEDBACK_STEALTH_DISABLED"}, true) and managers.groupai:state():whisper_mode() then
 			return false
 		end
 		return ECMJammerInteraction_can_select_original(self, ...)

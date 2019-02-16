@@ -4,10 +4,10 @@ if RequiredScript == "lib/managers/hudmanager" then
 
 	function HUDManager:add_waypoint(id, data, ...)
 		add_waypoint_original(self, id, data, ...)
-		if WolfHUD:getSetting({"CustomWaypoints", "WAYPOINTS_COLOR_ENABLE"}) and id and self._hud and self._hud.waypoints and self._hud.waypoints[id] then
+		if JimHUD:getSetting({"CustomWaypoints", "WAYPOINTS_COLOR_ENABLE"}) and id and self._hud and self._hud.waypoints and self._hud.waypoints[id] then
 			local wp = self._hud.waypoints[id]
 			if wp and wp.bitmap and wp.distance and wp.arrow and data.distance then
-				local color = WolfHUD:getColorSetting({"CustomWaypoints", "WAYPOINTS_COLOR"}, "white")
+				local color = JimHUD:getColorSetting({"CustomWaypoints", "WAYPOINTS_COLOR"}, "white")
 				wp.bitmap:set_color(color)
 				wp.distance:set_color(color)
 				wp.arrow:set_color(color:with_alpha(0.75))
@@ -121,11 +121,11 @@ if RequiredScript == "lib/managers/hudmanager" then
 	function HUDManager:setup_custom_waypoints()
 		if managers.gameinfo and managers.waypoints then
 			local bag_equip_settings = {
-				["ammo_bag"]		= WolfHUD:getSetting({"CustomWaypoints", "SHOW_AMMO_BAG"}, true),
-				["doc_bag"]			= WolfHUD:getSetting({"CustomWaypoints", "SHOW_DOC_BAG"}, true),
-				["body_bag"]		= WolfHUD:getSetting({"CustomWaypoints", "SHOW_BODY_BAG"}, true),
-				["grenade_crate"]	= WolfHUD:getSetting({"CustomWaypoints", "SHOW_GRENADE_CRATE"}, true),
-				["first_aid_kit"]	= WolfHUD:getSetting({"CustomWaypoints", "SHOW_FIRST_AID_KIT"}, false),
+				["ammo_bag"]		= JimHUD:getSetting({"CustomWaypoints", "SHOW_AMMO_BAG"}, true),
+				["doc_bag"]			= JimHUD:getSetting({"CustomWaypoints", "SHOW_DOC_BAG"}, true),
+				["body_bag"]		= JimHUD:getSetting({"CustomWaypoints", "SHOW_BODY_BAG"}, true),
+				["grenade_crate"]	= JimHUD:getSetting({"CustomWaypoints", "SHOW_GRENADE_CRATE"}, true),
+				["first_aid_kit"]	= JimHUD:getSetting({"CustomWaypoints", "SHOW_FIRST_AID_KIT"}, false),
 			}
 			for equip, enabled in pairs(bag_equip_settings) do
 				if enabled then
@@ -137,14 +137,14 @@ if RequiredScript == "lib/managers/hudmanager" then
 				end
 			end
 
-			if WolfHUD:getSetting({"CustomWaypoints", "SHOW_SENTRIES"}, true) then
+			if JimHUD:getSetting({"CustomWaypoints", "SHOW_SENTRIES"}, true) then
 				managers.gameinfo:register_listener("sentry_waypoint_listener", "sentry", "set_active", callback(self, self, "custom_waypoint_sentry_clbk"))
 				managers.gameinfo:register_listener("sentry_waypoint_listener", "sentry", "set_ammo_ratio", callback(self, self, "custom_waypoint_sentry_clbk"))
 				managers.gameinfo:register_listener("sentry_waypoint_listener", "sentry", "set_health_ratio", callback(self, self, "custom_waypoint_sentry_clbk"))
 				managers.gameinfo:register_listener("sentry_waypoint_listener", "sentry", "set_owner", callback(self, self, "custom_waypoint_sentry_clbk"))
 			end
 
-			if WolfHUD:getSetting({"CustomWaypoints", "SHOW_ECMS"}, true) then
+			if JimHUD:getSetting({"CustomWaypoints", "SHOW_ECMS"}, true) then
 				managers.gameinfo:register_listener("ecm_waypoint_listener", "ecm", "set_jammer_active", callback(self, self, "custom_waypoint_ecm_clbk"))
 				managers.gameinfo:register_listener("ecm_waypoint_listener", "ecm", "set_feedback_active", callback(self, self, "custom_waypoint_ecm_clbk"))
 				managers.gameinfo:register_listener("ecm_waypoint_listener", "ecm", "set_feedback_duration", callback(self, self, "custom_waypoint_ecm_clbk"))
@@ -152,7 +152,7 @@ if RequiredScript == "lib/managers/hudmanager" then
 				managers.gameinfo:register_listener("ecm_waypoint_listener", "ecm", "set_upgrade_level", callback(self, self, "custom_waypoint_ecm_clbk"))
 			end
 
-			if WolfHUD:getSetting({"CustomWaypoints", "SHOW_TIMERS"}, true) then
+			if JimHUD:getSetting({"CustomWaypoints", "SHOW_TIMERS"}, true) then
 				managers.gameinfo:register_listener("timer_waypoint_listener", "timer", "set_active", callback(self, self, "custom_waypoint_timer_clbk"))
 				managers.gameinfo:register_listener("timer_waypoint_listener", "timer", "update", callback(self, self, "custom_waypoint_timer_clbk"))
 				managers.gameinfo:register_listener("timer_waypoint_listener", "timer", "set_jammed", callback(self, self, "custom_waypoint_timer_clbk"))
@@ -161,7 +161,7 @@ if RequiredScript == "lib/managers/hudmanager" then
 				managers.gameinfo:register_listener("timer_waypoint_listener", "timer", "set_autorepair", callback(self, self, "custom_waypoint_timer_clbk"))
 			end
 
-			if WolfHUD:getSetting({"CustomWaypoints", "SHOW_MINIONS"}, true) then
+			if JimHUD:getSetting({"CustomWaypoints", "SHOW_MINIONS"}, true) then
 				managers.gameinfo:register_listener("minion_waypoint_listener", "minion", "add", callback(self, self, "custom_waypoint_minion_clbk"))
 				managers.gameinfo:register_listener("minion_waypoint_listener", "minion", "remove", callback(self, self, "custom_waypoint_minion_clbk"))
 				managers.gameinfo:register_listener("minion_waypoint_listener", "minion", "set_health_ratio", callback(self, self, "custom_waypoint_minion_clbk"))
@@ -170,19 +170,19 @@ if RequiredScript == "lib/managers/hudmanager" then
 				managers.gameinfo:register_listener("minion_waypoint_listener", "minion", "set_damage_resistance", callback(self, self, "custom_waypoint_minion_clbk"))
 			end
 
-			if WolfHUD:getSetting({"CustomWaypoints", "LOOT", "SHOW"}, true) then
+			if JimHUD:getSetting({"CustomWaypoints", "LOOT", "SHOW"}, true) then
 				managers.gameinfo:register_listener("loot_waypoint_listener", "loot", "add", callback(self, self, "custom_waypoint_loot_clbk"))
 				managers.gameinfo:register_listener("loot_waypoint_listener", "loot", "remove", callback(self, self, "custom_waypoint_loot_clbk"))
 				managers.gameinfo:register_listener("loot_waypoint_listener", "loot", "interact", callback(self, self, "custom_waypoint_loot_clbk"))
 			end
 
-			if WolfHUD:getSetting({"CustomWaypoints", "SHOW_PAGER"}, true) then
+			if JimHUD:getSetting({"CustomWaypoints", "SHOW_PAGER"}, true) then
 				managers.gameinfo:register_listener("pager_waypoint_listener", "pager", "add", callback(self, self, "custom_waypoint_pager_clbk"))
 				managers.gameinfo:register_listener("pager_waypoint_listener", "pager", "remove", callback(self, self, "custom_waypoint_pager_clbk"))
 				managers.gameinfo:register_listener("pager_waypoint_listener", "pager", "set_answered", callback(self, self, "custom_waypoint_pager_clbk"))
 			end
 
-			if WolfHUD:getSetting({"CustomWaypoints", "SHOW_SPECIAL_EQUIPMENT"}, true) then
+			if JimHUD:getSetting({"CustomWaypoints", "SHOW_SPECIAL_EQUIPMENT"}, true) then
 				managers.gameinfo:register_listener("equipment_waypoint_listener", "special_equipment", "add", callback(self, self, "custom_waypoint_special_equipment_clbk"))
 				managers.gameinfo:register_listener("equipment_waypoint_listener", "special_equipment", "remove", callback(self, self, "custom_waypoint_special_equipment_clbk"))
 			end
@@ -554,7 +554,7 @@ if RequiredScript == "lib/managers/hudmanager" then
 				name = {
 					type = "label",
 					show = true,
-					text = WolfHUD:getCharacterName(unit_tweak, true)
+					text = JimHUD:getCharacterName(unit_tweak, true)
 				},
 				kills = {
 					type = "label",
@@ -623,14 +623,14 @@ if RequiredScript == "lib/managers/hudmanager" then
 
 		if event == "add" then
 			if tweak_entry and not tweak_entry.is_vehicle and not tweak_entry.skip_exit_secure and (data.carry_id ~= "person" or managers.job:current_level_id() == "mad" and (data.bagged or data.unit:editor_id() ~= -1)) then
-				local angle = HUDManager.CUSTOM_WAYPOINTS.DEBUGGING and 180 or WolfHUD:getSetting({"CustomWaypoints", "LOOT", "ANGLE"}, 25)
+				local angle = HUDManager.CUSTOM_WAYPOINTS.DEBUGGING and 180 or JimHUD:getSetting({"CustomWaypoints", "LOOT", "ANGLE"}, 25)
 				local name_id = data.carry_id and tweak_data.carry[data.carry_id] and tweak_data.carry[data.carry_id].name_id
 				local bag_name = name_id and managers.localization:to_upper_text(name_id)
 				local count = data.count or 1
 				if bag_name then
 					local params = {
 						unit = data.unit,
-						offset = data.bagged and Vector3(0, 0, WolfHUD:getSetting({"CustomWaypoints", "LOOT", "BAGGED_OFFSET"}, 30)) or Vector3(0, 0, WolfHUD:getSetting({"CustomWaypoints", "LOOT", "OFFSET"}, 15)),
+						offset = data.bagged and Vector3(0, 0, JimHUD:getSetting({"CustomWaypoints", "LOOT", "BAGGED_OFFSET"}, 30)) or Vector3(0, 0, JimHUD:getSetting({"CustomWaypoints", "LOOT", "OFFSET"}, 15)),
 						visible_through_walls = HUDManager.CUSTOM_WAYPOINTS.DEBUGGING or data.bagged,
 						alpha = HUDManager.CUSTOM_WAYPOINTS.DEBUGGING and 1 or 0.1,
 						visible_angle = { max = angle },
@@ -639,7 +639,7 @@ if RequiredScript == "lib/managers/hudmanager" then
 						scale = 1.25,
 						icon = {
 							type = "icon",
-							show = data.bagged and WolfHUD:getSetting({"CustomWaypoints", "LOOT", "ICON"}, true),
+							show = data.bagged and JimHUD:getSetting({"CustomWaypoints", "LOOT", "ICON"}, true),
 							std_wp = "wp_bag",
 							alpha = 0.5,
 							on_minimap = true,

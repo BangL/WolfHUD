@@ -50,7 +50,7 @@ if string.lower(RequiredScript) == "lib/managers/hud/hudassaultcorner" then
 	function HUDAssaultCorner:update_banner_pos()
 		if not alive(self._hud_panel) then return end
 		local hud_w = self._hud_panel:w()
-		local banner_pos = math.clamp(WolfHUD:getSetting({"AssaultBanner", "POSITION"}, 2), 1, 3)
+		local banner_pos = math.clamp(JimHUD:getSetting({"AssaultBanner", "POSITION"}, 2), 1, 3)
 		local assault_panel = self._hud_panel:child("assault_panel")
 		local buffs_panel = self._hud_panel:child("buffs_panel")
 		local point_of_no_return_panel = self._hud_panel:child("point_of_no_return_panel")
@@ -84,7 +84,7 @@ if string.lower(RequiredScript) == "lib/managers/hud/hudassaultcorner" then
 
 	function HUDAssaultCorner:update_hudlist_offset(banner_visible)
 		banner_visible = banner_visible or banner_visible == nil and (self._assault or self._point_of_no_return or self._casing)
-		local banner_pos = math.clamp(WolfHUD:getSetting({"AssaultBanner", "POSITION"}, 2), 1, 3)
+		local banner_pos = math.clamp(JimHUD:getSetting({"AssaultBanner", "POSITION"}, 2), 1, 3)
 		if managers.hud and banner_pos ~= 2 then
 			local offset = banner_visible and ((self._bg_box and self._bg_box:bottom() or 0) + (self:should_display_waves() and self._wave_text:h() or 0)+ 12) or 0
 			if banner_pos > 2 and HUDListManager then
@@ -204,7 +204,7 @@ elseif string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 
 	function HUDManager:_create_downed_hud(...)
 		_create_downed_hud_original(self, ...)
-		local banner_pos = math.clamp(WolfHUD:getSetting({"AssaultBanner", "POSITION"}, 2), 1, 3)
+		local banner_pos = math.clamp(JimHUD:getSetting({"AssaultBanner", "POSITION"}, 2), 1, 3)
 		if banner_pos == 2 and self._hud_player_downed then
 			local downed_panel = self._hud_player_downed._hud_panel
 			local downed_hud = self._hud_player_downed._hud
@@ -219,7 +219,7 @@ elseif string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 
 	function HUDManager:_create_custody_hud(...)
 		_create_custody_hud_original(self, ...)
-		local banner_pos = math.clamp(WolfHUD:getSetting({"AssaultBanner", "POSITION"}, 2), 1, 3)
+		local banner_pos = math.clamp(JimHUD:getSetting({"AssaultBanner", "POSITION"}, 2), 1, 3)
 		if banner_pos == 2 and self._hud_player_custody then
 			local custody_panel = self._hud_player_custody._hud_panel
 			local timer_msg = custody_panel and custody_panel:child("custody_panel") and custody_panel:child("custody_panel"):child("timer_msg")
@@ -241,9 +241,9 @@ elseif string.lower(RequiredScript) == "lib/managers/localizationmanager" then
 	end
 
 	function LocalizationManager:hud_adv_assault()
-		if WolfHUD:getSetting({"AssaultBanner", "USE_ADV_ASSAULT"}, true) then
+		if JimHUD:getSetting({"AssaultBanner", "USE_ADV_ASSAULT"}, true) then
 			if managers.hud and managers.hud:_locked_assault() then
-				return self:text("wolfhud_locked_assault")
+				return self:text("jimhud_locked_assault")
 			else
 				local tweak = tweak_data.group_ai.besiege.assault
 				local gai_state = managers.groupai:state()
@@ -251,10 +251,10 @@ elseif string.lower(RequiredScript) == "lib/managers/localizationmanager" then
 				if tweak and gai_state and assault_data and assault_data.active then
 					local get_value = gai_state._get_difficulty_dependent_value or function() return 0 end
 					local get_mult = gai_state._get_balancing_multiplier or function() return 0 end
-					local phase = self:text("wolfhud_advassault_phase_title") .. "  " .. self:text("wolfhud_advassault_phase_" .. assault_data.phase)
+					local phase = self:text("jimhud_advassault_phase_title") .. "  " .. self:text("jimhud_advassault_phase_" .. assault_data.phase)
 
 					local spawns = get_value(gai_state, tweak.force_pool) * get_mult(gai_state, tweak.force_pool_balance_mul)
-					local spawns_left = self:text("wolfhud_advassault_spawns_title") .. "  " .. math.round(math.max(spawns - assault_data.force_spawned, 0))
+					local spawns_left = self:text("jimhud_advassault_spawns_title") .. "  " .. math.round(math.max(spawns - assault_data.force_spawned, 0))
 
 					local time_left = assault_data.phase_end_t - gai_state._t + 350
 					if assault_data.phase == "build" then
@@ -267,9 +267,9 @@ elseif string.lower(RequiredScript) == "lib/managers/localizationmanager" then
 					--	time_left = time_left + 350
 					--end
 					if time_left < 0 then
-						time_left = self:text("wolfhud_advassault_time_overdue")
+						time_left = self:text("jimhud_advassault_time_overdue")
 					else
-						time_left = self:text("wolfhud_advassault_time_title") .. "  " .. string.format("%.2f", time_left)
+						time_left = self:text("jimhud_advassault_time_title") .. "  " .. string.format("%.2f", time_left)
 					end
 
 					local spacer = string.rep(" ", 10)

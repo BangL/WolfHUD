@@ -1,4 +1,4 @@
-local PROFILE_MENU_ID = "wolfhud_profile_switch_node_menu"
+local PROFILE_MENU_ID = "jimhud_profile_switch_node_menu"
 
 if RequiredScript == "lib/managers/menumanager" then
 	local function create_profile_menu_node(nodes, menu_id)
@@ -36,7 +36,7 @@ if RequiredScript == "lib/managers/menumanager" then
 		end
 	end
 
-	Hooks:Add("MenuManagerBuildCustomMenus", "WolfHUD_MenuManager_BuildProfileMenu", function( menu_manager, nodes )
+	Hooks:Add("MenuManagerBuildCustomMenus", "JimHUD_MenuManager_BuildProfileMenu", function( menu_manager, nodes )
 		if nodes.main and not nodes[PROFILE_MENU_ID]then
 			create_profile_menu_node(nodes, PROFILE_MENU_ID)
 		end
@@ -55,7 +55,7 @@ if RequiredScript == "lib/managers/menumanager" then
 	ProfileSwitchInitiator = ProfileSwitchInitiator or class(SkillSwitchInitiator)
 	function ProfileSwitchInitiator:modify_node(node, data)
 		node:clean_items()
-		self:create_divider(node, "title", "wolfhud_profile_switch_title_profiles", nil, tweak_data.screen_colors.text)
+		self:create_divider(node, "title", "jimhud_profile_switch_title_profiles", nil, tweak_data.screen_colors.text)
 		local mpm = managers.multi_profile
 		for i = 1, mpm:profile_count() do
 			local profile = mpm:profile(i)
@@ -108,7 +108,7 @@ elseif RequiredScript == "lib/managers/menu/renderers/menunodeskillswitchgui" th
 		MenuNodeProfileSwitchGui.super._setup_item_panel(self, ...)
 
 		if alive(self.title_text) then
-			self.title_text:set_text(managers.localization:to_upper_text("wolfhud_profile_switch_title"))
+			self.title_text:set_text(managers.localization:to_upper_text("jimhud_profile_switch_title"))
 		end
 
 		local ws_panel = self.item_panel:parent()
@@ -232,7 +232,7 @@ elseif RequiredScript == "lib/managers/menu/renderers/menunodeskillswitchgui" th
 elseif RequiredScript == "lib/managers/multiprofilemanager" then
 	local open_quick_select_original = MultiProfileManager.open_quick_select
 	function MultiProfileManager:open_quick_select(...)
-		if WolfHUD:getSetting({"CrewLoadout", "REPLACE_PROFILE_MENU"}, true) then
+		if JimHUD:getSetting({"CrewLoadout", "REPLACE_PROFILE_MENU"}, true) then
 			managers.menu:open_node(PROFILE_MENU_ID, {})
 		else
 			open_quick_select_original(self, ...)
@@ -333,7 +333,7 @@ elseif RequiredScript == "lib/managers/menu/multiprofileitemgui" then
 	function MultiProfileItemGui:init(...)
 		init_orig(self, ...)
 
-		self._max_length = WolfHUD:getTweakEntry("MAX_PROFILE_NAME_LENGTH", "number", 20)
+		self._max_length = JimHUD:getTweakEntry("MAX_PROFILE_NAME_LENGTH", "number", 20)
 	end
 elseif RequiredScript == "lib/managers/menu/missionbriefinggui" then
 	local special_btn_pressed_orig = MissionBriefingGui.special_btn_pressed

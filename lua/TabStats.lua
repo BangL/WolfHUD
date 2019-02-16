@@ -19,7 +19,7 @@ if string.lower(RequiredScript) == "lib/managers/hud/newhudstatsscreen" then
 	local loot_value_updated_original = HUDStatsScreen.loot_value_updated
 
 	function HUDStatsScreen:recreate_left(...)
-		if WolfHUD:getSetting({"TabStats", "ENABLED"}, true) then
+		if JimHUD:getSetting({"TabStats", "ENABLED"}, true) then
 			self._use_tab_stats = true
 			self._left:clear()
 			self._left:bitmap({
@@ -131,7 +131,7 @@ if string.lower(RequiredScript) == "lib/managers/hud/newhudstatsscreen" then
 
 
 	function HUDStatsScreen:recreate_right(...)
-		if WolfHUD:getSetting({"TabStats", "ENABLED"}, true) then
+		if JimHUD:getSetting({"TabStats", "ENABLED"}, true) then
 			self._use_tab_stats = true
 
 			if self._destroy_player_info then -- Enhanced Crew Loadout compatability
@@ -192,7 +192,7 @@ if string.lower(RequiredScript) == "lib/managers/hud/newhudstatsscreen" then
 
 		if self._clock_panel and (self._next_clock_update_t or 0) < t then
 			local text = ""
-			local mode = WolfHUD:getSetting({"TabStats", "CLOCK_MODE"}, 3)
+			local mode = JimHUD:getSetting({"TabStats", "CLOCK_MODE"}, 3)
 			if mode == 4 then
 				local time = math.floor(self._last_heist_time or 0)
 				local hours = math.floor(time / 3600)
@@ -540,19 +540,19 @@ if string.lower(RequiredScript) == "lib/managers/hud/newhudstatsscreen" then
 
 	HUDStatsScreen.STAT_ITEMS = {
 		{ name = "accuracy",			text_id = "victory_hit_accuracy",				color = Color.white,				update = {func = "session_hit_accuracy",			func_alltime = "",	params = {}, suffix = "%"	},		no_alltime = true		},
-		{ name = "total_damage",		text_id = "wolfhud_tabstats_total_damage",		color = Color(1, 0.69, 0.19, 0.38), update = {func = "session_damage",					func_alltime = "",	params = {}					},		no_alltime = true		},
-		{ name = "tanks_killed",		text_id = "wolfhud_tabstats_tanks_killed",		color = Color.red,					update = {func = "session_total_tanks_killed",		func_alltime = "total_tanks_killed",	params = {}							},	},
-		{ name = "cloakers_killed",		text_id = "wolfhud_tabstats_cloakers_killed",	color = Color.green,				update = {func = "session_enemy_killed_by_type",	func_alltime = "enemy_killed_by_type",	params = {"spooc", "count"}			},	},
-		{ name = "shields_killed",		text_id = "wolfhud_tabstats_shields_killed",	color = Color.yellow,				update = {func = "session_enemy_killed_by_type",	func_alltime = "enemy_killed_by_type",	params = {"shield", "count"}		},	},
-		{ name = "snipers_killed",		text_id = "wolfhud_tabstats_snipers_killed",	color = Color(1, 0.67, 0.84, 0.90),	update = {func = "session_enemy_killed_by_type",	func_alltime = "enemy_killed_by_type",	params = {"sniper", "count"}		},	},
-		{ name = "tasers_killed",		text_id = "wolfhud_tabstats_tasers_killed",		color = Color(1, 0, 0.55, 0.55),	update = {func = "session_enemy_killed_by_type",	func_alltime = "enemy_killed_by_type",	params = {"taser", "count"}			},	},
-		{ name = "medic_killed",		text_id = "wolfhud_tabstats_medic_killed",		color = Color(1, 1, 0.55, 0.24),	update = {func = "session_enemy_killed_by_type",	func_alltime = "enemy_killed_by_type",	params = {"medic", "count"}			},	},
-		{ name = "gensec_killed",		text_id = "wolfhud_tabstats_gensec_killed",		color = Color(1, 0.75, 1, 0.24),	update = {func = "session_enemy_killed_by_type",	func_alltime = "enemy_killed_by_type",	params = {"gensec", "count"}		},	},
-		{ name = "melee_killed",		text_id = "wolfhud_tabstats_melee_kills",		color = Color(1, 0.54, 0.02, 0.02),	update = {func = "session_enemy_killed_by_type",	func_alltime = "enemy_killed_by_type",	params = {"total", "melee"}			},	},
-		{ name = "explosion_killed",	text_id = "wolfhud_tabstats_explosion_kills",	color = Color(1, 1, 0.5, 0),		update = {func = "session_enemy_killed_by_type",	func_alltime = "enemy_killed_by_type",	params = {"total", "explosion"}		},	},
-		{ name = "total_killed",		text_id = "wolfhud_tabstats_nonspecial_kills",	color = Color(1, 0.78, 0.15, 0.21),	update = {func = "session_enemy_killed_by_type",	func_alltime = "enemy_killed_by_type",	params = {"non_special", "count"}	},	},
+		{ name = "total_damage",		text_id = "jimhud_tabstats_total_damage",		color = Color(1, 0.69, 0.19, 0.38), update = {func = "session_damage",					func_alltime = "",	params = {}					},		no_alltime = true		},
+		{ name = "tanks_killed",		text_id = "jimhud_tabstats_tanks_killed",		color = Color.red,					update = {func = "session_total_tanks_killed",		func_alltime = "total_tanks_killed",	params = {}							},	},
+		{ name = "cloakers_killed",		text_id = "jimhud_tabstats_cloakers_killed",	color = Color.green,				update = {func = "session_enemy_killed_by_type",	func_alltime = "enemy_killed_by_type",	params = {"spooc", "count"}			},	},
+		{ name = "shields_killed",		text_id = "jimhud_tabstats_shields_killed",	color = Color.yellow,				update = {func = "session_enemy_killed_by_type",	func_alltime = "enemy_killed_by_type",	params = {"shield", "count"}		},	},
+		{ name = "snipers_killed",		text_id = "jimhud_tabstats_snipers_killed",	color = Color(1, 0.67, 0.84, 0.90),	update = {func = "session_enemy_killed_by_type",	func_alltime = "enemy_killed_by_type",	params = {"sniper", "count"}		},	},
+		{ name = "tasers_killed",		text_id = "jimhud_tabstats_tasers_killed",		color = Color(1, 0, 0.55, 0.55),	update = {func = "session_enemy_killed_by_type",	func_alltime = "enemy_killed_by_type",	params = {"taser", "count"}			},	},
+		{ name = "medic_killed",		text_id = "jimhud_tabstats_medic_killed",		color = Color(1, 1, 0.55, 0.24),	update = {func = "session_enemy_killed_by_type",	func_alltime = "enemy_killed_by_type",	params = {"medic", "count"}			},	},
+		{ name = "gensec_killed",		text_id = "jimhud_tabstats_gensec_killed",		color = Color(1, 0.75, 1, 0.24),	update = {func = "session_enemy_killed_by_type",	func_alltime = "enemy_killed_by_type",	params = {"gensec", "count"}		},	},
+		{ name = "melee_killed",		text_id = "jimhud_tabstats_melee_kills",		color = Color(1, 0.54, 0.02, 0.02),	update = {func = "session_enemy_killed_by_type",	func_alltime = "enemy_killed_by_type",	params = {"total", "melee"}			},	},
+		{ name = "explosion_killed",	text_id = "jimhud_tabstats_explosion_kills",	color = Color(1, 1, 0.5, 0),		update = {func = "session_enemy_killed_by_type",	func_alltime = "enemy_killed_by_type",	params = {"total", "explosion"}		},	},
+		{ name = "total_killed",		text_id = "jimhud_tabstats_nonspecial_kills",	color = Color(1, 0.78, 0.15, 0.21),	update = {func = "session_enemy_killed_by_type",	func_alltime = "enemy_killed_by_type",	params = {"non_special", "count"}	},	},
 		{ name = "total_downs",			text_id = "victory_total_downed",				color = Color(1, 0.5, 0.5, 0.5),	update = {func = "total_downed",					func_alltime = "total_downed_alltime",	params = {}							},	},
-		{ name = "total_revives",		text_id = "wolfhud_tabstats_total_revives",		color = Color(1, 1, 0, 0.4),		update = {func = "session_total_revives",			func_alltime = "total_revives",			params = {}							},	},
+		{ name = "total_revives",		text_id = "jimhud_tabstats_total_revives",		color = Color(1, 1, 0, 0.4),		update = {func = "session_total_revives",			func_alltime = "total_revives",			params = {}							},	},
 	}
 
 	function HUDStatsScreen.getMaskImage()
@@ -574,9 +574,9 @@ if string.lower(RequiredScript) == "lib/managers/hud/newhudstatsscreen" then
 
 	function HUDStatsScreen:_create_stat_list(panel, ...)
 		self._tabstats_settings = {
-			FONT_SIZE = WolfHUD:getSetting({"TabStats", "FONT_SIZE"}, 18),
-			COLOR = WolfHUD:getSetting({"TabStats", "COLOR"}, "rainbow"),
-			SHOW_MASK = WolfHUD:getSetting({"TabStats", "SHOW_MASK"}, true)
+			FONT_SIZE = JimHUD:getSetting({"TabStats", "FONT_SIZE"}, 18),
+			COLOR = JimHUD:getSetting({"TabStats", "COLOR"}, "rainbow"),
+			SHOW_MASK = JimHUD:getSetting({"TabStats", "SHOW_MASK"}, true)
 		}
 
 		local placer = UiPlacer:new(10, 10, 0, 0)
@@ -679,14 +679,14 @@ if string.lower(RequiredScript) == "lib/managers/hud/newhudstatsscreen" then
 		end
 
 		local mask_icon = "guis/textures/pd2/blackmarket/icons/masks/grin"
-		local mask_color = WolfHUD:getColorSetting({"TabStats", "COLOR"}, "red")
+		local mask_color = JimHUD:getColorSetting({"TabStats", "COLOR"}, "red")
 		if self._tabstats_settings.SHOW_MASK then
 			mask_icon = self.getMaskImage()
 		else
 			local char_data = HUDStatsScreen.CHARACTERS[managers.criminals:local_character_name()]
 			if char_data then
 				mask_icon = char_data.texture or mask_icon
-				mask_color = WolfHUD:getSetting({"TabStats", "COLOR"}, "rainbow") == "rainbow" and char_data.color or mask_color
+				mask_color = JimHUD:getSetting({"TabStats", "COLOR"}, "rainbow") == "rainbow" and char_data.color or mask_color
 			end
 		end
 
@@ -747,7 +747,7 @@ if string.lower(RequiredScript) == "lib/managers/hud/newhudstatsscreen" then
 
 		placer:new_row(0, 12)
 
-		local items_color = self._tabstats_settings.COLOR ~= "rainbow" and WolfHUD:getColor(self._tabstats_settings.COLOR or "red") or false
+		local items_color = self._tabstats_settings.COLOR ~= "rainbow" and JimHUD:getColor(self._tabstats_settings.COLOR or "red") or false
 		for i, data in ipairs(HUDStatsScreen.STAT_ITEMS) do
 			local name = data.name
 			local color = items_color or data.color

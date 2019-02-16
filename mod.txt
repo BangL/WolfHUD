@@ -1,15 +1,15 @@
 {
-	"name" : "WolfHUD",
-	"description" : "This is a Mod Collection of HUD altering scripts, as well as quality of life changes to the game and its menus.           \nFor a full list of features, please visit https://github.com/Kamikaze94/WolfHUD .\n\nIt requires SuperBLT to work. \nYou can find SuperBLT at https://superblt.znix.xyz .\n.",
-	"author" : "Kamikaze94",
-	"contact" : "https://github.com/Kamikaze94/WolfHUD",
-	"version" : "3.00",
+	"name" : "JimHUD",
+	"description" : "This is a Mod Collection of HUD altering scripts, as well as quality of life changes to the game and its menus.           \nFor a full list of features, please visit https://github.com/BangL/JimHUD .\n\nIt requires SuperBLT to work. \nYou can find SuperBLT at https://superblt.znix.xyz .\n.",
+	"author" : "BangL, Kamikaze94",
+	"contact" : "https://github.com/BangL/JimHUD",
+	"version" : "1.00",
 	"priority" : 1,
 	"blt_version" : 2,
-	"image" : "wolfhud.png",
+	"image" : "jimhud.png",
 	"color" : "0 255 128",
 	"updates" : [
-		{"identifier" : "wolfhud_bangl"}
+		{"identifier" : "jimhud"}
 	],
 	"pre_hooks" : [
 		{ "hook_id" : "lib/entry", "script_path" : "Core.lua" }

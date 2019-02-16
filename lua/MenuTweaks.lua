@@ -23,70 +23,70 @@ if string.lower(RequiredScript) == "lib/managers/menumanager" then
 			if value == nil then
 				value = Global.game_settings[setting]
 			end
-			WolfHUD:setSetting({"LOBBY_SETTINGS", setting}, value)
+			JimHUD:setSetting({"LOBBY_SETTINGS", setting}, value)
 		else
-			local lobby_settings = WolfHUD:getSetting({"LOBBY_SETTINGS"}, {})
+			local lobby_settings = JimHUD:getSetting({"LOBBY_SETTINGS"}, {})
 			for id, value in pairs(lobby_settings) do
 				if Global.game_settings[id] ~= nil then
 					lobby_settings[id] = Global.game_settings[id]
 				end
 			end
-			WolfHUD:setSetting({"LOBBY_SETTINGS"}, lobby_settings)
+			JimHUD:setSetting({"LOBBY_SETTINGS"}, lobby_settings)
 		end
-		WolfHUD:Save()
+		JimHUD:Save()
 	end
 
-	Hooks:PostHook( MenuCallbackHandler , "choice_crimenet_lobby_job_plan" , "MenuCallbackHandlerPostSaveJobPlan_WolfHUD" , function( self, ... )
+	Hooks:PostHook( MenuCallbackHandler , "choice_crimenet_lobby_job_plan" , "MenuCallbackHandlerPostSaveJobPlan_JimHUD" , function( self, ... )
 		self:save_lobby_settings("job_plan")
 	end)
-	Hooks:PostHook( MenuCallbackHandler , "choice_kicking_option" , "MenuCallbackHandlerPostSaveKickOption_WolfHUD" , function( self, ... )
+	Hooks:PostHook( MenuCallbackHandler , "choice_kicking_option" , "MenuCallbackHandlerPostSaveKickOption_JimHUD" , function( self, ... )
 		self:save_lobby_settings("kick_option")
 	end)
-	Hooks:PostHook( MenuCallbackHandler , "choice_crimenet_lobby_permission" , "MenuCallbackHandlerPostSavePermission_WolfHUD" , function( self, ... )
+	Hooks:PostHook( MenuCallbackHandler , "choice_crimenet_lobby_permission" , "MenuCallbackHandlerPostSavePermission_JimHUD" , function( self, ... )
 		self:save_lobby_settings("permission")
 	end)
-	Hooks:PostHook( MenuCallbackHandler , "choice_crimenet_lobby_reputation_permission" , "MenuCallbackHandlerPostSaveReputationPermission_WolfHUD" , function( self, ... )
+	Hooks:PostHook( MenuCallbackHandler , "choice_crimenet_lobby_reputation_permission" , "MenuCallbackHandlerPostSaveReputationPermission_JimHUD" , function( self, ... )
 		self:save_lobby_settings("reputation_permission")
 	end)
-	Hooks:PostHook( MenuCallbackHandler , "choice_crimenet_drop_in" , "MenuCallbackHandlerPostSaveDropInOption_WolfHUD" , function( self, ... )
+	Hooks:PostHook( MenuCallbackHandler , "choice_crimenet_drop_in" , "MenuCallbackHandlerPostSaveDropInOption_JimHUD" , function( self, ... )
 		self:save_lobby_settings("drop_in_option")
 	end)
-	Hooks:PostHook( MenuCallbackHandler , "choice_crimenet_team_ai" , "MenuCallbackHandlerPostSaveTeamAIOption_WolfHUD" , function( self, ... )
+	Hooks:PostHook( MenuCallbackHandler , "choice_crimenet_team_ai" , "MenuCallbackHandlerPostSaveTeamAIOption_JimHUD" , function( self, ... )
 		self:save_lobby_settings("team_ai")
 		self:save_lobby_settings("team_ai_option")
 	end)
-	Hooks:PostHook( MenuCallbackHandler , "choice_crimenet_auto_kick" , "MenuCallbackHandlerPostSaveAutoKick_WolfHUD" , function( self, ... )
+	Hooks:PostHook( MenuCallbackHandler , "choice_crimenet_auto_kick" , "MenuCallbackHandlerPostSaveAutoKick_JimHUD" , function( self, ... )
 		self:save_lobby_settings("auto_kick")
 	end)
-	Hooks:PostHook( MenuCallbackHandler , "change_contract_difficulty" , "MenuCallbackHandlerPostSaveDifficulty_WolfHUD" , function( self, item, ... )
+	Hooks:PostHook( MenuCallbackHandler , "change_contract_difficulty" , "MenuCallbackHandlerPostSaveDifficulty_JimHUD" , function( self, item, ... )
 		self:save_lobby_settings("difficulty", tweak_data:index_to_difficulty(item:value()))
 	end)
 
-	Hooks:PostHook( MenuCallbackHandler , "choice_crimenet_one_down" , "MenuCallbackHandlerPostSaveOneDownMod_WolfHUD" , function( self, item, ... )
+	Hooks:PostHook( MenuCallbackHandler , "choice_crimenet_one_down" , "MenuCallbackHandlerPostSaveOneDownMod_JimHUD" , function( self, item, ... )
 		self:save_lobby_settings("one_down", item:value() == "on")
 	end)
 
-	Hooks:PostHook( MenuCallbackHandler , "update_matchmake_attributes" , "MenuCallbackHandlerPostUpdateMatchmakeAttributes_WolfHUD" , function( self, item, ... )
+	Hooks:PostHook( MenuCallbackHandler , "update_matchmake_attributes" , "MenuCallbackHandlerPostUpdateMatchmakeAttributes_JimHUD" , function( self, item, ... )
 		self:save_lobby_settings()
 	end)
 
-	local WOLFHUD_LOBBY_SETTINGS_LOADED = false
+	local JIMHUD_LOBBY_SETTINGS_LOADED = false
 	local MenuCrimeNetContractInitiator_modify_node_orig = MenuCrimeNetContractInitiator.modify_node
 	function MenuCrimeNetContractInitiator:modify_node(original_node, data, ...)
-		if not WOLFHUD_LOBBY_SETTINGS_LOADED then
-			local lobby_settings = WolfHUD:getSetting({"LOBBY_SETTINGS"}, {})
+		if not JIMHUD_LOBBY_SETTINGS_LOADED then
+			local lobby_settings = JimHUD:getSetting({"LOBBY_SETTINGS"}, {})
 			for id, value in pairs(lobby_settings) do
 				if Global.game_settings[id] ~= nil then
 					Global.game_settings[id] = value
 				end
 			end
-			WOLFHUD_LOBBY_SETTINGS_LOADED = true
+			JIMHUD_LOBBY_SETTINGS_LOADED = true
 		end
 
 		if data.customize_contract then
-			data.difficulty = WolfHUD:getSetting({"LOBBY_SETTINGS", "difficulty"}, "normal")
+			data.difficulty = JimHUD:getSetting({"LOBBY_SETTINGS", "difficulty"}, "normal")
 			data.difficulty_id = tweak_data:difficulty_to_index(data.difficulty)
-			data.one_down = WolfHUD:getSetting({"LOBBY_SETTINGS", "one_down"}, false)
+			data.one_down = JimHUD:getSetting({"LOBBY_SETTINGS", "one_down"}, false)
 		end
 
 		local results = { MenuCrimeNetContractInitiator_modify_node_orig(self, original_node, data, ...) }
@@ -111,7 +111,7 @@ elseif string.lower(RequiredScript) == "lib/managers/menu/blackmarketgui" then
 	local populate_weapon_category_new_original = BlackMarketGui.populate_weapon_category_new
 	function BlackMarketGui:populate_weapon_category_new(data, ...)
 		local value = populate_weapon_category_new_original(self, data, ...)
-		local show_icons = not WolfHUD:getSetting({"INVENTORY", "SHOW_WEAPON_MINI_ICONS"}, true)
+		local show_icons = not JimHUD:getSetting({"INVENTORY", "SHOW_WEAPON_MINI_ICONS"}, true)
 		for id, w_data in ipairs(data) do
 			if tweak_data.weapon[w_data.name] then	--Filter out locked or empty slots
 				local categories = tweak_data.weapon[w_data.name].categories
@@ -192,7 +192,7 @@ elseif string.lower(RequiredScript) == "lib/managers/menu/blackmarketgui" then
 	-- Show all Names in Inventory Boxxes
 	local orig_blackmarket_gui_slot_item_init = BlackMarketGuiSlotItem.init
 	function BlackMarketGuiSlotItem:init(main_panel, data, ...)
-		if WolfHUD:getSetting({"INVENTORY", "SHOW_WEAPON_NAMES"}, true) then
+		if JimHUD:getSetting({"INVENTORY", "SHOW_WEAPON_NAMES"}, true) then
 			data.custom_name_text = data.custom_name_text or not data.empty_slot and data.name_localized
 		end
 		return orig_blackmarket_gui_slot_item_init(self, main_panel, data, ...)
@@ -266,7 +266,7 @@ elseif string.lower(RequiredScript) == "lib/managers/menu/blackmarketgui" then
 	function BlackMarketGui:_setup(is_start_page, component_data)
 		self._renameable_tabs = false
 		component_data = component_data or self:_start_page_data()
-		local inv_name_tweak = WolfHUD:getSetting({"INVENTORY", "CUSTOM_TAB_NAMES"}, {})
+		local inv_name_tweak = JimHUD:getSetting({"INVENTORY", "CUSTOM_TAB_NAMES"}, {})
 		if inv_name_tweak then
 			for i, tab_data in ipairs(component_data) do
 				if not tab_data.prev_node_data then
@@ -300,7 +300,7 @@ elseif string.lower(RequiredScript) == "lib/managers/menu/blackmarketgui" then
 			legends_panel:set_righttop(self._panel:w(), 0)
 			legends_panel:text({
 				name = "LegendText",
-				text = managers.localization:text("wolfhud_inv_tab_rename_hint"),
+				text = managers.localization:text("jimhud_inv_tab_rename_hint"),
 				font = tweak_data.menu.pd2_small_font,
 				font_size = tweak_data.menu.pd2_small_font_size,
 				color = tweak_data.screen_colors.text,
@@ -346,18 +346,18 @@ elseif string.lower(RequiredScript) == "lib/managers/menu/blackmarketgui" then
 	function BlackMarketGui:rename_tab_clbk(tab, tab_id)
 		local current_tab = tab or self._tabs[self._selected]
 		local tab_data = self._data[self._selected]
-		local inv_name_tweak = WolfHUD:getSetting({"INVENTORY", "CUSTOM_TAB_NAMES"}, nil)
+		local inv_name_tweak = JimHUD:getSetting({"INVENTORY", "CUSTOM_TAB_NAMES"}, nil)
 		if current_tab and tab_data and inv_name_tweak and not self:in_setup()then
 			local prev_name = inv_name_tweak[tab_data.category] and inv_name_tweak[tab_data.category][tab_id or self._selected] or current_tab._tab_text_string
 			local menu_options = {
 				[1] = {
-					text = managers.localization:text("wolfhud_dialog_save"),
+					text = managers.localization:text("jimhud_dialog_save"),
 					callback = function(cb_data, button_id, button, text)
 						if self._data and text and text ~= "" then
 							if tab_data and inv_name_tweak then
 								inv_name_tweak[tab_data.category] = inv_name_tweak[tab_data.category] or {}
 								inv_name_tweak[tab_data.category][tab_id or self._selected] = text
-								WolfHUD:Save()
+								JimHUD:Save()
 
 								for key, subst in pairs(BlackMarketGui._SUB_TABLE) do
 									text = text:upper():gsub(key, subst)
@@ -379,7 +379,7 @@ elseif string.lower(RequiredScript) == "lib/managers/menu/blackmarketgui" then
 					is_cancel_button = true,
 				}
 			}
-			QuickInputMenu:new(managers.localization:text("wolfhud_dialog_rename_inv_tab"), managers.localization:text("wolfhud_dialog_rename_inv_tab_desc"), prev_name, menu_options, true, {w = 420, to_upper = true, max_len = 15})
+			QuickInputMenu:new(managers.localization:text("jimhud_dialog_rename_inv_tab"), managers.localization:text("jimhud_dialog_rename_inv_tab_desc"), prev_name, menu_options, true, {w = 420, to_upper = true, max_len = 15})
 
 			return
 		end
@@ -420,7 +420,7 @@ elseif string.lower(RequiredScript) == "lib/managers/menu/skilltreeguinew" then
 		local value = orig_newskilltreeskillitem_refresh(self, ...)
 
 		--Always show Skill names
-		if alive(self._skill_panel) and WolfHUD:getSetting({"INVENTORY", "SHOW_SKILL_NAMES"}, true) then
+		if alive(self._skill_panel) and JimHUD:getSetting({"INVENTORY", "SHOW_SKILL_NAMES"}, true) then
 			local skill_name = self._skill_panel:child("SkillName")
 			if skill_name then
 				local unlocked = self._skill_id and self._tree and managers.skilltree and managers.skilltree:skill_unlocked(self._tree, self._skill_id) or false
@@ -447,7 +447,7 @@ elseif string.lower(RequiredScript) == "lib/managers/menu/skilltreeguinew" then
 	local orig_newskilltreetieritem_refresh_tier_text = NewSkillTreeTierItem._refresh_tier_text
 	function NewSkillTreeTierItem:init(...)
 		local val = orig_newskilltreetieritem_init(self, ...)
-		if WolfHUD:getSetting({"INVENTORY", "SHOW_SKILL_NAMES"}, true) then
+		if JimHUD:getSetting({"INVENTORY", "SHOW_SKILL_NAMES"}, true) then
 			if self._tier_points_total and self._tier_points_total_zero and self._tier_points_total_curr then
 				local font_size = tweak_data.menu.pd2_small_font_size * 0.75
 				self._tier_points_total:set_font_size(font_size)
@@ -464,7 +464,7 @@ elseif string.lower(RequiredScript) == "lib/managers/menu/skilltreeguinew" then
 	end
 	function NewSkillTreeTierItem:refresh_points(selected, ...)
 		orig_newskilltreetieritem_refresh_points(self, selected, ...)
-		if WolfHUD:getSetting({"INVENTORY", "SHOW_SKILL_NAMES"}, true) then
+		if JimHUD:getSetting({"INVENTORY", "SHOW_SKILL_NAMES"}, true) then
 			if alive(self._tier_points_total) and alive(self._tier_points_total_zero) and alive(self._tier_points_total_curr) then
 				self._tier_points_total:set_y(self._text_space or 10)
 				self._tier_points_total_zero:set_y(self._text_space or 10)
@@ -478,7 +478,7 @@ elseif string.lower(RequiredScript) == "lib/managers/menu/skilltreeguinew" then
 	end
 	function NewSkillTreeTierItem:_refresh_tier_text(selected, ...)
 		orig_newskilltreetieritem_refresh_tier_text(self, selected, ...)
-		if WolfHUD:getSetting({"INVENTORY", "SHOW_SKILL_NAMES"}, true) then
+		if JimHUD:getSetting({"INVENTORY", "SHOW_SKILL_NAMES"}, true) then
 			if selected and alive(self._tier_points_needed) and alive(self._tier_points_needed_curr) and alive(self._tier_points_needed_zero) then
 				self._tier_points_needed_zero:set_left(self._tier_points_0:left())
 				self._tier_points_needed_curr:set_left(self._tier_points_needed_zero:right())
@@ -498,7 +498,7 @@ elseif string.lower(RequiredScript) == "lib/tweak_data/tweakdata" then
 		tweak_data.menu.SFX_CHANGE = 1
 		tweak_data.menu.VOICE_CHANGE = 0.01
 
-		if Network:is_server() and WolfHUD:getSetting({"SkipIt", "INSTANT_RESTART"}, false) then
+		if Network:is_server() and JimHUD:getSetting({"SkipIt", "INSTANT_RESTART"}, false) then
 			tweak_data.vote = tweak_data.vote or {}
 			tweak_data.voting.restart_delay = 0
 		end
@@ -507,8 +507,8 @@ elseif string.lower(RequiredScript) == "lib/tweak_data/guitweakdata" then
 	local GuiTweakData_init_orig = GuiTweakData.init
 	function GuiTweakData:init(...)
 		GuiTweakData_init_orig(self, ...)
-		self.rename_max_letters = WolfHUD:getTweakEntry("MAX_WEAPON_NAME_LENGTH", "number", 30)
-		self.rename_skill_set_max_letters = WolfHUD:getTweakEntry("MAX_SKILLSET_NAME_LENGTH", "number", 25)
+		self.rename_max_letters = JimHUD:getTweakEntry("MAX_WEAPON_NAME_LENGTH", "number", 30)
+		self.rename_skill_set_max_letters = JimHUD:getTweakEntry("MAX_SKILLSET_NAME_LENGTH", "number", 25)
 
 		if false then
 			table.insert(self.crime_net.special_contracts, {
@@ -603,7 +603,7 @@ elseif string.lower(RequiredScript) == "core/lib/managers/menu/items/coremenuite
 		return val
 	end
 elseif string.lower(RequiredScript) == "lib/states/ingamewaitingforplayers" then
-	local SKIP_BLACKSCREEN = WolfHUD:getSetting({"SkipIt", "SKIP_BLACKSCREEN"}, true)
+	local SKIP_BLACKSCREEN = JimHUD:getSetting({"SkipIt", "SKIP_BLACKSCREEN"}, true)
 	local update_original = IngameWaitingForPlayersState.update
 	function IngameWaitingForPlayersState:update(...)
 		update_original(self, ...)
@@ -621,12 +621,12 @@ elseif string.lower(RequiredScript) == "lib/managers/menu/stageendscreengui" the
 	function StageEndScreenGui:init(...)
 		init_original(self, ...)
 
-		if self._enabled and WolfHUD:getSetting({"SkipIt", "STAT_SCREEN_SPEEDUP"}, false) and managers.hud then
+		if self._enabled and JimHUD:getSetting({"SkipIt", "STAT_SCREEN_SPEEDUP"}, false) and managers.hud then
 			managers.hud:set_speed_up_endscreen_hud(5)
 		end
 	end
 
-	local SKIP_STAT_SCREEN_DELAY = WolfHUD:getSetting({"SkipIt", "STAT_SCREEN_DELAY"}, 5)
+	local SKIP_STAT_SCREEN_DELAY = JimHUD:getSetting({"SkipIt", "STAT_SCREEN_DELAY"}, 5)
 	function StageEndScreenGui:update(t, ...)
 		update_original(self, t, ...)
 		if not self._button_not_clickable and SKIP_STAT_SCREEN_DELAY > 0 then
@@ -640,20 +640,20 @@ elseif string.lower(RequiredScript) == "lib/managers/menu/stageendscreengui" the
 	end
 
 	function StageEndScreenGui:special_btn_pressed(...)
-		if not WolfHUD:getSetting({"SkipIt", "STAT_SCREEN_SPEEDUP"}, false) then
+		if not JimHUD:getSetting({"SkipIt", "STAT_SCREEN_SPEEDUP"}, false) then
 			special_btn_pressed_original(self, ...)
 		end
 	end
 
 	function StageEndScreenGui:special_btn_released(...)
-		if not WolfHUD:getSetting({"SkipIt", "STAT_SCREEN_SPEEDUP"}, false) then
+		if not JimHUD:getSetting({"SkipIt", "STAT_SCREEN_SPEEDUP"}, false) then
 			special_btn_released_original(self, ...)
 		end
 	end
 elseif string.lower(RequiredScript) == "lib/managers/menu/lootdropscreengui" then
-	local SKIP_LOOT_SCREEN_DELAY = WolfHUD:getSetting({"SkipIt", "LOOT_SCREEN_DELAY"}, 3)
-	local AUTO_PICK_CARD = WolfHUD:getSetting({"SkipIt", "AUTOPICK_CARD"}, true)
-	local AUTO_PICK_SPECIFIC_CARD = WolfHUD:getSetting({"SkipIt", "AUTOPICK_CARD_SPECIFIC"}, 1)
+	local SKIP_LOOT_SCREEN_DELAY = JimHUD:getSetting({"SkipIt", "LOOT_SCREEN_DELAY"}, 3)
+	local AUTO_PICK_CARD = JimHUD:getSetting({"SkipIt", "AUTOPICK_CARD"}, true)
+	local AUTO_PICK_SPECIFIC_CARD = JimHUD:getSetting({"SkipIt", "AUTOPICK_CARD_SPECIFIC"}, 1)
 	local update_original = LootDropScreenGui.update
 	function LootDropScreenGui:update(t, ...)
 		update_original(self, t, ...)
@@ -739,7 +739,7 @@ elseif string.lower(RequiredScript) == "lib/managers/menu/renderers/menunodeskil
 		end
 	end
 elseif string.lower(RequiredScript) == "lib/managers/chatmanager" then
-	if not WolfHUD:getSetting({"HUDChat", "SPAM_FILTER"}, true) then return end
+	if not JimHUD:getSetting({"HUDChat", "SPAM_FILTER"}, true) then return end
 	ChatManager._SUB_TABLE = {
 		[utf8.char(57364)] = "<SKULL>",	--Skull icon
 		[utf8.char(57363)] = "<GHOST>",	--Ghost icon
@@ -781,7 +781,7 @@ elseif string.lower(RequiredScript) == "lib/managers/chatmanager" then
 		end
 		for _, pattern in ipairs(ChatManager._BLOCK_PATTERNS) do
 			if message2:match("^" .. pattern .. "$") then
-				return WolfHUD.DEBUG_MODE and _receive_message_original(self, channel_id, name, "Pattern found: " .. pattern, ...)
+				return JimHUD.DEBUG_MODE and _receive_message_original(self, channel_id, name, "Pattern found: " .. pattern, ...)
 			end
 		end
 		return _receive_message_original(self, channel_id, name, message, ...)

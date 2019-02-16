@@ -84,7 +84,7 @@ if string.lower(RequiredScript) == "lib/managers/menu/contractboxgui" then
 			self._loadout_panel:set_left(self._panel:left())
 
 			self:populate_loadout_panel()
-			self:set_loadout_enabled(WolfHUD:getSetting({"CrewLoadout", "SHOW_IN_LOBBY"}, true) and managers.menu:is_pc_controller())
+			self:set_loadout_enabled(JimHUD:getSetting({"CrewLoadout", "SHOW_IN_LOBBY"}, true) and managers.menu:is_pc_controller())
 		end
 	end
 
@@ -172,7 +172,7 @@ if string.lower(RequiredScript) == "lib/managers/menu/contractboxgui" then
 	function ContractBoxGui:set_enabled(...)
 		set_enabled_original(self, ...)
 
-		self:set_loadout_enabled(self._enabled and WolfHUD:getSetting({"CrewLoadout", "SHOW_IN_LOBBY"}, true) and managers.menu:is_pc_controller())
+		self:set_loadout_enabled(self._enabled and JimHUD:getSetting({"CrewLoadout", "SHOW_IN_LOBBY"}, true) and managers.menu:is_pc_controller())
 	end
 
 	function ContractBoxGui:set_loadout_enabled(status)
@@ -202,7 +202,7 @@ if string.lower(RequiredScript) == "lib/managers/menu/contractboxgui" then
 		for i, peer_id in ipairs({3, 2, 1, 4}) do
 			if not self._peer_loadout[peer_id] then
 				self._peer_loadout[peer_id] = LoadoutPanel:new(self._loadout_data, self, peer_id, width, ContractBoxGui._LOADOUT_H + 8, {
-					component_layout = WolfHUD:getTweakEntry("STD_LOBBY_LOADOUT_LAYOUT", "table",
+					component_layout = JimHUD:getTweakEntry("STD_LOBBY_LOADOUT_LAYOUT", "table",
 						{
 							{ "playtime", "ping" },
 							{ "name" },
@@ -332,7 +332,7 @@ elseif string.lower(RequiredScript) == "lib/managers/menu/crimespreedetailsmenuc
 	function CrimeSpreeDetailsMenuComponent:populate_tabs_data(tabs_data, ...)
 		populate_tabs_data_original(self, tabs_data, ...)
 
-		if not self:_is_in_preplanning() and not Global.game_settings.single_player and WolfHUD:getSetting({"CrewLoadout", "SHOW_IN_CS_LOBBY"}, true) then
+		if not self:_is_in_preplanning() and not Global.game_settings.single_player and JimHUD:getSetting({"CrewLoadout", "SHOW_IN_CS_LOBBY"}, true) then
 			table.insert(tabs_data, CrimeSpreeDetailsMenuComponent._LOADOUT_INDEX, {
 				name_id = "menu_team_loadout",
 				page_class = "CrimeSpreeCrewLoadoutPage",
@@ -360,7 +360,7 @@ elseif string.lower(RequiredScript) == "lib/managers/menu/crimespreedetailsmenuc
 	function CrimeSpreeDetailsMenuComponent:update(t, dt, ...)
 		update_original(self, t, dt, ...)
 
-		if WolfHUD:getSetting({"CrewLoadout", "SHOW_IN_CS_LOBBY"}, true) then
+		if JimHUD:getSetting({"CrewLoadout", "SHOW_IN_CS_LOBBY"}, true) then
 			for _, data in ipairs(self._tabs) do
 				if data.tab._index == CrimeSpreeDetailsMenuComponent._LOADOUT_INDEX then
 					data.page:update(t, dt)
@@ -437,7 +437,7 @@ elseif string.lower(RequiredScript) == "lib/managers/menu/crimespreedetailsmenuc
 		for i, peer_id in ipairs({3, 2, 1, 4}) do
 			if not self._peer_loadout[peer_id] then
 				self._peer_loadout[peer_id] = LoadoutPanel:new(self._loadout_data, self, peer_id, width, math.floor(self._loadout_data:h() + 9), {
-					component_layout = WolfHUD:getTweakEntry("CS_LOBBY_LOADOUT_LAYOUT", "table",
+					component_layout = JimHUD:getTweakEntry("CS_LOBBY_LOADOUT_LAYOUT", "table",
 						{
 							{ "playtime", "ping" },
 							{ "name" },
@@ -498,7 +498,7 @@ elseif string.lower(RequiredScript) == "lib/managers/menu/missionbriefinggui" th
 		local quarter_width = math.floor(self._panel:w() / 4)
 		for peer_id = 1, 4 do
 			self._player_slots[peer_id] = LoadoutPanel:new(self._panel, self, peer_id, quarter_width, self._panel:h() + 7, {
-				component_layout = WolfHUD:getTweakEntry("BRIEFING_LOADOUT_LAYOUT", "table",
+				component_layout = JimHUD:getTweakEntry("BRIEFING_LOADOUT_LAYOUT", "table",
 					{
 						{ "perk" },
 						{ "skills" },
@@ -572,11 +572,11 @@ elseif string.lower(RequiredScript) == "lib/managers/menu/missionbriefinggui" th
 	for id, ptr in pairs(TeamLoadoutItem) do
 		if type(ptr) == "function" then
 			TeamLoadoutCustom[id] = TeamLoadoutCustom[id] or function(self, ...)
-				WolfHUD:print_log(string.format("TeamLoadoutCustom: Unoverwritten function call: %s", id), "warning")
+				JimHUD:print_log(string.format("TeamLoadoutCustom: Unoverwritten function call: %s", id), "warning")
 			end
 		end
 	end
-	if CoreClass and WolfHUD:getSetting({"CrewLoadout", "REPLACE_IN_BRIEFING"}, true) then
+	if CoreClass and JimHUD:getSetting({"CrewLoadout", "REPLACE_IN_BRIEFING"}, true) then
 		CoreClass.override_class(TeamLoadoutItem, TeamLoadoutCustom)
 	end
 
@@ -604,7 +604,7 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/newhudstatsscreen" then
 	end
 
 	function HUDStatsScreen:_create_player_info()
-		self._USING_CREW_LOADOUT = WolfHUD:getSetting({"CrewLoadout", "SHOW_ON_STATS_PANEL"}, true) and not (_G.LobbyPlayerInfo and LobbyPlayerInfo.settings.show_skills_in_stats_screen)
+		self._USING_CREW_LOADOUT = JimHUD:getSetting({"CrewLoadout", "SHOW_ON_STATS_PANEL"}, true) and not (_G.LobbyPlayerInfo and LobbyPlayerInfo.settings.show_skills_in_stats_screen)
 		if self._USING_CREW_LOADOUT then
 			if alive(self._right) and not self._loadout_data then
 				self._loadout_data = self._right:panel({
@@ -662,7 +662,7 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/newhudstatsscreen" then
 			for peer_id = 1, 4  do
 				if not self._peer_loadout[peer_id] then
 					self._peer_loadout[peer_id] = LoadoutPanel:new(parent_panel, self, peer_id, parent_panel:w(), parent_panel:h() * 0.17, {
-						component_layout = WolfHUD:getTweakEntry("TAB_LOADOUT_LAYOUT", "table",
+						component_layout = JimHUD:getTweakEntry("TAB_LOADOUT_LAYOUT", "table",
 							{
 								{ "name", "ping" },
 								{ "skills", "perk" },
@@ -707,7 +707,7 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/newhudstatsscreen" then
 					panel:set_y(y)
 				end
 			end
-			parent_panel:set_leftbottom(10, self._right:h() - (WolfHUD:getSetting({"TabStats", "ENABLED"}, true) and 10 or 40))
+			parent_panel:set_leftbottom(10, self._right:h() - (JimHUD:getSetting({"TabStats", "ENABLED"}, true) and 10 or 40))
 		end
 	end
 end

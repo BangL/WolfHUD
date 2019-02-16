@@ -304,7 +304,7 @@ if RequiredScript == "lib/setups/setup" then
 		for component_name, component_data in pairs(data) do
 			if type(component_data) == "table" and component_data.type then
 				if not self:add_component(component_name, data, nil) then
-					WolfHUD:print_log(string.format("Error while creating waypoint: %s", self._id), "error")
+					JimHUD:print_log(string.format("Error while creating waypoint: %s", self._id), "error")
 				end
 			end
 		end

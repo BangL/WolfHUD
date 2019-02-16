@@ -172,7 +172,7 @@ elseif string.lower(RequiredScript) == "lib/managers/menu/missionbriefinggui" th
 				self._buy_all_btn:set_color(tweak_data.screen_color_grey)
 			end
 			if not colors_only then
-				local text = string.format("%s (%s)", managers.localization:to_upper_text("wolfhud_buy_all_assets"), managers.experience:cash_string(asset_costs))
+				local text = string.format("%s (%s)", managers.localization:to_upper_text("jimhud_buy_all_assets"), managers.experience:cash_string(asset_costs))
 				self._buy_all_btn:set_text(text)
 				local _, _, w, _ = self._buy_all_btn:text_rect()
 				self._buy_all_btn:set_w(math.ceil(w))

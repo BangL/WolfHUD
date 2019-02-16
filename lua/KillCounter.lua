@@ -211,7 +211,7 @@ elseif RequiredScript == "lib/managers/hudmanagerpd2" then
 	end
 
 	function HUDManager:teampanels_height()
-		return (WolfHUD:getSetting({"CustomHUD", "PLAYER", "SHOW_ACCURACY"}, true) and not WolfHUD:getSetting({"CustomHUD", "PLAYER", "KILLCOUNTER", "HIDE"}, false)) and 140 or 120
+		return (JimHUD:getSetting({"CustomHUD", "PLAYER", "SHOW_ACCURACY"}, true) and not JimHUD:getSetting({"CustomHUD", "PLAYER", "KILLCOUNTER", "HIDE"}, false)) and 140 or 120
 	end
 
 elseif string.lower(RequiredScript) == "lib/managers/hud/hudteammate" then
@@ -231,7 +231,7 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudteammate" then
 		function HUDTeammate:_init_killcount()
 			self._kills_panel = self._panel:panel({
 				name = "kills_panel",
-				visible = not WolfHUD:getSetting({"CustomHUD", self._setting_prefix, "KILLCOUNTER", "HIDE"}, false),
+				visible = not JimHUD:getSetting({"CustomHUD", self._setting_prefix, "KILLCOUNTER", "HIDE"}, false),
 				w = 150,
 				h = 20,
 				x = 0,
@@ -240,8 +240,8 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudteammate" then
 
 			local player_panel = self._panel:child("player")
 			local name_label = self._panel:child("name")
-			self._kills_panel:set_rightbottom(player_panel:right(), (self._main_player or WolfHUD:getSetting({"CustomHUD", "TEAMMATE", "INTERACTION", "TEXT"}, true)) and name_label:bottom() or name_label:top())
-			local killcount_color = WolfHUD:getColorSetting({"CustomHUD", self._setting_prefix, "KILLCOUNTER", "COLOR"}, "yellow")
+			self._kills_panel:set_rightbottom(player_panel:right(), (self._main_player or JimHUD:getSetting({"CustomHUD", "TEAMMATE", "INTERACTION", "TEXT"}, true)) and name_label:bottom() or name_label:top())
+			local killcount_color = JimHUD:getColorSetting({"CustomHUD", self._setting_prefix, "KILLCOUNTER", "COLOR"}, "yellow")
 
 			self._kill_icon = self._kills_panel:bitmap({
 				texture = "guis/textures/pd2/cn_miniskull",
@@ -275,7 +275,7 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudteammate" then
 			if not self._main_player then return end
 			self._accuracy_panel = self._panel:panel({
 				name = "accuracy_panel",
-				visible = WolfHUD:getSetting({"CustomHUD", "PLAYER", "SHOW_ACCURACY"}, true),
+				visible = JimHUD:getSetting({"CustomHUD", "PLAYER", "SHOW_ACCURACY"}, true),
 				w = 100,
 				h = 20,
 				x = 0,
@@ -321,22 +321,22 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudteammate" then
 
 		function HUDTeammate:_update_kill_count_text()
 			local kill_string = tostring(self._kill_count)
-			if WolfHUD:getSetting({"CustomHUD", self._setting_prefix, "KILLCOUNTER", "SHOW_SPECIAL_KILLS"}, true) then
+			if JimHUD:getSetting({"CustomHUD", self._setting_prefix, "KILLCOUNTER", "SHOW_SPECIAL_KILLS"}, true) then
 				kill_string = kill_string .. "/" .. tostring(self._kill_count_special)
 			end
-			if WolfHUD:getSetting({"CustomHUD", self._setting_prefix, "KILLCOUNTER", "SHOW_HEADSHOT_KILLS"}, true) then
+			if JimHUD:getSetting({"CustomHUD", self._setting_prefix, "KILLCOUNTER", "SHOW_HEADSHOT_KILLS"}, true) then
 				kill_string = kill_string .. " (" .. tostring(self._headshot_kills) .. ")"
 			end
 			self._kills_text:set_text(kill_string)
 			local _, _, w, _ = self._kills_text:text_rect()
 			self._kill_icon:set_right(self._kills_panel:w() - w - self._kill_icon:w() * 0.15)
 
-			if (self._main_player or WolfHUD:getSetting({"CustomHUD", "TEAMMATE", "INTERACTION", "TEXT"}, true)) and not WolfHUD:getSetting({"CustomHUD", self._setting_prefix, "KILLCOUNTER", "HIDE"}, false) then
+			if (self._main_player or JimHUD:getSetting({"CustomHUD", "TEAMMATE", "INTERACTION", "TEXT"}, true)) and not JimHUD:getSetting({"CustomHUD", self._setting_prefix, "KILLCOUNTER", "HIDE"}, false) then
 				self._max_name_panel_width = (self._kills_panel:x() + self._kill_icon:x() - 4)
 				self:_truncate_name()
 			end
 
-			local color = WolfHUD:getColorSetting({"CustomHUD", self._setting_prefix, "KILLCOUNTER", "COLOR"}, "yellow")
+			local color = JimHUD:getColorSetting({"CustomHUD", self._setting_prefix, "KILLCOUNTER", "COLOR"}, "yellow")
 			self._kill_icon:set_color(color)
 			self._kills_text:set_color(color)
 		end
@@ -360,14 +360,14 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudteammate" then
 		function HUDTeammate:set_state(...)
 			set_state_original(self, ...)
 
-			local visible = not WolfHUD:getSetting({"CustomHUD", self._setting_prefix, "KILLCOUNTER", "HIDE"}, false) and (not self._ai or WolfHUD:getSetting({"CustomHUD", "TEAMMATE", "KILLCOUNTER", "SHOW_BOT_KILLS"}, true))
+			local visible = not JimHUD:getSetting({"CustomHUD", self._setting_prefix, "KILLCOUNTER", "HIDE"}, false) and (not self._ai or JimHUD:getSetting({"CustomHUD", "TEAMMATE", "KILLCOUNTER", "SHOW_BOT_KILLS"}, true))
 			self._kills_panel:set_visible(visible)
 
 			if self._ai then
 				self._kills_panel:set_bottom(self._panel:child("player"):bottom())
 			else
 				local name_label = self._panel:child("name")
-				self._kills_panel:set_bottom((self._main_player or WolfHUD:getSetting({"CustomHUD", "TEAMMATE", "INTERACTION", "TEXT"}, true)) and name_label:bottom() or name_label:top())
+				self._kills_panel:set_bottom((self._main_player or JimHUD:getSetting({"CustomHUD", "TEAMMATE", "INTERACTION", "TEXT"}, true)) and name_label:bottom() or name_label:top())
 			end
 		end
 
@@ -375,7 +375,7 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudteammate" then
 			self._accuracy_text:set_text(tostring(value) .. "%")
 			local _, _, w, _ = self._accuracy_text:text_rect()
 			self._accuracy_icon:set_right(self._accuracy_panel:w() - w - self._accuracy_icon:w() * 0.15)
-			if WolfHUD:getSetting({"CustomHUD", "PLAYER", "KILLCOUNTER", "HIDE"}, false) and WolfHUD:getSetting({"CustomHUD", "PLAYER", "SHOW_ACCURACY"}, true) then
+			if JimHUD:getSetting({"CustomHUD", "PLAYER", "KILLCOUNTER", "HIDE"}, false) and JimHUD:getSetting({"CustomHUD", "PLAYER", "SHOW_ACCURACY"}, true) then
 				self._max_name_panel_width = (self._accuracy_panel:x() + self._accuracy_icon:x() - 4)
 				self:_truncate_name()
 			end

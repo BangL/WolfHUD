@@ -1,11 +1,11 @@
 --TODO: Passive Health Regen: check percentages, substract berserker reduction, calculate frenzy reduction
-if not (WolfHUD and WolfHUD:getSetting({"HUDList", "ENABLED"}, true)) then return end
+if not (JimHUD and JimHUD:getSetting({"HUDList", "ENABLED"}, true)) then return end
 
 if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 	local format_time_string = function(value)
 		local time_str
 
-		if math.floor(value) > 60 and not WolfHUD:getSetting({"HUDList", "LEFT_LIST", "timer_in_seconds"}, true) then
+		if math.floor(value) > 60 and not JimHUD:getSetting({"HUDList", "LEFT_LIST", "timer_in_seconds"}, true) then
 			time_str = string.format("%d:%02d", math.floor(value / 60), math.floor(value % 60))
 		elseif math.floor(value) > 9.9 then
 			time_str = string.format("%d", math.floor(value))
@@ -114,7 +114,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 		if managers.gameinfo then
 			managers.hudlist = HUDListManager:new()
 		else
-			WolfHUD:print_log("(HUDList) GameInfoManager not present!", "error")
+			JimHUD:print_log("(HUDList) GameInfoManager not present!", "error")
 		end
 	end
 
@@ -177,58 +177,58 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 		right_list_height_offset = 0,										--Margin from top for the right list
 		left_list_height_offset = 40,										--Margin from top for the left list
 		buff_list_height_offset = 90,										--Margin from bottom for the buff list
-		right_list_scale				= WolfHUD:getSetting({"HUDList", "right_list_scale"}, 1),	--Size scale of right list
-		left_list_scale					= WolfHUD:getSetting({"HUDList", "left_list_scale"}, 1),	--Size scale of left list
-		buff_list_scale					= WolfHUD:getSetting({"HUDList", "buff_list_scale"}, 1),	--Size scale of buff list
-		right_list_progress_alpha		= WolfHUD:getSetting({"HUDList", "right_list_progress_alpha"}, 0.4),
-		left_list_progress_alpha		= WolfHUD:getSetting({"HUDList", "left_list_progress_alpha"}, 0.4),
-		buff_list_progress_alpha		= WolfHUD:getSetting({"HUDList", "buff_list_progress_alpha"}, 1.0),
+		right_list_scale				= JimHUD:getSetting({"HUDList", "right_list_scale"}, 1),	--Size scale of right list
+		left_list_scale					= JimHUD:getSetting({"HUDList", "left_list_scale"}, 1),	--Size scale of left list
+		buff_list_scale					= JimHUD:getSetting({"HUDList", "buff_list_scale"}, 1),	--Size scale of buff list
+		right_list_progress_alpha		= JimHUD:getSetting({"HUDList", "right_list_progress_alpha"}, 0.4),
+		left_list_progress_alpha		= JimHUD:getSetting({"HUDList", "left_list_progress_alpha"}, 0.4),
+		buff_list_progress_alpha		= JimHUD:getSetting({"HUDList", "buff_list_progress_alpha"}, 1.0),
 
 		--Left side list
-		show_timers						= WolfHUD:getSetting({"HUDList", "LEFT_LIST", "show_timers"}, true),				--Drills, time locks, hacking etc.
-		show_ammo_bags					= WolfHUD:getSetting({"HUDList", "LEFT_LIST", "show_ammo_bags"}, true),
-		show_doc_bags					= WolfHUD:getSetting({"HUDList", "LEFT_LIST", "show_doc_bags"}, true),
-		show_first_aid_kits				= WolfHUD:getSetting({"HUDList", "LEFT_LIST", "show_first_aid_kits"}, false),
-		show_body_bags					= WolfHUD:getSetting({"HUDList", "LEFT_LIST", "show_body_bags"}, true),
-		show_grenade_crates				= WolfHUD:getSetting({"HUDList", "LEFT_LIST", "show_grenade_crates"}, true),
-		show_sentries					= WolfHUD:getSetting({"HUDList", "LEFT_LIST", "show_sentries"}, true),				--Deployable sentries
-		show_ecms						= WolfHUD:getSetting({"HUDList", "LEFT_LIST", "show_ecms"}, true),					--Active ECMs
-		show_ecm_retrigger				= WolfHUD:getSetting({"HUDList", "LEFT_LIST", "show_ecm_retrigger"}, true),			--Countdown for player owned ECM feedback retrigger delay
-		show_minions					= WolfHUD:getSetting({"HUDList", "LEFT_LIST", "show_minions"}, true),				--Converted enemies, type and health
-			show_own_minions_only		= WolfHUD:getSetting({"HUDList", "LEFT_LIST", "show_own_minions_only"}, true),		--Only show player-owned minions
-		show_pagers						= WolfHUD:getSetting({"HUDList", "LEFT_LIST", "show_pagers"}, true),				--Show currently active pagers
-		show_tape_loop					= WolfHUD:getSetting({"HUDList", "LEFT_LIST", "show_tape_loop"}, true),				--Show active tape loop duration
+		show_timers						= JimHUD:getSetting({"HUDList", "LEFT_LIST", "show_timers"}, true),				--Drills, time locks, hacking etc.
+		show_ammo_bags					= JimHUD:getSetting({"HUDList", "LEFT_LIST", "show_ammo_bags"}, true),
+		show_doc_bags					= JimHUD:getSetting({"HUDList", "LEFT_LIST", "show_doc_bags"}, true),
+		show_first_aid_kits				= JimHUD:getSetting({"HUDList", "LEFT_LIST", "show_first_aid_kits"}, false),
+		show_body_bags					= JimHUD:getSetting({"HUDList", "LEFT_LIST", "show_body_bags"}, true),
+		show_grenade_crates				= JimHUD:getSetting({"HUDList", "LEFT_LIST", "show_grenade_crates"}, true),
+		show_sentries					= JimHUD:getSetting({"HUDList", "LEFT_LIST", "show_sentries"}, true),				--Deployable sentries
+		show_ecms						= JimHUD:getSetting({"HUDList", "LEFT_LIST", "show_ecms"}, true),					--Active ECMs
+		show_ecm_retrigger				= JimHUD:getSetting({"HUDList", "LEFT_LIST", "show_ecm_retrigger"}, true),			--Countdown for player owned ECM feedback retrigger delay
+		show_minions					= JimHUD:getSetting({"HUDList", "LEFT_LIST", "show_minions"}, true),				--Converted enemies, type and health
+			show_own_minions_only		= JimHUD:getSetting({"HUDList", "LEFT_LIST", "show_own_minions_only"}, true),		--Only show player-owned minions
+		show_pagers						= JimHUD:getSetting({"HUDList", "LEFT_LIST", "show_pagers"}, true),				--Show currently active pagers
+		show_tape_loop					= JimHUD:getSetting({"HUDList", "LEFT_LIST", "show_tape_loop"}, true),				--Show active tape loop duration
 
 		--Right side list
-		show_enemies					= WolfHUD:getSetting({"HUDList", "RIGHT_LIST", "show_enemies"}, true),				--Currently spawned enemies
-			aggregate_enemies			= WolfHUD:getSetting({"HUDList", "RIGHT_LIST", "aggregate_enemies"}, false),		--Aggregate all enemies into a single item
-		show_turrets					= WolfHUD:getSetting({"HUDList", "RIGHT_LIST", "show_turrets"}, true),				--Show active SWAT turrets
-		show_civilians					= WolfHUD:getSetting({"HUDList", "RIGHT_LIST", "show_civilians"}, true),			--Currently spawned, untied civs
-		show_hostages					= WolfHUD:getSetting({"HUDList", "RIGHT_LIST", "show_hostages"}, true),				--Currently tied civilian and dominated cops
-			aggregate_hostages			= WolfHUD:getSetting({"HUDList", "RIGHT_LIST", "aggregate_hostages"}, false),		--Aggregate all hostages into a single item
-		show_minion_count				= WolfHUD:getSetting({"HUDList", "RIGHT_LIST", "show_minion_count"}, true),			--Current number of jokered enemies
-		show_pager_count				= WolfHUD:getSetting({"HUDList", "RIGHT_LIST", "show_pager_count"}, true),			--Show number of triggered pagers (only counts pagers triggered while you were present)
-		show_cam_count					= WolfHUD:getSetting({"HUDList", "RIGHT_LIST", "show_cam_count"}, true),
-		show_bodybags_count				= WolfHUD:getSetting({"HUDList", "RIGHT_LIST", "show_bodybags_count"}, true),
-		show_corpse_count				= WolfHUD:getSetting({"HUDList", "RIGHT_LIST", "show_corpse_count"}, true),
-		show_loot						= WolfHUD:getSetting({"HUDList", "RIGHT_LIST", "show_loot"}, true),					--Show spawned and active loot bags/piles (may not be shown if certain mission parameters has not been met)
-			aggregate_loot				= WolfHUD:getSetting({"HUDList", "RIGHT_LIST", "aggregate_loot"}, false),			--Aggregate all loot into a single item
-			separate_bagged_loot		= WolfHUD:getSetting({"HUDList", "RIGHT_LIST", "separate_bagged_loot"}, true),		--Show bagged/unbagged loot as separate values
-			show_potential_loot			= WolfHUD:getSetting({"HUDList", "RIGHT_LIST", "show_potential_loot"}, false),
-		show_special_pickups			= WolfHUD:getSetting({"HUDList", "RIGHT_LIST", "show_special_pickups"}, true),		--Show number of special equipment/items
+		show_enemies					= JimHUD:getSetting({"HUDList", "RIGHT_LIST", "show_enemies"}, true),				--Currently spawned enemies
+			aggregate_enemies			= JimHUD:getSetting({"HUDList", "RIGHT_LIST", "aggregate_enemies"}, false),		--Aggregate all enemies into a single item
+		show_turrets					= JimHUD:getSetting({"HUDList", "RIGHT_LIST", "show_turrets"}, true),				--Show active SWAT turrets
+		show_civilians					= JimHUD:getSetting({"HUDList", "RIGHT_LIST", "show_civilians"}, true),			--Currently spawned, untied civs
+		show_hostages					= JimHUD:getSetting({"HUDList", "RIGHT_LIST", "show_hostages"}, true),				--Currently tied civilian and dominated cops
+			aggregate_hostages			= JimHUD:getSetting({"HUDList", "RIGHT_LIST", "aggregate_hostages"}, false),		--Aggregate all hostages into a single item
+		show_minion_count				= JimHUD:getSetting({"HUDList", "RIGHT_LIST", "show_minion_count"}, true),			--Current number of jokered enemies
+		show_pager_count				= JimHUD:getSetting({"HUDList", "RIGHT_LIST", "show_pager_count"}, true),			--Show number of triggered pagers (only counts pagers triggered while you were present)
+		show_cam_count					= JimHUD:getSetting({"HUDList", "RIGHT_LIST", "show_cam_count"}, true),
+		show_bodybags_count				= JimHUD:getSetting({"HUDList", "RIGHT_LIST", "show_bodybags_count"}, true),
+		show_corpse_count				= JimHUD:getSetting({"HUDList", "RIGHT_LIST", "show_corpse_count"}, true),
+		show_loot						= JimHUD:getSetting({"HUDList", "RIGHT_LIST", "show_loot"}, true),					--Show spawned and active loot bags/piles (may not be shown if certain mission parameters has not been met)
+			aggregate_loot				= JimHUD:getSetting({"HUDList", "RIGHT_LIST", "aggregate_loot"}, false),			--Aggregate all loot into a single item
+			separate_bagged_loot		= JimHUD:getSetting({"HUDList", "RIGHT_LIST", "separate_bagged_loot"}, true),		--Show bagged/unbagged loot as separate values
+			show_potential_loot			= JimHUD:getSetting({"HUDList", "RIGHT_LIST", "show_potential_loot"}, false),
+		show_special_pickups			= JimHUD:getSetting({"HUDList", "RIGHT_LIST", "show_special_pickups"}, true),		--Show number of special equipment/items
 
 		--Buff list
-		show_buffs						= WolfHUD:getSetting({"HUDList", "BUFF_LIST", "show_buffs"}, true),					--Active effects (buffs/debuffs). Also see HUDList.BuffItemBase.IGNORED_BUFFS table to ignore specific buffs that you don't want listed, or enable some of those not shown by default
+		show_buffs						= JimHUD:getSetting({"HUDList", "BUFF_LIST", "show_buffs"}, true),					--Active effects (buffs/debuffs). Also see HUDList.BuffItemBase.IGNORED_BUFFS table to ignore specific buffs that you don't want listed, or enable some of those not shown by default
 
-		list_color						= WolfHUD:getColorSetting({"HUDList", "list_color"}, "white"),
-		list_color_bg					= WolfHUD:getColorSetting({"HUDList", "list_color_bg"}, "black"),
-		civilian_color					= WolfHUD:getColorSetting({"HUDList", "civilian_color"}, "white"),
-		hostage_color					= WolfHUD:getColorSetting({"HUDList", "civilian_color"}, "white"),
-		thug_color						= WolfHUD:getColorSetting({"HUDList", "thug_color"}, "white"),
-		enemy_color						= WolfHUD:getColorSetting({"HUDList", "enemy_color"}, "white"),
-		guard_color						= WolfHUD:getColorSetting({"HUDList", "enemy_color"}, "white"),
-		special_color					= WolfHUD:getColorSetting({"HUDList", "special_color"}, "white"),
-		turret_color					= WolfHUD:getColorSetting({"HUDList", "special_color"}, "white"),
+		list_color						= JimHUD:getColorSetting({"HUDList", "list_color"}, "white"),
+		list_color_bg					= JimHUD:getColorSetting({"HUDList", "list_color_bg"}, "black"),
+		civilian_color					= JimHUD:getColorSetting({"HUDList", "civilian_color"}, "white"),
+		hostage_color					= JimHUD:getColorSetting({"HUDList", "civilian_color"}, "white"),
+		thug_color						= JimHUD:getColorSetting({"HUDList", "thug_color"}, "white"),
+		enemy_color						= JimHUD:getColorSetting({"HUDList", "enemy_color"}, "white"),
+		guard_color						= JimHUD:getColorSetting({"HUDList", "enemy_color"}, "white"),
+		special_color					= JimHUD:getColorSetting({"HUDList", "special_color"}, "white"),
+		turret_color					= JimHUD:getColorSetting({"HUDList", "special_color"}, "white"),
 	}
 
 	HUDListManager.TIMER_SETTINGS = {
@@ -270,73 +270,73 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 	}
 
 	HUDListManager.UNIT_TYPES = {
-		cop =						{ type_id = "cop",			category = "enemies",	long_name = "wolfhud_enemy_cop"						},
-		cop_female =				{ type_id = "cop",			category = "enemies",	long_name = "wolfhud_enemy_cop"						},
-		fbi =						{ type_id = "cop",			category = "enemies",	long_name = "wolfhud_enemy_fbi"						},
-		swat =						{ type_id = "cop",			category = "enemies",	long_name = "wolfhud_enemy_swat"					},
-		heavy_swat =				{ type_id = "cop",			category = "enemies",	long_name = "wolfhud_enemy_heavy_swat"				},
-		heavy_swat_sniper =			{ type_id = "cop",			category = "enemies",	long_name = "wolfhud_enemy_heavy_swat_sniper"		},
-		fbi_swat =					{ type_id = "cop",			category = "enemies",	long_name = "wolfhud_enemy_swat"					},
-		fbi_heavy_swat =			{ type_id = "cop",			category = "enemies",	long_name = "wolfhud_enemy_heavy_swat"				},
-		city_swat =					{ type_id = "cop",			category = "enemies",	long_name = "wolfhud_enemy_city_swat"				},
-		security =					{ type_id = "security",		category = "enemies",	long_name = "wolfhud_enemy_security"				},
-		security_undominatable =	{ type_id = "security",		category = "enemies",	long_name = "wolfhud_enemy_security"				},
-		gensec =					{ type_id = "security",		category = "enemies",	long_name = "wolfhud_enemy_gensec"					},
-		bolivian_indoors =			{ type_id = "security",		category = "enemies",	long_name = "wolfhud_enemy_bolivian_security"		},
-		bolivian =					{ type_id = "thug",			category = "enemies",	long_name = "wolfhud_enemy_bolivian_thug"			},
-		gangster =					{ type_id = "thug",			category = "enemies",	long_name = "wolfhud_enemy_gangster"				},
-		mobster =					{ type_id = "thug",			category = "enemies",	long_name = "wolfhud_enemy_mobster"					},
-		biker =						{ type_id = "thug",			category = "enemies",	long_name = "wolfhud_enemy_biker"					},
-		biker_escape =				{ type_id = "thug",			category = "enemies",	long_name = "wolfhud_enemy_biker"					},
-		tank =						{ type_id = "tank",			category = "enemies",	long_name = "wolfhud_enemy_tank"					},
-		tank_hw =					{ type_id = "tank",			category = "enemies",	long_name = "wolfhud_enemy_tank_hw"					},
-		tank_medic =				{ type_id = "tank",			category = "enemies",	long_name = "wolfhud_enemy_tank_medic"				},
-		tank_mini =					{ type_id = "tank",			category = "enemies",	long_name = "wolfhud_enemy_tank_mini"				},
-		spooc =						{ type_id = "spooc",		category = "enemies",	long_name = "wolfhud_enemy_spook"					},
-		shadow_spooc =				{ type_id = "spooc",		category = "enemies",	long_name = "wolfhud_enemy_shadow_spook"			},
-		taser =						{ type_id = "taser",		category = "enemies",	long_name = "wolfhud_enemy_taser"					},
-		shield =					{ type_id = "shield",		category = "enemies",	long_name = "wolfhud_enemy_shield"					},
-		sniper =					{ type_id = "sniper",		category = "enemies",	long_name = "wolfhud_enemy_sniper"					},
-		medic =						{ type_id = "medic",		category = "enemies",	long_name = "wolfhud_enemy_medic"					},
-		biker_boss =				{ type_id = "thug_boss",	category = "enemies",	long_name = "wolfhud_enemy_biker_boss"				},
-		chavez_boss =				{ type_id = "thug_boss",	category = "enemies",	long_name = "wolfhud_enemy_chavez_boss"				},
-		drug_lord_boss =			{ type_id = "thug_boss",	category = "enemies",	long_name = "wolfhud_enemy_druglord_boss"			},
-		drug_lord_boss_stealth =	{ type_id = "thug_boss",	category = "enemies",	long_name = "wolfhud_enemy_druglord_boss_stealth"	},
-		hector_boss =				{ type_id = "thug_boss",	category = "enemies",	long_name = "wolfhud_enemy_hector_boss"				},
-		hector_boss_no_armor =		{ type_id = "thug_boss",	category = "enemies",	long_name = "wolfhud_enemy_hector_boss_no_armor"	},
-		mobster_boss =				{ type_id = "thug_boss",	category = "enemies",	long_name = "wolfhud_enemy_mobster_boss"			},
-		phalanx_vip =				{ type_id = "phalanx",		category = "enemies",	long_name = "wolfhud_enemy_phalanx_vip"				},
-		phalanx_minion =			{ type_id = "phalanx",		category = "enemies",	long_name = "wolfhud_enemy_phalanx_minion"			},
-		civilian =					{ type_id = "civ",			category = "civilians",	long_name = "wolfhud_enemy_civilian"				},
-		civilian_female =			{ type_id = "civ",			category = "civilians",	long_name = "wolfhud_enemy_civilian"				},
-		bank_manager =				{ type_id = "civ",			category = "civilians",	long_name = "wolfhud_enemy_bank_manager"			},
-		--drunk_pilot =				{ type_id = "unique",		category = "civilians",	long_name = "wolfhud_enemy_drunk_pilot"				},	--White x-Mas
-		--escort =					{ type_id = "unique",		category = "civilians",	long_name = "wolfhud_enemy_escort"					},	--?
-		--old_hoxton_mission =		{ type_id = "unique",		category = "civilians",	long_name = "wolfhud_enemy_old_hoxton_mission"		},	--Hox Breakout / BtM (Locke)
-		--inside_man =				{ type_id = "unique",		category = "civilians",	long_name = "wolfhud_enemy_inside_man"				},	--FWB
-		--boris =					{ type_id = "unique",		category = "civilians",	long_name = "wolfhud_enemy_boris"					},	--Goat Sim Day 2
-		--escort_undercover =		{ type_id = "unique",		category = "civilians",	long_name = "wolfhud_enemy_escort_undercover"		},	--Taxman, Undercover + Matt, Heat Street
-		--escort_chinese_prisoner = { type_id = "unique",		category = "civilians", long_name = "wolfhud_enemy_escort_chinese_prisoner" },	--Kazo, Green Bridge
-		--spa_vip =					{ type_id = "unique",		category = "civilians",	long_name = "wolfhud_enemy_spa_vip"					},	--Charon, Wick Heist
-		--spa_vip_hurt =			{ type_id = "unique",		category = "civilians",	long_name = "wolfhud_enemy_spa_vip_hurt"			},	--Charon, Wick Heist
+		cop =						{ type_id = "cop",			category = "enemies",	long_name = "jimhud_enemy_cop"						},
+		cop_female =				{ type_id = "cop",			category = "enemies",	long_name = "jimhud_enemy_cop"						},
+		fbi =						{ type_id = "cop",			category = "enemies",	long_name = "jimhud_enemy_fbi"						},
+		swat =						{ type_id = "cop",			category = "enemies",	long_name = "jimhud_enemy_swat"					},
+		heavy_swat =				{ type_id = "cop",			category = "enemies",	long_name = "jimhud_enemy_heavy_swat"				},
+		heavy_swat_sniper =			{ type_id = "cop",			category = "enemies",	long_name = "jimhud_enemy_heavy_swat_sniper"		},
+		fbi_swat =					{ type_id = "cop",			category = "enemies",	long_name = "jimhud_enemy_swat"					},
+		fbi_heavy_swat =			{ type_id = "cop",			category = "enemies",	long_name = "jimhud_enemy_heavy_swat"				},
+		city_swat =					{ type_id = "cop",			category = "enemies",	long_name = "jimhud_enemy_city_swat"				},
+		security =					{ type_id = "security",		category = "enemies",	long_name = "jimhud_enemy_security"				},
+		security_undominatable =	{ type_id = "security",		category = "enemies",	long_name = "jimhud_enemy_security"				},
+		gensec =					{ type_id = "security",		category = "enemies",	long_name = "jimhud_enemy_gensec"					},
+		bolivian_indoors =			{ type_id = "security",		category = "enemies",	long_name = "jimhud_enemy_bolivian_security"		},
+		bolivian =					{ type_id = "thug",			category = "enemies",	long_name = "jimhud_enemy_bolivian_thug"			},
+		gangster =					{ type_id = "thug",			category = "enemies",	long_name = "jimhud_enemy_gangster"				},
+		mobster =					{ type_id = "thug",			category = "enemies",	long_name = "jimhud_enemy_mobster"					},
+		biker =						{ type_id = "thug",			category = "enemies",	long_name = "jimhud_enemy_biker"					},
+		biker_escape =				{ type_id = "thug",			category = "enemies",	long_name = "jimhud_enemy_biker"					},
+		tank =						{ type_id = "tank",			category = "enemies",	long_name = "jimhud_enemy_tank"					},
+		tank_hw =					{ type_id = "tank",			category = "enemies",	long_name = "jimhud_enemy_tank_hw"					},
+		tank_medic =				{ type_id = "tank",			category = "enemies",	long_name = "jimhud_enemy_tank_medic"				},
+		tank_mini =					{ type_id = "tank",			category = "enemies",	long_name = "jimhud_enemy_tank_mini"				},
+		spooc =						{ type_id = "spooc",		category = "enemies",	long_name = "jimhud_enemy_spook"					},
+		shadow_spooc =				{ type_id = "spooc",		category = "enemies",	long_name = "jimhud_enemy_shadow_spook"			},
+		taser =						{ type_id = "taser",		category = "enemies",	long_name = "jimhud_enemy_taser"					},
+		shield =					{ type_id = "shield",		category = "enemies",	long_name = "jimhud_enemy_shield"					},
+		sniper =					{ type_id = "sniper",		category = "enemies",	long_name = "jimhud_enemy_sniper"					},
+		medic =						{ type_id = "medic",		category = "enemies",	long_name = "jimhud_enemy_medic"					},
+		biker_boss =				{ type_id = "thug_boss",	category = "enemies",	long_name = "jimhud_enemy_biker_boss"				},
+		chavez_boss =				{ type_id = "thug_boss",	category = "enemies",	long_name = "jimhud_enemy_chavez_boss"				},
+		drug_lord_boss =			{ type_id = "thug_boss",	category = "enemies",	long_name = "jimhud_enemy_druglord_boss"			},
+		drug_lord_boss_stealth =	{ type_id = "thug_boss",	category = "enemies",	long_name = "jimhud_enemy_druglord_boss_stealth"	},
+		hector_boss =				{ type_id = "thug_boss",	category = "enemies",	long_name = "jimhud_enemy_hector_boss"				},
+		hector_boss_no_armor =		{ type_id = "thug_boss",	category = "enemies",	long_name = "jimhud_enemy_hector_boss_no_armor"	},
+		mobster_boss =				{ type_id = "thug_boss",	category = "enemies",	long_name = "jimhud_enemy_mobster_boss"			},
+		phalanx_vip =				{ type_id = "phalanx",		category = "enemies",	long_name = "jimhud_enemy_phalanx_vip"				},
+		phalanx_minion =			{ type_id = "phalanx",		category = "enemies",	long_name = "jimhud_enemy_phalanx_minion"			},
+		civilian =					{ type_id = "civ",			category = "civilians",	long_name = "jimhud_enemy_civilian"				},
+		civilian_female =			{ type_id = "civ",			category = "civilians",	long_name = "jimhud_enemy_civilian"				},
+		bank_manager =				{ type_id = "civ",			category = "civilians",	long_name = "jimhud_enemy_bank_manager"			},
+		--drunk_pilot =				{ type_id = "unique",		category = "civilians",	long_name = "jimhud_enemy_drunk_pilot"				},	--White x-Mas
+		--escort =					{ type_id = "unique",		category = "civilians",	long_name = "jimhud_enemy_escort"					},	--?
+		--old_hoxton_mission =		{ type_id = "unique",		category = "civilians",	long_name = "jimhud_enemy_old_hoxton_mission"		},	--Hox Breakout / BtM (Locke)
+		--inside_man =				{ type_id = "unique",		category = "civilians",	long_name = "jimhud_enemy_inside_man"				},	--FWB
+		--boris =					{ type_id = "unique",		category = "civilians",	long_name = "jimhud_enemy_boris"					},	--Goat Sim Day 2
+		--escort_undercover =		{ type_id = "unique",		category = "civilians",	long_name = "jimhud_enemy_escort_undercover"		},	--Taxman, Undercover + Matt, Heat Street
+		--escort_chinese_prisoner = { type_id = "unique",		category = "civilians", long_name = "jimhud_enemy_escort_chinese_prisoner" },	--Kazo, Green Bridge
+		--spa_vip =					{ type_id = "unique",		category = "civilians",	long_name = "jimhud_enemy_spa_vip"					},	--Charon, Wick Heist
+		--spa_vip_hurt =			{ type_id = "unique",		category = "civilians",	long_name = "jimhud_enemy_spa_vip_hurt"			},	--Charon, Wick Heist
 
 		--Custom unit definitions
-		--mechanic =				{ type_id = "unique",		category = "civilians",	long_name = "wolfhud_enemy_biker_mechanic"			},	-- Mechanic, Biker Heist
-		turret =					{ type_id = "turret",		category = "turrets",	long_name = "wolfhud_enemy_swat_van"				},
+		--mechanic =				{ type_id = "unique",		category = "civilians",	long_name = "jimhud_enemy_biker_mechanic"			},	-- Mechanic, Biker Heist
+		turret =					{ type_id = "turret",		category = "turrets",	long_name = "jimhud_enemy_swat_van"				},
 		cop_hostage =				{ type_id = "cop_hostage",	category = "hostages",	force_update = { "cop", "enemies" }					},
 		sec_hostage =				{ type_id = "cop_hostage",	category = "hostages",	force_update = { "security", "enemies" }			},
 		civ_hostage =				{ type_id = "civ_hostage",	category = "hostages",	force_update = { "civ", "civilians" }				},
 		cop_minion =				{ type_id = "minion",		category = "minions",	force_update = { "cop", "enemies" }					},
 		sec_minion =				{ type_id = "minion",		category = "minions",	force_update = { "security", "enemies" }			},
 
-		boom =						{ type_id = "cop",			category = "enemies",	long_name = "wolfhud_enemy_boom"					},
-		omnia_lpf =					{ type_id = "cop",			category = "enemies",	long_name = "wolfhud_enemy_omnia_lpf"				},
-		summers =					{ type_id = "phalanx",		category = "enemies",	long_name = "wolfhud_enemy_summers"					},
-		boom_summers =				{ type_id = "phalanx",		category = "enemies",	long_name = "wolfhud_enemy_boom_summers"			},
-		taser_summers =				{ type_id = "phalanx",		category = "enemies",	long_name = "wolfhud_enemy_taser_summers"			},
-		medic_summers =				{ type_id = "phalanx",		category = "enemies",	long_name = "wolfhud_enemy_medic_summers"			},
-		spring =					{ type_id = "phalanx",		category = "enemies",	long_name = "wolfhud_enemy_spring"					},
-		fbi_vet =					{ type_id = "cop",			category = "enemies",	long_name = "wolfhud_enemy_fbi_vet"					},
+		boom =						{ type_id = "cop",			category = "enemies",	long_name = "jimhud_enemy_boom"					},
+		omnia_lpf =					{ type_id = "cop",			category = "enemies",	long_name = "jimhud_enemy_omnia_lpf"				},
+		summers =					{ type_id = "phalanx",		category = "enemies",	long_name = "jimhud_enemy_summers"					},
+		boom_summers =				{ type_id = "phalanx",		category = "enemies",	long_name = "jimhud_enemy_boom_summers"			},
+		taser_summers =				{ type_id = "phalanx",		category = "enemies",	long_name = "jimhud_enemy_taser_summers"			},
+		medic_summers =				{ type_id = "phalanx",		category = "enemies",	long_name = "jimhud_enemy_medic_summers"			},
+		spring =					{ type_id = "phalanx",		category = "enemies",	long_name = "jimhud_enemy_spring"					},
+		fbi_vet =					{ type_id = "cop",			category = "enemies",	long_name = "jimhud_enemy_fbi_vet"					},
 	}
 
 	HUDListManager.SPECIAL_PICKUP_TYPES = {
@@ -1019,14 +1019,14 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 	end
 
 	function HUDListManager:_buff_event(event, id, data)
-		WolfHUD:print_log("(HUDList) _buff_event(%s, %s)", tostring(event), tostring(id), "info")
+		JimHUD:print_log("(HUDList) _buff_event(%s, %s)", tostring(event), tostring(id), "info")
 		local items = self:_get_buff_items(id)
 
 		for _, item in ipairs(items) do
 			if item[event] then
 				item[event](item, id, data)
 			else
-				WolfHUD:print_log("HUDList) _buff_event: No matching function for event %s for buff %s", tostring(event), tostring(id), "warning")
+				JimHUD:print_log("HUDList) _buff_event: No matching function for event %s for buff %s", tostring(event), tostring(id), "warning")
 			end
 		end
 
@@ -3056,23 +3056,23 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 
 	HUDList.SpecialPickupItem = HUDList.SpecialPickupItem or class(HUDList.RightListItem)
 	HUDList.SpecialPickupItem.MAP = {
-		crowbar =					{ hudpickups = { 0, 64, 32, 32 },												priority = 1, category = "mission_pickups", ignore = not WolfHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "mission_pickups"}, true)	},
-		keycard =					{ hudpickups = { 32, 0, 32, 32 },												priority = 1, category = "mission_pickups", ignore = not WolfHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "mission_pickups"}, true)	},
-		planks =					{ hudpickups = { 0, 32, 32, 32 },												priority = 2, category = "mission_pickups", ignore = not WolfHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "mission_pickups"}, true)	},
-		meth_ingredients =			{ waypoints  = { 192, 32, 32, 32 },												priority = 2, category = "mission_pickups", ignore = not WolfHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "mission_pickups"}, true)	},
-		blowtorch =					{ hudpickups = { 96, 192, 32, 32 },												priority = 1, category = "mission_pickups", ignore = not WolfHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "mission_pickups"}, true)	},
-		thermite =					{ hudpickups = { 64, 64, 32, 32 },												priority = 1, category = "mission_pickups", ignore = not WolfHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "mission_pickups"}, true)	},
-		c4 =						{ hudicons	 = { 36, 242, 32, 32 },												priority = 1, category = "mission_pickups", ignore = not WolfHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "mission_pickups"}, true)	},
-		small_loot =				{ hudpickups = { 32, 224, 32, 32},												priority = 3, category = "valuables",		ignore = not WolfHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "valuables"}, true)			},
-		briefcase =					{ hudpickups = { 96, 224, 32, 32},												priority = 4, category = "collectables",	ignore = not WolfHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "collectables"}, true)		},
-		courier =					{ texture = "guis/dlcs/gage_pack_jobs/textures/pd2/endscreen/gage_assignment",	priority = 3, category = "collectables",	ignore = not WolfHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "collectables"}, true)		},		--{ texture = "guis/textures/contact_vlad", texture_rect = {1920, 0, 64, 64}, priority = 3 }, --[[skills	 = { 6, 0 }]]
-		gage_case =					{ skills	 = { 1, 0 },														priority = 3, category = "collectables",	ignore = not WolfHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "collectables"}, true)		},
-		gage_key =					{ hudpickups = { 32, 64, 32, 32 },												priority = 3, category = "collectables",	ignore = not WolfHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "collectables"}, true)		},
-		paycheck_masks =			{ hudpickups = { 128, 32, 32, 32 },												priority = 4, category = "collectables",	ignore = not WolfHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "collectables"}, true)		},
-		secret_item =				{ waypoints  = { 96, 64, 32, 32 },												priority = 4, category = "collectables",	ignore = not WolfHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "collectables"}, true)		},
-		rings =						{ texture = "guis/textures/pd2/level_ring_small", w_ratio = 0.5, h_ratio = 0.5, priority = 4, category = "collectables",	ignore = not WolfHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "collectables"}, true)		},
-		poster =					{ hudpickups = { 96, 96, 32, 32 },												priority = 4, category = "collectables",	ignore = not WolfHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "collectables"}, true)		},
-		handcuffs =					{ hud_icons  = {294,469, 40, 40 },												priority = 4, category = "collectables",	ignore = not WolfHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "collectables"}, true)		},
+		crowbar =					{ hudpickups = { 0, 64, 32, 32 },												priority = 1, category = "mission_pickups", ignore = not JimHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "mission_pickups"}, true)	},
+		keycard =					{ hudpickups = { 32, 0, 32, 32 },												priority = 1, category = "mission_pickups", ignore = not JimHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "mission_pickups"}, true)	},
+		planks =					{ hudpickups = { 0, 32, 32, 32 },												priority = 2, category = "mission_pickups", ignore = not JimHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "mission_pickups"}, true)	},
+		meth_ingredients =			{ waypoints  = { 192, 32, 32, 32 },												priority = 2, category = "mission_pickups", ignore = not JimHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "mission_pickups"}, true)	},
+		blowtorch =					{ hudpickups = { 96, 192, 32, 32 },												priority = 1, category = "mission_pickups", ignore = not JimHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "mission_pickups"}, true)	},
+		thermite =					{ hudpickups = { 64, 64, 32, 32 },												priority = 1, category = "mission_pickups", ignore = not JimHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "mission_pickups"}, true)	},
+		c4 =						{ hudicons	 = { 36, 242, 32, 32 },												priority = 1, category = "mission_pickups", ignore = not JimHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "mission_pickups"}, true)	},
+		small_loot =				{ hudpickups = { 32, 224, 32, 32},												priority = 3, category = "valuables",		ignore = not JimHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "valuables"}, true)			},
+		briefcase =					{ hudpickups = { 96, 224, 32, 32},												priority = 4, category = "collectables",	ignore = not JimHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "collectables"}, true)		},
+		courier =					{ texture = "guis/dlcs/gage_pack_jobs/textures/pd2/endscreen/gage_assignment",	priority = 3, category = "collectables",	ignore = not JimHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "collectables"}, true)		},		--{ texture = "guis/textures/contact_vlad", texture_rect = {1920, 0, 64, 64}, priority = 3 }, --[[skills	 = { 6, 0 }]]
+		gage_case =					{ skills	 = { 1, 0 },														priority = 3, category = "collectables",	ignore = not JimHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "collectables"}, true)		},
+		gage_key =					{ hudpickups = { 32, 64, 32, 32 },												priority = 3, category = "collectables",	ignore = not JimHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "collectables"}, true)		},
+		paycheck_masks =			{ hudpickups = { 128, 32, 32, 32 },												priority = 4, category = "collectables",	ignore = not JimHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "collectables"}, true)		},
+		secret_item =				{ waypoints  = { 96, 64, 32, 32 },												priority = 4, category = "collectables",	ignore = not JimHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "collectables"}, true)		},
+		rings =						{ texture = "guis/textures/pd2/level_ring_small", w_ratio = 0.5, h_ratio = 0.5, priority = 4, category = "collectables",	ignore = not JimHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "collectables"}, true)		},
+		poster =					{ hudpickups = { 96, 96, 32, 32 },												priority = 4, category = "collectables",	ignore = not JimHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "collectables"}, true)		},
+		handcuffs =					{ hud_icons  = {294,469, 40, 40 },												priority = 4, category = "collectables",	ignore = not JimHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "collectables"}, true)		},
 	}
 
 	function HUDList.SpecialPickupItem:init(parent, name, id, members)
@@ -3117,16 +3117,16 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 	HUDList.LootItem.MAP = {
 		aggregate =		{ text = "", no_localize = true },	--Aggregated loot
 
-		armor =			{ text = "wolfhud_hudlist_loot_armor",		priority = 1 }, -- Shaddow Raid
+		armor =			{ text = "jimhud_hudlist_loot_armor",		priority = 1 }, -- Shaddow Raid
 		artifact =		{ text = "hud_carry_artifact",				priority = 1 },	-- Schaddow Raid, The Diamond
 		bike =			{ text = "hud_carry_bike_part",				priority = 1 },	-- Biker Heist
-		bomb =			{ text = "wolfhud_hudlist_loot_bomb",		priority = 1 },	-- Bomb Forest & Dockyard, Murky Station EMP
+		bomb =			{ text = "jimhud_hudlist_loot_bomb",		priority = 1 },	-- Bomb Forest & Dockyard, Murky Station EMP
 		coke =			{ text = "hud_carry_coke",					priority = 1 },
 		dentist =		{ text = "???", no_localize = true,			priority = 1 },	-- Golden Grin
-		diamond =		{ text = "wolfhud_hudlist_loot_diamond",	priority = 1 },	-- The Diamond/Diamond Heist Red Diamond
+		diamond =		{ text = "jimhud_hudlist_loot_diamond",	priority = 1 },	-- The Diamond/Diamond Heist Red Diamond
 		diamonds =		{ text = "hud_carry_diamonds_dah",			priority = 1 },	-- The Diamond Heist
 		drone_ctrl =	{ text = "hud_carry_helmet",				priority = 1 },	-- Biker Heist
-		evidence =		{ text = "wolfhud_hudlist_loot_evidence",	priority = 1 },	-- Hoxton revenge
+		evidence =		{ text = "jimhud_hudlist_loot_evidence",	priority = 1 },	-- Hoxton revenge
 		goat =			{ text = "hud_carry_goat",					priority = 1 },	-- Goat Simulator
 		gold =			{ text = "hud_carry_gold",					priority = 1 },
 		jewelry =		{ text = "hud_carry_diamonds",				priority = 1 },
@@ -3139,20 +3139,20 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 		safe =			{ text = "hud_carry_safe",					priority = 1 },	-- Aftershock
 		server =		{ text = "hud_carry_circuit",				priority = 1 },
 		shell =			{ text = "hud_carry_ammo",					priority = 1 },	-- Transport: Train
-		shoes =			{ text = "wolfhud_hudlist_loot_shoes",		priority = 1 },	-- Stealing Xmas
-		toast =			{ text = "wolfhud_hudlist_loot_toast",		priority = 1 },	-- White Xmas
-		toothbrush =	{ text = "wolfhud_hudlist_loot_toothbrush", priority = 1 },	-- Panic Room
-		toy =			{ text = "wolfhud_hudlist_loot_toy",		priority = 1 },	-- Stealing Xmas
+		shoes =			{ text = "jimhud_hudlist_loot_shoes",		priority = 1 },	-- Stealing Xmas
+		toast =			{ text = "jimhud_hudlist_loot_toast",		priority = 1 },	-- White Xmas
+		toothbrush =	{ text = "jimhud_hudlist_loot_toothbrush", priority = 1 },	-- Panic Room
+		toy =			{ text = "jimhud_hudlist_loot_toy",		priority = 1 },	-- Stealing Xmas
 		turret =		{ text = "hud_carry_turret",				priority = 1 },	-- Transport: Train
-		vr =			{ text = "wolfhud_hudlist_loot_vr",			priority = 1 },	-- Stealing Xmas
+		vr =			{ text = "jimhud_hudlist_loot_vr",			priority = 1 },	-- Stealing Xmas
 		warhead =		{ text = "hud_carry_warhead",				priority = 1 },	-- Meltdown
-		weapon =		{ text = "wolfhud_hudlist_loot_weapon",		priority = 1 },
+		weapon =		{ text = "jimhud_hudlist_loot_weapon",		priority = 1 },
 		wine =			{ text = "hud_carry_wine",					priority = 1 },	-- Stealing Xmas
 		body =			{ text = "hud_carry_person",				priority = 1 },	-- Boiling point
-		crate =			{ text = "wolfhud_hudlist_loot_crate",		priority = 2, no_separate = true },
+		crate =			{ text = "jimhud_hudlist_loot_crate",		priority = 2, no_separate = true },
 		xmas_present =	{ text = "hud_carry_present",				priority = 2, no_separate = true },	-- White Xmas
-		shopping_bag =	{ text = "wolfhud_hudlist_loot_bag",		priority = 2, no_separate = true },	-- White Xmas
-		showcase =		{ text = "wolfhud_hudlist_showcase",		priority = 2, no_separate = true },	-- Diamond heist + Diamond Museum
+		shopping_bag =	{ text = "jimhud_hudlist_loot_bag",		priority = 2, no_separate = true },	-- White Xmas
+		showcase =		{ text = "jimhud_hudlist_showcase",		priority = 2, no_separate = true },	-- Diamond heist + Diamond Museum
 	}
 	function HUDList.LootItem:init(parent, name, id, members)
 		local loot_data = HUDList.LootItem.MAP[id]
@@ -3394,14 +3394,14 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 
 	HUDList.TimerItem = HUDList.TimerItem or class(HUDList.LeftListItem)
 	HUDList.TimerItem.DEVICE_TYPES = {
-		digital			= { class = "TimerItem",			name = "wolfhud_hudlist_device_timer"	},
-		drill			= { class = "UpgradeableTimerItem", name = "wolfhud_hudlist_device_drill"	},
-		drill_noupgrade	= { class = "TimerItem",			name = "wolfhud_hudlist_device_drill"	},
-		saw				= { class = "UpgradeableTimerItem", name = "wolfhud_hudlist_device_saw"		},
-		saw_noupgrade	= { class = "TimerItem",			name = "wolfhud_hudlist_device_saw"		},
-		hack			= { class = "TimerItem",			name = "wolfhud_hudlist_device_hack"	},
-		timer			= { class = "TimerItem",			name = "wolfhud_hudlist_device_timer"	},
-		securitylock	= { class = "SecurityTimerItem",	name = "wolfhud_hudlist_device_security"},
+		digital			= { class = "TimerItem",			name = "jimhud_hudlist_device_timer"	},
+		drill			= { class = "UpgradeableTimerItem", name = "jimhud_hudlist_device_drill"	},
+		drill_noupgrade	= { class = "TimerItem",			name = "jimhud_hudlist_device_drill"	},
+		saw				= { class = "UpgradeableTimerItem", name = "jimhud_hudlist_device_saw"		},
+		saw_noupgrade	= { class = "TimerItem",			name = "jimhud_hudlist_device_saw"		},
+		hack			= { class = "TimerItem",			name = "jimhud_hudlist_device_hack"	},
+		timer			= { class = "TimerItem",			name = "jimhud_hudlist_device_timer"	},
+		securitylock	= { class = "SecurityTimerItem",	name = "jimhud_hudlist_device_security"},
 	}
 	function HUDList.TimerItem:init(parent, name, data)
 		self.STANDARD_COLOR = HUDListManager.ListOptions.list_color or Color(1, 1, 1, 1)
@@ -3690,7 +3690,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 	end
 
 	function HUDList.SecurityTimerItem:_update_bar_text()
-		local text = managers.localization:text("wolfhud_hudlist_device_security_bar", { CURRENT = self._bars.current or 1, TOTAL = self._bars.total or 3})
+		local text = managers.localization:text("jimhud_hudlist_device_security_bar", { CURRENT = self._bars.current or 1, TOTAL = self._bars.total or 3})
 		self._distance_text:set_text(text)
 	end
 
@@ -4909,21 +4909,21 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 			class = "TimedBuffItem",
 			priority = 4,
 			color = HUDList.BuffItemBase.ICON_COLOR.STANDARD,
-			ignore = not WolfHUD:getSetting({"HUDList", "BUFF_LIST", "MASTERMIND_BUFFS", "aggressive_reload_aced"}, true),
+			ignore = not JimHUD:getSetting({"HUDList", "BUFF_LIST", "MASTERMIND_BUFFS", "aggressive_reload_aced"}, true),
 		},
 		ammo_efficiency = {
 			skills_new = tweak_data.skilltree.skills.single_shot_ammo_return.icon_xy,
 			class = "TimedBuffItem",
 			priority = 4,
 			color = HUDList.BuffItemBase.ICON_COLOR.STANDARD,
-			ignore = not WolfHUD:getSetting({"HUDList", "BUFF_LIST", "MASTERMIND_BUFFS", "ammo_efficiency"}, true)
+			ignore = not JimHUD:getSetting({"HUDList", "BUFF_LIST", "MASTERMIND_BUFFS", "ammo_efficiency"}, true)
 		},
 		armor_break_invulnerable = {
 			perks = {6, 1},
 			class = "TimedBuffItem",
 			priority = 4,
 			color = HUDList.BuffItemBase.ICON_COLOR.STANDARD,
-			ignore = not WolfHUD:getSetting({"HUDList", "BUFF_LIST", "PERK_BUFFS", "armor_break_invulnerable"}, true),
+			ignore = not JimHUD:getSetting({"HUDList", "BUFF_LIST", "PERK_BUFFS", "armor_break_invulnerable"}, true),
 		},
 		berserker = {
 			skills_new = tweak_data.skilltree.skills.wolverine.icon_xy,
@@ -4931,7 +4931,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 			priority = 3,
 			color = HUDList.BuffItemBase.ICON_COLOR.STANDARD,
 			show_value = HUDList.BuffItemBase.VALUE_FUNC.IN_PERCENT,
-			ignore = not WolfHUD:getSetting({"HUDList", "BUFF_LIST", "FUGITIVE_BUFFS", "berserker"}, true),
+			ignore = not JimHUD:getSetting({"HUDList", "BUFF_LIST", "FUGITIVE_BUFFS", "berserker"}, true),
 		},
 		biker = {
 			perks = {0, 0},
@@ -4939,7 +4939,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 			class = "BikerBuffItem",
 			priority = 4,
 			color = HUDList.BuffItemBase.ICON_COLOR.STANDARD,
-			ignore = not WolfHUD:getSetting({"HUDList", "BUFF_LIST", "PERK_BUFFS", "biker"}, true),
+			ignore = not JimHUD:getSetting({"HUDList", "BUFF_LIST", "PERK_BUFFS", "biker"}, true),
 		},
 		bloodthirst_aced = {
 			skills_new = tweak_data.skilltree.skills.bloodthirst.icon_xy,
@@ -4947,25 +4947,25 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 			priority = 4,
 			color = HUDList.BuffItemBase.ICON_COLOR.STANDARD,
 			ace_icon = true,
-			title = "wolfhud_hudlist_buff_aced",
+			title = "jimhud_hudlist_buff_aced",
 			localized = true,
-			ignore = not WolfHUD:getSetting({"HUDList", "BUFF_LIST", "FUGITIVE_BUFFS", "bloodthirst_aced"}, true),
+			ignore = not JimHUD:getSetting({"HUDList", "BUFF_LIST", "FUGITIVE_BUFFS", "bloodthirst_aced"}, true),
 		},
 		bloodthirst_basic = {
 			skills_new = tweak_data.skilltree.skills.bloodthirst.icon_xy,
 			class = "BuffItemBase",
 			priority = 4,
 			color = HUDList.BuffItemBase.ICON_COLOR.STANDARD,
-			title = "wolfhud_hudlist_buff_basic",
+			title = "jimhud_hudlist_buff_basic",
 			localized = true,
-			ignore = not WolfHUD:getSetting({"HUDList", "BUFF_LIST", "FUGITIVE_BUFFS", "bloodthirst_basic"}, false),
+			ignore = not JimHUD:getSetting({"HUDList", "BUFF_LIST", "FUGITIVE_BUFFS", "bloodthirst_basic"}, false),
 		},
 		bullet_storm = {
 			skills_new = tweak_data.skilltree.skills.ammo_reservoir.icon_xy,
 			class = "TimedBuffItem",
 			priority = 4,
 			color = HUDList.BuffItemBase.ICON_COLOR.STANDARD,
-			ignore = not WolfHUD:getSetting({"HUDList", "BUFF_LIST", "ENFORCER_BUFFS", "bullet_storm"}, true),
+			ignore = not JimHUD:getSetting({"HUDList", "BUFF_LIST", "ENFORCER_BUFFS", "bullet_storm"}, true),
 		},
 		chico_injector = {
 			perks = {0, 0},
@@ -4973,28 +4973,28 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 			class = "TimedBuffItem",
 			priority = 4,
 			color = HUDList.BuffItemBase.ICON_COLOR.STANDARD,
-			ignore = not WolfHUD:getSetting({"HUDList", "BUFF_LIST", "PERK_BUFFS", "chico_injector"}, false) and (WolfHUD:getSetting({"CustomHUD", "PLAYER", "STATUS"}, true) or WolfHUD:getSetting({"CustomHUD", "ENABLED"}, false)),
+			ignore = not JimHUD:getSetting({"HUDList", "BUFF_LIST", "PERK_BUFFS", "chico_injector"}, false) and (JimHUD:getSetting({"CustomHUD", "PLAYER", "STATUS"}, true) or JimHUD:getSetting({"CustomHUD", "ENABLED"}, false)),
 		},
 		close_contact = {
 			perks = {5, 4},
 			class = "TimedBuffItem",
 			priority = 4,
 			color = HUDList.BuffItemBase.ICON_COLOR.STANDARD,
-			ignore = not WolfHUD:getSetting({"HUDList", "BUFF_LIST", "PERK_BUFFS", "close_contact"}, true),
+			ignore = not JimHUD:getSetting({"HUDList", "BUFF_LIST", "PERK_BUFFS", "close_contact"}, true),
 		},
 		combat_medic = {
 			skills_new = tweak_data.skilltree.skills.combat_medic.icon_xy,
 			class = "TimedBuffItem",
 			priority = 4,
 			color = HUDList.BuffItemBase.ICON_COLOR.STANDARD,
-			ignore = not WolfHUD:getSetting({"HUDList", "BUFF_LIST", "MASTERMIND_BUFFS", "combat_medic"}, true),
+			ignore = not JimHUD:getSetting({"HUDList", "BUFF_LIST", "MASTERMIND_BUFFS", "combat_medic"}, true),
 		},
 		combat_medic_passive = {
 			skills_new = tweak_data.skilltree.skills.combat_medic.icon_xy,
 			class = "BuffItemBase",
 			priority = 4,
 			color = HUDList.BuffItemBase.ICON_COLOR.STANDARD,
-			ignore = not WolfHUD:getSetting({"HUDList", "BUFF_LIST", "MASTERMIND_BUFFS", "combat_medic_passive"}, false),
+			ignore = not JimHUD:getSetting({"HUDList", "BUFF_LIST", "MASTERMIND_BUFFS", "combat_medic_passive"}, false),
 		},
 		delayed_damage = {
 			perks = {3, 0},
@@ -5003,28 +5003,28 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 			priority = 4,
 			color = HUDList.BuffItemBase.ICON_COLOR.STANDARD,
 			show_value = "-%.0f",
-			ignore = not WolfHUD:getSetting({"HUDList", "BUFF_LIST", "PERK_BUFFS", "delayed_damage"}, true),
+			ignore = not JimHUD:getSetting({"HUDList", "BUFF_LIST", "PERK_BUFFS", "delayed_damage"}, true),
 		},
 		desperado = {
 			skills_new = tweak_data.skilltree.skills.expert_handling.icon_xy,
 			class = "TimedBuffItem",
 			priority = 4,
 			color = HUDList.BuffItemBase.ICON_COLOR.STANDARD,
-			ignore = not WolfHUD:getSetting({"HUDList", "BUFF_LIST", "FUGITIVE_BUFFS", "desperado"}, true),
+			ignore = not JimHUD:getSetting({"HUDList", "BUFF_LIST", "FUGITIVE_BUFFS", "desperado"}, true),
 		},
 		die_hard = {
 			skills_new = tweak_data.skilltree.skills.show_of_force.icon_xy,
 			class = "BuffItemBase",
 			priority = 4,
 			color = HUDList.BuffItemBase.ICON_COLOR.STANDARD,
-			ignore = not WolfHUD:getSetting({"HUDList", "BUFF_LIST", "ENFORCER_BUFFS", "die_hard"}, false),
+			ignore = not JimHUD:getSetting({"HUDList", "BUFF_LIST", "ENFORCER_BUFFS", "die_hard"}, false),
 		},
 		dire_need = {
 			skills_new = tweak_data.skilltree.skills.dire_need.icon_xy,
 			class = "TimedBuffItem",
 			priority = 4,
 			color = HUDList.BuffItemBase.ICON_COLOR.STANDARD,
-			ignore = not WolfHUD:getSetting({"HUDList", "BUFF_LIST", "GHOST_BUFFS", "dire_need"}, true),
+			ignore = not JimHUD:getSetting({"HUDList", "BUFF_LIST", "GHOST_BUFFS", "dire_need"}, true),
 		},
 		frenzy = {
 			skills_new = tweak_data.skilltree.skills.frenzy.icon_xy,
@@ -5032,21 +5032,21 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 			priority = 4,
 			color = HUDList.BuffItemBase.ICON_COLOR.STANDARD,
 			show_value = HUDList.BuffItemBase.VALUE_FUNC.IN_PERCENT,
-			ignore = not WolfHUD:getSetting({"HUDList", "BUFF_LIST", "FUGITIVE_BUFFS", "frenzy"}, false),
+			ignore = not JimHUD:getSetting({"HUDList", "BUFF_LIST", "FUGITIVE_BUFFS", "frenzy"}, false),
 		},
 		grinder = {
 			perks = {4, 6},
 			class = "TimedStacksBuffItem",
 			priority = 4,
 			color = HUDList.BuffItemBase.ICON_COLOR.STANDARD,
-			ignore = not WolfHUD:getSetting({"HUDList", "BUFF_LIST", "PERK_BUFFS", "grinder"}, true),
+			ignore = not JimHUD:getSetting({"HUDList", "BUFF_LIST", "PERK_BUFFS", "grinder"}, true),
 		},
 		hostage_situation = {
 			perks = {0, 1},
 			class = "BuffItemBase",
 			priority = 4,
 			color = HUDList.BuffItemBase.ICON_COLOR.STANDARD,
-			ignore = not WolfHUD:getSetting({"HUDList", "BUFF_LIST", "PERK_BUFFS", "hostage_situation"}, false),
+			ignore = not JimHUD:getSetting({"HUDList", "BUFF_LIST", "PERK_BUFFS", "hostage_situation"}, false),
 		},
 		hostage_taker = {
 			skills_new = tweak_data.skilltree.skills.black_marketeer.icon_xy,
@@ -5054,14 +5054,14 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 			priority = 4,
 			color = HUDList.BuffItemBase.ICON_COLOR.STANDARD,
 			invert_timers = true,
-			ignore = not WolfHUD:getSetting({"HUDList", "BUFF_LIST", "MASTERMIND_BUFFS", "hostage_taker"}, false),
+			ignore = not JimHUD:getSetting({"HUDList", "BUFF_LIST", "MASTERMIND_BUFFS", "hostage_taker"}, false),
 		},
 		inspire = {
 			skills_new = tweak_data.skilltree.skills.inspire.icon_xy,
 			class = "TimedBuffItem",
 			priority = 4,
 			color = HUDList.BuffItemBase.ICON_COLOR.STANDARD,
-			ignore = not WolfHUD:getSetting({"HUDList", "BUFF_LIST", "MASTERMIND_BUFFS", "inspire"}, true),
+			ignore = not JimHUD:getSetting({"HUDList", "BUFF_LIST", "MASTERMIND_BUFFS", "inspire"}, true),
 		},
 		lock_n_load = {
 			skills_new = tweak_data.skilltree.skills.shock_and_awe.icon_xy,
@@ -5069,7 +5069,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 			priority = 4,
 			color = HUDList.BuffItemBase.ICON_COLOR.STANDARD,
 			show_value = HUDList.BuffItemBase.MULT_IN_PERCENT,
-			ignore = not WolfHUD:getSetting({"HUDList", "BUFF_LIST", "TECHNICIAN_BUFFS", "lock_n_load"}, true),
+			ignore = not JimHUD:getSetting({"HUDList", "BUFF_LIST", "TECHNICIAN_BUFFS", "lock_n_load"}, true),
 		},
 		maniac = {
 			perks = {0, 0},
@@ -5078,21 +5078,21 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 			priority = 4,
 			color = HUDList.BuffItemBase.ICON_COLOR.STANDARD,
 			show_value = "-%.1f",
-			ignore = not WolfHUD:getSetting({"HUDList", "BUFF_LIST", "PERK_BUFFS", "maniac"}, false) and (WolfHUD:getSetting({"CustomHUD", "PLAYER", "STATUS"}, true) or WolfHUD:getSetting({"CustomHUD", "ENABLED"}, false)),
+			ignore = not JimHUD:getSetting({"HUDList", "BUFF_LIST", "PERK_BUFFS", "maniac"}, false) and (JimHUD:getSetting({"CustomHUD", "PLAYER", "STATUS"}, true) or JimHUD:getSetting({"CustomHUD", "ENABLED"}, false)),
 		},
 		messiah = {
 			skills_new = tweak_data.skilltree.skills.messiah.icon_xy,
 			class = "BuffItemBase",
 			priority = 3,
 			color = HUDList.BuffItemBase.ICON_COLOR.STANDARD,
-			ignore = not WolfHUD:getSetting({"HUDList", "BUFF_LIST", "FUGITIVE_BUFFS", "messiah"}, true)
+			ignore = not JimHUD:getSetting({"HUDList", "BUFF_LIST", "FUGITIVE_BUFFS", "messiah"}, true)
 		},
 		melee_stack_damage = {
 			perks = {5, 4},
 			class = "TimedBuffItem",
 			priority = 4,
 			color = HUDList.BuffItemBase.ICON_COLOR.STANDARD,
-			ignore = not WolfHUD:getSetting({"HUDList", "BUFF_LIST", "PERK_BUFFS", "melee_stack_damage"}, false),
+			ignore = not JimHUD:getSetting({"HUDList", "BUFF_LIST", "PERK_BUFFS", "melee_stack_damage"}, false),
 		},
 		muscle_regen = {
 			perks = { 4, 1 },
@@ -5100,35 +5100,35 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 			priority = 4,
 			color = HUDList.BuffItemBase.ICON_COLOR.STANDARD,
 			invert_timers = true,
-			ignore = not WolfHUD:getSetting({"HUDList", "BUFF_LIST", "PERK_BUFFS", "muscle_regen"}, false),
+			ignore = not JimHUD:getSetting({"HUDList", "BUFF_LIST", "PERK_BUFFS", "muscle_regen"}, false),
 		},
 		overdog = {
 			perks = {6, 4},
 			class = "TimedBuffItem",
 			priority = 4,
 			color = HUDList.BuffItemBase.ICON_COLOR.STANDARD,
-			ignore = not WolfHUD:getSetting({"HUDList", "BUFF_LIST", "PERK_BUFFS", "overdog"}, false)
+			ignore = not JimHUD:getSetting({"HUDList", "BUFF_LIST", "PERK_BUFFS", "overdog"}, false)
 		},
 		overkill = {
 			skills_new = tweak_data.skilltree.skills.overkill.icon_xy,
 			class = "TimedBuffItem",
 			priority = 4,
 			color = HUDList.BuffItemBase.ICON_COLOR.STANDARD,
-			ignore = not WolfHUD:getSetting({"HUDList", "BUFF_LIST", "ENFORCER_BUFFS", "overkill"}, false),
+			ignore = not JimHUD:getSetting({"HUDList", "BUFF_LIST", "ENFORCER_BUFFS", "overkill"}, false),
 		},
 		painkiller = {
 			skills_new = tweak_data.skilltree.skills.fast_learner.icon_xy,
 			class = "TimedBuffItem",
 			priority = 4,
 			color = HUDList.BuffItemBase.ICON_COLOR.STANDARD,
-			ignore = not WolfHUD:getSetting({"HUDList", "BUFF_LIST", "MASTERMIND_BUFFS", "painkiller"}, false),
+			ignore = not JimHUD:getSetting({"HUDList", "BUFF_LIST", "MASTERMIND_BUFFS", "painkiller"}, false),
 		},
 		partner_in_crime = {
 			skills_new = tweak_data.skilltree.skills.control_freak.icon_xy,
 			class = "BuffItemBase",
 			priority = 3,
 			color = HUDList.BuffItemBase.ICON_COLOR.STANDARD,
-			ignore = not WolfHUD:getSetting({"HUDList", "BUFF_LIST", "MASTERMIND_BUFFS", "partner_in_crime"}, false),
+			ignore = not JimHUD:getSetting({"HUDList", "BUFF_LIST", "MASTERMIND_BUFFS", "partner_in_crime"}, false),
 		},
 		pocket_ecm_jammer = {
 			perks = {0, 0},
@@ -5136,7 +5136,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 			class = "TimedBuffItem",
 			priority = 4,
 			color = HUDList.BuffItemBase.ICON_COLOR.STANDARD,
-			ignore = not WolfHUD:getSetting({"HUDList", "BUFF_LIST", "PERK_BUFFS", "pocket_ecm_jammer"}, true),
+			ignore = not JimHUD:getSetting({"HUDList", "BUFF_LIST", "PERK_BUFFS", "pocket_ecm_jammer"}, true),
 		},
 		pocket_ecm_kill_dodge = {
 			perks = {3, 0},
@@ -5144,28 +5144,28 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 			class = "TimedBuffItem",
 			priority = 4,
 			color = HUDList.BuffItemBase.ICON_COLOR.STANDARD,
-			ignore = not WolfHUD:getSetting({"HUDList", "BUFF_LIST", "PERK_BUFFS", "pocket_ecm_kill_dodge"}, false),
+			ignore = not JimHUD:getSetting({"HUDList", "BUFF_LIST", "PERK_BUFFS", "pocket_ecm_kill_dodge"}, false),
 		},
 		running_from_death = {
 			skills_new = tweak_data.skilltree.skills.running_from_death.icon_xy,
 			class = "TimedBuffItem",
 			priority = 4,
 			color = HUDList.BuffItemBase.ICON_COLOR.STANDARD,
-			ignore = not WolfHUD:getSetting({"HUDList", "BUFF_LIST", "FUGITIVE_BUFFS", "running_from_death"}, true),
+			ignore = not JimHUD:getSetting({"HUDList", "BUFF_LIST", "FUGITIVE_BUFFS", "running_from_death"}, true),
 		},
 		quick_fix = {
 			skills_new = tweak_data.skilltree.skills.tea_time.icon_xy,
 			class = "TimedBuffItem",
 			priority = 4,
 			color = HUDList.BuffItemBase.ICON_COLOR.STANDARD,
-			ignore = not WolfHUD:getSetting({"HUDList", "BUFF_LIST", "MASTERMIND_BUFFS", "quick_fix"}, false),
+			ignore = not JimHUD:getSetting({"HUDList", "BUFF_LIST", "MASTERMIND_BUFFS", "quick_fix"}, false),
 		},
 		second_wind = {
 			skills_new = tweak_data.skilltree.skills.scavenger.icon_xy,
 			class = "TimedBuffItem",
 			priority = 4,
 			color = HUDList.BuffItemBase.ICON_COLOR.STANDARD,
-			ignore = not WolfHUD:getSetting({"HUDList", "BUFF_LIST", "GHOST_BUFFS", "second_wind"}, true),
+			ignore = not JimHUD:getSetting({"HUDList", "BUFF_LIST", "GHOST_BUFFS", "second_wind"}, true),
 		},
 		sicario_dodge = {
 			perks = {1, 0},
@@ -5174,14 +5174,14 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 			priority = 4,
 			color = HUDList.BuffItemBase.ICON_COLOR.STANDARD,
 			show_value = HUDList.BuffItemBase.VALUE_FUNC.IN_PERCENT,
-			ignore = not WolfHUD:getSetting({"HUDList", "BUFF_LIST", "PERK_BUFFS", "sicario_dodge"}, true),
+			ignore = not JimHUD:getSetting({"HUDList", "BUFF_LIST", "PERK_BUFFS", "sicario_dodge"}, true),
 		},
 		sixth_sense = {
 			skills_new = tweak_data.skilltree.skills.chameleon.icon_xy,
 			class = "TimedBuffItem",
 			priority = 4,
 			color = HUDList.BuffItemBase.ICON_COLOR.STANDARD,
-			ignore = not WolfHUD:getSetting({"HUDList", "BUFF_LIST", "GHOST_BUFFS", "sixth_sense"}, true),
+			ignore = not JimHUD:getSetting({"HUDList", "BUFF_LIST", "GHOST_BUFFS", "sixth_sense"}, true),
 		},
 		smoke_screen_grenade = {
 			perks = {0, 0},
@@ -5189,14 +5189,14 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 			class = "TimedBuffItem",
 			priority = 4,
 			color = HUDList.BuffItemBase.ICON_COLOR.STANDARD,
-			ignore = not WolfHUD:getSetting({"HUDList", "BUFF_LIST", "PERK_BUFFS", "smoke_screen_grenade"}, true),
+			ignore = not JimHUD:getSetting({"HUDList", "BUFF_LIST", "PERK_BUFFS", "smoke_screen_grenade"}, true),
 		},
 		swan_song = {
 			skills_new = tweak_data.skilltree.skills.perseverance.icon_xy,
 			class = "TimedBuffItem",
 			priority = 4,
 			color = HUDList.BuffItemBase.ICON_COLOR.STANDARD,
-			ignore = not WolfHUD:getSetting({"HUDList", "BUFF_LIST", "FUGITIVE_BUFFS", "swan_song"}, false) and (WolfHUD:getSetting({"CustomHUD", "PLAYER", "STATUS"}, true) or WolfHUD:getSetting({"CustomHUD", "ENABLED"}, false)),
+			ignore = not JimHUD:getSetting({"HUDList", "BUFF_LIST", "FUGITIVE_BUFFS", "swan_song"}, false) and (JimHUD:getSetting({"CustomHUD", "PLAYER", "STATUS"}, true) or JimHUD:getSetting({"CustomHUD", "ENABLED"}, false)),
 		},
 		tag_team = {
 			perks = {0, 0},
@@ -5205,49 +5205,49 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 			priority = 4,
 			color = HUDList.BuffItemBase.ICON_COLOR.STANDARD,
 			show_value = true,
-			ignore = not WolfHUD:getSetting({"HUDList", "BUFF_LIST", "PERK_BUFFS", "tag_team"}, true) and (WolfHUD:getSetting({"CustomHUD", "PLAYER", "STATUS"}, true) or WolfHUD:getSetting({"CustomHUD", "ENABLED"}, false)),
+			ignore = not JimHUD:getSetting({"HUDList", "BUFF_LIST", "PERK_BUFFS", "tag_team"}, true) and (JimHUD:getSetting({"CustomHUD", "PLAYER", "STATUS"}, true) or JimHUD:getSetting({"CustomHUD", "ENABLED"}, false)),
 		},
 		tooth_and_claw = {
 			perks = {0, 3},
 			class = "TimedBuffItem",
 			priority = 4,
 			color = HUDList.BuffItemBase.ICON_COLOR.STANDARD,
-			ignore = not WolfHUD:getSetting({"HUDList", "BUFF_LIST", "PERK_BUFFS", "tooth_and_claw"}, true),
+			ignore = not JimHUD:getSetting({"HUDList", "BUFF_LIST", "PERK_BUFFS", "tooth_and_claw"}, true),
 		},
 		trigger_happy = {
 			skills_new = tweak_data.skilltree.skills.trigger_happy.icon_xy,
 			class = "TimedBuffItem",
 			priority = 4,
 			color = HUDList.BuffItemBase.ICON_COLOR.STANDARD,
-			ignore = not WolfHUD:getSetting({"HUDList", "BUFF_LIST", "FUGITIVE_BUFFS", "trigger_happy"}, false),
+			ignore = not JimHUD:getSetting({"HUDList", "BUFF_LIST", "FUGITIVE_BUFFS", "trigger_happy"}, false),
 		},
 		underdog = {
 			skills_new = tweak_data.skilltree.skills.underdog.icon_xy,
 			class = "TimedBuffItem",
 			priority = 4,
 			color = HUDList.BuffItemBase.ICON_COLOR.STANDARD,
-			ignore = not WolfHUD:getSetting({"HUDList", "BUFF_LIST", "ENFORCER_BUFFS", "underdog"}, false),
+			ignore = not JimHUD:getSetting({"HUDList", "BUFF_LIST", "ENFORCER_BUFFS", "underdog"}, false),
 		},
 		unseen_strike = {
 			skills_new = tweak_data.skilltree.skills.unseen_strike.icon_xy,
 			class = "TimedBuffItem",
 			priority = 4,
 			color = HUDList.BuffItemBase.ICON_COLOR.STANDARD,
-			ignore = not WolfHUD:getSetting({"HUDList", "BUFF_LIST", "GHOST_BUFFS", "unseen_strike"}, true),
+			ignore = not JimHUD:getSetting({"HUDList", "BUFF_LIST", "GHOST_BUFFS", "unseen_strike"}, true),
 		},
 		up_you_go = {
 			skills_new = tweak_data.skilltree.skills.up_you_go.icon_xy,
 			class = "TimedBuffItem",
 			priority = 4,
 			color = HUDList.BuffItemBase.ICON_COLOR.STANDARD,
-			ignore = not WolfHUD:getSetting({"HUDList", "BUFF_LIST", "FUGITIVE_BUFFS", "up_you_go"}, false),
+			ignore = not JimHUD:getSetting({"HUDList", "BUFF_LIST", "FUGITIVE_BUFFS", "up_you_go"}, false),
 		},
 		uppers = {
 			skills_new = tweak_data.skilltree.skills.tea_cookies.icon_xy,
 			class = "TimedBuffItem",
 			priority = 4,
 			color = HUDList.BuffItemBase.ICON_COLOR.STANDARD,
-			ignore = not WolfHUD:getSetting({"HUDList", "BUFF_LIST", "MASTERMIND_BUFFS", "uppers"}, true),
+			ignore = not JimHUD:getSetting({"HUDList", "BUFF_LIST", "MASTERMIND_BUFFS", "uppers"}, true),
 		},
 		yakuza = {
 			perks = {2, 7},
@@ -5255,7 +5255,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 			priority = 3,
 			color = HUDList.BuffItemBase.ICON_COLOR.STANDARD,
 			show_value = HUDList.BuffItemBase.VALUE_FUNC.IN_PERCENT,
-			ignore = not WolfHUD:getSetting({"HUDList", "BUFF_LIST", "PERK_BUFFS", "yakuza"}, false),
+			ignore = not JimHUD:getSetting({"HUDList", "BUFF_LIST", "PERK_BUFFS", "yakuza"}, false),
 		},
 
 		--Debuffs
@@ -5265,14 +5265,14 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 			class = "TimedBuffItem",
 			priority = 8,
 			color = HUDList.BuffItemBase.ICON_COLOR.DEBUFF,
-			ignore = not WolfHUD:getSetting({"HUDList", "BUFF_LIST", "PERK_BUFFS", "anarchist_armor_recovery_debuff"}, true),
+			ignore = not JimHUD:getSetting({"HUDList", "BUFF_LIST", "PERK_BUFFS", "anarchist_armor_recovery_debuff"}, true),
 		},
 		ammo_give_out_debuff = {
 			perks = {5, 5},
 			class = "TimedBuffItem",
 			priority = 8,
 			color = HUDList.BuffItemBase.ICON_COLOR.DEBUFF,
-			ignore = not WolfHUD:getSetting({"HUDList", "BUFF_LIST", "PERK_BUFFS", "ammo_give_out_debuff"}, true),
+			ignore = not JimHUD:getSetting({"HUDList", "BUFF_LIST", "PERK_BUFFS", "ammo_give_out_debuff"}, true),
 		},
 		armor_break_invulnerable_debuff = {
 			perks = {6, 1},
@@ -5286,7 +5286,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 			class = "TimedBuffItem",
 			priority = 8,
 			color = HUDList.BuffItemBase.ICON_COLOR.DEBUFF,
-			ignore = not WolfHUD:getSetting({"HUDList", "BUFF_LIST", "ENFORCER_BUFFS", "bullseye_debuff"}, true),
+			ignore = not JimHUD:getSetting({"HUDList", "BUFF_LIST", "ENFORCER_BUFFS", "bullseye_debuff"}, true),
 		},
 		grinder_debuff = {
 			perks = {4, 6},
@@ -5316,9 +5316,9 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 			class = "TimedBuffItem",
 			priority = 8,
 			color = HUDList.BuffItemBase.ICON_COLOR.DEBUFF,
-			title = "wolfhud_hudlist_buff_boost",
+			title = "jimhud_hudlist_buff_boost",
 			localized = true,
-			ignore = not WolfHUD:getSetting({"HUDList", "BUFF_LIST", "MASTERMIND_BUFFS", "inspire_debuff"}, true),
+			ignore = not JimHUD:getSetting({"HUDList", "BUFF_LIST", "MASTERMIND_BUFFS", "inspire_debuff"}, true),
 		},
 		inspire_revive_debuff = {
 			skills_new = tweak_data.skilltree.skills.inspire.icon_xy,
@@ -5326,16 +5326,16 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 			priority = 8,
 			color = HUDList.BuffItemBase.ICON_COLOR.DEBUFF,
 			ace_icon = true,
-			title = "wolfhud_hudlist_buff_revive",
+			title = "jimhud_hudlist_buff_revive",
 			localized = true,
-			ignore = not WolfHUD:getSetting({"HUDList", "BUFF_LIST", "MASTERMIND_BUFFS", "inspire_revive_debuff"}, true),
+			ignore = not JimHUD:getSetting({"HUDList", "BUFF_LIST", "MASTERMIND_BUFFS", "inspire_revive_debuff"}, true),
 		},
 		life_drain_debuff = {
 			perks = {7, 4},
 			class = "TimedBuffItem",
 			priority = 8,
 			color = HUDList.BuffItemBase.ICON_COLOR.DEBUFF,
-			ignore = not WolfHUD:getSetting({"HUDList", "BUFF_LIST", "PERK_BUFFS", "life_drain_debuff"}, true),
+			ignore = not JimHUD:getSetting({"HUDList", "BUFF_LIST", "PERK_BUFFS", "life_drain_debuff"}, true),
 		},
 		maniac_debuff = {
 			perks = {0, 0},
@@ -5350,7 +5350,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 			class = "TimedBuffItem",
 			priority = 8,
 			color = HUDList.BuffItemBase.ICON_COLOR.DEBUFF,
-			ignore = not WolfHUD:getSetting({"HUDList", "BUFF_LIST", "PERK_BUFFS", "medical_supplies_debuff"}, true),
+			ignore = not JimHUD:getSetting({"HUDList", "BUFF_LIST", "PERK_BUFFS", "medical_supplies_debuff"}, true),
 		},
 		pocket_ecm_jammer_debuff = {
 			perks = {0, 0},
@@ -5381,7 +5381,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 			class = "TimedBuffItem",
 			priority = 8,
 			color = HUDList.BuffItemBase.ICON_COLOR.DEBUFF,
-			ignore = not WolfHUD:getSetting({"HUDList", "BUFF_LIST", "PERK_BUFFS", "sociopath_debuff"}, true),
+			ignore = not JimHUD:getSetting({"HUDList", "BUFF_LIST", "PERK_BUFFS", "sociopath_debuff"}, true),
 		},
 		tag_team_debuff = {
 			perks = {0, 0},
@@ -5397,7 +5397,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 			class = "TimedBuffItem",
 			priority = 8,
 			color = HUDList.BuffItemBase.ICON_COLOR.DEBUFF,
-			ignore = not WolfHUD:getSetting({"HUDList", "BUFF_LIST", "PERK_BUFFS", "damage_control_debuff"}, false),
+			ignore = not JimHUD:getSetting({"HUDList", "BUFF_LIST", "PERK_BUFFS", "damage_control_debuff"}, false),
 		},
 		unseen_strike_debuff = {
 			skills_new = tweak_data.skilltree.skills.unseen_strike.icon_xy,
@@ -5420,7 +5420,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 			class = "TeamBuffItem",
 			priority = 1,
 			color = HUDList.BuffItemBase.ICON_COLOR.TEAM,
-			ignore = not WolfHUD:getSetting({"HUDList", "BUFF_LIST", "PERK_BUFFS", "armorer"}, true),
+			ignore = not JimHUD:getSetting({"HUDList", "BUFF_LIST", "PERK_BUFFS", "armorer"}, true),
 		},
 		bulletproof = {						--TODO: Needs new icon (Faster Team armor recovery)
 			--skills_new = tweak_data.skilltree.skills.iron_man.icon_xy,
@@ -5428,14 +5428,14 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 			class = "TeamBuffItem",
 			priority = 1,
 			color = HUDList.BuffItemBase.ICON_COLOR.TEAM,
-			ignore = not WolfHUD:getSetting({"HUDList", "BUFF_LIST", "ENFORCER_BUFFS", "bulletproof"}, true),
+			ignore = not JimHUD:getSetting({"HUDList", "BUFF_LIST", "ENFORCER_BUFFS", "bulletproof"}, true),
 		},
 		crew_chief = {
 			perks = {2, 0},
 			class = "TeamBuffItem",
 			priority = 1,
 			color = HUDList.BuffItemBase.ICON_COLOR.TEAM,
-			ignore = not WolfHUD:getSetting({"HUDList", "BUFF_LIST", "PERK_BUFFS", "crew_chief"}, true),
+			ignore = not JimHUD:getSetting({"HUDList", "BUFF_LIST", "PERK_BUFFS", "crew_chief"}, true),
 		},
 		endurance = {
 			skills_new = tweak_data.skilltree.skills.triathlete.icon_xy,
@@ -5449,7 +5449,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 			class = "TeamBuffItem",
 			priority = 1,
 			color = HUDList.BuffItemBase.ICON_COLOR.TEAM,
-			ignore = not WolfHUD:getSetting({"HUDList", "BUFF_LIST", "MASTERMIND_BUFFS", "forced_friendship"}, true),
+			ignore = not JimHUD:getSetting({"HUDList", "BUFF_LIST", "MASTERMIND_BUFFS", "forced_friendship"}, true),
 		},
 
 		--Gage Boosts
@@ -5458,14 +5458,14 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 			class = "TimedBuffItem",
 			priority = 10,
 			color = HUDList.BuffItemBase.ICON_COLOR.BUFF,
-			ignore = not WolfHUD:getSetting({"HUDList", "BUFF_LIST", "GAGE_BOOSTS", "invulnerable_buff"}, true),
+			ignore = not JimHUD:getSetting({"HUDList", "BUFF_LIST", "GAGE_BOOSTS", "invulnerable_buff"}, true),
 		},
 		life_steal_debuff = {
 			hud_tweak = "csb_lifesteal",
 			class = "TimedBuffItem",
 			priority = 10,
 			color = HUDList.BuffItemBase.ICON_COLOR.DEBUFF,
-			ignore = not WolfHUD:getSetting({"HUDList", "BUFF_LIST", "GAGE_BOOSTS", "life_steal_debuff"}, true),
+			ignore = not JimHUD:getSetting({"HUDList", "BUFF_LIST", "GAGE_BOOSTS", "life_steal_debuff"}, true),
 		},
 
 		--Henchman boosts
@@ -5473,17 +5473,17 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 			hud_tweak = "ability_1",
 			class = "TimedBuffItem",
 			priority = 10,
-			title = "wolfhud_hudlist_buff_crew_inspire_debuff",
+			title = "jimhud_hudlist_buff_crew_inspire_debuff",
 			localized = true,
 			color = HUDList.BuffItemBase.ICON_COLOR.DEBUFF,
-			ignore = not WolfHUD:getSetting({"HUDList", "BUFF_LIST", "AI_SKILLS", "crew_inspire_debuff"}, true),
+			ignore = not JimHUD:getSetting({"HUDList", "BUFF_LIST", "AI_SKILLS", "crew_inspire_debuff"}, true),
 		},
 		crew_throwable_regen = {
 			hud_tweak = "skill_7",
 			class = "BuffItemBase",
 			priority = 10,
 			color = HUDList.BuffItemBase.ICON_COLOR.BUFF,
-			ignore = not WolfHUD:getSetting({"HUDList", "BUFF_LIST", "AI_SKILLS", "crew_throwable_regen"}, true),
+			ignore = not JimHUD:getSetting({"HUDList", "BUFF_LIST", "AI_SKILLS", "crew_throwable_regen"}, true),
 		},
 		crew_health_regen = {
 			hud_tweak = "skill_5",
@@ -5491,7 +5491,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 			priority = 10,
 			color = HUDList.BuffItemBase.ICON_COLOR.BUFF,
 			invert_timers = true,
-			ignore = not WolfHUD:getSetting({"HUDList", "BUFF_LIST", "AI_SKILLS", "crew_health_regen"}, true),
+			ignore = not JimHUD:getSetting({"HUDList", "BUFF_LIST", "AI_SKILLS", "crew_health_regen"}, true),
 		},
 
 		--Composite buffs
@@ -5500,27 +5500,27 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 			class = "DamageIncreaseBuff",
 			priority = 2,
 			color = Color(1, 1, 0),
-			title = "wolfhud_hudlist_buff_dmg_inc",
+			title = "jimhud_hudlist_buff_dmg_inc",
 			localized = true,
-			ignore = not WolfHUD:getSetting({"HUDList", "BUFF_LIST", "damage_increase"}, true),
+			ignore = not JimHUD:getSetting({"HUDList", "BUFF_LIST", "damage_increase"}, true),
 		},
 		damage_reduction = {
 			skills_new = tweak_data.skilltree.skills.disguise.icon_xy,
 			class = "DamageReductionBuff",
 			priority = 2,
 			color = Color(0, 1, 1),
-			title = "wolfhud_hudlist_buff_dmg_dec",
+			title = "jimhud_hudlist_buff_dmg_dec",
 			localized = true,
-			ignore = not WolfHUD:getSetting({"HUDList", "BUFF_LIST", "damage_reduction"}, true),
+			ignore = not JimHUD:getSetting({"HUDList", "BUFF_LIST", "damage_reduction"}, true),
 		},
 		melee_damage_increase = {
 			skills_new = tweak_data.skilltree.skills.hidden_blade.icon_xy,
 			class = "MeleeDamageIncreaseBuff",
 			priority = 2,
 			color = Color(1, 0, 1),
-			title = "wolfhud_hudlist_buff_mdmg_inc",
+			title = "jimhud_hudlist_buff_mdmg_inc",
 			localized = true,
-			ignore = not WolfHUD:getSetting({"HUDList", "BUFF_LIST", "melee_damage_increase"}, true),
+			ignore = not JimHUD:getSetting({"HUDList", "BUFF_LIST", "melee_damage_increase"}, true),
 		},
 		passive_health_regen = {
 			--perks = {4, 1},
@@ -5528,10 +5528,10 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 			class = "PassiveHealthRegenBuff",
 			priority = 2,
 			color = Color(0.1, 1, 0.1),
-			title = "wolfhud_hudlist_buff_phealth_reg",
+			title = "jimhud_hudlist_buff_phealth_reg",
 			localized = true,
 			invert_timers = true,
-			ignore = not WolfHUD:getSetting({"HUDList", "BUFF_LIST", "passive_health_regen"}, true),
+			ignore = not JimHUD:getSetting({"HUDList", "BUFF_LIST", "passive_health_regen"}, true),
 		},
 		total_dodge_chance = {	--missing some skills:
 			--perks = {1, 0},
@@ -5540,9 +5540,9 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 			class = "TotalDodgeChanceBuff",
 			priority = 2,
 			color = Color(1, 0.5, 0),
-			title = "wolfhud_hudlist_buff_tot_dodge",
+			title = "jimhud_hudlist_buff_tot_dodge",
 			localized = true,
-			ignore = not WolfHUD:getSetting({"HUDList", "BUFF_LIST", "total_dodge_chance"}, true),
+			ignore = not JimHUD:getSetting({"HUDList", "BUFF_LIST", "total_dodge_chance"}, true),
 		},
 
 		--Player actions
@@ -5564,7 +5564,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 			ignore = false,
 		},
 		weapon_charge = {
-			texture = "guis/textures/wolfhud/hudlist/weapon_charge",
+			texture = "guis/textures/jimhud/hudlist/weapon_charge",
 			--texture_rect = {1984, 0, 64, 64},
 			class = "TimedBuffItem",
 			priority = 15,
@@ -5577,7 +5577,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 			class = "TimedBuffItem",
 			priority = 15,
 			color = HUDList.BuffItemBase.ICON_COLOR.STANDARD,
-			ignore = WolfHUD:getSetting({"INTERACTION", "SHOW_MELEE"}, true)
+			ignore = JimHUD:getSetting({"INTERACTION", "SHOW_MELEE"}, true)
 		},
 		reload = {
 			--skills_new = tweak_data.skilltree.skills.speedy_reload.icon_xy,
@@ -5585,7 +5585,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 			class = "TimedBuffItem",
 			priority = 15,
 			color = HUDList.BuffItemBase.ICON_COLOR.STANDARD,
-			ignore = WolfHUD:getSetting({"INTERACTION", "SHOW_RELOAD"}, true)
+			ignore = JimHUD:getSetting({"INTERACTION", "SHOW_RELOAD"}, true)
 		},
 		interact = {
 			--skills_new = tweak_data.skilltree.skills.second_chances.icon_xy,
@@ -5593,7 +5593,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 			class = "TimedInteractionItem",
 			priority = 15,
 			color = HUDList.BuffItemBase.ICON_COLOR.STANDARD,
-			ignore = (WolfHUD:getSetting({"INTERACTION", "SHOW_CIRCLE"}, true) or WolfHUD:getSetting({"INTERACTION", "SHOW_TIME_REMAINING"}, true))
+			ignore = (JimHUD:getSetting({"INTERACTION", "SHOW_CIRCLE"}, true) or JimHUD:getSetting({"INTERACTION", "SHOW_TIME_REMAINING"}, true))
 		},
 		interact_debuff = {
 			--skills_new = tweak_data.skilltree.skills.second_chances.icon_xy,
@@ -6182,7 +6182,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 
 	function HUDList.CompositeBuff:set_value(id, data)
 		if self._member_buffs[id] and self._member_buffs[id].value ~= data.value then
-			WolfHUD:print_log("(HUDList) CompositeBuff:set_value(%s, %s)", tostring(id), tostring(data.value), "info")
+			JimHUD:print_log("(HUDList) CompositeBuff:set_value(%s, %s)", tostring(id), tostring(data.value), "info")
 			self._member_buffs[id].value = data.value
 			self:_check_buffs()
 		end
@@ -6703,7 +6703,7 @@ if string.lower(RequiredScript) == "lib/managers/objectinteractionmanager" then
 
 	function ObjectInteractionManager:init(...)
 		init_original(self, ...)
-		if managers.gameinfo and WolfHUD:getSetting({"HUDSuspicion", "REMOVE_ANSWERED_PAGER_CONTOUR"}, true) then
+		if managers.gameinfo and JimHUD:getSetting({"HUDSuspicion", "REMOVE_ANSWERED_PAGER_CONTOUR"}, true) then
 			managers.gameinfo:register_listener("pager_contour_remover", "pager", "set_answered", callback(nil, _G, "pager_answered_clbk"))
 		end
 	end

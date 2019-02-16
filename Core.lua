@@ -1,15 +1,15 @@
-if not _G.WolfHUD then
-	_G.WolfHUD = {}
-	WolfHUD.mod_path = ModPath
-	WolfHUD.save_path = SavePath
-	WolfHUD.settings_path = WolfHUD.save_path .. "WolfHUD_v2.json"
-	WolfHUD.tweak_file = "WolfHUDTweakData.lua"
-	WolfHUD.identifier = string.match(WolfHUD.mod_path, "[\\/]([%w_-]+)[\\/]$") or "WolfHUD"
+if not _G.JimHUD then
+	_G.JimHUD = {}
+	JimHUD.mod_path = ModPath
+	JimHUD.save_path = SavePath
+	JimHUD.settings_path = JimHUD.save_path .. "JimHUD_v2.json"
+	JimHUD.tweak_file = "JimHUDTweakData.lua"
+	JimHUD.identifier = string.match(JimHUD.mod_path, "[\\/]([%w_-]+)[\\/]$") or "JimHUD"
 
-	WolfHUD.settings = {}
-	WolfHUD.tweak_data = {}
+	JimHUD.settings = {}
+	JimHUD.tweak_data = {}
 
-	function WolfHUD:Reset()
+	function JimHUD:Reset()
 		local default_lang = "english"
 		for _, filename in pairs(file.GetFiles(self.mod_path .. "/loc/")) do
 			local str = filename:match('^(.*).json$')
@@ -19,7 +19,7 @@ if not _G.WolfHUD then
 			end
 		end
 
-		WolfHUD.settings = {
+		JimHUD.settings = {
 			LANGUAGE										= default_lang,
 			CustomHUD = {
 				ENABLED										= false,
@@ -482,7 +482,7 @@ if not _G.WolfHUD then
 		}
 	end
 
-	function WolfHUD:print_log(...)
+	function JimHUD:print_log(...)
 		local LOG_MODES = self:getTweakEntry("LOG_MODE", "table", {})
 		local params = {...}
 		local msg_type, text = table.remove(params, #params), table.remove(params, 1)
@@ -503,7 +503,7 @@ if not _G.WolfHUD then
 					end
 				end
 				if not text[1] or type(text[1]) ~= "string" then
-					log(string.format("[WolfHUD] %s:", string.upper(type(msg_type))))
+					log(string.format("[JimHUD] %s:", string.upper(type(msg_type))))
 					log_table(text)
 					return
 				else
@@ -515,7 +515,7 @@ if not _G.WolfHUD then
 			elseif type(text) == "string" then
 				text = string.format(text, unpack(params or {}))
 			end
-			text = string.format("[WolfHUD] %s: %s", string.upper(msg_type), text)
+			text = string.format("[JimHUD] %s: %s", string.upper(msg_type), text)
 			log(text)
 			if LOG_MODES.to_console and con and con.print and con.error then
 				local t = Application:time()
@@ -529,7 +529,7 @@ if not _G.WolfHUD then
 		end
 	end
 
-	function WolfHUD:Load()
+	function JimHUD:Load()
 		local corrupted = false
 		local file = io.open(self.settings_path, "r")
 		if file then
@@ -562,7 +562,7 @@ if not _G.WolfHUD then
 		end
 	end
 
-	function WolfHUD:Save()
+	function JimHUD:Save()
 		if table.size(self.settings or {}) > 0 then
 			local file = io.open(self.settings_path, "w+")
 			if file then
@@ -576,7 +576,7 @@ if not _G.WolfHUD then
 		end
 	end
 
-	function WolfHUD:createDirectory(path)
+	function JimHUD:createDirectory(path)
 		local current = ""
 		path = Application:nice_path(path, true):gsub("\\", "/")
 
@@ -595,7 +595,7 @@ if not _G.WolfHUD then
 		return self:DirectoryExists(path)
 	end
 
-	function WolfHUD:DirectoryExists(path)
+	function JimHUD:DirectoryExists(path)
 		if SystemFS and SystemFS.exists then
 			return SystemFS:exists(path)
 		elseif file and file.DirectoryExists then
@@ -604,12 +604,12 @@ if not _G.WolfHUD then
 		end
 	end
 
-	function WolfHUD:getVersion()
-		local mod = BLT and BLT.Mods:GetMod(WolfHUD.identifier or "")
+	function JimHUD:getVersion()
+		local mod = BLT and BLT.Mods:GetMod(JimHUD.identifier or "")
 		return tostring(mod and mod:GetVersion() or "(n/a)")
 	end
 
-	function WolfHUD:SafeTableConcat(tbl, str)
+	function JimHUD:SafeTableConcat(tbl, str)
 		local res
 		for i = 1, #tbl do
 			local val = tbl[i] and tostring(tbl[i]) or "[nil]"
@@ -618,7 +618,7 @@ if not _G.WolfHUD then
 		return res
 	end
 
-	function WolfHUD:getSetting(id_table, default)
+	function JimHUD:getSetting(id_table, default)
 		if type(id_table) == "table" then
 			local entry = self.settings
 			for i = 1, #id_table do
@@ -633,7 +633,7 @@ if not _G.WolfHUD then
 		return default
 	end
 
-	function WolfHUD:setSetting(id_table, value)
+	function JimHUD:setSetting(id_table, value)
 		local entry = self.settings
 		for i = 1, (#id_table-1) do
 			entry = entry[id_table[i]]
@@ -648,12 +648,12 @@ if not _G.WolfHUD then
 		end
 	end
 
-	function WolfHUD:getColorSetting(id_table, default, ...)
+	function JimHUD:getColorSetting(id_table, default, ...)
 		local color_name = self:getSetting(id_table, default)
 		return self:getColor(color_name, ...) or default and self:getColor(default, ...)
 	end
 
-	function WolfHUD:getColorID(name)
+	function JimHUD:getColorID(name)
 		if self.tweak_data and type(name) == "string" then
 			for i, data in ipairs(self:getTweakEntry("color_table", "table")) do
 				if name == data.name then
@@ -663,7 +663,7 @@ if not _G.WolfHUD then
 		end
 	end
 
-	function WolfHUD:getColor(name, ...)
+	function JimHUD:getColor(name, ...)
 		if self.tweak_data and type(name) == "string" then
 			for i, data in ipairs(self:getTweakEntry("color_table", "table")) do
 				if name == data.name then
@@ -673,7 +673,7 @@ if not _G.WolfHUD then
 		end
 	end
 
-	function WolfHUD:getTweakEntry(id, val_type, default)
+	function JimHUD:getTweakEntry(id, val_type, default)
 		local value = self.tweak_data[id]
 		if value ~= nil and (not val_type or type(value) == val_type) then
 			return value
@@ -695,7 +695,7 @@ if not _G.WolfHUD then
 		end
 	end
 
-	function WolfHUD:getCharacterName(character_id, to_upper)
+	function JimHUD:getCharacterName(character_id, to_upper)
 		local name = character_id or "UNKNOWN"
 		local character_names = self:getTweakEntry("CHARACTER_NAMES", "table", {})
 		local name_table = character_names and character_names[character_id]
@@ -708,7 +708,7 @@ if not _G.WolfHUD then
 		return name
 	end
 
-	function WolfHUD:truncateNameTag(name)
+	function JimHUD:truncateNameTag(name)
 		local truncated_name = name:gsub('^%b[]',''):gsub('^%b==',''):gsub('^%s*(.-)%s*$','%1')
 		if truncated_name:len() > 0 and name ~= truncated_name then
 			name = utf8.char(1031) .. truncated_name
@@ -716,29 +716,29 @@ if not _G.WolfHUD then
 		return name
 	end
 
-	if not WolfHUD.tweak_path then		-- Populate tweak data
-		local tweak_path = string.format("%s%s", WolfHUD.save_path, WolfHUD.tweak_file)
+	if not JimHUD.tweak_path then		-- Populate tweak data
+		local tweak_path = string.format("%s%s", JimHUD.save_path, JimHUD.tweak_file)
 		if not io.file_is_readable(tweak_path) then
-			tweak_path = string.format("%s%s", WolfHUD.mod_path, WolfHUD.tweak_file)
+			tweak_path = string.format("%s%s", JimHUD.mod_path, JimHUD.tweak_file)
 		end
 		if io.file_is_readable(tweak_path) then
 			dofile(tweak_path)
-			WolfHUD.tweak_data = WolfHUDTweakData:new()
+			JimHUD.tweak_data = JimHUDTweakData:new()
 		else
-			WolfHUD:print_log(string.format("Tweak Data file couldn't be found! (%s)", tweak_path), "error")
+			JimHUD:print_log(string.format("Tweak Data file couldn't be found! (%s)", tweak_path), "error")
 		end
 	end
 
 	-- Table with all menu IDs
-	WolfHUD.menu_ids = WolfHUD.menu_ids or {}
+	JimHUD.menu_ids = JimHUD.menu_ids or {}
 
 	--callback functions to apply changed settings on the fly
-	if not WolfHUD.apply_settings_clbk then
-		WolfHUD.apply_settings_clbk = {
+	if not JimHUD.apply_settings_clbk then
+		JimHUD.apply_settings_clbk = {
 			["CustomHUD"] = function(setting, value)
 				if managers.hud and managers.hud.change_hud_setting then
 					local type = table.remove(setting, 1)
-					managers.hud:change_hud_setting(type, setting, WolfHUD:getColor(value) or value)
+					managers.hud:change_hud_setting(type, setting, JimHUD:getColor(value) or value)
 				end
 			end,
 			["HUDList"] = function(setting, value)
@@ -748,11 +748,11 @@ if not _G.WolfHUD then
 					local option = tostring(setting[#setting])
 
 					if list == "BUFF_LIST" and category ~= "show_buffs" then
-						managers.hud:change_bufflist_setting(option, WolfHUD:getColor(value) or value)
+						managers.hud:change_bufflist_setting(option, JimHUD:getColor(value) or value)
 					elseif list == "RIGHT_LIST" and category == "SHOW_PICKUP_CATEGORIES" then
-						managers.hud:change_pickuplist_setting(option, WolfHUD:getColor(value) or value)
+						managers.hud:change_pickuplist_setting(option, JimHUD:getColor(value) or value)
 					else
-						managers.hud:change_list_setting(option, WolfHUD:getColor(value) or value)
+						managers.hud:change_list_setting(option, JimHUD:getColor(value) or value)
 					end
 				end
 			end,
@@ -763,27 +763,27 @@ if not _G.WolfHUD then
 			end,
 			["DrivingHUD"] = function(setting, value)
 				if managers.hud and managers.hud.change_drivinghud_setting then
-					managers.hud:change_drivinghud_setting(tostring(setting[#setting]), WolfHUD:getColor(value) or value)
+					managers.hud:change_drivinghud_setting(tostring(setting[#setting]), JimHUD:getColor(value) or value)
 				end
 			end,
 			["GADGETS"] = function(setting, value)
 				if managers.hud and managers.hud.change_hud_setting and #setting >= 4 then
-					WeaponGadgetBase.update_theme_setting(setting[1], setting[2], setting[3], setting[4], WolfHUD:getColor(value) or value)
+					WeaponGadgetBase.update_theme_setting(setting[1], setting[2], setting[3], setting[4], JimHUD:getColor(value) or value)
 				end
 			end,
 		}
 	end
 
-	WolfHUD:Reset()	-- Populate settings table
-	WolfHUD:Load()	-- Load user settings
+	JimHUD:Reset()	-- Populate settings table
+	JimHUD:Load()	-- Load user settings
 
 
 	-- Create Ingame Menus
-	dofile(WolfHUD.mod_path .. "OptionMenus.lua")	-- Menu structure table in seperate file, in order to not bloat the Core file too much.
-	local menu_options = WolfHUD.options_menu_data
+	dofile(JimHUD.mod_path .. "OptionMenus.lua")	-- Menu structure table in seperate file, in order to not bloat the Core file too much.
+	local menu_options = JimHUD.options_menu_data
 
 	-- Setup and register option menus
-	Hooks:Add("MenuManagerSetupCustomMenus", "MenuManagerSetupCustomMenus_WolfHUDCore", function( menu_manager, nodes )
+	Hooks:Add("MenuManagerSetupCustomMenus", "MenuManagerSetupCustomMenus_JimHUDCore", function( menu_manager, nodes )
 		local function create_menu(menu_table, parent_id)
 			for i, data in ipairs(menu_table) do
 				if data.type == "menu" then
@@ -797,16 +797,16 @@ if not _G.WolfHUD then
 	end)
 
 	--Populate options menus
-	Hooks:Add("MenuManagerPopulateCustomMenus", "MenuManagerPopulateCustomMenus_WolfHUDCore", function(menu_manager, nodes)
+	Hooks:Add("MenuManagerPopulateCustomMenus", "MenuManagerPopulateCustomMenus_JimHUDCore", function(menu_manager, nodes)
 		-- Called on setting change
 		local function change_setting(setting, value)
-			if WolfHUD:getSetting(setting, nil) ~= value and WolfHUD:setSetting(setting, value) then
-				WolfHUD:print_log(string.format("Change setting: %s = %s", WolfHUD:SafeTableConcat(setting, "->"), tostring(value)), "info")	-- Change type back!
-				WolfHUD.settings_changed = true
+			if JimHUD:getSetting(setting, nil) ~= value and JimHUD:setSetting(setting, value) then
+				JimHUD:print_log(string.format("Change setting: %s = %s", JimHUD:SafeTableConcat(setting, "->"), tostring(value)), "info")	-- Change type back!
+				JimHUD.settings_changed = true
 
 				local script = table.remove(setting, 1)
-				if WolfHUD.apply_settings_clbk[script] then
-					WolfHUD.apply_settings_clbk[script](setting, value)
+				if JimHUD.apply_settings_clbk[script] then
+					JimHUD.apply_settings_clbk[script](setting, value)
 				end
 			end
 		end
@@ -819,7 +819,7 @@ if not _G.WolfHUD then
 			MenuCallbackHandler[visual_clbk_id] = function(self, item)
 				for _, req in ipairs(data.visible_reqs or {}) do
 					if type(req) == "table" then
-						local a = WolfHUD:getSetting(req.setting, nil)
+						local a = JimHUD:getSetting(req.setting, nil)
 						if req.equal then
 							if a ~= req.equal then
 								return false
@@ -847,7 +847,7 @@ if not _G.WolfHUD then
 			MenuCallbackHandler[enabled_clbk_id] = function(self, item)
 				for _, req in ipairs(data.enabled_reqs or {}) do
 					if type(req) == "table" then
-						local a = WolfHUD:getSetting(req.setting, nil)
+						local a = JimHUD:getSetting(req.setting, nil)
 						if req.equal then
 							if a ~= req.equal then
 								return false
@@ -884,7 +884,7 @@ if not _G.WolfHUD then
 		end
 
 		-- Reapply enabled state on all items in the same menu
-		local update_visible_clbks = "wolfhud_update_visibility"
+		local update_visible_clbks = "jimhud_update_visibility"
 		MenuCallbackHandler[update_visible_clbks] = function(self, item)
 			local gui_node = item:parameters().gui_node
 			if gui_node then
@@ -913,8 +913,8 @@ if not _G.WolfHUD then
 		-- item create functions by type
 		local create_item_handlers = {
 			menu = function(parent_id, offset, data)
-				if not table.contains(WolfHUD.menu_ids, data.menu_id) then
-					table.insert(WolfHUD.menu_ids, data.menu_id)
+				if not table.contains(JimHUD.menu_ids, data.menu_id) then
+					table.insert(JimHUD.menu_ids, data.menu_id)
 				end
 			end,
 			slider = function(menu_id, offset, data, value)
@@ -1034,9 +1034,9 @@ if not _G.WolfHUD then
 					for i, item in pairs(menu._items_list) do
 						if item:parameters().name == id then
 							item:clear_options()
-							for k, v in ipairs(WolfHUD:getTweakEntry("color_table", "table") or {}) do
+							for k, v in ipairs(JimHUD:getTweakEntry("color_table", "table") or {}) do
 								if data.add_rainbow or v.name ~= "rainbow" then
-									local color_name = managers.localization:text("wolfhud_colors_" .. v.name)
+									local color_name = managers.localization:text("jimhud_colors_" .. v.name)
 									color_name = not color_name:lower():find("error") and color_name or string.upper(v.name)
 									local params = {
 										_meta = "option",
@@ -1169,7 +1169,7 @@ if not _G.WolfHUD then
 		local function populate_menu(menu_table, parent_id)
 			local item_amount = #menu_table
 			for i, data in ipairs(menu_table) do
-				local value = data.value and WolfHUD:getSetting(data.value, nil)
+				local value = data.value and JimHUD:getSetting(data.value, nil)
 				create_item_handlers[data.type](data.parent_id or parent_id, item_amount - i, data, value)
 
 				if data.type == "menu" then
@@ -1182,17 +1182,17 @@ if not _G.WolfHUD then
 	end)
 
 	-- Create callbacks and finalize menus
-	Hooks:Add("MenuManagerBuildCustomMenus", "MenuManagerBuildCustomMenus_WolfHUDCore", function(menu_manager, nodes)
-		local back_clbk = "wolfhud_back_clbk"
-		local focus_clbk = "wolfhud_focus_clbk"
-		local reset_clbk = "wolfhud_reset_clbk"
+	Hooks:Add("MenuManagerBuildCustomMenus", "MenuManagerBuildCustomMenus_JimHUDCore", function(menu_manager, nodes)
+		local back_clbk = "jimhud_back_clbk"
+		local focus_clbk = "jimhud_focus_clbk"
+		local reset_clbk = "jimhud_reset_clbk"
 
 		-- Add menu back callback
 		MenuCallbackHandler[back_clbk] = function(node)
-			if WolfHUD.settings_changed then
-				WolfHUD.settings_changed = nil
-				WolfHUD:Save()
-				WolfHUD:print_log("Settings saved!", "info")
+			if JimHUD.settings_changed then
+				JimHUD.settings_changed = nil
+				JimHUD:Save()
+				JimHUD:print_log("Settings saved!", "info")
 			end
 		end
 
@@ -1215,25 +1215,25 @@ if not _G.WolfHUD then
 
 		-- Add reset menu items callback
 		MenuCallbackHandler[reset_clbk] = function(self, item)
-			local menu_title = managers.localization:text("wolfhud_reset_options_title")
-			local menu_message = managers.localization:text("wolfhud_reset_options_confirm")
+			local menu_title = managers.localization:text("jimhud_reset_options_title")
+			local menu_message = managers.localization:text("jimhud_reset_options_confirm")
 			local menu_buttons = {
 				[1] = {
 					text = managers.localization:text("dialog_yes"),
 					callback = function(self, item)
-						WolfHUD:Reset()
+						JimHUD:Reset()
 
-						for i, menu_id in ipairs(WolfHUD.menu_ids) do
+						for i, menu_id in ipairs(JimHUD.menu_ids) do
 							local menu = MenuHelper:GetMenu(menu_id)
 							if menu then
 								for __, menu_item in ipairs(menu._items_list) do
 									local setting = menu_item._create_data and clone(menu_item._create_data.value)
 									if menu_item.set_value and setting then
-										local value = WolfHUD:getSetting(setting, nil)
+										local value = JimHUD:getSetting(setting, nil)
 										if value ~= nil then
 											local script = table.remove(setting, 1)
-											if WolfHUD.apply_settings_clbk[script] then
-												WolfHUD.apply_settings_clbk[script](setting, value)
+											if JimHUD.apply_settings_clbk[script] then
+												JimHUD.apply_settings_clbk[script](setting, value)
 											end
 
 											if menu_item._type == "toggle" then
@@ -1251,8 +1251,8 @@ if not _G.WolfHUD then
 						end
 						managers.viewport:resolution_changed()
 
-						WolfHUD.settings_changed = true
-						WolfHUD:print_log("Settings resetted!", "info")
+						JimHUD.settings_changed = true
+						JimHUD:print_log("Settings resetted!", "info")
 					end,
 				},
 				[2] = {
@@ -1285,24 +1285,24 @@ if not _G.WolfHUD then
 	end)
 
 	--Add localiszation strings
-	Hooks:Add("LocalizationManagerPostInit", "LocalizationManagerPostInit_WolfHUDCore", function(loc)
-		local loc_path = WolfHUD.mod_path .. "loc/"
+	Hooks:Add("LocalizationManagerPostInit", "LocalizationManagerPostInit_JimHUDCore", function(loc)
+		local loc_path = JimHUD.mod_path .. "loc/"
 		if file.DirectoryExists( loc_path ) then
-			loc:load_localization_file(string.format("%s/%s.json", loc_path, WolfHUD:getSetting({"LANGUAGE"}, "english")))
+			loc:load_localization_file(string.format("%s/%s.json", loc_path, JimHUD:getSetting({"LANGUAGE"}, "english")))
 			loc:load_localization_file(string.format("%s/english.json", loc_path), false)
 
-			if WolfHUD:getSetting({"INVENTORY", "USE_REAL_WEAPON_NAMES"}, false) then
+			if JimHUD:getSetting({"INVENTORY", "USE_REAL_WEAPON_NAMES"}, false) then
 				loc:load_localization_file(string.format("%s/RealWeaponNames.json", loc_path))
 			end
 		else
-			WolfHUD:print_log("Localization folder seems to be missing!", "error")
+			JimHUD:print_log("Localization folder seems to be missing!", "error")
 		end
 
 		local localized_strings = {}
-		localized_strings["cash_sign"] = WolfHUD:getTweakEntry("CASH_SIGN", "string", "$")
+		localized_strings["cash_sign"] = JimHUD:getTweakEntry("CASH_SIGN", "string", "$")
 
 		-- Hide Skip Message, when auto skip blackscreen is active
-		if WolfHUD:getSetting({"SkipIt", "SKIP_BLACKSCREEN"}, false) then
+		if JimHUD:getSetting({"SkipIt", "SKIP_BLACKSCREEN"}, false) then
 			localized_strings["hud_skip_blackscreen"] = ""
 		end
 
@@ -1315,13 +1315,13 @@ if not _G.WolfHUD then
 		loc:add_localized_strings(localized_strings)
 	end)
 
-	Hooks:Add("MenuManagerOnOpenMenu", "MenuManagerOnOpenMenu_WolfHUDCore", function(menu_manager, menu_name, position)
+	Hooks:Add("MenuManagerOnOpenMenu", "MenuManagerOnOpenMenu_JimHUDCore", function(menu_manager, menu_name, position)
 		if menu_name == "menu_main" then
-			local mod = BLT and BLT.Mods:GetMod(WolfHUD.identifier or "")
+			local mod = BLT and BLT.Mods:GetMod(JimHUD.identifier or "")
 
 			if mod and not mod.supermod then
-				local title = "[WolfHUD] No SuperBLT detected!"
-				local text = "WolfHUD requires SuperBLT in order to work.\nSuperBLT is a fork of the BLT mod-loading hook for PAYDAY 2, with a number of major improvements. \nIt is fully backwards-compatable with regular BLT mods.\n\nYou can find further information and installation instructions here: \nhttps://superblt.znix.xyz"
+				local title = "[JimHUD] No SuperBLT detected!"
+				local text = "JimHUD requires SuperBLT in order to work.\nSuperBLT is a fork of the BLT mod-loading hook for PAYDAY 2, with a number of major improvements. \nIt is fully backwards-compatable with regular BLT mods.\n\nYou can find further information and installation instructions here: \nhttps://superblt.znix.xyz"
 
 				QuickMenu:new(
 					title,

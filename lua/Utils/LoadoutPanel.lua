@@ -354,7 +354,7 @@ function LoadoutPanel:mark_cheater(status, reason)
 	end
 --[[
 	if status and managers.chat then	-- TODO: Needs localization
-		local message = string.format("[WolfHUD] %s is cheating: %s", self:get_peer():name(), reason or "N/A")
+		local message = string.format("[JimHUD] %s is cheating: %s", self:get_peer():name(), reason or "N/A")
 		managers.chat:feed_system_message(ChatManager.GAME, message)
 	end
 ]]
@@ -830,7 +830,7 @@ function LoadoutPlaytimeItem:set_playtime_clbk(success, page)
 			local hoursEnd, _ = page:find("</hoursOnRecord>", hoursStart, false)
 			if hoursStart and hoursEnd and ((hoursEnd - hoursStart) > 2) then
 				local playtime = page:sub(hoursStart + 1, hoursEnd - 1)
-				text = managers.localization:text("wolfhud_loadout_hours_played", { HOURS = playtime })
+				text = managers.localization:text("jimhud_loadout_hours_played", { HOURS = playtime })
 			end
 		else
 			if page:find("This profile is private.", 1, false) then

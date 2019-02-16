@@ -330,7 +330,7 @@ if RequiredScript == "lib/managers/platformmanager" then
 
 		local function populate_data(s, tokens, data, count)
 			count = count or 1
-			if count > 100 then WolfHUD:print_log("Infinite loop in RP update!", "error"); return s end
+			if count > 100 then JimHUD:print_log("Infinite loop in RP update!", "error"); return s end
 
 			if s:gmatch("%%(.+)%%") then
 				for k, v in pairs(data or {}) do
@@ -370,7 +370,7 @@ elseif RequiredScript == "lib/managers/skirmishmanager" then
 end
 
 if Hooks then	-- Basegame doesn't update RP on peer count changes...
-	Hooks:Add("BaseNetworkSessionOnPeerEnteredLobby", "BaseNetworkSessionOnPeerEnteredLobby_WolfHUD_RP", function(session, peer, peer_id)
+	Hooks:Add("BaseNetworkSessionOnPeerEnteredLobby", "BaseNetworkSessionOnPeerEnteredLobby_JimHUD_RP", function(session, peer, peer_id)
 		local session = managers.network:session()
 		if session and Global.game_settings.permission ~= "private" then
 			local group_count = tostring(session and #session:all_peers() or 1)
@@ -378,7 +378,7 @@ if Hooks then	-- Basegame doesn't update RP on peer count changes...
 		end
 	end)
 
-	Hooks:Add("BaseNetworkSessionOnPeerRemoved", "BaseNetworkSessionOnPeerRemoved_WolfHUD_RP", function(session, peer, peer_id, reason)
+	Hooks:Add("BaseNetworkSessionOnPeerRemoved", "BaseNetworkSessionOnPeerRemoved_JimHUD_RP", function(session, peer, peer_id, reason)
 		local session = managers.network:session()
 		if session and Global.game_settings.permission ~= "private" then
 			local group_count = tostring(session and #session:all_peers() or 1)

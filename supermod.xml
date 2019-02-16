@@ -300,6 +300,6 @@
 		</group>
 	</hooks>
 
-	<!-- Include WolfHUD textures -->
+	<!-- Include JimHUD textures -->
 	<:include src="assets/assets.xml"/>
 </mod>

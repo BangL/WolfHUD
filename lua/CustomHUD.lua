@@ -1,25 +1,25 @@
 --TODO: Setting update for interaction, but probably not necessary as they are temporary anyway
 --TODO: Clean up interaction activation/deactivation animation, probably a lot of unnecessary rearranges going on
-if not WolfHUD:getSetting({"CustomHUD", "ENABLED"}, true) then
+if not JimHUD:getSetting({"CustomHUD", "ENABLED"}, true) then
 	return
 end
 
 local print_info = function(...)
 	local params = {...}
 	table.insert(params, #params + 1, "info")
-	WolfHUD:print_log(unpack(params))
+	JimHUD:print_log(unpack(params))
 end
 
 local print_warning = function(...)
 	local params = {...}
 	table.insert(params, #params + 1, "warning")
-	WolfHUD:print_log(unpack(params))
+	JimHUD:print_log(unpack(params))
 end
 
 local print_error = function(...)
 	local params = {...}
 	table.insert(params, #params + 1, "error")
-	WolfHUD:print_log(unpack(params))
+	JimHUD:print_log(unpack(params))
 end
 
 if RequiredScript == "lib/managers/hud/hudteammate" then
@@ -39,23 +39,23 @@ if RequiredScript == "lib/managers/hud/hudteammate" then
 		MAX_WEAPONS = 2,	--Number of carried guns (...just don't...)
 
 		PLAYER = {
-			SCALE = WolfHUD:getSetting({"CustomHUD", "PLAYER", "SCALE"}, 1),			--Scale of all elements of the panel
-			OPACITY = WolfHUD:getSetting({"CustomHUD", "PLAYER", "OPACITY"}, 0.85),	--Transparency/alpha of panel (1 is solid, 0 is invisible)
+			SCALE = JimHUD:getSetting({"CustomHUD", "PLAYER", "SCALE"}, 1),			--Scale of all elements of the panel
+			OPACITY = JimHUD:getSetting({"CustomHUD", "PLAYER", "OPACITY"}, 0.85),	--Transparency/alpha of panel (1 is solid, 0 is invisible)
 
-			NAME = WolfHUD:getSetting({"CustomHUD", "PLAYER", "NAME"}, false),	--Show name
-			TRUNCATE_TAGS = WolfHUD:getSetting({"CustomHUD", "PLAYER", "TRUNCATE_TAGS"}, false),	--Truncate tags
-			RANK = WolfHUD:getSetting({"CustomHUD", "PLAYER", "RANK"}, false),	--Show infamy/level
-			CHARACTER = WolfHUD:getSetting({"CustomHUD", "PLAYER", "CHARACTER"}, false),	--Show character name
+			NAME = JimHUD:getSetting({"CustomHUD", "PLAYER", "NAME"}, false),	--Show name
+			TRUNCATE_TAGS = JimHUD:getSetting({"CustomHUD", "PLAYER", "TRUNCATE_TAGS"}, false),	--Truncate tags
+			RANK = JimHUD:getSetting({"CustomHUD", "PLAYER", "RANK"}, false),	--Show infamy/level
+			CHARACTER = JimHUD:getSetting({"CustomHUD", "PLAYER", "CHARACTER"}, false),	--Show character name
 			LATENCY = false,	--Show latency (not used by player panel)
-			STATUS = WolfHUD:getSetting({"CustomHUD", "PLAYER", "STATUS"}, true),	--Show health/armor/condition etc.
-			CONDITION_ICON_COLOR = WolfHUD:getColorSetting({"CustomHUD", "PLAYER", "CONDITION_ICON_COLOR"}, "white"),
-			EQUIPMENT = WolfHUD:getSetting({"CustomHUD", "PLAYER", "EQUIPMENT"}, true),	--Show throwables, cable ties and deployables
-			SPECIAL_EQUIPMENT = WolfHUD:getSetting({"CustomHUD", "PLAYER", "SPECIAL_EQUIPMENT"}, true),	--Show special equipment/tools (keycards etc.)
-			SPECIAL_EQUIPMENT_ROWS = WolfHUD:getSetting({"CustomHUD", "PLAYER", "SPECIAL_EQUIPMENT_ROWS"}, 3),
-			CALLSIGN = WolfHUD:getSetting({"CustomHUD", "PLAYER", "CALLSIGN"}, false),	--Show the callsign and voice chat icon
-			STAMINA = WolfHUD:getSetting({"CustomHUD", "PLAYER", "STAMINA"}, true),
-			DOWNCOUNTER = WolfHUD:getSetting({"CustomHUD", "PLAYER", "DOWNCOUNTER"}, true),
-			CARRY = WolfHUD:getSetting({"CustomHUD", "PLAYER", "CARRY"}, true),	--Show currently carried bag
+			STATUS = JimHUD:getSetting({"CustomHUD", "PLAYER", "STATUS"}, true),	--Show health/armor/condition etc.
+			CONDITION_ICON_COLOR = JimHUD:getColorSetting({"CustomHUD", "PLAYER", "CONDITION_ICON_COLOR"}, "white"),
+			EQUIPMENT = JimHUD:getSetting({"CustomHUD", "PLAYER", "EQUIPMENT"}, true),	--Show throwables, cable ties and deployables
+			SPECIAL_EQUIPMENT = JimHUD:getSetting({"CustomHUD", "PLAYER", "SPECIAL_EQUIPMENT"}, true),	--Show special equipment/tools (keycards etc.)
+			SPECIAL_EQUIPMENT_ROWS = JimHUD:getSetting({"CustomHUD", "PLAYER", "SPECIAL_EQUIPMENT_ROWS"}, 3),
+			CALLSIGN = JimHUD:getSetting({"CustomHUD", "PLAYER", "CALLSIGN"}, false),	--Show the callsign and voice chat icon
+			STAMINA = JimHUD:getSetting({"CustomHUD", "PLAYER", "STAMINA"}, true),
+			DOWNCOUNTER = JimHUD:getSetting({"CustomHUD", "PLAYER", "DOWNCOUNTER"}, true),
+			CARRY = JimHUD:getSetting({"CustomHUD", "PLAYER", "CARRY"}, true),	--Show currently carried bag
 			BUILD = {	--Show perk deck and number of skills acquired in each tree (not used by player)
 				--Pick max one
 				HIDE = true,	--Don't show build at all
@@ -66,25 +66,25 @@ if RequiredScript == "lib/managers/hud/hudteammate" then
 				--HIDE option hides the element. SELECTED_ONLY shows only if the weapon is currently selected, UNSELECTED_ONLY the reverse
 				--Pick max *one* setting for each element or results are undefined
 				ICON = {
-					HIDE = (WolfHUD:getSetting({"CustomHUD", "PLAYER", "WEAPON", "ICON"}, 4) == 1),
-					SELECTED_ONLY = (WolfHUD:getSetting({"CustomHUD", "PLAYER", "WEAPON", "ICON"}, 4) == 2),
-					UNSELECTED_ONLY = (WolfHUD:getSetting({"CustomHUD", "PLAYER", "WEAPON", "ICON"}, 4) == 3),
+					HIDE = (JimHUD:getSetting({"CustomHUD", "PLAYER", "WEAPON", "ICON"}, 4) == 1),
+					SELECTED_ONLY = (JimHUD:getSetting({"CustomHUD", "PLAYER", "WEAPON", "ICON"}, 4) == 2),
+					UNSELECTED_ONLY = (JimHUD:getSetting({"CustomHUD", "PLAYER", "WEAPON", "ICON"}, 4) == 3),
 				},
 				NAME = {
-					HIDE = (WolfHUD:getSetting({"CustomHUD", "PLAYER", "WEAPON", "NAME"}, 1) == 1),
-					SELECTED_ONLY = (WolfHUD:getSetting({"CustomHUD", "PLAYER", "WEAPON", "NAME"}, 1) == 2),
-					UNSELECTED_ONLY = (WolfHUD:getSetting({"CustomHUD", "PLAYER", "WEAPON", "NAME"}, 1) == 3),
+					HIDE = (JimHUD:getSetting({"CustomHUD", "PLAYER", "WEAPON", "NAME"}, 1) == 1),
+					SELECTED_ONLY = (JimHUD:getSetting({"CustomHUD", "PLAYER", "WEAPON", "NAME"}, 1) == 2),
+					UNSELECTED_ONLY = (JimHUD:getSetting({"CustomHUD", "PLAYER", "WEAPON", "NAME"}, 1) == 3),
 				},
 				AMMO = {
-					HIDE = (WolfHUD:getSetting({"CustomHUD", "PLAYER", "WEAPON", "AMMO"}, 4) == 1),
-					SELECTED_ONLY = (WolfHUD:getSetting({"CustomHUD", "PLAYER", "WEAPON", "AMMO"}, 4) == 2),
-					UNSELECTED_ONLY = (WolfHUD:getSetting({"CustomHUD", "PLAYER", "WEAPON", "AMMO"}, 4) == 3),
-					TOTAL_AMMO_ONLY = (WolfHUD:getSetting({"CustomHUD", "PLAYER", "WEAPON", "AMMO"}, 4) == 5),	--Shows only total ammo for all weapons
+					HIDE = (JimHUD:getSetting({"CustomHUD", "PLAYER", "WEAPON", "AMMO"}, 4) == 1),
+					SELECTED_ONLY = (JimHUD:getSetting({"CustomHUD", "PLAYER", "WEAPON", "AMMO"}, 4) == 2),
+					UNSELECTED_ONLY = (JimHUD:getSetting({"CustomHUD", "PLAYER", "WEAPON", "AMMO"}, 4) == 3),
+					TOTAL_AMMO_ONLY = (JimHUD:getSetting({"CustomHUD", "PLAYER", "WEAPON", "AMMO"}, 4) == 5),	--Shows only total ammo for all weapons
 				},
 				FIREMODE = {
-					HIDE = (WolfHUD:getSetting({"CustomHUD", "PLAYER", "WEAPON", "FIREMODE"}, 2) == 1),
-					SELECTED_ONLY = (WolfHUD:getSetting({"CustomHUD", "PLAYER", "WEAPON", "FIREMODE"}, 2) == 2),
-					UNSELECTED_ONLY = (WolfHUD:getSetting({"CustomHUD", "PLAYER", "WEAPON", "FIREMODE"}, 2) == 3),
+					HIDE = (JimHUD:getSetting({"CustomHUD", "PLAYER", "WEAPON", "FIREMODE"}, 2) == 1),
+					SELECTED_ONLY = (JimHUD:getSetting({"CustomHUD", "PLAYER", "WEAPON", "FIREMODE"}, 2) == 2),
+					UNSELECTED_ONLY = (JimHUD:getSetting({"CustomHUD", "PLAYER", "WEAPON", "FIREMODE"}, 2) == 3),
 				},
 			},
 			INTERACTION = {	--(Interaction display only used by teammates, included for reference)
@@ -93,75 +93,75 @@ if RequiredScript == "lib/managers/hud/hudteammate" then
 			},
 			KILLCOUNTER = {
 				--Requires external plugin to be loaded, else will be disabled no matter what
-				HIDE = WolfHUD:getSetting({"CustomHUD", "PLAYER", "KILLCOUNTER", "HIDE"}, false),	--Hides the kill counter
+				HIDE = JimHUD:getSetting({"CustomHUD", "PLAYER", "KILLCOUNTER", "HIDE"}, false),	--Hides the kill counter
 				SHOW_BOT_KILLS = false,	--Show the kill counter for criminal bots
-				SHOW_SPECIAL_KILLS = WolfHUD:getSetting({"CustomHUD", "PLAYER", "KILLCOUNTER", "SHOW_SPECIAL_KILLS"}, true),	--Separate counter for specials
-				SHOW_HEADSHOT_KILLS = WolfHUD:getSetting({"CustomHUD", "PLAYER", "KILLCOUNTER", "SHOW_HEADSHOT_KILLS"}, true),	--Separate counter, of how many kills were due to headshots
-				COLOR = WolfHUD:getColorSetting({"CustomHUD", "PLAYER", "KILLCOUNTER", "COLOR"}, "yellow")
+				SHOW_SPECIAL_KILLS = JimHUD:getSetting({"CustomHUD", "PLAYER", "KILLCOUNTER", "SHOW_SPECIAL_KILLS"}, true),	--Separate counter for specials
+				SHOW_HEADSHOT_KILLS = JimHUD:getSetting({"CustomHUD", "PLAYER", "KILLCOUNTER", "SHOW_HEADSHOT_KILLS"}, true),	--Separate counter, of how many kills were due to headshots
+				COLOR = JimHUD:getColorSetting({"CustomHUD", "PLAYER", "KILLCOUNTER", "COLOR"}, "yellow")
 			},
-			SHOW_ACCURACY = WolfHUD:getSetting({"CustomHUD", "PLAYER", "SHOW_ACCURACY"}, true),	--Show accuracy information
+			SHOW_ACCURACY = JimHUD:getSetting({"CustomHUD", "PLAYER", "SHOW_ACCURACY"}, true),	--Show accuracy information
 		},
 
 		TEAMMATE = {
-			SCALE = WolfHUD:getSetting({"CustomHUD", "TEAMMATE", "SCALE"}, 0.8),			--Scale of all elements of the panel
-			OPACITY = WolfHUD:getSetting({"CustomHUD", "TEAMMATE", "OPACITY"}, 0.85),	--Transparency/alpha of panel (1 is solid, 0 is invisible)
+			SCALE = JimHUD:getSetting({"CustomHUD", "TEAMMATE", "SCALE"}, 0.8),			--Scale of all elements of the panel
+			OPACITY = JimHUD:getSetting({"CustomHUD", "TEAMMATE", "OPACITY"}, 0.85),	--Transparency/alpha of panel (1 is solid, 0 is invisible)
 
-			NAME = WolfHUD:getSetting({"CustomHUD", "TEAMMATE", "NAME"}, true),	--Show name
-			TRUNCATE_TAGS = WolfHUD:getSetting({"CustomHUD", "TEAMMATE", "TRUNCATE_TAGS"}, false),	--Truncate tags
-			RANK = WolfHUD:getSetting({"CustomHUD", "TEAMMATE", "RANK"}, true),	--Show infamy/level
-			CHARACTER = WolfHUD:getSetting({"CustomHUD", "TEAMMATE", "CHARACTER"}, false),	--Show character name
-			LATENCY = WolfHUD:getSetting({"CustomHUD", "TEAMMATE", "LATENCY"}, true),	--Show latency (not used by player panel)
-			STATUS = WolfHUD:getSetting({"CustomHUD", "TEAMMATE", "STATUS"}, true),	--Show health/armor/condition etc.
-			CONDITION_ICON_COLOR = WolfHUD:getColorSetting({"CustomHUD", "TEAMMATE", "CONDITION_ICON_COLOR"}, "white"),
-			EQUIPMENT = WolfHUD:getSetting({"CustomHUD", "TEAMMATE", "EQUIPMENT"}, true),	--Show throwables, cable ties and deployables
-			SPECIAL_EQUIPMENT = WolfHUD:getSetting({"CustomHUD", "TEAMMATE", "SPECIAL_EQUIPMENT"}, true),	--Show special equipment/tools (keycards etc.)
-			SPECIAL_EQUIPMENT_ROWS = WolfHUD:getSetting({"CustomHUD", "TEAMMATE", "SPECIAL_EQUIPMENT_ROWS"}, 3),
-			CALLSIGN = WolfHUD:getSetting({"CustomHUD", "TEAMMATE", "CALLSIGN"}, false),	--Show the callsign and voice chat icon
+			NAME = JimHUD:getSetting({"CustomHUD", "TEAMMATE", "NAME"}, true),	--Show name
+			TRUNCATE_TAGS = JimHUD:getSetting({"CustomHUD", "TEAMMATE", "TRUNCATE_TAGS"}, false),	--Truncate tags
+			RANK = JimHUD:getSetting({"CustomHUD", "TEAMMATE", "RANK"}, true),	--Show infamy/level
+			CHARACTER = JimHUD:getSetting({"CustomHUD", "TEAMMATE", "CHARACTER"}, false),	--Show character name
+			LATENCY = JimHUD:getSetting({"CustomHUD", "TEAMMATE", "LATENCY"}, true),	--Show latency (not used by player panel)
+			STATUS = JimHUD:getSetting({"CustomHUD", "TEAMMATE", "STATUS"}, true),	--Show health/armor/condition etc.
+			CONDITION_ICON_COLOR = JimHUD:getColorSetting({"CustomHUD", "TEAMMATE", "CONDITION_ICON_COLOR"}, "white"),
+			EQUIPMENT = JimHUD:getSetting({"CustomHUD", "TEAMMATE", "EQUIPMENT"}, true),	--Show throwables, cable ties and deployables
+			SPECIAL_EQUIPMENT = JimHUD:getSetting({"CustomHUD", "TEAMMATE", "SPECIAL_EQUIPMENT"}, true),	--Show special equipment/tools (keycards etc.)
+			SPECIAL_EQUIPMENT_ROWS = JimHUD:getSetting({"CustomHUD", "TEAMMATE", "SPECIAL_EQUIPMENT_ROWS"}, 3),
+			CALLSIGN = JimHUD:getSetting({"CustomHUD", "TEAMMATE", "CALLSIGN"}, false),	--Show the callsign and voice chat icon
 			STAMINA = false,
-			DOWNCOUNTER = WolfHUD:getSetting({"CustomHUD", "TEAMMATE", "DOWNCOUNTER"}, true),
-			CARRY = WolfHUD:getSetting({"CustomHUD", "TEAMMATE", "CARRY"}, true),	--Show currently carried bag
+			DOWNCOUNTER = JimHUD:getSetting({"CustomHUD", "TEAMMATE", "DOWNCOUNTER"}, true),
+			CARRY = JimHUD:getSetting({"CustomHUD", "TEAMMATE", "CARRY"}, true),	--Show currently carried bag
 			BUILD = {	--Show perk deck and number of skills acquired in each tree (not used by player)
 				--Pick max one
-				HIDE = WolfHUD:getSetting({"CustomHUD", "TEAMMATE", "BUILD", "HIDE"}, false),	--Don't show build at all
-				DURATION = WolfHUD:getSetting({"CustomHUD", "TEAMMATE", "BUILD", "DURATION"}, 15) > 0 and WolfHUD:getSetting({"CustomHUD", "TEAMMATE", "BUILD", "DURATION"}, 15) or nil,	--Time in seconds to show the build from when player joins. Information is hidden when duration has expired, or never removed if value is nil/undefined
+				HIDE = JimHUD:getSetting({"CustomHUD", "TEAMMATE", "BUILD", "HIDE"}, false),	--Don't show build at all
+				DURATION = JimHUD:getSetting({"CustomHUD", "TEAMMATE", "BUILD", "DURATION"}, 15) > 0 and JimHUD:getSetting({"CustomHUD", "TEAMMATE", "BUILD", "DURATION"}, 15) or nil,	--Time in seconds to show the build from when player joins. Information is hidden when duration has expired, or never removed if value is nil/undefined
 			},
 			WEAPON = {
 				--Show/hide various elements of the weapons panels.
 				--HIDE option hides the element. SELECTED_ONLY shows only if the weapon is currently selected, UNSELECTED_ONLY the reverse
 				--Pick max *one* setting for each element or results are undefined
 				ICON = {
-					HIDE = (WolfHUD:getSetting({"CustomHUD", "TEAMMATE", "WEAPON", "ICON"}, 4) == 1),
-					SELECTED_ONLY = (WolfHUD:getSetting({"CustomHUD", "TEAMMATE", "WEAPON", "ICON"}, 4) == 2),
-					UNSELECTED_ONLY = (WolfHUD:getSetting({"CustomHUD", "TEAMMATE", "WEAPON", "ICON"}, 4) == 3),
+					HIDE = (JimHUD:getSetting({"CustomHUD", "TEAMMATE", "WEAPON", "ICON"}, 4) == 1),
+					SELECTED_ONLY = (JimHUD:getSetting({"CustomHUD", "TEAMMATE", "WEAPON", "ICON"}, 4) == 2),
+					UNSELECTED_ONLY = (JimHUD:getSetting({"CustomHUD", "TEAMMATE", "WEAPON", "ICON"}, 4) == 3),
 				},
 				NAME = {
-					HIDE = (WolfHUD:getSetting({"CustomHUD", "TEAMMATE", "WEAPON", "NAME"}, 1) == 1),
-					SELECTED_ONLY = (WolfHUD:getSetting({"CustomHUD", "TEAMMATE", "WEAPON", "NAME"}, 1) == 2),
-					UNSELECTED_ONLY = (WolfHUD:getSetting({"CustomHUD", "TEAMMATE", "WEAPON", "NAME"}, 1) == 3),
+					HIDE = (JimHUD:getSetting({"CustomHUD", "TEAMMATE", "WEAPON", "NAME"}, 1) == 1),
+					SELECTED_ONLY = (JimHUD:getSetting({"CustomHUD", "TEAMMATE", "WEAPON", "NAME"}, 1) == 2),
+					UNSELECTED_ONLY = (JimHUD:getSetting({"CustomHUD", "TEAMMATE", "WEAPON", "NAME"}, 1) == 3),
 				},
 				AMMO = {
-					HIDE = (WolfHUD:getSetting({"CustomHUD", "TEAMMATE", "WEAPON", "AMMO"}, 4) == 1),
-					SELECTED_ONLY = (WolfHUD:getSetting({"CustomHUD", "TEAMMATE", "WEAPON", "AMMO"}, 4) == 2),
-					UNSELECTED_ONLY = (WolfHUD:getSetting({"CustomHUD", "TEAMMATE", "WEAPON", "AMMO"}, 4) == 3),
-					TOTAL_AMMO_ONLY = (WolfHUD:getSetting({"CustomHUD", "TEAMMATE", "WEAPON", "AMMO"}, 4) == 5),	--Shows only total ammo for all weapons
+					HIDE = (JimHUD:getSetting({"CustomHUD", "TEAMMATE", "WEAPON", "AMMO"}, 4) == 1),
+					SELECTED_ONLY = (JimHUD:getSetting({"CustomHUD", "TEAMMATE", "WEAPON", "AMMO"}, 4) == 2),
+					UNSELECTED_ONLY = (JimHUD:getSetting({"CustomHUD", "TEAMMATE", "WEAPON", "AMMO"}, 4) == 3),
+					TOTAL_AMMO_ONLY = (JimHUD:getSetting({"CustomHUD", "TEAMMATE", "WEAPON", "AMMO"}, 4) == 5),	--Shows only total ammo for all weapons
 				},
 				FIREMODE = {
-					HIDE = (WolfHUD:getSetting({"CustomHUD", "TEAMMATE", "WEAPON", "FIREMODE"}, 1) == 1),
-					SELECTED_ONLY = (WolfHUD:getSetting({"CustomHUD", "TEAMMATE", "WEAPON", "FIREMODE"}, 1) == 2),
-					UNSELECTED_ONLY = (WolfHUD:getSetting({"CustomHUD", "TEAMMATE", "WEAPON", "FIREMODE"}, 1) == 3),
+					HIDE = (JimHUD:getSetting({"CustomHUD", "TEAMMATE", "WEAPON", "FIREMODE"}, 1) == 1),
+					SELECTED_ONLY = (JimHUD:getSetting({"CustomHUD", "TEAMMATE", "WEAPON", "FIREMODE"}, 1) == 2),
+					UNSELECTED_ONLY = (JimHUD:getSetting({"CustomHUD", "TEAMMATE", "WEAPON", "FIREMODE"}, 1) == 3),
 				},
 			},
 			INTERACTION = {	--(Interaction display only used by teammates, included for reference)
-				HIDE = WolfHUD:getSetting({"CustomHUD", "TEAMMATE", "INTERACTION", "HIDE"}, false),	--Hides the interaction activity/time/progress
-				MIN_DURATION = WolfHUD:getSetting({"CustomHUD", "TEAMMATE", "INTERACTION", "MIN_DURATION"}, 1),	--Shows the interaction display only if interaction duration in seconds exceeds this threshold
+				HIDE = JimHUD:getSetting({"CustomHUD", "TEAMMATE", "INTERACTION", "HIDE"}, false),	--Hides the interaction activity/time/progress
+				MIN_DURATION = JimHUD:getSetting({"CustomHUD", "TEAMMATE", "INTERACTION", "MIN_DURATION"}, 1),	--Shows the interaction display only if interaction duration in seconds exceeds this threshold
 			},
 			KILLCOUNTER = {
 				--Requires external plugin to be loaded, else will be disabled no matter what
-				HIDE = WolfHUD:getSetting({"CustomHUD", "TEAMMATE", "KILLCOUNTER", "HIDE"}, false),	--Hides the kill counter
-				SHOW_BOT_KILLS = WolfHUD:getSetting({"CustomHUD", "TEAMMATE", "KILLCOUNTER", "SHOW_BOT_KILLS"}, true),	--Show the kill counter for criminal bots
-				SHOW_SPECIAL_KILLS = WolfHUD:getSetting({"CustomHUD", "TEAMMATE", "KILLCOUNTER", "SHOW_SPECIAL_KILLS"}, true),	--Separate counter for specials
-				SHOW_HEADSHOT_KILLS = WolfHUD:getSetting({"CustomHUD", "TEAMMATE", "KILLCOUNTER", "SHOW_HEADSHOT_KILLS"}, true),	--Separate counter, of how many kills were due to headshots
-				COLOR = WolfHUD:getColorSetting({"CustomHUD", "TEAMMATE", "KILLCOUNTER", "COLOR"}, "yellow")
+				HIDE = JimHUD:getSetting({"CustomHUD", "TEAMMATE", "KILLCOUNTER", "HIDE"}, false),	--Hides the kill counter
+				SHOW_BOT_KILLS = JimHUD:getSetting({"CustomHUD", "TEAMMATE", "KILLCOUNTER", "SHOW_BOT_KILLS"}, true),	--Show the kill counter for criminal bots
+				SHOW_SPECIAL_KILLS = JimHUD:getSetting({"CustomHUD", "TEAMMATE", "KILLCOUNTER", "SHOW_SPECIAL_KILLS"}, true),	--Separate counter for specials
+				SHOW_HEADSHOT_KILLS = JimHUD:getSetting({"CustomHUD", "TEAMMATE", "KILLCOUNTER", "SHOW_HEADSHOT_KILLS"}, true),	--Separate counter, of how many kills were due to headshots
+				COLOR = JimHUD:getColorSetting({"CustomHUD", "TEAMMATE", "KILLCOUNTER", "COLOR"}, "yellow")
 			},
 			SHOW_ACCURACY = false,	--Show accuracy information
 		},
@@ -1091,7 +1091,7 @@ if RequiredScript == "lib/managers/hud/hudteammate" then
 
 	function PlayerInfoComponent.PlayerInfo:set_id(id)
 		self._id = id
-		self:_set_text_color((id == 5 and WolfHUD:getSetting({"CustomHUD", "TEAMMATE", "AI_COLOR", "USE"}, false)) and WolfHUD:getColorSetting({"CustomHUD", "TEAMMATE", "AI_COLOR", "COLOR"}, "white") or tweak_data.chat_colors[id])
+		self:_set_text_color((id == 5 and JimHUD:getSetting({"CustomHUD", "TEAMMATE", "AI_COLOR", "USE"}, false)) and JimHUD:getColorSetting({"CustomHUD", "TEAMMATE", "AI_COLOR", "COLOR"}, "white") or tweak_data.chat_colors[id])
 	end
 
 	function PlayerInfoComponent.PlayerInfo:set_cheater(state)
@@ -1107,7 +1107,7 @@ if RequiredScript == "lib/managers/hud/hudteammate" then
 	function PlayerInfoComponent.PlayerInfo:set_name(name)
 		if name then
 			if self._settings.TRUNCATE_TAGS and not self._is_ai then
-				name = WolfHUD:truncateNameTag(name)
+				name = JimHUD:truncateNameTag(name)
 			end
 			self._components.name:set_text(name)
 			self:arrange()
@@ -3889,7 +3889,7 @@ if RequiredScript == "lib/managers/hud/hudteammate" then
 		if self:visible() then
 			self._panel:stop()
 			self._text:set_color(success and Color.green or Color.red)
-			self._text:set_text(managers.localization:to_upper_text(success and "wolfhud_customhud_interaction_done" or "wolfhud_customhud_interaction_aborted"))
+			self._text:set_text(managers.localization:to_upper_text(success and "jimhud_customhud_interaction_done" or "jimhud_customhud_interaction_aborted"))
 			--self._interaction:set_enabled("active", false)
 			--self:arrange()
 		end
@@ -4128,11 +4128,11 @@ if RequiredScript == "lib/managers/hudmanagerpd2" then
 
 			--if j < 4 or is_player or j <= math.ceil(num_panels / 2) then
 			if is_player then
-				align = WolfHUD:getSetting({"CustomHUD", "PLAYER", "POSITION"}, 2) < 3 and "left" or "right"
+				align = JimHUD:getSetting({"CustomHUD", "PLAYER", "POSITION"}, 2) < 3 and "left" or "right"
 			elseif j <= 7 then
-				align = WolfHUD:getSetting({"CustomHUD", "TEAMMATE", "POSITION"}, 1) < 3 and "left" or "right"
+				align = JimHUD:getSetting({"CustomHUD", "TEAMMATE", "POSITION"}, 1) < 3 and "left" or "right"
 			else
-				align = WolfHUD:getSetting({"CustomHUD", "TEAMMATE", "POSITION"}, 1) > 1 and "right" or "left"
+				align = JimHUD:getSetting({"CustomHUD", "TEAMMATE", "POSITION"}, 1) > 1 and "right" or "left"
 			end
 
 			local teammate = HUDTeammateCustom:new(i, teammates_panel, is_player, align)
@@ -4305,7 +4305,7 @@ if RequiredScript == "lib/managers/hudmanagerpd2" then
 			end
 
 			--Seperate Player Panel setup, so its always the most bottom one
-			local player_pos = math.clamp(WolfHUD:getSetting({"CustomHUD", "PLAYER", "POSITION"}, 2), 1, 3)
+			local player_pos = math.clamp(JimHUD:getSetting({"CustomHUD", "PLAYER", "POSITION"}, 2), 1, 3)
 			local player_w, player_h = player_panel:w() or 0, player_panel:h() or 0
 			player_panel:set_center_x(getCenterX(hud_w, player_w, player_pos))
 			player_panel:set_bottom(hud_h - teammate_offset[player_pos])
@@ -4314,7 +4314,7 @@ if RequiredScript == "lib/managers/hudmanagerpd2" then
 
 			local j = 0
 			local MAX_STACK_SIZE = math.max(math.ceil(#self._teammate_panels / 2), 7)
-			local teammate_pos = { math.clamp(WolfHUD:getSetting({"CustomHUD", "TEAMMATE", "POSITION"}, 1), 1, 3) }
+			local teammate_pos = { math.clamp(JimHUD:getSetting({"CustomHUD", "TEAMMATE", "POSITION"}, 1), 1, 3) }
 			table.insert(teammate_pos, (teammate_pos[1] > 1 and 1 or 3))
 
 			for i, teammate in ipairs(self._teammate_panels) do

@@ -65,7 +65,7 @@ elseif string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 
 elseif string.lower(RequiredScript) == "lib/managers/hud/hudteammate" and not HUDManager.CUSTOM_TEAMMATE_PANELS then
 
-	Hooks:PostHook( HUDTeammate, "init", "WolfHUD_DownCounter_HUDTeammate_init", function(self, ...)
+	Hooks:PostHook( HUDTeammate, "init", "JimHUD_DownCounter_HUDTeammate_init", function(self, ...)
 		self._health_panel = self._health_panel or self._player_panel:child("radial_health_panel")
 		self._condition_icon = self._condition_icon or self._panel:child("condition_icon")
 
@@ -101,7 +101,7 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudteammate" and not HU
 			font_size = self._main_player and 15 or 12,
 			font = tweak_data.menu.pd2_medium_font,
 			layer = 2,
-			visible = HUDManager.DOWNS_COUNTER_PLUGIN and WolfHUD:getSetting({"CustomHUD", self._setting_prefix, "DOWNCOUNTER"}, true) and not self._ai or false,
+			visible = HUDManager.DOWNS_COUNTER_PLUGIN and JimHUD:getSetting({"CustomHUD", self._setting_prefix, "DOWNCOUNTER"}, true) and not self._ai or false,
 		})
 
 		self._detection_counter = self._health_panel:text({
@@ -115,7 +115,7 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudteammate" and not HU
 			font_size = self._main_player and 15 or 12,
 			font = tweak_data.menu.pd2_medium_font,
 			layer = 2,
-			visible = HUDManager.DOWNS_COUNTER_PLUGIN and WolfHUD:getSetting({"CustomHUD", self._setting_prefix, "DOWNCOUNTER"}, true) and not self._ai or false,
+			visible = HUDManager.DOWNS_COUNTER_PLUGIN and JimHUD:getSetting({"CustomHUD", self._setting_prefix, "DOWNCOUNTER"}, true) and not self._ai or false,
 		})
 
 		self:set_detection()
@@ -125,21 +125,21 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudteammate" and not HU
 		end
 	end)
 
-	Hooks:PostHook( HUDTeammate, "remove_panel", "WolfHUD_DownCounter_HUDTeammate_remove_panel", function(self, ...)
+	Hooks:PostHook( HUDTeammate, "remove_panel", "JimHUD_DownCounter_HUDTeammate_remove_panel", function(self, ...)
 		managers.gameinfo:unregister_listener("HealthRadial_whisper_mode_listener" .. tostring(self._id), "whisper_mode", "change")
 	end)
 
-	Hooks:PostHook( HUDTeammate, "set_peer_id", "WolfHUD_DownCounter_HUDTeammate_set_peer_id", function(self, ...)
+	Hooks:PostHook( HUDTeammate, "set_peer_id", "JimHUD_DownCounter_HUDTeammate_set_peer_id", function(self, ...)
 		self:set_detection()
 	end)
 
-	Hooks:PostHook( HUDTeammate, "set_callsign", "WolfHUD_DownCounter_HUDTeammate_set_callsign", function(self, ...)
+	Hooks:PostHook( HUDTeammate, "set_callsign", "JimHUD_DownCounter_HUDTeammate_set_callsign", function(self, ...)
 		if self._main_player then
 			self:set_detection()
 		end
 	end)
 
-	Hooks:PreHook( HUDTeammate, "set_name", "WolfHUD_DownCounter_HUDTeammate_set_name", function(self, teammate_name, ...)
+	Hooks:PreHook( HUDTeammate, "set_name", "JimHUD_DownCounter_HUDTeammate_set_name", function(self, teammate_name, ...)
 		if teammate_name ~= self._name then
 			self._name = teammate_name
 			self:reset_downs()
@@ -147,7 +147,7 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudteammate" and not HU
 	end)
 
 	function HUDTeammate:_whisper_mode_change(status)
-		local disabled = self._condition_icon and self._condition_icon:visible() or not (HUDManager.DOWNS_COUNTER_PLUGIN and WolfHUD:getSetting({"CustomHUD", self._setting_prefix, "DOWNCOUNTER"}, true)) or self._ai
+		local disabled = self._condition_icon and self._condition_icon:visible() or not (HUDManager.DOWNS_COUNTER_PLUGIN and JimHUD:getSetting({"CustomHUD", self._setting_prefix, "DOWNCOUNTER"}, true)) or self._ai
 		self._downs_counter:set_visible(not disabled and (not status or self:down_amount() > 0))
 		self._detection_counter:set_visible(not disabled and not self._downs_counter:visible())
 	end
@@ -158,7 +158,7 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudteammate" and not HU
 			self._downs_counter:set_text(tostring(self._downs))
 			local progress = math.clamp(self:down_amount() / self._max_downs, 0, 1)
 			self._downs_counter:set_color(math.lerp(Color.white, Color(1, 1, 0.2, 0), progress))
-			local disabled = self._condition_icon and self._condition_icon:visible() or not (HUDManager.DOWNS_COUNTER_PLUGIN and WolfHUD:getSetting({"CustomHUD", self._setting_prefix, "DOWNCOUNTER"}, true)) or self._ai
+			local disabled = self._condition_icon and self._condition_icon:visible() or not (HUDManager.DOWNS_COUNTER_PLUGIN and JimHUD:getSetting({"CustomHUD", self._setting_prefix, "DOWNCOUNTER"}, true)) or self._ai
 			self._downs_counter:set_visible(not disabled and (not managers.groupai:state():whisper_mode() or self:down_amount() > 0))
 			self._detection_counter:set_visible(not disabled and not self._downs_counter:visible())
 		end
@@ -195,7 +195,7 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudteammate" and not HU
 				self._detection_counter:set_text(utf8.char(57363) .. tostring(self._risk))
 				self._detection_counter:set_color(color)
 			end
-			local disabled = self._condition_icon and self._condition_icon:visible() or not (HUDManager.DOWNS_COUNTER_PLUGIN and WolfHUD:getSetting({"CustomHUD", self._setting_prefix, "DOWNCOUNTER"}, true)) or self._ai
+			local disabled = self._condition_icon and self._condition_icon:visible() or not (HUDManager.DOWNS_COUNTER_PLUGIN and JimHUD:getSetting({"CustomHUD", self._setting_prefix, "DOWNCOUNTER"}, true)) or self._ai
 			self._downs_counter:set_visible(not disabled and (not managers.groupai:state():whisper_mode() or self:down_amount() > 0))
 			self._detection_counter:set_visible(not disabled and not self._downs_counter:visible())
 		end

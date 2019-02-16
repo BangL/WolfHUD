@@ -1,6 +1,6 @@
 if string.lower(RequiredScript) == "lib/managers/hudmanager" then
 
-	Hooks:PostHook( HUDManager , "_player_hud_layout" , "WolfHUDPostHUDManagerPlayerInfoHUDLayout" , function( self )
+	Hooks:PostHook( HUDManager , "_player_hud_layout" , "JimHUDPostHUDManagerPlayerInfoHUDLayout" , function( self )
 		self._health_text_rect = { 2 , 18 , 232 , 11 } --Green Bar
 		self._shield_text_rect = { 2 , 34 , 232 , 11 } --Blue Bar
 		self._bar_text_rect = self._health_text_rect
@@ -61,7 +61,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanager" then
 			name			= "unit_health_enemy_location",
 			text			= "^",
 			blend_mode		= "normal",
-			visible			= WolfHUD:getSetting({"EnemyHealthbar", "SHOW_POINTER"}, false),
+			visible			= JimHUD:getSetting({"EnemyHealthbar", "SHOW_POINTER"}, false),
 			alpha			= 0.75,
 			halign			= "center",
 			font			= "fonts/font_medium_shadow_mf",
@@ -101,10 +101,10 @@ if string.lower(RequiredScript) == "lib/managers/hudmanager" then
 			self._bar_text_rect = self._shield and self._shield_text_rect or self._health_text_rect
 		end
 
-		if visible == true and not self._unit_health_visible and WolfHUD:getSetting({"EnemyHealthbar", "ENABLED"}, true) then
+		if visible == true and not self._unit_health_visible and JimHUD:getSetting({"EnemyHealthbar", "ENABLED"}, true) then
 
 			self._unit_health_visible = true
-			self._unit_health_enemy_location:set_visible(WolfHUD:getSetting({"EnemyHealthbar", "SHOW_POINTER"}, false))
+			self._unit_health_enemy_location:set_visible(JimHUD:getSetting({"EnemyHealthbar", "SHOW_POINTER"}, false))
 			self._unit_health_panel:stop()
 			self._unit_health_panel:animate( function( p )
 				self._unit_health_panel:set_visible( true )
@@ -137,7 +137,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanager" then
 
 		if not current or not total then return end
 
-		local enemy = WolfHUD:getCharacterName(tweak_table, true)
+		local enemy = JimHUD:getCharacterName(tweak_table, true)
 
 		total = math.min(total, 999999999)
 		current = math.clamp(current, 0, total)
@@ -188,7 +188,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanager" then
 	end
 
 elseif string.lower(RequiredScript) == "lib/units/beings/player/states/playerstandard" then
-	Hooks:PostHook( PlayerStandard , "_update_fwd_ray" , "WolfHUDPostPlayerStandardUpdate" , function( self , t , dt )
+	Hooks:PostHook( PlayerStandard , "_update_fwd_ray" , "JimHUDPostPlayerStandardUpdate" , function( self , t , dt )
 		if self._fwd_ray and self._fwd_ray.unit and type(self._fwd_ray.unit) == "userdata" then
 			local unit = self._fwd_ray.unit
 			if unit:in_slot( 8 ) and alive(unit:parent()) then -- Fix when aiming at shields shield.
@@ -197,7 +197,7 @@ elseif string.lower(RequiredScript) == "lib/units/beings/player/states/playersta
 
 			local visible, name, name_id, health, max_health, shield
 			if alive( unit ) then
-				if unit:in_slot( 25 ) and not unit:character_damage():dead() and (table.contains(managers.groupai:state():turrets() or {}, unit) or WolfHUD:getSetting({"EnemyHealthbar", "SHOW_CIVILIAN"}, true) and Network:is_server()) then
+				if unit:in_slot( 25 ) and not unit:character_damage():dead() and (table.contains(managers.groupai:state():turrets() or {}, unit) or JimHUD:getSetting({"EnemyHealthbar", "SHOW_CIVILIAN"}, true) and Network:is_server()) then
 					self._last_unit = nil
 					visible = true
 					name_id = unit:base():get_name_id() or "TURRET"
@@ -209,7 +209,7 @@ elseif string.lower(RequiredScript) == "lib/units/beings/player/states/playersta
 						health = unit:character_damage()._health * 10 or 0
 						max_health = unit:character_damage()._HEALTH_INIT * 10 or 0
 					end
-				elseif alive( unit ) and ( unit:in_slot( 12 ) or WolfHUD:getSetting({"EnemyHealthbar", "SHOW_CIVILIAN"}, false) and ( unit:in_slot( 21 ) or unit:in_slot( 22 ) ) or unit:in_slot( 16 ) and Network:is_server()) and not unit:character_damage():dead() then
+				elseif alive( unit ) and ( unit:in_slot( 12 ) or JimHUD:getSetting({"EnemyHealthbar", "SHOW_CIVILIAN"}, false) and ( unit:in_slot( 21 ) or unit:in_slot( 22 ) ) or unit:in_slot( 16 ) and Network:is_server()) and not unit:character_damage():dead() then
 					self._last_unit = unit
 					visible = true
 					health = unit:character_damage()._health * 10 or 0
@@ -219,7 +219,7 @@ elseif string.lower(RequiredScript) == "lib/units/beings/player/states/playersta
 					if name_id == "robbers_safehouse" and unit:interaction() then
 						name_id = CriminalsManager.convert_new_to_old_character_workname(unit:interaction().character or name_id)
 					end
-				elseif alive( unit ) and unit:in_slot( 39 ) and WolfHUD:getSetting({"EnemyHealthbar", "SHOW_VEHICLE"}, true) and unit:vehicle_driving() and not self._seat then
+				elseif alive( unit ) and unit:in_slot( 39 ) and JimHUD:getSetting({"EnemyHealthbar", "SHOW_VEHICLE"}, true) and unit:vehicle_driving() and not self._seat then
 					self._last_unit = nil
 					visible = true
 					health = unit:character_damage()._health or 0
@@ -279,7 +279,7 @@ elseif string.lower(RequiredScript) == "lib/units/beings/player/states/playersta
 
 	end
 elseif string.lower(RequiredScript) == "lib/states/ingamearrested" then
-	Hooks:PostHook( IngameArrestedState , "at_enter" , "WolfHUDPostIngameArrestedAtEnter" , function( self )
+	Hooks:PostHook( IngameArrestedState , "at_enter" , "JimHUDPostIngameArrestedAtEnter" , function( self )
 		if managers.hud then
 			managers.hud:set_unit_health_visible( false, false )
 		end

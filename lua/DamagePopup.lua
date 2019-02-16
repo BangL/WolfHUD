@@ -28,7 +28,7 @@ if RequiredScript == "lib/units/enemies/cop/copdamage" then
 	end
 
 	function CopDamage:_process_popup_damage(data)
-		CopDamage.DMG_POPUP_SETTING = WolfHUD:getSetting({"DamagePopup", "DISPLAY_MODE"}, 2)
+		CopDamage.DMG_POPUP_SETTING = JimHUD:getSetting({"DamagePopup", "DISPLAY_MODE"}, 2)
 
 		local attacker = alive(data.attacker_unit) and data.attacker_unit
 		local damage = tonumber(data.damage) or 0
@@ -86,9 +86,9 @@ if RequiredScript == "lib/units/enemies/cop/copdamage" then
 		if managers.waypoints then
 			local id = "damage_wp_" .. tostring(self._unit:key())
 			local waypoint = managers.waypoints:get_waypoint(id)
-			local waypoint_color = color_id and ((color_id == 5 and WolfHUD:getSetting({"CustomHUD", "TEAMMATE", "AI_COLOR", "USE"}, false)) and WolfHUD:getColorSetting({"CustomHUD", "TEAMMATE", "AI_COLOR", "COLOR"}, Color.white) or tweak_data.chat_colors[color_id]) or WolfHUD:getColorSetting({"DamagePopup", critical and "CRITICAL_COLOR" or headshot and "HEADSHOT_COLOR" or "COLOR"}, "yellow")
-			waypoint_color = waypoint_color:with_alpha(WolfHUD:getSetting({"DamagePopup", "ALPHA"}, 1))
-			local waypoint_duration = WolfHUD:getSetting({"DamagePopup", "DURATION"}, 3)
+			local waypoint_color = color_id and ((color_id == 5 and JimHUD:getSetting({"CustomHUD", "TEAMMATE", "AI_COLOR", "USE"}, false)) and JimHUD:getColorSetting({"CustomHUD", "TEAMMATE", "AI_COLOR", "COLOR"}, Color.white) or tweak_data.chat_colors[color_id]) or JimHUD:getColorSetting({"DamagePopup", critical and "CRITICAL_COLOR" or headshot and "HEADSHOT_COLOR" or "COLOR"}, "yellow")
+			waypoint_color = waypoint_color:with_alpha(JimHUD:getSetting({"DamagePopup", "ALPHA"}, 1))
+			local waypoint_duration = JimHUD:getSetting({"DamagePopup", "DURATION"}, 3)
 			if waypoint and not waypoint:is_deleted() then
 				managers.waypoints:set_waypoint_duration(id, "duration", waypoint_duration)
 				managers.waypoints:set_waypoint_label(id, "label", self:build_popup_text(damage, headshot))
@@ -97,8 +97,8 @@ if RequiredScript == "lib/units/enemies/cop/copdamage" then
 			else
 				local params = {
 					unit = self._unit,
-					offset = Vector3(10, 10, WolfHUD:getSetting({"DamagePopup", "HEIGHT"}, 20)),
-					scale = 2 * WolfHUD:getSetting({"DamagePopup", "SCALE"}, 1),
+					offset = Vector3(10, 10, JimHUD:getSetting({"DamagePopup", "HEIGHT"}, 20)),
+					scale = 2 * JimHUD:getSetting({"DamagePopup", "SCALE"}, 1),
 					color = waypoint_color,
 					visible_distance = {
 						min = 30,
@@ -117,7 +117,7 @@ if RequiredScript == "lib/units/enemies/cop/copdamage" then
 					icon = {
 						type = "icon",
 						show = dead,
-						scale = WolfHUD:getSetting({"DamagePopup", "SKULL_SCALE"}, 1.2),
+						scale = JimHUD:getSetting({"DamagePopup", "SKULL_SCALE"}, 1.2),
 						texture = "guis/textures/pd2/risklevel_blackscreen",
 						texture_rect = {0, 0, 64, 64},
 						blend_mode = "normal",
@@ -138,7 +138,7 @@ if RequiredScript == "lib/units/enemies/cop/copdamage" then
 							position = Vector3(0, 0, 30),
 						},
 					},
-					component_order = { WolfHUD:getSetting({"DamagePopup", "SKULL_ALIGN"}, 1) == 1 and { "icon", "label" } or { "label", "icon" } , { "duration" } }
+					component_order = { JimHUD:getSetting({"DamagePopup", "SKULL_ALIGN"}, 1) == 1 and { "icon", "label" } or { "label", "icon" } , { "duration" } }
 				}
 				managers.waypoints:add_waypoint(id, "CustomWaypoint", params)
 			end

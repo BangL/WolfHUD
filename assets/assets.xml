@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <assets base_path="assets/" load="startup">
-	<group name="guis/textures/wolfhud/" path="assets/">
+	<group name="guis/textures/jimhud/" path="assets/">
 		<file :name="hudlist/weapon_charge.texture" :path="hudlist/weapon_charge.texture"/>
 
 		<group :name="drivinghud/" :path="drivinghud/">

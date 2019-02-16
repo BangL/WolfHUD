@@ -60,15 +60,15 @@ function HUDSuspicion:animate_eye(...)
 	if not was_animating and self._eye_animation then
 		self:rescale()
 
-		local visible = WolfHUD:getSetting({"HUDSuspicion", "SHOW_BARS"}, true)
+		local visible = JimHUD:getSetting({"HUDSuspicion", "SHOW_BARS"}, true)
 		self._suspicion_panel:child("suspicion_left"):set_visible(visible)
 		self._suspicion_panel:child("suspicion_right"):set_visible(visible)
 		--self._misc_panel:child("hud_stealthmeter_bg"):set_visible(visible)
 		self._misc_panel:child("hud_stealth_eye"):set_visible(visible)
 		self._misc_panel:child("hud_stealth_exclam"):set_visible(visible)
 
-		if WolfHUD:getSetting({"HUDSuspicion", "SHOW_PERCENTAGE"}, true) and not self._text_animation then
-			self._suspicion_text:set_outlines_visible(WolfHUD:getSetting({"HUDSuspicion", "SHOW_PERCENTAGE_OUTLINE"}, true))
+		if JimHUD:getSetting({"HUDSuspicion", "SHOW_PERCENTAGE"}, true) and not self._text_animation then
+			self._suspicion_text:set_outlines_visible(JimHUD:getSetting({"HUDSuspicion", "SHOW_PERCENTAGE_OUTLINE"}, true))
 			self._text_animation = self._suspicion_text_panel:animate(callback(self, self, "_animate_text"), self._suspicion_text)
 		end
 	end
@@ -88,7 +88,7 @@ function HUDSuspicion:hide(...)
 end
 
 function HUDSuspicion:rescale()
-	local scale = WolfHUD:getSetting({"HUDSuspicion", "SCALE"}, 0.8)
+	local scale = JimHUD:getSetting({"HUDSuspicion", "SCALE"}, 0.8)
 	if self._scale ~= scale then
 		local suspicion_left = self._suspicion_panel:child("suspicion_left")
 		local suspicion_right = self._suspicion_panel:child("suspicion_right")

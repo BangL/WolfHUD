@@ -1,5 +1,5 @@
 if string.lower(RequiredScript) == "lib/units/beings/player/states/playerstandard" then
-	PlayerStandard.NADE_TIMEOUT = WolfHUD:getTweakEntry("STEALTH_NADE_TIMEOUT", "number", 0.25)		--Timeout for 2 NadeKey pushes, to prevent accidents in stealth
+	PlayerStandard.NADE_TIMEOUT = JimHUD:getTweakEntry("STEALTH_NADE_TIMEOUT", "number", 0.25)		--Timeout for 2 NadeKey pushes, to prevent accidents in stealth
 
 	local enter_original = PlayerStandard.enter
 	local _update_interaction_timers_original = PlayerStandard._update_interaction_timers
@@ -24,8 +24,8 @@ if string.lower(RequiredScript) == "lib/units/beings/player/states/playerstandar
 	end
 
 	function PlayerStandard:_check_interaction_locked(t)
-		PlayerStandard.LOCK_MODE = WolfHUD:getSetting({"INTERACTION", "LOCK_MODE"}, 3)						--Lock interaction, if MIN_TIMER_DURATION is longer then total interaction time, or current interaction time
-		PlayerStandard.MIN_TIMER_DURATION = WolfHUD:getSetting({"INTERACTION", "MIN_TIMER_DURATION"}, 5)			--Min interaction duration (in seconds) for the toggle behavior to activate
+		PlayerStandard.LOCK_MODE = JimHUD:getSetting({"INTERACTION", "LOCK_MODE"}, 3)						--Lock interaction, if MIN_TIMER_DURATION is longer then total interaction time, or current interaction time
+		PlayerStandard.MIN_TIMER_DURATION = JimHUD:getSetting({"INTERACTION", "MIN_TIMER_DURATION"}, 5)			--Min interaction duration (in seconds) for the toggle behavior to activate
 		local is_locked = false
 		if self._interact_params ~= nil then
 			local tweak_data = self._interact_params.tweak_data or ""
@@ -48,7 +48,7 @@ if string.lower(RequiredScript) == "lib/units/beings/player/states/playerstandar
 	end
 
 	function PlayerStandard:_check_interact_toggle(t, input)
-		PlayerStandard.EQUIPMENT_PRESS_INTERRUPT = WolfHUD:getSetting({"INTERACTION", "EQUIPMENT_PRESS_INTERRUPT"}, true)	--Use the equipment key ('G') to toggle off active interactions
+		PlayerStandard.EQUIPMENT_PRESS_INTERRUPT = JimHUD:getSetting({"INTERACTION", "EQUIPMENT_PRESS_INTERRUPT"}, true)	--Use the equipment key ('G') to toggle off active interactions
 		local interrupt_key_press = input.btn_interact_press
 		if PlayerStandard.EQUIPMENT_PRESS_INTERRUPT then
 			interrupt_key_press = input.btn_use_item_press
@@ -82,7 +82,7 @@ if string.lower(RequiredScript) == "lib/units/beings/player/states/playerstandar
 
 	function PlayerStandard:_start_action_reload(t, ...)
 		_start_action_reload_original(self, t, ...)
-		PlayerStandard.SHOW_RELOAD = WolfHUD:getSetting({"INTERACTION", "SHOW_RELOAD"}, false)
+		PlayerStandard.SHOW_RELOAD = JimHUD:getSetting({"INTERACTION", "SHOW_RELOAD"}, false)
 		if PlayerStandard.SHOW_RELOAD and not hide_int_state[managers.player:current_state()] then
 			if self._equipped_unit and not self._equipped_unit:base():clip_full() then
 				self._state_data.show_reload = true
@@ -119,7 +119,7 @@ if string.lower(RequiredScript) == "lib/units/beings/player/states/playerstandar
 	function PlayerStandard:_start_action_melee(t, input, instant, ...)
 		local val = _start_action_melee_original(self, t, input, instant, ...)
 		if not instant then
-			PlayerStandard.SHOW_MELEE = WolfHUD:getSetting({"INTERACTION", "SHOW_MELEE"}, false)
+			PlayerStandard.SHOW_MELEE = JimHUD:getSetting({"INTERACTION", "SHOW_MELEE"}, false)
 			if PlayerStandard.SHOW_MELEE and self._state_data.meleeing and not hide_int_state[managers.player:current_state()] then
 				self._state_data.show_melee = true
 				self._state_data.melee_charge_duration = tweak_data.blackmarket.melee_weapons[managers.blackmarket:equipped_melee_weapon()].stats.charge_time or 1
@@ -153,7 +153,7 @@ if string.lower(RequiredScript) == "lib/units/beings/player/states/playerstandar
 	end
 
 	function PlayerStandard:_check_action_throw_grenade(t, input, ...)
-		if input.btn_throw_grenade_press and WolfHUD:getSetting({"INTERACTION", "SUPRESS_NADES_STEALTH"}, true) then
+		if input.btn_throw_grenade_press and JimHUD:getSetting({"INTERACTION", "SUPRESS_NADES_STEALTH"}, true) then
 			if managers.groupai:state():whisper_mode() and (t - (self._last_grenade_t or 0) >= PlayerStandard.NADE_TIMEOUT) then
 				self._last_grenade_t = t
 				return
@@ -203,7 +203,7 @@ elseif string.lower(RequiredScript) == "lib/units/beings/player/states/playerdri
 	end
 
 	function PlayerDriving:_check_interact_toggle(t, input)
-		PlayerDriving.EQUIPMENT_PRESS_INTERRUPT = WolfHUD:getSetting({"INTERACTION", "EQUIPMENT_PRESS_INTERRUPT"}, true)	--Use the equipment key ('G') to toggle off active interactions
+		PlayerDriving.EQUIPMENT_PRESS_INTERRUPT = JimHUD:getSetting({"INTERACTION", "EQUIPMENT_PRESS_INTERRUPT"}, true)	--Use the equipment key ('G') to toggle off active interactions
 		local interrupt_key_press = input.btn_interact_press
 		if PlayerDriving.EQUIPMENT_PRESS_INTERRUPT then
 			interrupt_key_press = input.btn_use_item_press
@@ -219,8 +219,8 @@ elseif string.lower(RequiredScript) == "lib/units/beings/player/states/playerdri
 	end
 
 	function PlayerDriving:_check_interaction_locked(t)
-		PlayerDriving.LOCK_MODE = WolfHUD:getSetting({"INTERACTION", "LOCK_MODE"}, 3)						--Lock interaction, if MIN_TIMER_DURATION is longer then total interaction time, or current interaction time
-		PlayerDriving.MIN_TIMER_DURATION = WolfHUD:getSetting({"INTERACTION", "MIN_TIMER_DURATION"}, 5)			--Min interaction duration (in seconds) for the toggle behavior to activate
+		PlayerDriving.LOCK_MODE = JimHUD:getSetting({"INTERACTION", "LOCK_MODE"}, 3)						--Lock interaction, if MIN_TIMER_DURATION is longer then total interaction time, or current interaction time
+		PlayerDriving.MIN_TIMER_DURATION = JimHUD:getSetting({"INTERACTION", "MIN_TIMER_DURATION"}, 5)			--Min interaction duration (in seconds) for the toggle behavior to activate
 		local is_locked = false
 		if self._exit_vehicle_expire_t ~= nil then
 			if PlayerDriving.LOCK_MODE == 3 then
@@ -271,7 +271,7 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudinteraction" then
 			self._interact_time:set_text(text)
 			local perc = current/total
 			local show = perc < 1
-			local color = math.lerp(HUDInteraction.GRADIENT_COLOR_START, WolfHUD:getColor(HUDInteraction.GRADIENT_COLOR_NAME, 0.4), perc)
+			local color = math.lerp(HUDInteraction.GRADIENT_COLOR_START, JimHUD:getColor(HUDInteraction.GRADIENT_COLOR_NAME, 0.4), perc)
 			self._interact_time:set_color(color)
 			self._interact_time:set_alpha(1)
 			self._interact_time:set_visible(show)
@@ -287,13 +287,13 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudinteraction" then
 
 		local val = show_interaction_bar_original(self, current, total)
 
-		HUDInteraction.SHOW_LOCK_INDICATOR = WolfHUD:getSetting({"INTERACTION", "SHOW_LOCK_INDICATOR"}, true)
-		HUDInteraction.SHOW_TIME_REMAINING = WolfHUD:getSetting({"INTERACTION", "SHOW_TIME_REMAINING"}, true)
-		HUDInteraction.SHOW_TIME_REMAINING_OUTLINE = WolfHUD:getSetting({"INTERACTION", "SHOW_TIME_REMAINING_OUTLINE"}, false)
-		HUDInteraction.SHOW_CIRCLE = WolfHUD:getSetting({"INTERACTION", "SHOW_CIRCLE"}, true)
+		HUDInteraction.SHOW_LOCK_INDICATOR = JimHUD:getSetting({"INTERACTION", "SHOW_LOCK_INDICATOR"}, true)
+		HUDInteraction.SHOW_TIME_REMAINING = JimHUD:getSetting({"INTERACTION", "SHOW_TIME_REMAINING"}, true)
+		HUDInteraction.SHOW_TIME_REMAINING_OUTLINE = JimHUD:getSetting({"INTERACTION", "SHOW_TIME_REMAINING_OUTLINE"}, false)
+		HUDInteraction.SHOW_CIRCLE = JimHUD:getSetting({"INTERACTION", "SHOW_CIRCLE"}, true)
 		HUDInteraction.LOCK_MODE = PlayerStandard.LOCK_MODE or 1
-		HUDInteraction.GRADIENT_COLOR_NAME = WolfHUD:getSetting({"INTERACTION", "GRADIENT_COLOR"}, "light_green")
-		HUDInteraction.GRADIENT_COLOR_START = WolfHUD:getColorSetting({"INTERACTION", "GRADIENT_COLOR_START"}, "white")
+		HUDInteraction.GRADIENT_COLOR_NAME = JimHUD:getSetting({"INTERACTION", "GRADIENT_COLOR"}, "light_green")
+		HUDInteraction.GRADIENT_COLOR_START = JimHUD:getColorSetting({"INTERACTION", "GRADIENT_COLOR_START"}, "white")
 		if HUDInteraction.SHOW_CIRCLE then
 			if HUDInteraction.LOCK_MODE > 1 and HUDInteraction.SHOW_LOCK_INDICATOR then
 				self._interact_circle_locked = CircleBitmapGuiObject:new(self._hud_panel, {
@@ -311,7 +311,7 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudinteraction" then
 		end
 
 		if HUDInteraction.SHOW_TIME_REMAINING then
-			local fontSize = 32 * (self._circle_scale or 1) * WolfHUD:getSetting({"INTERACTION", "TIMER_SCALE"}, 1)
+			local fontSize = 32 * (self._circle_scale or 1) * JimHUD:getSetting({"INTERACTION", "TIMER_SCALE"}, 1)
 			if not self._interact_time then
 				self._interact_time = OutlinedText:new(self._hud_panel, {
 					name = "interaction_timer",
@@ -373,9 +373,9 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudinteraction" then
 		if status then
 			self._old_text = self._hud_panel:child(self._child_name_text):text()
 			local locked_text = ""
-			if WolfHUD:getSetting({"INTERACTION", "SHOW_INTERRUPT_HINT"}, true) then
+			if JimHUD:getSetting({"INTERACTION", "SHOW_INTERRUPT_HINT"}, true) then
 				local btn_cancel = PlayerStandard.EQUIPMENT_PRESS_INTERRUPT and (managers.localization:btn_macro("use_item", true) or managers.localization:get_default_macro("BTN_USE_ITEM")) or (managers.localization:btn_macro("interact", true) or managers.localization:get_default_macro("BTN_INTERACT"))
-				locked_text = managers.localization:to_upper_text(tweak_entry == "corpse_alarm_pager" and "wolfhud_int_locked_pager" or "wolfhud_int_locked", {BTN_CANCEL = btn_cancel})
+				locked_text = managers.localization:to_upper_text(tweak_entry == "corpse_alarm_pager" and "jimhud_int_locked_pager" or "jimhud_int_locked", {BTN_CANCEL = btn_cancel})
 			end
 			self._hud_panel:child(self._child_name_text):set_text(locked_text)
 		end
@@ -403,8 +403,8 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudinteraction" then
 	end
 
 	function HUDInteraction:_rescale(circle_scale, text_scale)
-		local circle_scale = circle_scale or WolfHUD:getSetting({"INTERACTION", "CIRCLE_SCALE"}, 0.8)
-		local text_scale = text_scale or WolfHUD:getSetting({"INTERACTION", "TEXT_SCALE"}, 0.8)
+		local circle_scale = circle_scale or JimHUD:getSetting({"INTERACTION", "CIRCLE_SCALE"}, 0.8)
+		local text_scale = text_scale or JimHUD:getSetting({"INTERACTION", "TEXT_SCALE"}, 0.8)
 		local interact_text = self._hud_panel:child(self._child_name_text)
 		local invalid_text = self._hud_panel:child(self._child_ivalid_name_text)
 		local changed = false
@@ -474,12 +474,12 @@ elseif string.lower(RequiredScript) == "lib/units/interactions/interactionext" t
 	end
 
 elseif string.lower(RequiredScript) == "lib/managers/objectinteractionmanager" then
-	ObjectInteractionManager.AUTO_PICKUP_DELAY = WolfHUD:getTweakEntry("AUTO_PICKUP_DELAY", "number", 0.2)	 --Delay in seconds between auto-pickup procs (0 -> as fast as possible)
+	ObjectInteractionManager.AUTO_PICKUP_DELAY = JimHUD:getTweakEntry("AUTO_PICKUP_DELAY", "number", 0.2)	 --Delay in seconds between auto-pickup procs (0 -> as fast as possible)
 	local _update_targeted_original = ObjectInteractionManager._update_targeted
 	function ObjectInteractionManager:_update_targeted(player_pos, player_unit, ...)
 		_update_targeted_original(self, player_pos, player_unit, ...)
 
-		if WolfHUD:getSetting({"INTERACTION", "HOLD2PICK"}, true) and alive(self._active_unit) and not self._active_object_locked_data then
+		if JimHUD:getSetting({"INTERACTION", "HOLD2PICK"}, true) and alive(self._active_unit) and not self._active_object_locked_data then
 			local t = Application:time()
 			if self._active_unit:base() and self._active_unit:base().small_loot and managers.menu:get_controller():get_input_bool("interact") and (t >= (self._next_auto_pickup_t or 0)) then
 				self._next_auto_pickup_t = t + ObjectInteractionManager.AUTO_PICKUP_DELAY

@@ -13,13 +13,13 @@ end
 
 if RequiredScript == "lib/managers/hud/hudchat" then
 
-	HUDChat.LINE_HEIGHT = WolfHUD:getSetting({"HUDChat", "LINE_HEIGHT"}, 15)			--Size of each line in chat (and hence the text size)
-	HUDChat.WIDTH = WolfHUD:getSetting({"HUDChat", "WIDTH"}, 380)						--Width of the chat window
-	HUDChat.MAX_OUTPUT_LINES = WolfHUD:getSetting({"HUDChat", "MAX_OUTPUT_LINES"}, 8)	--Number of chat lines to show
-	HUDChat.MAX_INPUT_LINES = WolfHUD:getSetting({"HUDChat", "MAX_INPUT_LINES"}, 5)		--Number of lines of text you can type
+	HUDChat.LINE_HEIGHT = JimHUD:getSetting({"HUDChat", "LINE_HEIGHT"}, 15)			--Size of each line in chat (and hence the text size)
+	HUDChat.WIDTH = JimHUD:getSetting({"HUDChat", "WIDTH"}, 380)						--Width of the chat window
+	HUDChat.MAX_OUTPUT_LINES = JimHUD:getSetting({"HUDChat", "MAX_OUTPUT_LINES"}, 8)	--Number of chat lines to show
+	HUDChat.MAX_INPUT_LINES = JimHUD:getSetting({"HUDChat", "MAX_INPUT_LINES"}, 5)		--Number of lines of text you can type
 	HUDChat.MOUSE_SUPPORT = false														--For scolling and stuff. Experimental, you have been warned
-	HUDChat.COLORED_BG = WolfHUD:getSetting({"HUDChat", "COLORED_BG"}, true)			--Colorize the line bg based on the message source
-	HUDChat.SCROLLBAR_ALIGN = WolfHUD:getSetting({"HUDChat", "SCROLLBAR_ALIGN"}, 2)		--Alignment of the scroll bar (1 = left, 2 = right)
+	HUDChat.COLORED_BG = JimHUD:getSetting({"HUDChat", "COLORED_BG"}, true)			--Colorize the line bg based on the message source
+	HUDChat.SCROLLBAR_ALIGN = JimHUD:getSetting({"HUDChat", "SCROLLBAR_ALIGN"}, 2)		--Alignment of the scroll bar (1 = left, 2 = right)
 
 	local enter_key_callback_original = HUDChat.enter_key_callback
 	local esc_key_callback_original = HUDChat.esc_key_callback
@@ -374,7 +374,7 @@ if RequiredScript == "lib/managers/hud/hudchat" then
 	end
 
 	function HUDChat:_animate_fade_output()
-		local wait_t = WolfHUD:getSetting({"HUDChat", "CHAT_WAIT_TIME"}, 10)
+		local wait_t = JimHUD:getSetting({"HUDChat", "CHAT_WAIT_TIME"}, 10)
 		if wait_t <= 0 then return end
 		local fade_t = 1
 		local t = 0

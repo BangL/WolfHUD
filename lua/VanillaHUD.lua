@@ -1,5 +1,5 @@
 
-if WolfHUD:getSetting({"CustomHUD", "ENABLED"}, true) then
+if JimHUD:getSetting({"CustomHUD", "ENABLED"}, true) then
 	return
 end
 
@@ -28,7 +28,7 @@ if RequiredScript == "lib/managers/hudmanagerpd2" then
 			if name_label then
 				teammate_panel:set_interact_text(name_label.panel:child("action"):text())
 			end
-			teammate_panel:set_interact_visibility(enabled and timer and WolfHUD:getSetting({"CustomHUD", "TEAMMATE", "INTERACTION", "MIN_DURATION"}, 1) <= timer and not WolfHUD:getSetting({"CustomHUD", "TEAMMATE", "INTERACTION", "HIDE"}, false) and WolfHUD:getSetting({"CustomHUD", "TEAMMATE", "INTERACTION", "TEXT"}, true))
+			teammate_panel:set_interact_visibility(enabled and timer and JimHUD:getSetting({"CustomHUD", "TEAMMATE", "INTERACTION", "MIN_DURATION"}, 1) <= timer and not JimHUD:getSetting({"CustomHUD", "TEAMMATE", "INTERACTION", "HIDE"}, false) and JimHUD:getSetting({"CustomHUD", "TEAMMATE", "INTERACTION", "TEXT"}, true))
 		end
 	end
 
@@ -46,7 +46,7 @@ elseif RequiredScript == "lib/managers/hud/hudteammate" then
 		self._max_name_panel_width = self._panel:w()
 
 		self._condition_icon = self._panel:child("condition_icon")
-		self._condition_icon:set_color(WolfHUD:getColorSetting({"CustomHUD", self._setting_prefix, "CONDITION_ICON_COLOR"}, "white"))
+		self._condition_icon:set_color(JimHUD:getColorSetting({"CustomHUD", self._setting_prefix, "CONDITION_ICON_COLOR"}, "white"))
 
 		if self._main_player and not HUDManager.CUSTOM_TEAMMATE_PANELS then
 			self:_create_stamina_circle()
@@ -57,10 +57,10 @@ elseif RequiredScript == "lib/managers/hud/hudteammate" then
 
 	function HUDTeammate:set_name(name, ...)
 		if not self._ai then
-			if WolfHUD:getSetting({"CustomHUD", self._setting_prefix, "TRUNCATE_TAGS"}, true) then
-				name = WolfHUD:truncateNameTag(name)
+			if JimHUD:getSetting({"CustomHUD", self._setting_prefix, "TRUNCATE_TAGS"}, true) then
+				name = JimHUD:truncateNameTag(name)
 			end
-			if WolfHUD:getSetting({"CustomHUD", self._setting_prefix, "RANK"}, true) then
+			if JimHUD:getSetting({"CustomHUD", self._setting_prefix, "RANK"}, true) then
 				local peer = self:peer_id() and managers.network:session():peer(self:peer_id())
 				local infamy, level = peer and peer:rank() or managers.experience:current_rank(), peer and peer:level() or managers.experience:current_level()
 				local level_str = string.format("%s%s ",
@@ -95,7 +95,7 @@ elseif RequiredScript == "lib/managers/hud/hudteammate" then
 		if not self._ai then
 			name_panel:set_range_color((self._color_pos or 0) + 1, name_panel:text():len() + 1, self._panel:child("callsign"):color():with_alpha(1))
 		else
-			name_panel:set_color(WolfHUD:getSetting({"CustomHUD", "TEAMMATE", "AI_COLOR", "USE"}, false) and WolfHUD:getColorSetting({"CustomHUD", "TEAMMATE", "AI_COLOR", "COLOR"}, "white") or tweak_data.chat_colors[5])
+			name_panel:set_color(JimHUD:getSetting({"CustomHUD", "TEAMMATE", "AI_COLOR", "USE"}, false) and JimHUD:getColorSetting({"CustomHUD", "TEAMMATE", "AI_COLOR", "COLOR"}, "white") or tweak_data.chat_colors[5])
 		end
 		name_bg_panel:set_w(w + 4)
 		name_bg_panel:set_h(h + 2)
@@ -113,7 +113,7 @@ elseif RequiredScript == "lib/managers/hud/hudteammate" then
 			w = radial_health_panel:w() * 0.37,--53,
 			h = radial_health_panel:h() * 0.37,--53,
 			layer = 2,
-			visible = WolfHUD:getSetting({"CustomHUD", "PLAYER", "STAMINA"}, true)
+			visible = JimHUD:getSetting({"CustomHUD", "PLAYER", "STAMINA"}, true)
 		})
 		self._stamina_bar:set_color(Color(1, 1, 0, 0))
 		self._stamina_bar:set_center(radial_health_panel:child("radial_health"):center())
@@ -123,7 +123,7 @@ elseif RequiredScript == "lib/managers/hud/hudteammate" then
 			w = radial_health_panel:w() * 0.05,
 			h = 2,
 			layer = 10,
-			visible = WolfHUD:getSetting({"CustomHUD", "PLAYER", "STAMINA"}, true)
+			visible = JimHUD:getSetting({"CustomHUD", "PLAYER", "STAMINA"}, true)
 		})
 		self._stamina_line:set_center(radial_health_panel:child("radial_health"):center())
 	end
@@ -144,7 +144,7 @@ elseif RequiredScript == "lib/managers/hud/hudteammate" then
 
 	function HUDTeammate:set_current_stamina(value)
 		self._stamina_bar:set_color(Color(1, value/self._max_stamina, 0, 0))
-		self:set_stamina_meter_visibility(WolfHUD:getSetting({"CustomHUD", "PLAYER", "STAMINA"}, true) and not self._condition_icon:visible())
+		self:set_stamina_meter_visibility(JimHUD:getSetting({"CustomHUD", "PLAYER", "STAMINA"}, true) and not self._condition_icon:visible())
 	end
 
 	function HUDTeammate:set_stamina_meter_visibility(value)
@@ -211,9 +211,9 @@ elseif RequiredScript == "lib/managers/hud/hudteammate" then
 	end
 
 	function HUDTeammate:teammate_progress(enabled, tweak_data_id, timer, success, ...)
-		local show = timer and WolfHUD:getSetting({"CustomHUD", "TEAMMATE", "INTERACTION", "MIN_DURATION"}, 1) <= timer and not WolfHUD:getSetting({"CustomHUD", "TEAMMATE", "INTERACTION", "HIDE"}, false)
+		local show = timer and JimHUD:getSetting({"CustomHUD", "TEAMMATE", "INTERACTION", "MIN_DURATION"}, 1) <= timer and not JimHUD:getSetting({"CustomHUD", "TEAMMATE", "INTERACTION", "HIDE"}, false)
 		teammate_progress_original(self, enabled and show, tweak_data_id, timer, success and show, ...)
-		if enabled and show and WolfHUD:getSetting({"CustomHUD", "TEAMMATE", "INTERACTION", "NUMBER"}, true) then
+		if enabled and show and JimHUD:getSetting({"CustomHUD", "TEAMMATE", "INTERACTION", "NUMBER"}, true) then
 			self:_start_interact_timer(timer)
 		else
 			self:_stop_interact_timer()
@@ -251,9 +251,9 @@ elseif RequiredScript == "lib/managers/hud/hudteammate" then
 
 	function HUDTeammate:set_condition(icon_data, ...)
 		local visible = icon_data ~= "mugshot_normal"
-		self:set_stamina_meter_visibility(not visible and WolfHUD:getSetting({"CustomHUD", "PLAYER", "STAMINA"}, true))
+		self:set_stamina_meter_visibility(not visible and JimHUD:getSetting({"CustomHUD", "PLAYER", "STAMINA"}, true))
 		if HUDManager.DOWNS_COUNTER_PLUGIN and self._downs_counter and self._detection_counter then
-			local disabled = visible or not WolfHUD:getSetting({"CustomHUD", self._setting_prefix, "DOWNCOUNTER"}, true) or self._ai
+			local disabled = visible or not JimHUD:getSetting({"CustomHUD", self._setting_prefix, "DOWNCOUNTER"}, true) or self._ai
 			self._downs_counter:set_visible(not disabled and (not managers.groupai:state():whisper_mode() or self:down_amount() > 0))
 			self._detection_counter:set_visible(not disabled and not self._downs_counter:visible())
 		end
