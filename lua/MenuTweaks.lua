@@ -243,7 +243,7 @@ elseif string.lower(RequiredScript) == "lib/managers/menu/blackmarketgui" then
 
 		local current_tab = self._tabs[self._selected]
 		local selected_slot = current_tab and current_tab._slots[current_tab._slot_selected]
-		local highlighted_slot 	= current_tab and current_tab._slots[current_tab._slot_highlighted]
+		local highlighted_slot = current_tab and current_tab._slots[current_tab._slot_highlighted]
 
 		if selected_slot then
 			selected_slot:select(true, true)

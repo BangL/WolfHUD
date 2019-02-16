@@ -66,8 +66,8 @@
 
 	"wolfhud_loadout_hours_played" : "$HOURS hrs.",
 
-    "wolfhud_profile_switch_title" : "Switch Profiles",
-    "wolfhud_profile_switch_title_profiles" : "Profile:",
+	"wolfhud_profile_switch_title" : "Switch Profiles",
+	"wolfhud_profile_switch_title_profiles" : "Profile:",
 
 	"victory_most_damage" : "Highest Damage:",
 	"victory_session_damage" : "Total Damage:",
@@ -142,7 +142,7 @@
 	"wolfhud_enemy_fbi" : "FBI Unit",
 	"wolfhud_enemy_swat" : "SWAT Unit",
 	"wolfhud_enemy_heavy_swat" : "Heavy SWAT",
-    "wolfhud_enemy_heavy_swat_sniper" : "Heavy SWAT Sniper",
+	"wolfhud_enemy_heavy_swat_sniper" : "Heavy SWAT Sniper",
 	"wolfhud_enemy_city_swat" : "Elite Unit",
 	"wolfhud_enemy_shield" : "Shield",
 	"wolfhud_enemy_spook" : "Cloaker",
@@ -778,8 +778,8 @@
 	"wolfhud_crewloadout_briefing_desc" : "Replaces the default Crew Loadout Panel in Mission briefing.",
 	"wolfhud_crewloadout_tabscreen_title" : "Show on Tabscreen",
 	"wolfhud_crewloadout_tabscreen_desc" : "Displays the Skills, Perk and current Ping of players in your lobby. \n(Disabled if you use this feature of LobbyPlayerInfo)",
-    "wolfhud_profilemenu_replace_title" : "Replace Profile Menu",
-    "wolfhud_profilemenu_replace_desc" : "Replaces the default Profile-Selector with WolfHUDs advanced one.",
+	"wolfhud_profilemenu_replace_title" : "Replace Profile Menu",
+	"wolfhud_profilemenu_replace_desc" : "Replaces the default Profile-Selector with WolfHUDs advanced one.",
 
 	"wolfhud_dmgindicator_options_name" : "Damage Indicator",
 	"wolfhud_dmgindicator_options_help" : "Set the fade time, size and colors or your damage indicators.",

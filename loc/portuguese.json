@@ -67,8 +67,8 @@
 
 	"wolfhud_loadout_hours_played" : "$HOURS hrs.",
 
-    "wolfhud_profile_switch_title" : "Mudar perfil",
-    "wolfhud_profile_switch_title_profiles" : "Perfil:",
+	"wolfhud_profile_switch_title" : "Mudar perfil",
+	"wolfhud_profile_switch_title_profiles" : "Perfil:",
 
 	"victory_most_damage" : "Maior dano:",
 	"victory_session_damage" : "Dano total:",
@@ -143,7 +143,7 @@
 	"wolfhud_enemy_fbi" : "Unidade do FBI",
 	"wolfhud_enemy_swat" : "Unidade da SWAT",
 	"wolfhud_enemy_heavy_swat" : "Heavy SWAT",
-    "wolfhud_enemy_heavy_swat_sniper" : "Heavy SWAT Sniper",
+	"wolfhud_enemy_heavy_swat_sniper" : "Heavy SWAT Sniper",
 	"wolfhud_enemy_city_swat" : "Elite Unit",
 	"wolfhud_enemy_shield" : "Shield",
 	"wolfhud_enemy_spook" : "Cloaker",
@@ -774,8 +774,8 @@
 	"wolfhud_crewloadout_briefing_desc" : "Substitui o painel padrão do Crew Loadout no sumário da missão.",
 	"wolfhud_crewloadout_tabscreen_title" : "Mostrar no inventário estendido",
 	"wolfhud_crewloadout_tabscreen_desc" : "Exibe as Skills, Perk e o ping atual dos jogadores no seu lobby. \n(Fica desativado se você usar esse recurso do LobbyPlayerInfo)",
-    	"wolfhud_profilemenu_replace_title" : "Substituir o menu de perfil",
-    	"wolfhud_profilemenu_replace_desc" : " Substitui o seletor de perfil padrão pelo do WolfHUD.",
+	"wolfhud_profilemenu_replace_title" : "Substituir o menu de perfil",
+	"wolfhud_profilemenu_replace_desc" : " Substitui o seletor de perfil padrão pelo do WolfHUD.",
 
 	"wolfhud_dmgindicator_options_name" : "Indicador de dano",
 	"wolfhud_dmgindicator_options_help" : "Configura o tempo de desaparecimento, o tamanho e cor ou os seus indicadores de dano.",
@@ -980,5 +980,5 @@
 	"wolfhud_skipit_options_name" : "Opções de pulo",
 	"wolfhud_skipit_options_help" : "Opções para pular menus desnecessários automaticamente e poupar seu tempo.",
 	"wolfhud_assaultbanner_options_name" : "Opções do Assault Banner",
-"wolfhud_assaultbanner_options_help" : "Opções para mudar o Assault Banner."
+	"wolfhud_assaultbanner_options_help" : "Opções para mudar o Assault Banner."
 }

@@ -174,61 +174,61 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 	HUDListManager = HUDListManager or class()
 	HUDListManager.ListOptions = {
 		--General settings (Offsets get updated by Objective/Assault or CustomHUD)
-		right_list_height_offset = 0,   										--Margin from top for the right list
-		left_list_height_offset = 40,   										--Margin from top for the left list
-		buff_list_height_offset = 90,   										--Margin from bottom for the buff list
-		right_list_scale 				= WolfHUD:getSetting({"HUDList", "right_list_scale"}, 1),   	--Size scale of right list
-		left_list_scale 				= WolfHUD:getSetting({"HUDList", "left_list_scale"}, 1),    	--Size scale of left list
-		buff_list_scale 				= WolfHUD:getSetting({"HUDList", "buff_list_scale"}, 1),    	--Size scale of buff list
-		right_list_progress_alpha 		= WolfHUD:getSetting({"HUDList", "right_list_progress_alpha"}, 0.4),
-		left_list_progress_alpha 		= WolfHUD:getSetting({"HUDList", "left_list_progress_alpha"}, 0.4),
-		buff_list_progress_alpha 		= WolfHUD:getSetting({"HUDList", "buff_list_progress_alpha"}, 1.0),
+		right_list_height_offset = 0,										--Margin from top for the right list
+		left_list_height_offset = 40,										--Margin from top for the left list
+		buff_list_height_offset = 90,										--Margin from bottom for the buff list
+		right_list_scale				= WolfHUD:getSetting({"HUDList", "right_list_scale"}, 1),	--Size scale of right list
+		left_list_scale					= WolfHUD:getSetting({"HUDList", "left_list_scale"}, 1),	--Size scale of left list
+		buff_list_scale					= WolfHUD:getSetting({"HUDList", "buff_list_scale"}, 1),	--Size scale of buff list
+		right_list_progress_alpha		= WolfHUD:getSetting({"HUDList", "right_list_progress_alpha"}, 0.4),
+		left_list_progress_alpha		= WolfHUD:getSetting({"HUDList", "left_list_progress_alpha"}, 0.4),
+		buff_list_progress_alpha		= WolfHUD:getSetting({"HUDList", "buff_list_progress_alpha"}, 1.0),
 
 		--Left side list
-		show_timers 					= WolfHUD:getSetting({"HUDList", "LEFT_LIST", "show_timers"}, true),     				--Drills, time locks, hacking etc.
-		show_ammo_bags 					= WolfHUD:getSetting({"HUDList", "LEFT_LIST", "show_ammo_bags"}, true),
-		show_doc_bags 					= WolfHUD:getSetting({"HUDList", "LEFT_LIST", "show_doc_bags"}, true),
+		show_timers						= WolfHUD:getSetting({"HUDList", "LEFT_LIST", "show_timers"}, true),				--Drills, time locks, hacking etc.
+		show_ammo_bags					= WolfHUD:getSetting({"HUDList", "LEFT_LIST", "show_ammo_bags"}, true),
+		show_doc_bags					= WolfHUD:getSetting({"HUDList", "LEFT_LIST", "show_doc_bags"}, true),
 		show_first_aid_kits				= WolfHUD:getSetting({"HUDList", "LEFT_LIST", "show_first_aid_kits"}, false),
-		show_body_bags 					= WolfHUD:getSetting({"HUDList", "LEFT_LIST", "show_body_bags"}, true),
-		show_grenade_crates 			= WolfHUD:getSetting({"HUDList", "LEFT_LIST", "show_grenade_crates"}, true),
-		show_sentries 					= WolfHUD:getSetting({"HUDList", "LEFT_LIST", "show_sentries"}, true),   				--Deployable sentries
-		show_ecms 						= WolfHUD:getSetting({"HUDList", "LEFT_LIST", "show_ecms"}, true),       				--Active ECMs
-		show_ecm_retrigger 				= WolfHUD:getSetting({"HUDList", "LEFT_LIST", "show_ecm_retrigger"}, true),      		--Countdown for player owned ECM feedback retrigger delay
-		show_minions 					= WolfHUD:getSetting({"HUDList", "LEFT_LIST", "show_minions"}, true),    				--Converted enemies, type and health
-			show_own_minions_only 		= WolfHUD:getSetting({"HUDList", "LEFT_LIST", "show_own_minions_only"}, true),			--Only show player-owned minions
-		show_pagers 					= WolfHUD:getSetting({"HUDList", "LEFT_LIST", "show_pagers"}, true),     				--Show currently active pagers
-		show_tape_loop 					= WolfHUD:getSetting({"HUDList", "LEFT_LIST", "show_tape_loop"}, true),  				--Show active tape loop duration
+		show_body_bags					= WolfHUD:getSetting({"HUDList", "LEFT_LIST", "show_body_bags"}, true),
+		show_grenade_crates				= WolfHUD:getSetting({"HUDList", "LEFT_LIST", "show_grenade_crates"}, true),
+		show_sentries					= WolfHUD:getSetting({"HUDList", "LEFT_LIST", "show_sentries"}, true),				--Deployable sentries
+		show_ecms						= WolfHUD:getSetting({"HUDList", "LEFT_LIST", "show_ecms"}, true),					--Active ECMs
+		show_ecm_retrigger				= WolfHUD:getSetting({"HUDList", "LEFT_LIST", "show_ecm_retrigger"}, true),			--Countdown for player owned ECM feedback retrigger delay
+		show_minions					= WolfHUD:getSetting({"HUDList", "LEFT_LIST", "show_minions"}, true),				--Converted enemies, type and health
+			show_own_minions_only		= WolfHUD:getSetting({"HUDList", "LEFT_LIST", "show_own_minions_only"}, true),		--Only show player-owned minions
+		show_pagers						= WolfHUD:getSetting({"HUDList", "LEFT_LIST", "show_pagers"}, true),				--Show currently active pagers
+		show_tape_loop					= WolfHUD:getSetting({"HUDList", "LEFT_LIST", "show_tape_loop"}, true),				--Show active tape loop duration
 
 		--Right side list
-		show_enemies 					= WolfHUD:getSetting({"HUDList", "RIGHT_LIST", "show_enemies"}, true),            		--Currently spawned enemies
-			aggregate_enemies 			= WolfHUD:getSetting({"HUDList", "RIGHT_LIST", "aggregate_enemies"}, false),      			--Aggregate all enemies into a single item
-		show_turrets 					= WolfHUD:getSetting({"HUDList", "RIGHT_LIST", "show_turrets"}, true),    				--Show active SWAT turrets
-		show_civilians 					= WolfHUD:getSetting({"HUDList", "RIGHT_LIST", "show_civilians"}, true),  				--Currently spawned, untied civs
-		show_hostages 					= WolfHUD:getSetting({"HUDList", "RIGHT_LIST", "show_hostages"}, true),   				--Currently tied civilian and dominated cops
-			aggregate_hostages 			= WolfHUD:getSetting({"HUDList", "RIGHT_LIST", "aggregate_hostages"}, false),															--Aggregate all hostages into a single item
-		show_minion_count 				= WolfHUD:getSetting({"HUDList", "RIGHT_LIST", "show_minion_count"}, true),       		--Current number of jokered enemies
-		show_pager_count 				= WolfHUD:getSetting({"HUDList", "RIGHT_LIST", "show_pager_count"}, true),        		--Show number of triggered pagers (only counts pagers triggered while you were present)
+		show_enemies					= WolfHUD:getSetting({"HUDList", "RIGHT_LIST", "show_enemies"}, true),				--Currently spawned enemies
+			aggregate_enemies			= WolfHUD:getSetting({"HUDList", "RIGHT_LIST", "aggregate_enemies"}, false),		--Aggregate all enemies into a single item
+		show_turrets					= WolfHUD:getSetting({"HUDList", "RIGHT_LIST", "show_turrets"}, true),				--Show active SWAT turrets
+		show_civilians					= WolfHUD:getSetting({"HUDList", "RIGHT_LIST", "show_civilians"}, true),			--Currently spawned, untied civs
+		show_hostages					= WolfHUD:getSetting({"HUDList", "RIGHT_LIST", "show_hostages"}, true),				--Currently tied civilian and dominated cops
+			aggregate_hostages			= WolfHUD:getSetting({"HUDList", "RIGHT_LIST", "aggregate_hostages"}, false),		--Aggregate all hostages into a single item
+		show_minion_count				= WolfHUD:getSetting({"HUDList", "RIGHT_LIST", "show_minion_count"}, true),			--Current number of jokered enemies
+		show_pager_count				= WolfHUD:getSetting({"HUDList", "RIGHT_LIST", "show_pager_count"}, true),			--Show number of triggered pagers (only counts pagers triggered while you were present)
 		show_cam_count					= WolfHUD:getSetting({"HUDList", "RIGHT_LIST", "show_cam_count"}, true),
 		show_bodybags_count				= WolfHUD:getSetting({"HUDList", "RIGHT_LIST", "show_bodybags_count"}, true),
 		show_corpse_count				= WolfHUD:getSetting({"HUDList", "RIGHT_LIST", "show_corpse_count"}, true),
-		show_loot 						= WolfHUD:getSetting({"HUDList", "RIGHT_LIST", "show_loot"}, true),       				--Show spawned and active loot bags/piles (may not be shown if certain mission parameters has not been met)
-			aggregate_loot 				= WolfHUD:getSetting({"HUDList", "RIGHT_LIST", "aggregate_loot"}, false), 					--Aggregate all loot into a single item
-			separate_bagged_loot 		= WolfHUD:getSetting({"HUDList", "RIGHT_LIST", "separate_bagged_loot"}, true),     		--Show bagged/unbagged loot as separate values
+		show_loot						= WolfHUD:getSetting({"HUDList", "RIGHT_LIST", "show_loot"}, true),					--Show spawned and active loot bags/piles (may not be shown if certain mission parameters has not been met)
+			aggregate_loot				= WolfHUD:getSetting({"HUDList", "RIGHT_LIST", "aggregate_loot"}, false),			--Aggregate all loot into a single item
+			separate_bagged_loot		= WolfHUD:getSetting({"HUDList", "RIGHT_LIST", "separate_bagged_loot"}, true),		--Show bagged/unbagged loot as separate values
 			show_potential_loot			= WolfHUD:getSetting({"HUDList", "RIGHT_LIST", "show_potential_loot"}, false),
-		show_special_pickups 			= WolfHUD:getSetting({"HUDList", "RIGHT_LIST", "show_special_pickups"}, true),    		--Show number of special equipment/items
+		show_special_pickups			= WolfHUD:getSetting({"HUDList", "RIGHT_LIST", "show_special_pickups"}, true),		--Show number of special equipment/items
 
 		--Buff list
-		show_buffs 						= WolfHUD:getSetting({"HUDList", "BUFF_LIST", "show_buffs"}, true),       				--Active effects (buffs/debuffs). Also see HUDList.BuffItemBase.IGNORED_BUFFS table to ignore specific buffs that you don't want listed, or enable some of those not shown by default
+		show_buffs						= WolfHUD:getSetting({"HUDList", "BUFF_LIST", "show_buffs"}, true),					--Active effects (buffs/debuffs). Also see HUDList.BuffItemBase.IGNORED_BUFFS table to ignore specific buffs that you don't want listed, or enable some of those not shown by default
 
-		list_color 						= WolfHUD:getColorSetting({"HUDList", "list_color"}, "white"),
-		list_color_bg 					= WolfHUD:getColorSetting({"HUDList", "list_color_bg"}, "black"),
-		civilian_color 					= WolfHUD:getColorSetting({"HUDList", "civilian_color"}, "white"),
-		hostage_color 					= WolfHUD:getColorSetting({"HUDList", "civilian_color"}, "white"),
-		thug_color 						= WolfHUD:getColorSetting({"HUDList", "thug_color"}, "white"),
-		enemy_color 					= WolfHUD:getColorSetting({"HUDList", "enemy_color"}, "white"),
-		guard_color 					= WolfHUD:getColorSetting({"HUDList", "enemy_color"}, "white"),
-		special_color 					= WolfHUD:getColorSetting({"HUDList", "special_color"}, "white"),
-		turret_color 					= WolfHUD:getColorSetting({"HUDList", "special_color"}, "white"),
+		list_color						= WolfHUD:getColorSetting({"HUDList", "list_color"}, "white"),
+		list_color_bg					= WolfHUD:getColorSetting({"HUDList", "list_color_bg"}, "black"),
+		civilian_color					= WolfHUD:getColorSetting({"HUDList", "civilian_color"}, "white"),
+		hostage_color					= WolfHUD:getColorSetting({"HUDList", "civilian_color"}, "white"),
+		thug_color						= WolfHUD:getColorSetting({"HUDList", "thug_color"}, "white"),
+		enemy_color						= WolfHUD:getColorSetting({"HUDList", "enemy_color"}, "white"),
+		guard_color						= WolfHUD:getColorSetting({"HUDList", "enemy_color"}, "white"),
+		special_color					= WolfHUD:getColorSetting({"HUDList", "special_color"}, "white"),
+		turret_color					= WolfHUD:getColorSetting({"HUDList", "special_color"}, "white"),
 	}
 
 	HUDListManager.TIMER_SETTINGS = {
@@ -270,73 +270,73 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 	}
 
 	HUDListManager.UNIT_TYPES = {
-		cop = 						{ type_id = "cop",			category = "enemies",	long_name = "wolfhud_enemy_cop" 					},
-		cop_female = 				{ type_id = "cop",			category = "enemies",	long_name = "wolfhud_enemy_cop" 					},
-		fbi = 						{ type_id = "cop",			category = "enemies",	long_name = "wolfhud_enemy_fbi" 					},
-		swat = 						{ type_id = "cop",			category = "enemies",	long_name = "wolfhud_enemy_swat" 					},
-		heavy_swat = 				{ type_id = "cop",			category = "enemies",	long_name = "wolfhud_enemy_heavy_swat" 				},
-		heavy_swat_sniper =         { type_id = "cop",			category = "enemies",	long_name = "wolfhud_enemy_heavy_swat_sniper"   	},
-		fbi_swat = 					{ type_id = "cop",			category = "enemies",	long_name = "wolfhud_enemy_swat" 					},
-		fbi_heavy_swat = 			{ type_id = "cop",			category = "enemies",	long_name = "wolfhud_enemy_heavy_swat" 				},
-		city_swat = 				{ type_id = "cop",			category = "enemies",	long_name = "wolfhud_enemy_city_swat" 				},
-		security = 					{ type_id = "security",		category = "enemies",	long_name = "wolfhud_enemy_security" 				},
-		security_undominatable = 	{ type_id = "security",		category = "enemies",	long_name = "wolfhud_enemy_security" 				},
-		gensec = 					{ type_id = "security",		category = "enemies",	long_name = "wolfhud_enemy_gensec" 					},
-		bolivian_indoors =			{ type_id = "security",		category = "enemies",	long_name = "wolfhud_enemy_bolivian_security" 		},
-		bolivian =					{ type_id = "thug",			category = "enemies",	long_name = "wolfhud_enemy_bolivian_thug" 			},
-		gangster = 					{ type_id = "thug",			category = "enemies",	long_name = "wolfhud_enemy_gangster" 				},
-		mobster = 					{ type_id = "thug",			category = "enemies",	long_name = "wolfhud_enemy_mobster" 				},
-		biker = 					{ type_id = "thug",			category = "enemies",	long_name = "wolfhud_enemy_biker" 					},
-		biker_escape = 				{ type_id = "thug",			category = "enemies",	long_name = "wolfhud_enemy_biker" 					},
-		tank = 						{ type_id = "tank",			category = "enemies",	long_name = "wolfhud_enemy_tank" 					},
-		tank_hw = 					{ type_id = "tank",			category = "enemies",	long_name = "wolfhud_enemy_tank_hw" 				},
-		tank_medic = 				{ type_id = "tank",			category = "enemies",	long_name = "wolfhud_enemy_tank_medic" 				},
-		tank_mini = 				{ type_id = "tank",			category = "enemies",	long_name = "wolfhud_enemy_tank_mini" 				},
-		spooc = 					{ type_id = "spooc",		category = "enemies",	long_name = "wolfhud_enemy_spook" 					},
-		shadow_spooc = 				{ type_id = "spooc",		category = "enemies",	long_name = "wolfhud_enemy_shadow_spook" 			},
-		taser = 					{ type_id = "taser",		category = "enemies",	long_name = "wolfhud_enemy_taser" 					},
-		shield = 					{ type_id = "shield",		category = "enemies",	long_name = "wolfhud_enemy_shield" 					},
-		sniper = 					{ type_id = "sniper",		category = "enemies",	long_name = "wolfhud_enemy_sniper" 					},
-		medic = 					{ type_id = "medic",		category = "enemies",	long_name = "wolfhud_enemy_medic" 					},
-		biker_boss = 				{ type_id = "thug_boss",	category = "enemies",	long_name = "wolfhud_enemy_biker_boss" 				},
-		chavez_boss = 				{ type_id = "thug_boss",	category = "enemies",	long_name = "wolfhud_enemy_chavez_boss" 			},
-		drug_lord_boss =			{ type_id = "thug_boss",	category = "enemies",	long_name = "wolfhud_enemy_druglord_boss" 			},
-		drug_lord_boss_stealth =	{ type_id = "thug_boss",	category = "enemies",	long_name = "wolfhud_enemy_druglord_boss_stealth" 	},
-		hector_boss = 				{ type_id = "thug_boss",	category = "enemies",	long_name = "wolfhud_enemy_hector_boss" 			},
-		hector_boss_no_armor = 		{ type_id = "thug_boss",	category = "enemies",	long_name = "wolfhud_enemy_hector_boss_no_armor" 	},
-		mobster_boss = 				{ type_id = "thug_boss",	category = "enemies",	long_name = "wolfhud_enemy_mobster_boss" 			},
-		phalanx_vip = 				{ type_id = "phalanx",		category = "enemies",	long_name = "wolfhud_enemy_phalanx_vip" 			},
-		phalanx_minion = 			{ type_id = "phalanx",		category = "enemies",	long_name = "wolfhud_enemy_phalanx_minion" 			},
-		civilian = 					{ type_id = "civ",			category = "civilians",	long_name = "wolfhud_enemy_civilian" 				},
-		civilian_female = 			{ type_id = "civ",			category = "civilians",	long_name = "wolfhud_enemy_civilian" 				},
-		bank_manager = 				{ type_id = "civ",			category = "civilians",	long_name = "wolfhud_enemy_bank_manager" 			},
-		--drunk_pilot = 			{ type_id = "unique",		category = "civilians",	long_name = "wolfhud_enemy_drunk_pilot" 			},	--White x-Mas
-		--escort = 					{ type_id = "unique",		category = "civilians",	long_name = "wolfhud_enemy_escort" 					},	--?
-		--old_hoxton_mission = 		{ type_id = "unique",		category = "civilians",	long_name = "wolfhud_enemy_old_hoxton_mission" 		},	--Hox Breakout / BtM (Locke)
-		--inside_man = 				{ type_id = "unique",		category = "civilians",	long_name = "wolfhud_enemy_inside_man" 				},	--FWB
-		--boris = 					{ type_id = "unique",		category = "civilians",	long_name = "wolfhud_enemy_boris" 					},	--Goat Sim Day 2
-		--escort_undercover = 		{ type_id = "unique",		category = "civilians",	long_name = "wolfhud_enemy_escort_undercover" 		},	--Taxman, Undercover + Matt, Heat Street
-		--escort_chinese_prisoner = { type_id = "unique", 		category = "civilians", long_name = "wolfhud_enemy_escort_chinese_prisoner" },	--Kazo, Green Bridge
-		--spa_vip = 				{ type_id = "unique",		category = "civilians",	long_name = "wolfhud_enemy_spa_vip" 				},	--Charon, Wick Heist
-		--spa_vip_hurt = 			{ type_id = "unique",		category = "civilians",	long_name = "wolfhud_enemy_spa_vip_hurt" 			},	--Charon, Wick Heist
+		cop =						{ type_id = "cop",			category = "enemies",	long_name = "wolfhud_enemy_cop"						},
+		cop_female =				{ type_id = "cop",			category = "enemies",	long_name = "wolfhud_enemy_cop"						},
+		fbi =						{ type_id = "cop",			category = "enemies",	long_name = "wolfhud_enemy_fbi"						},
+		swat =						{ type_id = "cop",			category = "enemies",	long_name = "wolfhud_enemy_swat"					},
+		heavy_swat =				{ type_id = "cop",			category = "enemies",	long_name = "wolfhud_enemy_heavy_swat"				},
+		heavy_swat_sniper =			{ type_id = "cop",			category = "enemies",	long_name = "wolfhud_enemy_heavy_swat_sniper"		},
+		fbi_swat =					{ type_id = "cop",			category = "enemies",	long_name = "wolfhud_enemy_swat"					},
+		fbi_heavy_swat =			{ type_id = "cop",			category = "enemies",	long_name = "wolfhud_enemy_heavy_swat"				},
+		city_swat =					{ type_id = "cop",			category = "enemies",	long_name = "wolfhud_enemy_city_swat"				},
+		security =					{ type_id = "security",		category = "enemies",	long_name = "wolfhud_enemy_security"				},
+		security_undominatable =	{ type_id = "security",		category = "enemies",	long_name = "wolfhud_enemy_security"				},
+		gensec =					{ type_id = "security",		category = "enemies",	long_name = "wolfhud_enemy_gensec"					},
+		bolivian_indoors =			{ type_id = "security",		category = "enemies",	long_name = "wolfhud_enemy_bolivian_security"		},
+		bolivian =					{ type_id = "thug",			category = "enemies",	long_name = "wolfhud_enemy_bolivian_thug"			},
+		gangster =					{ type_id = "thug",			category = "enemies",	long_name = "wolfhud_enemy_gangster"				},
+		mobster =					{ type_id = "thug",			category = "enemies",	long_name = "wolfhud_enemy_mobster"					},
+		biker =						{ type_id = "thug",			category = "enemies",	long_name = "wolfhud_enemy_biker"					},
+		biker_escape =				{ type_id = "thug",			category = "enemies",	long_name = "wolfhud_enemy_biker"					},
+		tank =						{ type_id = "tank",			category = "enemies",	long_name = "wolfhud_enemy_tank"					},
+		tank_hw =					{ type_id = "tank",			category = "enemies",	long_name = "wolfhud_enemy_tank_hw"					},
+		tank_medic =				{ type_id = "tank",			category = "enemies",	long_name = "wolfhud_enemy_tank_medic"				},
+		tank_mini =					{ type_id = "tank",			category = "enemies",	long_name = "wolfhud_enemy_tank_mini"				},
+		spooc =						{ type_id = "spooc",		category = "enemies",	long_name = "wolfhud_enemy_spook"					},
+		shadow_spooc =				{ type_id = "spooc",		category = "enemies",	long_name = "wolfhud_enemy_shadow_spook"			},
+		taser =						{ type_id = "taser",		category = "enemies",	long_name = "wolfhud_enemy_taser"					},
+		shield =					{ type_id = "shield",		category = "enemies",	long_name = "wolfhud_enemy_shield"					},
+		sniper =					{ type_id = "sniper",		category = "enemies",	long_name = "wolfhud_enemy_sniper"					},
+		medic =						{ type_id = "medic",		category = "enemies",	long_name = "wolfhud_enemy_medic"					},
+		biker_boss =				{ type_id = "thug_boss",	category = "enemies",	long_name = "wolfhud_enemy_biker_boss"				},
+		chavez_boss =				{ type_id = "thug_boss",	category = "enemies",	long_name = "wolfhud_enemy_chavez_boss"				},
+		drug_lord_boss =			{ type_id = "thug_boss",	category = "enemies",	long_name = "wolfhud_enemy_druglord_boss"			},
+		drug_lord_boss_stealth =	{ type_id = "thug_boss",	category = "enemies",	long_name = "wolfhud_enemy_druglord_boss_stealth"	},
+		hector_boss =				{ type_id = "thug_boss",	category = "enemies",	long_name = "wolfhud_enemy_hector_boss"				},
+		hector_boss_no_armor =		{ type_id = "thug_boss",	category = "enemies",	long_name = "wolfhud_enemy_hector_boss_no_armor"	},
+		mobster_boss =				{ type_id = "thug_boss",	category = "enemies",	long_name = "wolfhud_enemy_mobster_boss"			},
+		phalanx_vip =				{ type_id = "phalanx",		category = "enemies",	long_name = "wolfhud_enemy_phalanx_vip"				},
+		phalanx_minion =			{ type_id = "phalanx",		category = "enemies",	long_name = "wolfhud_enemy_phalanx_minion"			},
+		civilian =					{ type_id = "civ",			category = "civilians",	long_name = "wolfhud_enemy_civilian"				},
+		civilian_female =			{ type_id = "civ",			category = "civilians",	long_name = "wolfhud_enemy_civilian"				},
+		bank_manager =				{ type_id = "civ",			category = "civilians",	long_name = "wolfhud_enemy_bank_manager"			},
+		--drunk_pilot =				{ type_id = "unique",		category = "civilians",	long_name = "wolfhud_enemy_drunk_pilot"				},	--White x-Mas
+		--escort =					{ type_id = "unique",		category = "civilians",	long_name = "wolfhud_enemy_escort"					},	--?
+		--old_hoxton_mission =		{ type_id = "unique",		category = "civilians",	long_name = "wolfhud_enemy_old_hoxton_mission"		},	--Hox Breakout / BtM (Locke)
+		--inside_man =				{ type_id = "unique",		category = "civilians",	long_name = "wolfhud_enemy_inside_man"				},	--FWB
+		--boris =					{ type_id = "unique",		category = "civilians",	long_name = "wolfhud_enemy_boris"					},	--Goat Sim Day 2
+		--escort_undercover =		{ type_id = "unique",		category = "civilians",	long_name = "wolfhud_enemy_escort_undercover"		},	--Taxman, Undercover + Matt, Heat Street
+		--escort_chinese_prisoner = { type_id = "unique",		category = "civilians", long_name = "wolfhud_enemy_escort_chinese_prisoner" },	--Kazo, Green Bridge
+		--spa_vip =					{ type_id = "unique",		category = "civilians",	long_name = "wolfhud_enemy_spa_vip"					},	--Charon, Wick Heist
+		--spa_vip_hurt =			{ type_id = "unique",		category = "civilians",	long_name = "wolfhud_enemy_spa_vip_hurt"			},	--Charon, Wick Heist
 
 		--Custom unit definitions
-		--mechanic = 				{ type_id = "unique",		category = "civilians",	long_name = "wolfhud_enemy_biker_mechanic" 			},	-- Mechanic, Biker Heist
-		turret = 					{ type_id = "turret",		category = "turrets",	long_name = "wolfhud_enemy_swat_van" 				},
-		cop_hostage =				{ type_id = "cop_hostage",	category = "hostages",	force_update = { "cop", "enemies" } 				},
-		sec_hostage =				{ type_id = "cop_hostage",	category = "hostages",	force_update = { "security", "enemies" } 			},
-		civ_hostage =				{ type_id = "civ_hostage",	category = "hostages",	force_update = { "civ", "civilians" } 				},
-		cop_minion =				{ type_id = "minion",		category = "minions",	force_update = { "cop", "enemies" } 				},
+		--mechanic =				{ type_id = "unique",		category = "civilians",	long_name = "wolfhud_enemy_biker_mechanic"			},	-- Mechanic, Biker Heist
+		turret =					{ type_id = "turret",		category = "turrets",	long_name = "wolfhud_enemy_swat_van"				},
+		cop_hostage =				{ type_id = "cop_hostage",	category = "hostages",	force_update = { "cop", "enemies" }					},
+		sec_hostage =				{ type_id = "cop_hostage",	category = "hostages",	force_update = { "security", "enemies" }			},
+		civ_hostage =				{ type_id = "civ_hostage",	category = "hostages",	force_update = { "civ", "civilians" }				},
+		cop_minion =				{ type_id = "minion",		category = "minions",	force_update = { "cop", "enemies" }					},
 		sec_minion =				{ type_id = "minion",		category = "minions",	force_update = { "security", "enemies" }			},
 
-		boom = 						{ type_id = "cop",			category = "enemies",	long_name = "wolfhud_enemy_boom" 					},
-		omnia_lpf = 				{ type_id = "cop",			category = "enemies",	long_name = "wolfhud_enemy_omnia_lpf" 				},
-		summers = 					{ type_id = "phalanx",		category = "enemies",	long_name = "wolfhud_enemy_summers" 				},
-		boom_summers = 				{ type_id = "phalanx",		category = "enemies",	long_name = "wolfhud_enemy_boom_summers" 			},
-		taser_summers = 			{ type_id = "phalanx",		category = "enemies",	long_name = "wolfhud_enemy_taser_summers" 			},
-		medic_summers = 			{ type_id = "phalanx",		category = "enemies",	long_name = "wolfhud_enemy_medic_summers" 			},
-		spring = 					{ type_id = "phalanx",		category = "enemies",	long_name = "wolfhud_enemy_spring" 					},
-		fbi_vet = 					{ type_id = "cop",			category = "enemies",	long_name = "wolfhud_enemy_fbi_vet" 				},
+		boom =						{ type_id = "cop",			category = "enemies",	long_name = "wolfhud_enemy_boom"					},
+		omnia_lpf =					{ type_id = "cop",			category = "enemies",	long_name = "wolfhud_enemy_omnia_lpf"				},
+		summers =					{ type_id = "phalanx",		category = "enemies",	long_name = "wolfhud_enemy_summers"					},
+		boom_summers =				{ type_id = "phalanx",		category = "enemies",	long_name = "wolfhud_enemy_boom_summers"			},
+		taser_summers =				{ type_id = "phalanx",		category = "enemies",	long_name = "wolfhud_enemy_taser_summers"			},
+		medic_summers =				{ type_id = "phalanx",		category = "enemies",	long_name = "wolfhud_enemy_medic_summers"			},
+		spring =					{ type_id = "phalanx",		category = "enemies",	long_name = "wolfhud_enemy_spring"					},
+		fbi_vet =					{ type_id = "cop",			category = "enemies",	long_name = "wolfhud_enemy_fbi_vet"					},
 	}
 
 	HUDListManager.SPECIAL_PICKUP_TYPES = {
@@ -344,116 +344,116 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 		pickup_keycard =					"keycard",
 		pickup_hotel_room_keycard =			"keycard",
 		gage_assignment =					"courier",
-		pickup_case = 						"gage_case",
-		pickup_keys = 						"gage_key",
-		hold_take_mask = 					"paycheck_masks",
+		pickup_case =						"gage_case",
+		pickup_keys =						"gage_key",
+		hold_take_mask =					"paycheck_masks",
 		pickup_boards =						"planks",
 		stash_planks_pickup =				"planks",
 		muriatic_acid =						"meth_ingredients",
 		hydrogen_chloride =					"meth_ingredients",
 		caustic_soda =						"meth_ingredients",
 		gen_pku_blow_torch =				"blowtorch",
-		drk_pku_blow_torch = 				"blowtorch",
+		drk_pku_blow_torch =				"blowtorch",
 		hold_born_receive_item_blow_torch = "blowtorch",
-		thermite = 							"thermite",
-		gasoline_engine = 					"thermite",
-		gen_pku_thermite = 					"thermite",
-		gen_pku_thermite_paste = 			"thermite",
-		gen_int_thermite_rig = 				"thermite",
-		hold_take_gas_can = 				"thermite",
-		gen_pku_thermite_paste_z_axis = 	"thermite",
-		c4_bag = 							"c4",
-		money_wrap_single_bundle = 			"small_loot",
-		money_wrap_single_bundle_active = 	"small_loot",
-		money_wrap_single_bundle_dyn = 		"small_loot",
-		cas_chips_pile = 					"small_loot",
-		diamond_pickup = 					"small_loot",
-		diamond_pickup_pal = 				"small_loot",
-		diamond_pickup_axis = 				"small_loot",
-		safe_loot_pickup = 					"small_loot",
-		pickup_tablet = 					"small_loot",
-		pickup_phone = 						"small_loot",
+		thermite =							"thermite",
+		gasoline_engine =					"thermite",
+		gen_pku_thermite =					"thermite",
+		gen_pku_thermite_paste =			"thermite",
+		gen_int_thermite_rig =				"thermite",
+		hold_take_gas_can =					"thermite",
+		gen_pku_thermite_paste_z_axis =		"thermite",
+		c4_bag =							"c4",
+		money_wrap_single_bundle =			"small_loot",
+		money_wrap_single_bundle_active =	"small_loot",
+		money_wrap_single_bundle_dyn =		"small_loot",
+		cas_chips_pile =					"small_loot",
+		diamond_pickup =					"small_loot",
+		diamond_pickup_pal =				"small_loot",
+		diamond_pickup_axis =				"small_loot",
+		safe_loot_pickup =					"small_loot",
+		pickup_tablet =						"small_loot",
+		pickup_phone =						"small_loot",
 		press_pick_up =						"secret_item",
-		hold_pick_up_turtle = 				"secret_item",
-		diamond_single_pickup_axis = 		"secret_item",
-		ring_band = 						"rings",
-		glc_hold_take_handcuffs = 			"handcuffs",
-		hold_take_missing_animal_poster = 	"poster",
-		press_take_folder = 				"poster",
-		--take_confidential_folder_icc = 		"poster",
-		take_jfr_briefcase = 				"briefcase",
+		hold_pick_up_turtle =				"secret_item",
+		diamond_single_pickup_axis =		"secret_item",
+		ring_band =							"rings",
+		glc_hold_take_handcuffs =			"handcuffs",
+		hold_take_missing_animal_poster =	"poster",
+		press_take_folder =					"poster",
+		--take_confidential_folder_icc =	"poster",
+		take_jfr_briefcase =				"briefcase",
 	}
 
 	HUDListManager.LOOT_TYPES = {
 		ammo =						"shell",
 		artifact_statue =			"artifact",
-		bike_part_light = 			"bike",
-		bike_part_heavy = 			"bike",
+		bike_part_light =			"bike",
+		bike_part_heavy =			"bike",
 		circuit =					"server",
-		cloaker_cocaine = 			"coke",
-		cloaker_gold = 				"gold",
-		cloaker_money = 			"money",
+		cloaker_cocaine =			"coke",
+		cloaker_gold =				"gold",
+		cloaker_money =				"money",
 		coke =						"coke",
 		coke_pure =					"coke",
 		counterfeit_money =			"money",
 		cro_loot1 =					"bomb",
 		cro_loot2 =					"bomb",
 		diamonds =					"jewelry",
-		diamond_necklace = 			"jewelry",
+		diamond_necklace =			"jewelry",
 		din_pig =					"pig",
 		drk_bomb_part =				"bomb",
 		drone_control_helmet =		"drone_ctrl",
 		evidence_bag =				"evidence",
-		expensive_vine = 			"wine",
-		goat = 						"goat",
+		expensive_vine =			"wine",
+		goat =						"goat",
 		gold =						"gold",
 		hope_diamond =				"diamond",
-		diamonds_dah = 				"diamonds",
-		red_diamond = 				"diamond",
-		lost_artifact = 			"artifact",
+		diamonds_dah =				"diamonds",
+		red_diamond =				"diamond",
+		lost_artifact =				"artifact",
 		mad_master_server_value_1 =	"server",
 		mad_master_server_value_2 =	"server",
 		mad_master_server_value_3 =	"server",
 		mad_master_server_value_4 =	"server",
-		master_server = 			"server",
+		master_server =				"server",
 		masterpiece_painting =		"painting",
 		meth =						"meth",
 		meth_half =					"meth",
 		money =						"money",
 		mus_artifact =				"artifact",
 		mus_artifact_paint =		"painting",
-		old_wine = 					"wine",
-		ordinary_wine = 			"wine",
+		old_wine =					"wine",
+		ordinary_wine =				"wine",
 		painting =					"painting",
 		person =					"body",
-		present = 					"present",
-		prototype = 				"prototype",
-		robot_toy = 				"toy",
+		present =					"present",
+		prototype =					"prototype",
+		robot_toy =					"toy",
 		safe_ovk =					"safe",
 		safe_wpn =					"safe",
 		samurai_suit =				"armor",
 		sandwich =					"toast",
 		special_person =			"body",
-		toothbrush = 				"toothbrush",
+		toothbrush =				"toothbrush",
 		turret =					"turret",
 		unknown =					"dentist",
-		box_unknown = 				"dentist",
-		box_unknown_tag = 			"dentist",
-		black_tablet = 				"dentist",
-		vr_headset = 				"vr",
+		box_unknown =				"dentist",
+		box_unknown_tag =			"dentist",
+		black_tablet =				"dentist",
+		vr_headset =				"vr",
 		warhead =					"warhead",
 		weapon =					"weapon",
 		weapon_glock =				"weapon",
 		weapon_scar =				"weapon",
-		women_shoes = 				"shoes",
-		yayo = 						"coke",
+		women_shoes =				"shoes",
+		yayo =						"coke",
 	}
 
 	HUDListManager.POTENTIAL_LOOT_TYPES = {
-		crate = 					"crate",
-		xmas_present = 				"xmas_present",
-		shopping_bag = 				"shopping_bag",
-		showcase = 					"showcase",
+		crate =						"crate",
+		xmas_present =				"xmas_present",
+		shopping_bag =				"shopping_bag",
+		showcase =					"showcase",
 	}
 
 	HUDListManager.LOOT_TYPES_CONDITIONS = {
@@ -465,18 +465,18 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 		crate = function(id, data)
 			local level_id = managers.job:current_level_id()
 			local disabled_lvls = {
-				"election_day_3", 		-- Election Day Day 2 Warehouse
+				"election_day_3",		-- Election Day Day 2 Warehouse
 				"election_day_3_skip1",
 				"election_day_3_skip2",
-				"mia_1",		 		-- Hotline Miami Day 1
-				"pal" 					-- Counterfeit
+				"mia_1",				-- Hotline Miami Day 1
+				"pal"					-- Counterfeit
 			}
 			return not (level_id and table.contains(disabled_lvls, level_id))
 		end,
 		showcase = function(id, data)
 			local level_id = managers.job:current_level_id()
 			local disabled_lvls = {
-				"mus", 		-- The Diamond
+				"mus",		-- The Diamond
 				"sah",		-- Shacklethorne Auction
 			}
 			return not (level_id and table.contains(disabled_lvls, level_id))
@@ -2722,26 +2722,26 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 	do
 		local buff_shield = "guis/textures/pd2/hud_buff_shield"
 		HUDList.UnitCountItem.MAP = {
-			enemies =		{ class = "UnitCountItem", 	 skills = 	{6, 1}, 	color_id = "enemy_color", 		priority = 1, subtract = { "cop_hostage", "sec_hostage", "minions" } },	--Aggregated enemies
-			cop =			{ class = "UnitCountItem",	 skills = 	{0, 5}, 	color_id = "enemy_color", 		priority = 5, subtract = { "cop_hostage", "cop_minion" } },	--Non-special police
-			security =		{ class = "UnitCountItem",	 perks = 	{1, 4}, 	color_id = "guard_color", 		priority = 4, subtract = { "sec_hostage", "sec_minion" } },
-			thug =			{ class = "UnitCountItem",	 skills = 	{4, 12}, 	color_id = "thug_color", 		priority = 4 },
-			tank =			{ class = "UnitCountItem",	 skills = 	{3, 1}, 	color_id = "special_color", 	priority = 6 },
-			spooc =			{ class = "UnitCountItem",	 skills = 	{1, 3}, 	color_id = "special_color", 	priority = 6 },
-			taser =			{ class = "UnitCountItem",	 skills = 	{3, 5}, 	color_id = "special_color", 	priority = 6 },
-			shield =		{ class = "ShieldCountItem", texture = buff_shield, color_id = "special_color", 	priority = 6 },
-			sniper =		{ class = "UnitCountItem",	 skills = 	{6, 5}, 	color_id = "special_color", 	priority = 6 },
-			medic = 		{ class = "UnitCountItem",	 skills = 	{5, 8}, 	color_id = "special_color", 	priority = 6 },
-			thug_boss =		{ class = "UnitCountItem",	 skills = 	{1, 1}, 	color_id = "thug_color", 		priority = 4 },
-			phalanx =		{ class = "UnitCountItem",	 texture = buff_shield, color_id = "special_color", 	priority = 7 },
+			enemies =		{ class = "UnitCountItem",	 skills =	{6, 1},		color_id = "enemy_color",		priority = 1, subtract = { "cop_hostage", "sec_hostage", "minions" } },	--Aggregated enemies
+			cop =			{ class = "UnitCountItem",	 skills =	{0, 5},		color_id = "enemy_color",		priority = 5, subtract = { "cop_hostage", "cop_minion" } },	--Non-special police
+			security =		{ class = "UnitCountItem",	 perks =	{1, 4},		color_id = "guard_color",		priority = 4, subtract = { "sec_hostage", "sec_minion" } },
+			thug =			{ class = "UnitCountItem",	 skills =	{4, 12},	color_id = "thug_color",		priority = 4 },
+			tank =			{ class = "UnitCountItem",	 skills =	{3, 1},		color_id = "special_color",		priority = 6 },
+			spooc =			{ class = "UnitCountItem",	 skills =	{1, 3},		color_id = "special_color",		priority = 6 },
+			taser =			{ class = "UnitCountItem",	 skills =	{3, 5},		color_id = "special_color",		priority = 6 },
+			shield =		{ class = "ShieldCountItem", texture = buff_shield, color_id = "special_color",		priority = 6 },
+			sniper =		{ class = "UnitCountItem",	 skills =	{6, 5},		color_id = "special_color",		priority = 6 },
+			medic =			{ class = "UnitCountItem",	 skills =	{5, 8},		color_id = "special_color",		priority = 6 },
+			thug_boss =		{ class = "UnitCountItem",	 skills =	{1, 1},		color_id = "thug_color",		priority = 4 },
+			phalanx =		{ class = "UnitCountItem",	 texture = buff_shield, color_id = "special_color",		priority = 7 },
 
-			turret =		{ class = "UnitCountItem",	 skills = 	{7, 5}, 	color_id = "turret_color", 		priority = 5 },
-			unique =		{ class = "UnitCountItem",	 skills = 	{3, 8}, 	color_id = "civilian_color", 	priority = 3 },
-			cop_hostage =	{ class = "UnitCountItem",	 skills = 	{2, 8}, 	color_id = "hostage_color", 	priority = 2 },
-			civ_hostage =	{ class = "UnitCountItem",	 skills = 	{4, 7}, 	color_id = "hostage_color", 	priority = 1 },
-			hostages =		{ class = "UnitCountItem",	 skills = 	{4, 7}, 	color_id = "hostage_color", 	priority = 1 },
-			minion =		{ class = "UnitCountItem",	 skills = 	{6, 8}, 	color_id = "hostage_color", 	priority = 0 },
-			civ =			{ class = "UnitCountItem",	 skills = 	{6, 7}, 	color_id = "civilian_color", 	priority = 3, subtract = { "civ_hostage" } },
+			turret =		{ class = "UnitCountItem",	 skills =	{7, 5},		color_id = "turret_color",		priority = 5 },
+			unique =		{ class = "UnitCountItem",	 skills =	{3, 8},		color_id = "civilian_color",	priority = 3 },
+			cop_hostage =	{ class = "UnitCountItem",	 skills =	{2, 8},		color_id = "hostage_color",		priority = 2 },
+			civ_hostage =	{ class = "UnitCountItem",	 skills =	{4, 7},		color_id = "hostage_color",		priority = 1 },
+			hostages =		{ class = "UnitCountItem",	 skills =	{4, 7},		color_id = "hostage_color",		priority = 1 },
+			minion =		{ class = "UnitCountItem",	 skills =	{6, 8},		color_id = "hostage_color",		priority = 0 },
+			civ =			{ class = "UnitCountItem",	 skills =	{6, 7},		color_id = "civilian_color",	priority = 3, subtract = { "civ_hostage" } },
 		}
 	end
 	function HUDList.UnitCountItem:init(parent, name, id, unit_types)
@@ -3056,23 +3056,23 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 
 	HUDList.SpecialPickupItem = HUDList.SpecialPickupItem or class(HUDList.RightListItem)
 	HUDList.SpecialPickupItem.MAP = {
-		crowbar =					{ hudpickups = { 0, 64, 32, 32 }, 												priority = 1, category = "mission_pickups", ignore = not WolfHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "mission_pickups"}, true) 	},
-		keycard =					{ hudpickups = { 32, 0, 32, 32 }, 												priority = 1, category = "mission_pickups", ignore = not WolfHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "mission_pickups"}, true) 	},
-		planks =					{ hudpickups = { 0, 32, 32, 32 }, 												priority = 2, category = "mission_pickups", ignore = not WolfHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "mission_pickups"}, true) 	},
-		meth_ingredients =			{ waypoints  = { 192, 32, 32, 32 }, 											priority = 2, category = "mission_pickups", ignore = not WolfHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "mission_pickups"}, true) 	},
-		blowtorch = 				{ hudpickups = { 96, 192, 32, 32 }, 											priority = 1, category = "mission_pickups", ignore = not WolfHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "mission_pickups"}, true) 	},
-		thermite = 					{ hudpickups = { 64, 64, 32, 32 }, 												priority = 1, category = "mission_pickups", ignore = not WolfHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "mission_pickups"}, true) 	},
-		c4 = 						{ hudicons	 = { 36, 242, 32, 32 }, 											priority = 1, category = "mission_pickups", ignore = not WolfHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "mission_pickups"}, true) 	},
-		small_loot = 				{ hudpickups = { 32, 224, 32, 32}, 												priority = 3, category = "valuables", 		ignore = not WolfHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "valuables"}, true) 		},
-		briefcase = 				{ hudpickups = { 96, 224, 32, 32}, 												priority = 4, category = "collectables", 	ignore = not WolfHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "collectables"}, true) 		},
-		courier = 					{ texture = "guis/dlcs/gage_pack_jobs/textures/pd2/endscreen/gage_assignment", 	priority = 3, category = "collectables", 	ignore = not WolfHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "collectables"}, true) 		},			--{ texture = "guis/textures/contact_vlad", texture_rect = {1920, 0, 64, 64}, priority = 3 }, --[[skills 	 = { 6, 0 }]]
-		gage_case = 				{ skills 	 = { 1, 0 }, 														priority = 3, category = "collectables", 	ignore = not WolfHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "collectables"}, true) 		},
-		gage_key = 					{ hudpickups = { 32, 64, 32, 32 }, 												priority = 3, category = "collectables", 	ignore = not WolfHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "collectables"}, true) 		},
-		paycheck_masks = 			{ hudpickups = { 128, 32, 32, 32 }, 											priority = 4, category = "collectables", 	ignore = not WolfHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "collectables"}, true) 		},
-		secret_item =				{ waypoints  = { 96, 64, 32, 32 }, 												priority = 4, category = "collectables", 	ignore = not WolfHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "collectables"}, true) 		},
-		rings = 					{ texture = "guis/textures/pd2/level_ring_small", w_ratio = 0.5, h_ratio = 0.5, priority = 4, category = "collectables", 	ignore = not WolfHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "collectables"}, true) 		},
-		poster = 					{ hudpickups = { 96, 96, 32, 32 }, 												priority = 4, category = "collectables", 	ignore = not WolfHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "collectables"}, true) 		},
-		handcuffs = 				{ hud_icons  = {294,469, 40, 40 }, 												priority = 4, category = "collectables", 	ignore = not WolfHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "collectables"}, true) 		},
+		crowbar =					{ hudpickups = { 0, 64, 32, 32 },												priority = 1, category = "mission_pickups", ignore = not WolfHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "mission_pickups"}, true)	},
+		keycard =					{ hudpickups = { 32, 0, 32, 32 },												priority = 1, category = "mission_pickups", ignore = not WolfHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "mission_pickups"}, true)	},
+		planks =					{ hudpickups = { 0, 32, 32, 32 },												priority = 2, category = "mission_pickups", ignore = not WolfHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "mission_pickups"}, true)	},
+		meth_ingredients =			{ waypoints  = { 192, 32, 32, 32 },												priority = 2, category = "mission_pickups", ignore = not WolfHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "mission_pickups"}, true)	},
+		blowtorch =					{ hudpickups = { 96, 192, 32, 32 },												priority = 1, category = "mission_pickups", ignore = not WolfHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "mission_pickups"}, true)	},
+		thermite =					{ hudpickups = { 64, 64, 32, 32 },												priority = 1, category = "mission_pickups", ignore = not WolfHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "mission_pickups"}, true)	},
+		c4 =						{ hudicons	 = { 36, 242, 32, 32 },												priority = 1, category = "mission_pickups", ignore = not WolfHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "mission_pickups"}, true)	},
+		small_loot =				{ hudpickups = { 32, 224, 32, 32},												priority = 3, category = "valuables",		ignore = not WolfHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "valuables"}, true)			},
+		briefcase =					{ hudpickups = { 96, 224, 32, 32},												priority = 4, category = "collectables",	ignore = not WolfHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "collectables"}, true)		},
+		courier =					{ texture = "guis/dlcs/gage_pack_jobs/textures/pd2/endscreen/gage_assignment",	priority = 3, category = "collectables",	ignore = not WolfHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "collectables"}, true)		},		--{ texture = "guis/textures/contact_vlad", texture_rect = {1920, 0, 64, 64}, priority = 3 }, --[[skills	 = { 6, 0 }]]
+		gage_case =					{ skills	 = { 1, 0 },														priority = 3, category = "collectables",	ignore = not WolfHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "collectables"}, true)		},
+		gage_key =					{ hudpickups = { 32, 64, 32, 32 },												priority = 3, category = "collectables",	ignore = not WolfHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "collectables"}, true)		},
+		paycheck_masks =			{ hudpickups = { 128, 32, 32, 32 },												priority = 4, category = "collectables",	ignore = not WolfHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "collectables"}, true)		},
+		secret_item =				{ waypoints  = { 96, 64, 32, 32 },												priority = 4, category = "collectables",	ignore = not WolfHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "collectables"}, true)		},
+		rings =						{ texture = "guis/textures/pd2/level_ring_small", w_ratio = 0.5, h_ratio = 0.5, priority = 4, category = "collectables",	ignore = not WolfHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "collectables"}, true)		},
+		poster =					{ hudpickups = { 96, 96, 32, 32 },												priority = 4, category = "collectables",	ignore = not WolfHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "collectables"}, true)		},
+		handcuffs =					{ hud_icons  = {294,469, 40, 40 },												priority = 4, category = "collectables",	ignore = not WolfHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "collectables"}, true)		},
 	}
 
 	function HUDList.SpecialPickupItem:init(parent, name, id, members)
@@ -3117,42 +3117,42 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 	HUDList.LootItem.MAP = {
 		aggregate =		{ text = "", no_localize = true },	--Aggregated loot
 
-		armor =			{ text = "wolfhud_hudlist_loot_armor", 		priority = 1 }, -- Shaddow Raid
-		artifact =		{ text = "hud_carry_artifact", 				priority = 1 },	-- Schaddow Raid, The Diamond
-		bike = 			{ text = "hud_carry_bike_part", 			priority = 1 },	-- Biker Heist
-		bomb =			{ text = "wolfhud_hudlist_loot_bomb", 		priority = 1 },	-- Bomb Forest & Dockyard, Murky Station EMP
-		coke =			{ text = "hud_carry_coke", 					priority = 1 },
-		dentist =		{ text = "???", no_localize = true, 		priority = 1 },	-- Golden Grin
-		diamond = 		{ text = "wolfhud_hudlist_loot_diamond", 	priority = 1 },	-- The Diamond/Diamond Heist Red Diamond
-		diamonds =		{ text = "hud_carry_diamonds_dah", 			priority = 1 },	-- The Diamond Heist
-		drone_ctrl = 	{ text = "hud_carry_helmet", 				priority = 1 },	-- Biker Heist
-		evidence =		{ text = "wolfhud_hudlist_loot_evidence", 	priority = 1 },	-- Hoxton revenge
-		goat =			{ text = "hud_carry_goat", 					priority = 1 },	-- Goat Simulator
-		gold =			{ text = "hud_carry_gold", 					priority = 1 },
-		jewelry =		{ text = "hud_carry_diamonds", 				priority = 1 },
-		meth =			{ text = "hud_carry_meth", 					priority = 1 },
-		money =			{ text = "hud_carry_money", 				priority = 1 },
-		painting =		{ text = "hud_carry_painting", 				priority = 1 },
-		pig =			{ text = "hud_carry_pig", 					priority = 1 },	-- Slaugtherhouse
-		present =		{ text = "hud_carry_present", 				priority = 1 },	-- Santa's Workshop
-		prototype =		{ text = "hud_carry_prototype", 			priority = 1 },
-		safe =			{ text = "hud_carry_safe", 					priority = 1 },	-- Aftershock
-		server =		{ text = "hud_carry_circuit", 				priority = 1 },
-		shell =			{ text = "hud_carry_ammo", 					priority = 1 },	-- Transport: Train
-		shoes = 		{ text = "wolfhud_hudlist_loot_shoes", 		priority = 1 },	-- Stealing Xmas
-		toast =			{ text = "wolfhud_hudlist_loot_toast", 		priority = 1 },	-- White Xmas
-		toothbrush = 	{ text = "wolfhud_hudlist_loot_toothbrush", priority = 1 },	-- Panic Room
-		toy = 			{ text = "wolfhud_hudlist_loot_toy", 		priority = 1 },	-- Stealing Xmas
-		turret =		{ text = "hud_carry_turret", 				priority = 1 },	-- Transport: Train
-		vr = 			{ text = "wolfhud_hudlist_loot_vr", 		priority = 1 },	-- Stealing Xmas
-		warhead =		{ text = "hud_carry_warhead", 				priority = 1 },	-- Meltdown
-		weapon =		{ text = "wolfhud_hudlist_loot_weapon", 	priority = 1 },
-		wine = 			{ text = "hud_carry_wine", 					priority = 1 },	-- Stealing Xmas
-		body = 			{ text = "hud_carry_person", 				priority = 1 },	-- Boiling point
-		crate = 		{ text = "wolfhud_hudlist_loot_crate", 		priority = 2, no_separate = true },
-		xmas_present = 	{ text = "hud_carry_present", 				priority = 2, no_separate = true },	-- White Xmas
-		shopping_bag = 	{ text = "wolfhud_hudlist_loot_bag", 		priority = 2, no_separate = true },	-- White Xmas
-		showcase = 		{ text = "wolfhud_hudlist_showcase", 		priority = 2, no_separate = true },	-- Diamond heist + Diamond Museum
+		armor =			{ text = "wolfhud_hudlist_loot_armor",		priority = 1 }, -- Shaddow Raid
+		artifact =		{ text = "hud_carry_artifact",				priority = 1 },	-- Schaddow Raid, The Diamond
+		bike =			{ text = "hud_carry_bike_part",				priority = 1 },	-- Biker Heist
+		bomb =			{ text = "wolfhud_hudlist_loot_bomb",		priority = 1 },	-- Bomb Forest & Dockyard, Murky Station EMP
+		coke =			{ text = "hud_carry_coke",					priority = 1 },
+		dentist =		{ text = "???", no_localize = true,			priority = 1 },	-- Golden Grin
+		diamond =		{ text = "wolfhud_hudlist_loot_diamond",	priority = 1 },	-- The Diamond/Diamond Heist Red Diamond
+		diamonds =		{ text = "hud_carry_diamonds_dah",			priority = 1 },	-- The Diamond Heist
+		drone_ctrl =	{ text = "hud_carry_helmet",				priority = 1 },	-- Biker Heist
+		evidence =		{ text = "wolfhud_hudlist_loot_evidence",	priority = 1 },	-- Hoxton revenge
+		goat =			{ text = "hud_carry_goat",					priority = 1 },	-- Goat Simulator
+		gold =			{ text = "hud_carry_gold",					priority = 1 },
+		jewelry =		{ text = "hud_carry_diamonds",				priority = 1 },
+		meth =			{ text = "hud_carry_meth",					priority = 1 },
+		money =			{ text = "hud_carry_money",					priority = 1 },
+		painting =		{ text = "hud_carry_painting",				priority = 1 },
+		pig =			{ text = "hud_carry_pig",					priority = 1 },	-- Slaugtherhouse
+		present =		{ text = "hud_carry_present",				priority = 1 },	-- Santa's Workshop
+		prototype =		{ text = "hud_carry_prototype",				priority = 1 },
+		safe =			{ text = "hud_carry_safe",					priority = 1 },	-- Aftershock
+		server =		{ text = "hud_carry_circuit",				priority = 1 },
+		shell =			{ text = "hud_carry_ammo",					priority = 1 },	-- Transport: Train
+		shoes =			{ text = "wolfhud_hudlist_loot_shoes",		priority = 1 },	-- Stealing Xmas
+		toast =			{ text = "wolfhud_hudlist_loot_toast",		priority = 1 },	-- White Xmas
+		toothbrush =	{ text = "wolfhud_hudlist_loot_toothbrush", priority = 1 },	-- Panic Room
+		toy =			{ text = "wolfhud_hudlist_loot_toy",		priority = 1 },	-- Stealing Xmas
+		turret =		{ text = "hud_carry_turret",				priority = 1 },	-- Transport: Train
+		vr =			{ text = "wolfhud_hudlist_loot_vr",			priority = 1 },	-- Stealing Xmas
+		warhead =		{ text = "hud_carry_warhead",				priority = 1 },	-- Meltdown
+		weapon =		{ text = "wolfhud_hudlist_loot_weapon",		priority = 1 },
+		wine =			{ text = "hud_carry_wine",					priority = 1 },	-- Stealing Xmas
+		body =			{ text = "hud_carry_person",				priority = 1 },	-- Boiling point
+		crate =			{ text = "wolfhud_hudlist_loot_crate",		priority = 2, no_separate = true },
+		xmas_present =	{ text = "hud_carry_present",				priority = 2, no_separate = true },	-- White Xmas
+		shopping_bag =	{ text = "wolfhud_hudlist_loot_bag",		priority = 2, no_separate = true },	-- White Xmas
+		showcase =		{ text = "wolfhud_hudlist_showcase",		priority = 2, no_separate = true },	-- Diamond heist + Diamond Museum
 	}
 	function HUDList.LootItem:init(parent, name, id, members)
 		local loot_data = HUDList.LootItem.MAP[id]
@@ -3394,14 +3394,14 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 
 	HUDList.TimerItem = HUDList.TimerItem or class(HUDList.LeftListItem)
 	HUDList.TimerItem.DEVICE_TYPES = {
-		digital 		= { class = "TimerItem", 			name = "wolfhud_hudlist_device_timer" 	},
-		drill 			= { class = "UpgradeableTimerItem", name = "wolfhud_hudlist_device_drill" 	},
-		drill_noupgrade	= { class = "TimerItem", 			name = "wolfhud_hudlist_device_drill" 	},
-		saw 			= { class = "UpgradeableTimerItem", name = "wolfhud_hudlist_device_saw" 	},
-		saw_noupgrade 	= { class = "TimerItem", 			name = "wolfhud_hudlist_device_saw" 	},
-		hack 			= { class = "TimerItem", 			name = "wolfhud_hudlist_device_hack" 	},
-		timer 			= { class = "TimerItem", 			name = "wolfhud_hudlist_device_timer" 	},
-		securitylock 	= { class = "SecurityTimerItem", 	name = "wolfhud_hudlist_device_security"},
+		digital			= { class = "TimerItem",			name = "wolfhud_hudlist_device_timer"	},
+		drill			= { class = "UpgradeableTimerItem", name = "wolfhud_hudlist_device_drill"	},
+		drill_noupgrade	= { class = "TimerItem",			name = "wolfhud_hudlist_device_drill"	},
+		saw				= { class = "UpgradeableTimerItem", name = "wolfhud_hudlist_device_saw"		},
+		saw_noupgrade	= { class = "TimerItem",			name = "wolfhud_hudlist_device_saw"		},
+		hack			= { class = "TimerItem",			name = "wolfhud_hudlist_device_hack"	},
+		timer			= { class = "TimerItem",			name = "wolfhud_hudlist_device_timer"	},
+		securitylock	= { class = "SecurityTimerItem",	name = "wolfhud_hudlist_device_security"},
 	}
 	function HUDList.TimerItem:init(parent, name, data)
 		self.STANDARD_COLOR = HUDListManager.ListOptions.list_color or Color(1, 1, 1, 1)
@@ -3744,12 +3744,12 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 
 	HUDList.EquipmentItem = HUDList.EquipmentItem or class(HUDList.LeftListItem)
 	HUDList.EquipmentItem.EQUIPMENT_TABLE = {
-		sentry 			= {	skills 		= { 7,  5 }, priority = 0 },
-		ammo_bag 		= {	skills 		= { 1,  0 }, priority = 3 },
-		doc_bag 		= {	skills 		= { 2,  7 }, priority = 4 },
-		first_aid_kit	= {	skills 		= { 3, 10 }, priority = 5 },
-		body_bag 		= {	skills 		= { 5, 11 }, priority = 6 },
-		grenade_crate 	= {	preplanning = { 1,  0 }, priority = 2 },
+		sentry			= {	skills		= { 7,  5 }, priority = 0 },
+		ammo_bag		= {	skills		= { 1,  0 }, priority = 3 },
+		doc_bag			= {	skills		= { 2,  7 }, priority = 4 },
+		first_aid_kit	= {	skills		= { 3, 10 }, priority = 5 },
+		body_bag		= {	skills		= { 5, 11 }, priority = 6 },
+		grenade_crate	= {	preplanning = { 1,  0 }, priority = 2 },
 	}
 	function HUDList.EquipmentItem:init(parent, name, data, equipment_type)
 		local icon_data = HUDList.EquipmentItem.EQUIPMENT_TABLE[equipment_type]
@@ -4297,8 +4297,8 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 	end
 
 	function HUDList.MinionItem:_set_damage_multiplier(data)
-		local min_mult = tweak_data.upgrades.values.player.convert_enemies_damage_multiplier[1] 	-- 0.65, damage multiplier if player has joker skill
-		local max_mult = tweak_data.upgrades.values.player.convert_enemies_damage_multiplier[2] 	-- 1.00, damage multiplier if player has 35% damage increase skill
+		local min_mult = tweak_data.upgrades.values.player.convert_enemies_damage_multiplier[1]		-- 0.65, damage multiplier if player has joker skill
+		local max_mult = tweak_data.upgrades.values.player.convert_enemies_damage_multiplier[2]		-- 1.00, damage multiplier if player has 35% damage increase skill
 		local alpha = math.clamp((data.damage_multiplier - min_mult) / (max_mult - min_mult), 0, 1) * 0.7 + 0.3
 		self._damage_upgrade_text:set_alpha(alpha)
 	end
@@ -4885,9 +4885,9 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 	HUDList.BuffItemBase = HUDList.BuffItemBase or class(HUDList.ItemBase)
 
 	HUDList.BuffItemBase.ICON_COLOR = {
-		STANDARD 	= Color('FFFFFF'),
-		DEBUFF 		= Color('FF7575'),
-		TEAM 		= Color('75FF75'),
+		STANDARD	= Color('FFFFFF'),
+		DEBUFF		= Color('FF7575'),
+		TEAM		= Color('75FF75'),
 	}
 
 	HUDList.BuffItemBase.VALUE_FUNC = {
@@ -5309,7 +5309,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 			class = "TimedBuffItem",
 			priority = 8,
 			show_value = "-%.1f",
-			ignore = true, 	--Coposite debuff
+			ignore = true,	--Coposite debuff
 		},
 		inspire_debuff = {
 			skills_new = tweak_data.skilltree.skills.inspire.icon_xy,
@@ -6451,24 +6451,24 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 
 	HUDList.TimedInteractionItem = HUDList.TimedInteractionItem or class(HUDList.TimedBuffItem)
 	HUDList.TimedInteractionItem.INTERACT_ID_TO_ICON = {
-		default 					= { texture = "guis/textures/pd2/skilltree/drillgui_icon_faster" 					},
-		mask_up 					= { texture = "guis/textures/contact_vlad", texture_rect = {1920, 256, 128, 130}	},
-		ammo_bag 					= { skills 		= {1, 0}				},
-		doc_bag 					= { skills 		= {2, 7}				},
-		first_aid_kit 				= { skills 		= {3, 10}, 				},
-		body_bag 					= { skills 		= {5, 11}, 				},
-		grenade_crate 				= { preplanning = {1, 0}			 	},
-		ecm_jammer 					= { skills 		= {1, 4}, 				},
-		corpse_alarm_pager			= { skills 		= {1, 4}, 				},
-		pick_lock_easy_no_skill 	= { skills 		= {5, 4} 				},
-		intimidate					= { hud_tweak = "equipment_cable_ties" 	},
-		c4_consume 					= { hud_tweak = "equipment_c4" 			},
-		drill 						= { hud_tweak = "pd2_drill" 			},
-		hack 						= { hud_tweak = "pd2_computer" 			},
-		saw 						= { hud_tweak = "wp_saw" 				},
-		timer 						= { hud_tweak = "pd2_computer" 			},
-		securitylock 				= { hud_tweak = "pd2_computer" 			},
-		digital 					= { hud_tweak = "pd2_computer" 			},
+		default						= { texture = "guis/textures/pd2/skilltree/drillgui_icon_faster"					},
+		mask_up						= { texture = "guis/textures/contact_vlad", texture_rect = {1920, 256, 128, 130}	},
+		ammo_bag					= { skills		= {1, 0}				},
+		doc_bag						= { skills		= {2, 7}				},
+		first_aid_kit				= { skills		= {3, 10},				},
+		body_bag					= { skills		= {5, 11},				},
+		grenade_crate				= { preplanning = {1, 0}				},
+		ecm_jammer					= { skills		= {1, 4},				},
+		corpse_alarm_pager			= { skills		= {1, 4},				},
+		pick_lock_easy_no_skill		= { skills		= {5, 4}				},
+		intimidate					= { hud_tweak = "equipment_cable_ties"	},
+		c4_consume					= { hud_tweak = "equipment_c4"			},
+		drill						= { hud_tweak = "pd2_drill"				},
+		hack						= { hud_tweak = "pd2_computer"			},
+		saw							= { hud_tweak = "wp_saw"				},
+		timer						= { hud_tweak = "pd2_computer"			},
+		securitylock				= { hud_tweak = "pd2_computer"			},
+		digital						= { hud_tweak = "pd2_computer"			},
 	}
 	function HUDList.TimedInteractionItem:init(...)
 		HUDList.TimedInteractionItem.super.init(self, ...)

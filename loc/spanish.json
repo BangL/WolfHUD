@@ -66,8 +66,8 @@
 
 	"wolfhud_loadout_hours_played" : "$HOURS horas.",
 
-    "wolfhud_profile_switch_title" : "Cambiar Perfiles",
-    "wolfhud_profile_switch_title_profiles" : "Perfil:",
+	"wolfhud_profile_switch_title" : "Cambiar Perfiles",
+	"wolfhud_profile_switch_title_profiles" : "Perfil:",
 
 	"victory_most_damage" : "Daño más Alto:",
 	"victory_session_damage" : "Daño Total:",
@@ -773,8 +773,8 @@
 	"wolfhud_crewloadout_briefing_desc" : "Reemplaza el panel de equipamiento de tu equipo por instrucciones de la misión.",
 	"wolfhud_crewloadout_tabscreen_title" : "Mosttrar en la pantalla (Presionar Tab)",
 	"wolfhud_crewloadout_tabscreen_desc" : "Muestra las habilidades, talentos y ping de los jugadores en el lobby. \n(Deshabilita si ya usas esta característica del LobbyPlayerInfo)",
-    "wolfhud_profilemenu_replace_title" : "Reemplazar el menú del perfil",
-    "wolfhud_profilemenu_replace_desc" : "Reemplaza el menú del perfil básico por uno avanzado de WolfHUD",
+	"wolfhud_profilemenu_replace_title" : "Reemplazar el menú del perfil",
+	"wolfhud_profilemenu_replace_desc" : "Reemplaza el menú del perfil básico por uno avanzado de WolfHUD",
 
 	"wolfhud_dmgindicator_options_name" : "Indicador de daño",
 	"wolfhud_dmgindicator_options_help" : "Configura el tamaño y colores de tus indicadores de daño.",

@@ -1,51 +1,51 @@
 if string.lower(RequiredScript) == "lib/managers/hud/huddriving" then
 	HUDDriving.VEHICLES = {
 		["Longfellow"] = {
-			["driver"] = 				{ scale_x = -0.2, 	scale_y = -0.15, 	is_seat = true },
-			["passenger_front"] = 		{ scale_x = 0.2, 	scale_y = -0.15, 	is_seat = true },
-			["passenger_back_left"] = 	{ scale_x = -0.2, 	scale_y = 0.25, 	is_seat = true },
-			["passenger_back_right"] = 	{ scale_x = 0.2, 	scale_y = 0.25, 	is_seat = true },
+			["driver"] =				{ scale_x = -0.2,	scale_y = -0.15,	is_seat = true },
+			["passenger_front"] =		{ scale_x = 0.2,	scale_y = -0.15,	is_seat = true },
+			["passenger_back_left"] =	{ scale_x = -0.2,	scale_y = 0.25,		is_seat = true },
+			["passenger_back_right"] =	{ scale_x = 0.2,	scale_y = 0.25,		is_seat = true },
 			texture_rect = { 0, 0, 512, 512},
 			texture = "guis/textures/wolfhud/drivinghud/longfellow"
 		},
 		["Falcogini"] = {
-			["driver"] = 				{ scale_x = -0.2, 	scale_y = 0, 		is_seat = true },
-			["passenger_front"] = 		{ scale_x = 0.2, 	scale_y = 0, 		is_seat = true },
+			["driver"] =				{ scale_x = -0.2,	scale_y = 0,		is_seat = true },
+			["passenger_front"] =		{ scale_x = 0.2,	scale_y = 0,		is_seat = true },
 			texture_rect = { 0, 0, 512, 512},
 			texture = "guis/textures/wolfhud/drivinghud/falcogini"
 		},
 		["Forklift"] = {
-			["driver"] = 				{ scale_x = 0, 		scale_y = 0.3, 		is_seat = true },
-			["passenger_front"] = 		{ scale_x = 0, 		scale_y = 0.9, 		is_seat = true },
+			["driver"] =				{ scale_x = 0,		scale_y = 0.3,		is_seat = true },
+			["passenger_front"] =		{ scale_x = 0,		scale_y = 0.9,		is_seat = true },
 			texture_rect = { 0, 0, 512, 512},
 			texture = "guis/textures/wolfhud/drivinghud/forklift"
 		},
 		["Truck"] = {
-			["driver"] = 				{ scale_x = -0.15, 	scale_y = -0.4,		is_seat = true },
-			["passenger_front"] = 		{ scale_x = 0.2, 	scale_y = -0.4,		is_seat = true },
-			["passenger_back_left"] = 	{ scale_x = -0.15, 	scale_y = 1, 		is_seat = true },
-			["passenger_back_right"] = 	{ scale_x = 0.2, 	scale_y = 1, 		is_seat = true },
+			["driver"] =				{ scale_x = -0.15,	scale_y = -0.4,		is_seat = true },
+			["passenger_front"] =		{ scale_x = 0.2,	scale_y = -0.4,		is_seat = true },
+			["passenger_back_left"] =	{ scale_x = -0.15,	scale_y = 1,		is_seat = true },
+			["passenger_back_right"] =	{ scale_x = 0.2,	scale_y = 1,		is_seat = true },
 			texture_rect = { 0, 0, 512, 512},
 			texture = "guis/textures/wolfhud/drivinghud/truck"
 		},
 		["Rib Boat"] = {
-			["driver"] = 				{ scale_x = 0, 		scale_y = 1, 		is_seat = true },
-			["passenger_front"] = 		{ scale_x = 0.2, 	scale_y = -0.6, 	is_seat = true },
-			["passenger_back_left"] = 	{ scale_x = -0.2, 	scale_y = -0.1, 	is_seat = true },
-			["passenger_back_right"] = 	{ scale_x = 0.2, 	scale_y = 0.3, 		is_seat = true },
+			["driver"] =				{ scale_x = 0,		scale_y = 1,		is_seat = true },
+			["passenger_front"] =		{ scale_x = 0.2,	scale_y = -0.6,		is_seat = true },
+			["passenger_back_left"] =	{ scale_x = -0.2,	scale_y = -0.1,		is_seat = true },
+			["passenger_back_right"] =	{ scale_x = 0.2,	scale_y = 0.3,		is_seat = true },
 			texture_rect = { 0, 0, 512, 512},
 			texture = "guis/textures/wolfhud/drivinghud/boat"
 		},
 		["Blackhawk"] = {
-			["driver"] = 				{ scale_x = -0.25, 	scale_y = -0.2, 	is_seat = true },
-			["passenger_front"] = 		{ scale_x = 0.25, 	scale_y = -0.2, 	is_seat = true },
-			["passenger_back_left"] = 	{ scale_x = -0.25, 	scale_y = 0.2, 		is_seat = true },
-			["passenger_back_right"] = 	{ scale_x = 0.25, 	scale_y = 0.2, 		is_seat = true },
+			["driver"] =				{ scale_x = -0.25,	scale_y = -0.2,		is_seat = true },
+			["passenger_front"] =		{ scale_x = 0.25,	scale_y = -0.2,		is_seat = true },
+			["passenger_back_left"] =	{ scale_x = -0.25,	scale_y = 0.2,		is_seat = true },
+			["passenger_back_right"] =	{ scale_x = 0.25,	scale_y = 0.2,		is_seat = true },
 			texture_rect = { 0, 0, 512, 512},
 			texture = "guis/textures/wolfhud/drivinghud/blackhawk"
 		},
 		["Bike"] = {
-			["driver"] = 				{ scale_x = -0.02, 	scale_y = 0.35, 	is_seat = true },
+			["driver"] =				{ scale_x = -0.02,	scale_y = 0.35,		is_seat = true },
 			texture_rect = { 0, 0, 512, 512},
 			texture = "guis/textures/wolfhud/drivinghud/bike"
 		}
@@ -67,20 +67,20 @@ if string.lower(RequiredScript) == "lib/managers/hud/huddriving" then
 		self._people = 0
 		self._align = "right"
 
-		self._panel 			= HUDDriving.VerticalListItem:new(self._hud_panel, self, "base_panel", HUDDriving._WIDTH, HUDDriving._FONT_SIZE, { margin = HUDDriving._MARGIN })
+		self._panel				= HUDDriving.VerticalListItem:new(self._hud_panel, self, "base_panel", HUDDriving._WIDTH, HUDDriving._FONT_SIZE, { margin = HUDDriving._MARGIN })
 
-		self._vehicle_name 		= HUDDriving.LegendItem:new(self._panel:panel(), self._panel, "vehicle_name", HUDDriving._WIDTH, HUDDriving._FONT_SIZE, { value = "Bobbycar", resizable_w = true })
-		self._data 				= HUDDriving.HorizontalListItem:new(self._panel:panel(), self._panel, "data_panel", HUDDriving._WIDTH, HUDDriving.WIDTH, {})
+		self._vehicle_name		= HUDDriving.LegendItem:new(self._panel:panel(), self._panel, "vehicle_name", HUDDriving._WIDTH, HUDDriving._FONT_SIZE, { value = "Bobbycar", resizable_w = true })
+		self._data				= HUDDriving.HorizontalListItem:new(self._panel:panel(), self._panel, "data_panel", HUDDriving._WIDTH, HUDDriving.WIDTH, {})
 
-		self._vehicle_image 	= HUDDriving.VehicleImageItem:new(self._data:panel(), self._data, "vehicle_image", HUDDriving._WIDTH / 2, HUDDriving._WIDTH / 2, {})
-		self._legend 			= HUDDriving.VerticalListItem:new(self._data:panel(), self._data, "legend_panel", HUDDriving._WIDTH / 2, HUDDriving._WIDTH / 2, {})
+		self._vehicle_image		= HUDDriving.VehicleImageItem:new(self._data:panel(), self._data, "vehicle_image", HUDDriving._WIDTH / 2, HUDDriving._WIDTH / 2, {})
+		self._legend			= HUDDriving.VerticalListItem:new(self._data:panel(), self._data, "legend_panel", HUDDriving._WIDTH / 2, HUDDriving._WIDTH / 2, {})
 
-		self._legend_health 	= HUDDriving.LegendHealthItem:new(self._legend:panel(), self._legend, "legend_health", HUDDriving._WIDTH / 2, HUDDriving._FONT_SIZE, { suffix = "HP", show_decimal_marks = true })
-		self._legend_loot 		= HUDDriving.LegendImageItem:new(self._legend:panel(), self._legend, "legend_loot", HUDDriving._WIDTH / 2, HUDDriving._FONT_SIZE, { texture = "guis/textures/wolfhud/drivinghud/legend", text_rect = {0, 0, 128, 128}, show_max = true })
+		self._legend_health		= HUDDriving.LegendHealthItem:new(self._legend:panel(), self._legend, "legend_health", HUDDriving._WIDTH / 2, HUDDriving._FONT_SIZE, { suffix = "HP", show_decimal_marks = true })
+		self._legend_loot		= HUDDriving.LegendImageItem:new(self._legend:panel(), self._legend, "legend_loot", HUDDriving._WIDTH / 2, HUDDriving._FONT_SIZE, { texture = "guis/textures/wolfhud/drivinghud/legend", text_rect = {0, 0, 128, 128}, show_max = true })
 		self._legend_passengers = HUDDriving.LegendImageItem:new(self._legend:panel(), self._legend, "legend_passengers", HUDDriving._WIDTH / 2, HUDDriving._FONT_SIZE, { texture = "guis/textures/wolfhud/drivinghud/legend", text_rect = {128, 0, 128, 128}, show_max = true })
-		self._legend_gear 		= HUDDriving.LegendItem:new(self._legend:panel(), self._legend, "legend_gear", HUDDriving._WIDTH / 2, HUDDriving._FONT_SIZE, {})
-		self._legend_speed 		= HUDDriving.LegendItem:new(self._legend:panel(), self._legend, "legend_speed", HUDDriving._WIDTH / 2, HUDDriving._FONT_SIZE, { suffix = "km/h"})
-		self._legend_rpm 		= HUDDriving.LegendItem:new(self._legend:panel(), self._legend, "legend_rpm", HUDDriving._WIDTH / 2, HUDDriving._FONT_SIZE, { suffix = "rpm"})
+		self._legend_gear		= HUDDriving.LegendItem:new(self._legend:panel(), self._legend, "legend_gear", HUDDriving._WIDTH / 2, HUDDriving._FONT_SIZE, {})
+		self._legend_speed		= HUDDriving.LegendItem:new(self._legend:panel(), self._legend, "legend_speed", HUDDriving._WIDTH / 2, HUDDriving._FONT_SIZE, { suffix = "km/h"})
+		self._legend_rpm		= HUDDriving.LegendItem:new(self._legend:panel(), self._legend, "legend_rpm", HUDDriving._WIDTH / 2, HUDDriving._FONT_SIZE, { suffix = "rpm"})
 
 		self._legend:addComponents({ self._legend_health, self._legend_loot, self._legend_passengers, self._legend_gear, self._legend_speed, self._legend_rpm })
 		self._data:addComponents({ self._vehicle_image, self._legend })
@@ -475,11 +475,11 @@ if string.lower(RequiredScript) == "lib/managers/hud/huddriving" then
 		self._texture_rect = params.text_rect or { 1024, 0, 512, 512}
 
 		self._image = self._panel:bitmap({
-			name 			= "vehicle_image",
-			blend_mode 		= "normal",
+			name			= "vehicle_image",
+			blend_mode		= "normal",
 			layer			= 2,
-			w 				= self._panel:w(),
-			h 				= self._panel:h()
+			w				= self._panel:w(),
+			h				= self._panel:h()
 		})
 		self._image:set_center(self._panel:center())
 
@@ -582,11 +582,11 @@ if string.lower(RequiredScript) == "lib/managers/hud/huddriving" then
 		self._scale_y = 0
 
 		self._image = self._panel:bitmap({
-			name 			= "vehicle_image",
-			blend_mode 		= "normal",
+			name			= "vehicle_image",
+			blend_mode		= "normal",
 			layer			= 3,
-			w 				= self._panel:w(),
-			h 				= self._panel:h()
+			w				= self._panel:w(),
+			h				= self._panel:h()
 		})
 		self._image:set_center(self._panel:center())
 
@@ -748,26 +748,26 @@ if string.lower(RequiredScript) == "lib/managers/hud/huddriving" then
 		self._health_offset = 1
 
 		self._health_bar = self._panel:bitmap({
-			name 			= "health_bar",
-			texture 		= "guis/textures/pd2/healthshield",
-			texture_rect 	= self._health_texture_rect,
-			blend_mode 		= "normal",
+			name			= "health_bar",
+			texture			= "guis/textures/pd2/healthshield",
+			texture_rect	= self._health_texture_rect,
+			blend_mode		= "normal",
 			layer			= 1,
-			x 				= self._health_offset,
+			x				= self._health_offset,
 			y				= self._health_offset,
-			w 				= self._panel:w() * 0.95 - (2 * self._health_offset),
-			h 				= self._panel:h() * 0.95 - (2 * self._health_offset)
+			w				= self._panel:w() * 0.95 - (2 * self._health_offset),
+			h				= self._panel:h() * 0.95 - (2 * self._health_offset)
 		})
 		self._health_shield = self._panel:bitmap({
-			name 			= "unit_shield",
-			texture 		= "guis/textures/pd2/healthshield",
-			texture_rect 	= { 1, 1, 236, 13 },
-			blend_mode 		= "normal",
+			name			= "unit_shield",
+			texture			= "guis/textures/pd2/healthshield",
+			texture_rect	= { 1, 1, 236, 13 },
+			blend_mode		= "normal",
 			layer			= 1,
-			x 				= 0,
+			x				= 0,
 			y				= 0,
-			w 				= self._panel:w() * 0.95,
-			h 				= self._panel:h() * 0.95
+			w				= self._panel:w() * 0.95,
+			h				= self._panel:h() * 0.95
 		})
 
 		self._health_bar:set_center(self._panel:center())
@@ -833,14 +833,14 @@ if string.lower(RequiredScript) == "lib/managers/hud/huddriving" then
 		local texture, texture_rect = params.texture , params.text_rect
 
 		self._icon = self._panel:bitmap({
-			name 			= "icon",
-			align 			= "center",
+			name			= "icon",
+			align			= "center",
 			vertical		= "center",
-			texture 		= texture,
-			texture_rect 	= texture_rect,
-			blend_mode 		= "normal",
+			texture			= texture,
+			texture_rect	= texture_rect,
+			blend_mode		= "normal",
 			w				= height * 0.75,
-			h 				= height * 0.75,
+			h				= height * 0.75,
 		})
 
 		self._icon:set_right(self._panel:right())

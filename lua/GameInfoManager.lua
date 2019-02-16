@@ -178,86 +178,86 @@ if string.lower(RequiredScript) == "lib/setups/setup" then
 			pickup_keycard =					"_special_equipment_interaction_handler",	-- Keycards
 			pickup_hotel_room_keycard =			"_special_equipment_interaction_handler",	-- GGC Keycard
 			gage_assignment =					"_special_equipment_interaction_handler",	-- Gage Courier
-			pickup_case = 						"_special_equipment_interaction_handler",	-- Gage Spec Ops Cases
-			pickup_keys = 						"_special_equipment_interaction_handler",	-- Gage Spec Ops Keys
-			hold_take_mask = 					"_special_equipment_interaction_handler",	-- Stealing Xmas Paycheck masks
+			pickup_case =						"_special_equipment_interaction_handler",	-- Gage Spec Ops Cases
+			pickup_keys =						"_special_equipment_interaction_handler",	-- Gage Spec Ops Keys
+			hold_take_mask =					"_special_equipment_interaction_handler",	-- Stealing Xmas Paycheck masks
 			pickup_boards =						"_special_equipment_interaction_handler",	-- Planks
 			stash_planks_pickup =				"_special_equipment_interaction_handler",	-- Planks
 			muriatic_acid =						"_special_equipment_interaction_handler",	-- MU
 			hydrogen_chloride =					"_special_equipment_interaction_handler",	-- HCL
 			caustic_soda =						"_special_equipment_interaction_handler",	-- CS
 			gen_pku_blow_torch =				"_special_equipment_interaction_handler",	-- Blowtorch
-			drk_pku_blow_torch = 				"_special_equipment_interaction_handler",	-- Blowtorch
+			drk_pku_blow_torch =				"_special_equipment_interaction_handler",	-- Blowtorch
 			hold_born_receive_item_blow_torch = "_special_equipment_interaction_handler",	-- Biker Blowtorch
-			thermite = 							"_special_equipment_interaction_handler",
-			gasoline = 							"_special_equipment_interaction_handler",	--Spots to place gas canister
-			c4_consume = 						"_special_equipment_interaction_handler",	-- Spots to place mission c4
-			c4_consume_x1 = 					"_special_equipment_interaction_handler",	-- Spots to place mission c4
-			--c4_bag = 							"_special_equipment_interaction_handler", 	-- Yellow bag, pickup c4
-			gasoline_engine = 					"_special_equipment_interaction_handler",
-			gen_pku_thermite = 					"_special_equipment_interaction_handler",	-- Thermite
-			gen_pku_thermite_paste = 			"_special_equipment_interaction_handler",	-- Thermite Paste
-			hold_take_gas_can = 				"_special_equipment_interaction_handler",	-- HM / Slaughter Gas cans
-			gen_pku_thermite_paste_z_axis = 	"_special_equipment_interaction_handler",	-- Thermite Paste
-			money_wrap_single_bundle = 			"_special_equipment_interaction_handler",	-- Small loot
-			money_wrap_single_bundle_active = 	"_special_equipment_interaction_handler",	-- Small loot
-			money_wrap_single_bundle_dyn = 		"_special_equipment_interaction_handler",	-- Small loot
-			cas_chips_pile = 					"_special_equipment_interaction_handler",	-- Small loot
-			diamond_pickup = 					"_special_equipment_interaction_handler",	-- Small loot
-			diamond_pickup_pal = 				"_special_equipment_interaction_handler",	-- Small loot
-			ring_band = 						"_special_equipment_interaction_handler",	-- BoS Rings
-			safe_loot_pickup = 					"_special_equipment_interaction_handler",	-- Small loot
-			diamond_pickup_axis = 				"_special_equipment_interaction_handler",	-- Small loot, Diamond heist
+			thermite =							"_special_equipment_interaction_handler",
+			gasoline =							"_special_equipment_interaction_handler",	--Spots to place gas canister
+			c4_consume =						"_special_equipment_interaction_handler",	-- Spots to place mission c4
+			c4_consume_x1 =						"_special_equipment_interaction_handler",	-- Spots to place mission c4
+			--c4_bag =							"_special_equipment_interaction_handler",	-- Yellow bag, pickup c4
+			gasoline_engine =					"_special_equipment_interaction_handler",
+			gen_pku_thermite =					"_special_equipment_interaction_handler",	-- Thermite
+			gen_pku_thermite_paste =			"_special_equipment_interaction_handler",	-- Thermite Paste
+			hold_take_gas_can =					"_special_equipment_interaction_handler",	-- HM / Slaughter Gas cans
+			gen_pku_thermite_paste_z_axis =		"_special_equipment_interaction_handler",	-- Thermite Paste
+			money_wrap_single_bundle =			"_special_equipment_interaction_handler",	-- Small loot
+			money_wrap_single_bundle_active =	"_special_equipment_interaction_handler",	-- Small loot
+			money_wrap_single_bundle_dyn =		"_special_equipment_interaction_handler",	-- Small loot
+			cas_chips_pile =					"_special_equipment_interaction_handler",	-- Small loot
+			diamond_pickup =					"_special_equipment_interaction_handler",	-- Small loot
+			diamond_pickup_pal =				"_special_equipment_interaction_handler",	-- Small loot
+			ring_band =							"_special_equipment_interaction_handler",	-- BoS Rings
+			safe_loot_pickup =					"_special_equipment_interaction_handler",	-- Small loot
+			diamond_pickup_axis =				"_special_equipment_interaction_handler",	-- Small loot, Diamond heist
 			press_pick_up =						"_special_equipment_interaction_handler",	-- Biker Bottle
-			hold_take_missing_animal_poster = 	"_special_equipment_interaction_handler",	-- Heat Streat Posters
-			hold_pick_up_turtle = 				"_special_equipment_interaction_handler",	-- Heat Street Tutle
-			diamond_single_pickup_axis = 		"_special_equipment_interaction_handler",
-			glc_hold_take_handcuffs = 			"_special_equipment_interaction_handler",	-- Green Bridge Handcuffs
-			pickup_tablet = 					"_special_equipment_interaction_handler",	-- Stealing Xmas Tablet
-			pickup_phone = 						"_special_equipment_interaction_handler",	-- Stealing Xmas Phone
-			press_take_folder = 				"_special_equipment_interaction_handler",
-			take_jfr_briefcase = 				"_special_equipment_interaction_handler",
-			take_confidential_folder_icc = 		"_special_equipment_interaction_handler",
+			hold_take_missing_animal_poster =	"_special_equipment_interaction_handler",	-- Heat Streat Posters
+			hold_pick_up_turtle =				"_special_equipment_interaction_handler",	-- Heat Street Tutle
+			diamond_single_pickup_axis =		"_special_equipment_interaction_handler",
+			glc_hold_take_handcuffs =			"_special_equipment_interaction_handler",	-- Green Bridge Handcuffs
+			pickup_tablet =						"_special_equipment_interaction_handler",	-- Stealing Xmas Tablet
+			pickup_phone =						"_special_equipment_interaction_handler",	-- Stealing Xmas Phone
+			press_take_folder =					"_special_equipment_interaction_handler",
+			take_jfr_briefcase =				"_special_equipment_interaction_handler",
+			take_confidential_folder_icc =		"_special_equipment_interaction_handler",
 			firstaid_box =						"_deployable_interaction_handler",
 			ammo_bag =							"_deployable_interaction_handler",
 			doctor_bag =						"_deployable_interaction_handler",
-			first_aid_kit = 					"_deployable_interaction_handler",
+			first_aid_kit =						"_deployable_interaction_handler",
 			bodybags_bag =						"_deployable_interaction_handler",
 			grenade_crate =						"_deployable_interaction_handler",
-			--grenade_briefcase =					"_deployable_interaction_handler",		-- Thermal Paste uses this interaction as well... :(
+			--grenade_briefcase =				"_deployable_interaction_handler",		-- Thermal Paste uses this interaction as well... :(
 		},
 		INTERACTION_TO_CARRY = {
-			weapon_case =					"weapon",
-			weapon_case_axis_z =			"weapon",
-			samurai_armor =					"samurai_suit",
-			gen_pku_warhead_box =			"warhead",
-			pku_toothbrush = 				"toothbrush",
-			corpse_dispose =				"person",
-			crate_loot = 					"crate",
-			crate_loot_crowbar = 			"crate",
-			crate_weapon_crowbar = 			"crate",
-			hold_open_xmas_present = 		"xmas_present",
-			hold_open_case =				"drone_control_helmet",	--May be reused in future heists for other loot
+			weapon_case =						"weapon",
+			weapon_case_axis_z =				"weapon",
+			samurai_armor =						"samurai_suit",
+			gen_pku_warhead_box =				"warhead",
+			pku_toothbrush =					"toothbrush",
+			corpse_dispose =					"person",
+			crate_loot =						"crate",
+			crate_loot_crowbar =				"crate",
+			crate_weapon_crowbar =				"crate",
+			hold_open_xmas_present =			"xmas_present",
+			hold_open_case =					"drone_control_helmet",	--May be reused in future heists for other loot
 
-			cut_glass = 					"showcase",
-			diamonds_pickup = 				"diamonds_dah",
-			red_diamond_pickup = 			"red_diamond",
-			red_diamond_pickup_no_axis = 	"red_diamond",
+			cut_glass =							"showcase",
+			diamonds_pickup =					"diamonds_dah",
+			red_diamond_pickup =				"red_diamond",
+			red_diamond_pickup_no_axis =		"red_diamond",
 
-			hold_open_shopping_bag = 		"shopping_bag",
-			hold_take_toy = 				"robot_toy",
-			hold_take_wine = 				"ordinary_wine",
-			hold_take_expensive_wine = 		"expensive_vine",
-			hold_take_diamond_necklace =	"diamond_necklace",
-			hold_take_vr_headset = 			"vr_headset",
-			hold_take_shoes = 				"women_shoes",
-			hold_take_old_wine = 			"old_wine",
+			hold_open_shopping_bag =			"shopping_bag",
+			hold_take_toy =						"robot_toy",
+			hold_take_wine =					"ordinary_wine",
+			hold_take_expensive_wine =			"expensive_vine",
+			hold_take_diamond_necklace =		"diamond_necklace",
+			hold_take_vr_headset =				"vr_headset",
+			hold_take_shoes =					"women_shoes",
+			hold_take_old_wine =				"old_wine",
 		},
 		BAGGED_IDS = {
-			painting_carry_drop = true,
-			carry_drop = true,
-			safe_carry_drop = true,
-			goat_carry_drop = true,
+			painting_carry_drop =				true,
+			carry_drop =						true,
+			safe_carry_drop =					true,
+			goat_carry_drop =					true,
 		},
 		COMPOSITE_LOOT_UNITS = {
 			gen_pku_warhead_box = 2,	--[132925] = 2, [132926] = 2, [132927] = 2,	--Meltdown warhead cases
@@ -284,7 +284,7 @@ if string.lower(RequiredScript) == "lib/setups/setup" then
 				end
 			end,
 
---[[ 		Vault_Door	closed_Wall		wine_Wall
+--[[		Vault_Door	closed_Wall		wine_Wall
 upstairs	100476		101423			105879
 bedroom		100490		101431			105876
 lounge		100421		100448			102049
@@ -456,7 +456,7 @@ lounge		100421		100448			102049
 			firstaid_box =						"doc_bag",
 			ammo_bag =							"ammo_bag",
 			doctor_bag =						"doc_bag",
-			first_aid_kit = 					"first_aid_kit",
+			first_aid_kit =						"first_aid_kit",
 			bodybags_bag =						"body_bag",
 			grenade_crate =						"grenade_crate",
 			--grenade_briefcase =					"grenade_crate",
@@ -520,16 +520,16 @@ lounge		100421		100448			102049
 
 	GameInfoManager._UNITS = {
 		TWEAK_ID_BY_NAME = {
-			[tostring(Idstring("units/pd2_dlc_born/characters/npc_male_mechanic/npc_male_mechanic"))] 										= "mechanic",
-			[tostring(Idstring("units/pd2_dlc_born/characters/npc_male_mechanic/npc_male_mechanic_husk"))] 									= "mechanic",
-			[tostring(Idstring("units/pd2_skirmish/characters/civ_male_bank_manager_hostage/civ_male_bank_manager_hostage"))] 				= "civ_hostage",
-			[tostring(Idstring("units/pd2_skirmish/characters/civ_male_bank_manager_hostage/civ_male_bank_manager_hostage_husk"))] 			= "civ_hostage",
-			[tostring(Idstring("units/pd2_skirmish/characters/civ_female_museum_curator_hostage/civ_female_museum_curator_hostage"))] 		= "civ_hostage",
-			[tostring(Idstring("units/pd2_skirmish/characters/civ_female_museum_curator_hostage/civ_female_museum_curator_hostage_husk"))] 	= "civ_hostage",
-			[tostring(Idstring("units/pd2_skirmish/characters/civ_female_drug_lord_hostage/civ_female_drug_lord_hostage"))] 				= "civ_hostage",
-			[tostring(Idstring("units/pd2_skirmish/characters/civ_female_drug_lord_hostage/civ_female_drug_lord_hostage_husk"))] 			= "civ_hostage",
-			[tostring(Idstring("units/pd2_skirmish/characters/civ_male_prisoner_hostage/civ_male_prisoner_hostage"))] 						= "civ_hostage",
-			[tostring(Idstring("units/pd2_skirmish/characters/civ_male_prisoner_hostage/civ_male_prisoner_hostage_husk"))] 					= "civ_hostage",
+			[tostring(Idstring("units/pd2_dlc_born/characters/npc_male_mechanic/npc_male_mechanic"))]										= "mechanic",
+			[tostring(Idstring("units/pd2_dlc_born/characters/npc_male_mechanic/npc_male_mechanic_husk"))]									= "mechanic",
+			[tostring(Idstring("units/pd2_skirmish/characters/civ_male_bank_manager_hostage/civ_male_bank_manager_hostage"))]				= "civ_hostage",
+			[tostring(Idstring("units/pd2_skirmish/characters/civ_male_bank_manager_hostage/civ_male_bank_manager_hostage_husk"))]			= "civ_hostage",
+			[tostring(Idstring("units/pd2_skirmish/characters/civ_female_museum_curator_hostage/civ_female_museum_curator_hostage"))]		= "civ_hostage",
+			[tostring(Idstring("units/pd2_skirmish/characters/civ_female_museum_curator_hostage/civ_female_museum_curator_hostage_husk"))]	= "civ_hostage",
+			[tostring(Idstring("units/pd2_skirmish/characters/civ_female_drug_lord_hostage/civ_female_drug_lord_hostage"))]					= "civ_hostage",
+			[tostring(Idstring("units/pd2_skirmish/characters/civ_female_drug_lord_hostage/civ_female_drug_lord_hostage_husk"))]			= "civ_hostage",
+			[tostring(Idstring("units/pd2_skirmish/characters/civ_male_prisoner_hostage/civ_male_prisoner_hostage"))]						= "civ_hostage",
+			[tostring(Idstring("units/pd2_skirmish/characters/civ_male_prisoner_hostage/civ_male_prisoner_hostage_husk"))]					= "civ_hostage",
 		}
 	}
 
@@ -1808,8 +1808,8 @@ if string.lower(RequiredScript) == "lib/units/props/timergui" then
 			local function player_can_upgrade(drill_upgrades, player_upgrades)
 				local template = Drill.create_upgrades(0, 0, 0, false, false)
 				for k, v in pairs(template) do	--Force the tables to contain all data, at least in default value...
-					drill_upgrades[k] 	= drill_upgrades[k] 	or v
-					player_upgrades[k] 	= player_upgrades[k] 	or v
+					drill_upgrades[k]	= drill_upgrades[k]		or v
+					player_upgrades[k]	= player_upgrades[k]	or v
 				end
 				return player_upgrades.auto_repair_level_1 > drill_upgrades.auto_repair_level_1 or player_upgrades.auto_repair_level_2 > drill_upgrades.auto_repair_level_2 or player_upgrades.speed_upgrade_level > drill_upgrades.speed_upgrade_level or player_upgrades.silent_drill and not drill_upgrades.silent_drill or player_upgrades.reduced_alert and not drill_upgrades.reduced_alert
 			end
@@ -3734,16 +3734,16 @@ if string.lower(RequiredScript) == "lib/units/beings/player/playerdamage" then
 	local clear_delayed_damage_original = PlayerDamage.clear_delayed_damage
 
 	local HEALTH_RATIO_BONUSES = {
-		melee_damage_health_ratio_multiplier 			= { category = "melee", buff_id = "berserker" },
-		damage_health_ratio_multiplier 					= { category = "damage", buff_id = "berserker_aced" },
-		armor_regen_damage_health_ratio_multiplier 		= { category = "armor_regen", buff_id = "yakuza_recovery" },
-		movement_speed_damage_health_ratio_multiplier 	= { category = "movement_speed", buff_id = "yakuza_speed" },
+		melee_damage_health_ratio_multiplier			= { category = "melee", buff_id = "berserker" },
+		damage_health_ratio_multiplier					= { category = "damage", buff_id = "berserker_aced" },
+		armor_regen_damage_health_ratio_multiplier		= { category = "armor_regen", buff_id = "yakuza_recovery" },
+		movement_speed_damage_health_ratio_multiplier	= { category = "movement_speed", buff_id = "yakuza_speed" },
 	}
 
 	local PASSIVE_HEALTH_REGEN = {
-		muscle_regen 		= { category = "player", 	upgrade = "passive_health_regen" },
-		crew_health_regen 	= { category = "team", 		upgrade = "crew_health_regen"	 },
-		hostage_taker 		= { category = "player", 	upgrade = "hostage_health_regen_addend", 	check_clbk = function() return managers.player._HAS_HOSTAGES end },
+		muscle_regen		= { category = "player",	upgrade = "passive_health_regen" },
+		crew_health_regen	= { category = "team",		upgrade = "crew_health_regen"	 },
+		hostage_taker		= { category = "player",	upgrade = "hostage_health_regen_addend",	check_clbk = function() return managers.player._HAS_HOSTAGES end },
 	}
 
 	local LAST_HEALTH_RATIO = 0

@@ -7,68 +7,68 @@ if string.lower(RequiredScript) == "lib/managers/hudmanager" then
 		self._shield = false
 
 		local unit_health_main = managers.hud:script(PlayerBase.PLAYER_INFO_HUD_PD2).panel:panel({
-			name 	= "unit_health_main",
-			halign 	= "grow",
-			valign 	= "grow"
+			name			= "unit_health_main",
+			halign			= "grow",
+			valign			= "grow"
 		})
 
 		self._unit_health_panel = unit_health_main:panel({
-			name 	= "unit_health_panel",
-			visible = false
+			name			= "unit_health_panel",
+			visible			= false
 		})
 
 		self._unit_bar = self._unit_health_panel:bitmap({
-			name 			= "unit_health",
-			texture 		= "guis/textures/pd2/healthshield",
-			texture_rect 	= self._bar_text_rect,
-			blend_mode 		= "normal"
+			name			= "unit_health",
+			texture			= "guis/textures/pd2/healthshield",
+			texture_rect	= self._bar_text_rect,
+			blend_mode		= "normal"
 		})
 
 		self._unit_bar_bg = self._unit_health_panel:bitmap({
-			name 			= "unit_shield",
-			texture 		= "guis/textures/pd2/healthshield",
-			texture_rect 	= { 1, 1, 234, 13 },
-			blend_mode 		= "normal"
+			name			= "unit_shield",
+			texture			= "guis/textures/pd2/healthshield",
+			texture_rect	= { 1, 1, 234, 13 },
+			blend_mode		= "normal"
 		})
 
 		self._unit_health_text = self._unit_health_panel:text({
-			name 		= "unit_health_text",
-			text 		= "250000/250000",
-			blend_mode 	= "normal",
-			alpha 		= 1,
-			halign 		= "right",
-			font 		= "fonts/font_medium_shadow_mf",
-			font_size 	= 20,
-			color 		= Color.white,
-			align 		= "center",
-			layer 		= 1
+			name			= "unit_health_text",
+			text			= "250000/250000",
+			blend_mode		= "normal",
+			alpha			= 1,
+			halign			= "right",
+			font			= "fonts/font_medium_shadow_mf",
+			font_size		= 20,
+			color			= Color.white,
+			align			= "center",
+			layer			= 1
 		})
 
 		self._unit_health_enemy_text = self._unit_health_panel:text({
-			name 		= "unit_health_enemy_text",
-			text 		= "SWAT VAN TURRET",
-			blend_mode 	= "normal",
-			alpha 		= 1,
-			halign 		= "left",
-			font 		= "fonts/font_medium_mf",
-			font_size 	= 22,
-			color 		= Color.white,
-			align 		= "center",
-			layer 		= 1
+			name			= "unit_health_enemy_text",
+			text			= "SWAT VAN TURRET",
+			blend_mode		= "normal",
+			alpha			= 1,
+			halign			= "left",
+			font			= "fonts/font_medium_mf",
+			font_size		= 22,
+			color			= Color.white,
+			align			= "center",
+			layer			= 1
 		})
 
 		self._unit_health_enemy_location = self._unit_health_panel:text({
-			name 		= "unit_health_enemy_location",
-			text 		= "^",
-			blend_mode 	= "normal",
-			visible 	= WolfHUD:getSetting({"EnemyHealthbar", "SHOW_POINTER"}, false),
-			alpha 		= 0.75,
-			halign 		= "center",
-			font 		= "fonts/font_medium_shadow_mf",
-			font_size 	= 20,
-			color 		= Color.white,
-			align 		= "center",
-			layer 		= 1
+			name			= "unit_health_enemy_location",
+			text			= "^",
+			blend_mode		= "normal",
+			visible			= WolfHUD:getSetting({"EnemyHealthbar", "SHOW_POINTER"}, false),
+			alpha			= 0.75,
+			halign			= "center",
+			font			= "fonts/font_medium_shadow_mf",
+			font_size		= 20,
+			color			= Color.white,
+			align			= "center",
+			layer			= 1
 		})
 
 		local _ ,_ ,hw ,hh = self._unit_health_text:text_rect()

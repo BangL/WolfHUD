@@ -1558,9 +1558,9 @@ if RequiredScript == "lib/managers/hud/hudteammate" then
 		self._settings = settings
 
 		local buttons = {
-			{ text = "hud_waiting_accept",  binding = "drop_in_accept"  },
-			{ text = "hud_waiting_return",  binding = "drop_in_return"  },
-			{ text = "hud_waiting_kick",    binding = "drop_in_kick"    }
+			{ text = "hud_waiting_accept",	binding = "drop_in_accept"	},
+			{ text = "hud_waiting_return",	binding = "drop_in_return"	},
+			{ text = "hud_waiting_kick",	binding = "drop_in_kick"	}
 		}
 		local text = ""
 		for i, btn in ipairs(buttons or {}) do

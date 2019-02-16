@@ -67,8 +67,8 @@
 
 	"wolfhud_loadout_hours_played" : "$HOURS heures.",
 
-    "wolfhud_profile_switch_title" : "Changez de profil",
-    "wolfhud_profile_switch_title_profiles" : "Profil:",
+	"wolfhud_profile_switch_title" : "Changez de profil",
+	"wolfhud_profile_switch_title_profiles" : "Profil:",
 
 	"victory_most_damage" : "Dégâts maximal:",
 	"victory_session_damage" : "Dégâts totaux:",
@@ -143,7 +143,7 @@
 	"wolfhud_enemy_fbi" : "Agent du FBI",
 	"wolfhud_enemy_swat" : "Agent du SWAT",
 	"wolfhud_enemy_heavy_swat" : "SWAT lourd",
-    "wolfhud_enemy_heavy_swat_sniper" : "Sniper SWAT lourd",
+	"wolfhud_enemy_heavy_swat_sniper" : "Sniper SWAT lourd",
 	"wolfhud_enemy_city_swat" : "Unité d'élite",
 	"wolfhud_enemy_shield" : "Shield",
 	"wolfhud_enemy_spook" : "Cloaker",
@@ -771,8 +771,8 @@
 	"wolfhud_crewloadout_briefing_desc" : "Remplace l'onglet \"CONFIG.ÉQUIPE\" par défaut en résumé de contrat par un onglet plus précis.",
 	"wolfhud_crewloadout_tabscreen_title" : "Afficher dans le menu TAB",
 	"wolfhud_crewloadout_tabscreen_desc" : "Affiche les coméptences, la pioche d'atous et le ping des joueurs présents dans la partie. \n(Est désactivé si vous utilisez la fonctionnalité similaire du mod LobbyPlayer)",
-    "wolfhud_profilemenu_replace_title" : "Remplacer le menu des profils",
-    "wolfhud_profilemenu_replace_desc" : "Remplace le sélecteur de profils par défaut par celui du WolfHUD, plus précis.",
+	"wolfhud_profilemenu_replace_title" : "Remplacer le menu des profils",
+	"wolfhud_profilemenu_replace_desc" : "Remplace le sélecteur de profils par défaut par celui du WolfHUD, plus précis.",
 
 	"wolfhud_dmgindicator_options_name" : "Indicateur de dégâts",
 	"wolfhud_dmgindicator_options_help" : "Définit la durée d'affichage, la taille et la couleur de l'indicateur de dégâts.",

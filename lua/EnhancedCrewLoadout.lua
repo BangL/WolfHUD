@@ -215,9 +215,9 @@ if string.lower(RequiredScript) == "lib/managers/menu/contractboxgui" then
 							{ "grenade", "armor" },
 							{ "deployable", "secondary_deployable" }
 						}),
-					name = 		{ alpha = 1, use_peer_color = true },
+					name =		{ alpha = 1, use_peer_color = true },
 					character = { alpha = 1, use_peer_color = true },
-					default = 	{ alpha = 0.9 },
+					default =	{ alpha = 0.9 },
 					margin = 5,
 					borders = {1, 1, 1, 1}
 				})
@@ -447,15 +447,15 @@ elseif string.lower(RequiredScript) == "lib/managers/menu/crimespreedetailsmenuc
 							{ "grenade", "armor" },
 							{ "deployable", "secondary_deployable" }
 						}),
-					name = 		{ font_size = tweak_data.menu.pd2_medium_font_size * 0.95, height = tweak_data.menu.pd2_medium_font_size * 1.00, align = "center", margin = 3, use_peer_color = true, alpha = 1 },
-					level = 	{ font_size = tweak_data.menu.pd2_medium_font_size * 0.9,  height = tweak_data.menu.pd2_medium_font_size * 0.95, align = "right",  margin = 3, use_peer_color = true, alpha = 1 },
-					skills = 	{ font_size = tweak_data.menu.pd2_small_font_size  * 0.7,  height = tweak_data.menu.pd2_small_font_size  * 0.75, align = "center", use_peer_color = true, alpha = 0.95 },
-					perk = 		{ font_size = tweak_data.menu.pd2_medium_font_size * 0.7,  height = tweak_data.menu.pd2_medium_font_size * 0.75, align = "center", use_peer_color = true, alpha = 0.95 },
-					ping = 		{ font_size = tweak_data.menu.pd2_small_font_size  * 0.75, height = tweak_data.menu.pd2_small_font_size  * 0.8,  align = "right",  alpha = 1 	},
-					playtime = 	{ font_size = tweak_data.menu.pd2_small_font_size  * 0.7,  height = tweak_data.menu.pd2_small_font_size  * 0.75, align = "center", alpha = 1 	},
-					default = 	{ hide_name = true, alpha = 0.9 },
-					margin = 5,
-					borders = { 1, 1, 1, 1 }
+					name =		{ font_size = tweak_data.menu.pd2_medium_font_size * 0.95, height = tweak_data.menu.pd2_medium_font_size * 1.00, align = "center", margin = 3, use_peer_color = true, alpha = 1 },
+					level =		{ font_size = tweak_data.menu.pd2_medium_font_size * 0.9,  height = tweak_data.menu.pd2_medium_font_size * 0.95, align = "right",  margin = 3, use_peer_color = true, alpha = 1 },
+					skills =	{ font_size = tweak_data.menu.pd2_small_font_size  * 0.7,  height = tweak_data.menu.pd2_small_font_size  * 0.75, align = "center", use_peer_color = true, alpha = 0.95 },
+					perk =		{ font_size = tweak_data.menu.pd2_medium_font_size * 0.7,  height = tweak_data.menu.pd2_medium_font_size * 0.75, align = "center", use_peer_color = true, alpha = 0.95 },
+					ping =		{ font_size = tweak_data.menu.pd2_small_font_size  * 0.75, height = tweak_data.menu.pd2_small_font_size  * 0.8,  align = "right",  alpha = 1	},
+					playtime =	{ font_size = tweak_data.menu.pd2_small_font_size  * 0.7,  height = tweak_data.menu.pd2_small_font_size  * 0.75, align = "center", alpha = 1	},
+					default =	{ hide_name = true, alpha = 0.9 },
+					margin =	5,
+					borders =	{ 1, 1, 1, 1 }
 				})
 			end
 		end
@@ -508,15 +508,15 @@ elseif string.lower(RequiredScript) == "lib/managers/menu/missionbriefinggui" th
 						{ "armor", "mask" },
 						{ "deployable", "secondary_deployable" }
 					}),
-				name = 		{ font_size = tweak_data.menu.pd2_medium_font_size * 0.95, height = tweak_data.menu.pd2_medium_font_size * 1.00, align = "center", margin = 3, use_peer_color = true },
-				level = 	{ font_size = tweak_data.menu.pd2_medium_font_size * 0.9,  height = tweak_data.menu.pd2_medium_font_size * 0.95, align = "right",  margin = 3, use_peer_color = true },
-				skills = 	{ font_size = tweak_data.menu.pd2_small_font_size  * 0.9,  height = tweak_data.menu.pd2_small_font_size  * 0.95, align = "center", use_peer_color = true },
-				perk = 		{ font_size = tweak_data.menu.pd2_medium_font_size * 0.9,  height = tweak_data.menu.pd2_medium_font_size * 0.95, align = "left",   use_peer_color = true },
-				ping = 		{ font_size = tweak_data.menu.pd2_small_font_size  * 0.75, height = tweak_data.menu.pd2_small_font_size  * 0.8,  align = "right" 	},
-				playtime = 	{ font_size = tweak_data.menu.pd2_small_font_size  * 0.7,  height = tweak_data.menu.pd2_small_font_size  * 0.75, align = "center" 	},
-				default = 	{ hide_name = true },
-				margin = 5,
-				borders = { 1, 1, 1, 1 }
+				name =		{ font_size = tweak_data.menu.pd2_medium_font_size * 0.95, height = tweak_data.menu.pd2_medium_font_size * 1.00, align = "center", margin = 3, use_peer_color = true },
+				level =		{ font_size = tweak_data.menu.pd2_medium_font_size * 0.9,  height = tweak_data.menu.pd2_medium_font_size * 0.95, align = "right",  margin = 3, use_peer_color = true },
+				skills =	{ font_size = tweak_data.menu.pd2_small_font_size  * 0.9,  height = tweak_data.menu.pd2_small_font_size  * 0.95, align = "center", use_peer_color = true },
+				perk =		{ font_size = tweak_data.menu.pd2_medium_font_size * 0.9,  height = tweak_data.menu.pd2_medium_font_size * 0.95, align = "left",   use_peer_color = true },
+				ping =		{ font_size = tweak_data.menu.pd2_small_font_size  * 0.75, height = tweak_data.menu.pd2_small_font_size  * 0.8,  align = "right"	},
+				playtime =	{ font_size = tweak_data.menu.pd2_small_font_size  * 0.7,  height = tweak_data.menu.pd2_small_font_size  * 0.75, align = "center"	},
+				default =	{ hide_name = true },
+				margin =	5,
+				borders =	{ 1, 1, 1, 1 }
 			})
 
 			local kit_menu = managers.menu:get_menu("kit_menu")
@@ -667,15 +667,15 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/newhudstatsscreen" then
 								{ "name", "ping" },
 								{ "skills", "perk" },
 							}),
-						name = 		{ font_size = tweak_data.menu.pd2_medium_font_size * 0.90, height = tweak_data.menu.pd2_medium_font_size * 0.95, align = "left",  margin = 0, use_peer_color = true },
-						level = 	{ font_size = tweak_data.menu.pd2_medium_font_size * 0.90, height = tweak_data.menu.pd2_medium_font_size * 0.95, align = "left",  margin = 0, use_peer_color = true },
-						skills = 	{ font_size = tweak_data.menu.pd2_small_font_size  * 1.10, height = tweak_data.menu.pd2_small_font_size  * 1.15, align = "left",  margin = 3 },
-						perk = 		{ font_size = tweak_data.menu.pd2_medium_font_size * 0.95, height = tweak_data.menu.pd2_medium_font_size * 1.00, align = "left",  margin = 3 },
-						ping = 		{ font_size = tweak_data.menu.pd2_small_font_size  * 0.75, height = tweak_data.menu.pd2_small_font_size  * 0.80, align = "right" 			 },
-						playtime = 	{ font_size = tweak_data.menu.pd2_small_font_size  * 0.75, height = tweak_data.menu.pd2_small_font_size  * 0.80, align = "left" 			 },
-						default = 	{ hide_name = true },
-						margin = 5,
-						borders = { 0, 0, 0, 2 }
+						name =		{ font_size = tweak_data.menu.pd2_medium_font_size * 0.90, height = tweak_data.menu.pd2_medium_font_size * 0.95, align = "left",  margin = 0, use_peer_color = true },
+						level =		{ font_size = tweak_data.menu.pd2_medium_font_size * 0.90, height = tweak_data.menu.pd2_medium_font_size * 0.95, align = "left",  margin = 0, use_peer_color = true },
+						skills =	{ font_size = tweak_data.menu.pd2_small_font_size  * 1.10, height = tweak_data.menu.pd2_small_font_size  * 1.15, align = "left",  margin = 3 },
+						perk =		{ font_size = tweak_data.menu.pd2_medium_font_size * 0.95, height = tweak_data.menu.pd2_medium_font_size * 1.00, align = "left",  margin = 3 },
+						ping =		{ font_size = tweak_data.menu.pd2_small_font_size  * 0.75, height = tweak_data.menu.pd2_small_font_size  * 0.80, align = "right"			 },
+						playtime =	{ font_size = tweak_data.menu.pd2_small_font_size  * 0.75, height = tweak_data.menu.pd2_small_font_size  * 0.80, align = "left"			 },
+						default =	{ hide_name = true },
+						margin =	5,
+						borders =	{ 0, 0, 0, 2 }
 					})
 				end
 			end

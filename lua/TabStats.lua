@@ -539,20 +539,20 @@ if string.lower(RequiredScript) == "lib/managers/hud/newhudstatsscreen" then
 	}
 
 	HUDStatsScreen.STAT_ITEMS = {
-		{ name = "accuracy", 			text_id = "victory_hit_accuracy", 				color = Color.white, 				update = {func = "session_hit_accuracy", 			func_alltime = "", 	params = {}, suffix = "%"	},		no_alltime = true		},
-		{ name = "total_damage", 		text_id = "wolfhud_tabstats_total_damage", 		color = Color(1, 0.69, 0.19, 0.38), update = {func = "session_damage", 					func_alltime = "", 	params = {}					},		no_alltime = true		},
-		{ name = "tanks_killed", 		text_id = "wolfhud_tabstats_tanks_killed", 		color = Color.red, 					update = {func = "session_total_tanks_killed", 		func_alltime = "total_tanks_killed", 	params = {}							}, 	},
-		{ name = "cloakers_killed", 	text_id = "wolfhud_tabstats_cloakers_killed", 	color = Color.green,				update = {func = "session_enemy_killed_by_type", 	func_alltime = "enemy_killed_by_type", 	params = {"spooc", "count"}			}, 	},
-		{ name = "shields_killed", 		text_id = "wolfhud_tabstats_shields_killed", 	color = Color.yellow,				update = {func = "session_enemy_killed_by_type", 	func_alltime = "enemy_killed_by_type", 	params = {"shield", "count"}		}, 	},
-		{ name = "snipers_killed", 		text_id = "wolfhud_tabstats_snipers_killed", 	color = Color(1, 0.67, 0.84, 0.90),	update = {func = "session_enemy_killed_by_type", 	func_alltime = "enemy_killed_by_type", 	params = {"sniper", "count"}		}, 	},
-		{ name = "tasers_killed", 		text_id = "wolfhud_tabstats_tasers_killed", 	color = Color(1, 0, 0.55, 0.55), 	update = {func = "session_enemy_killed_by_type", 	func_alltime = "enemy_killed_by_type", 	params = {"taser", "count"}			}, 	},
-		{ name = "medic_killed", 		text_id = "wolfhud_tabstats_medic_killed", 		color = Color(1, 1, 0.55, 0.24),	update = {func = "session_enemy_killed_by_type", 	func_alltime = "enemy_killed_by_type", 	params = {"medic", "count"}			}, 	},
-		{ name = "gensec_killed", 		text_id = "wolfhud_tabstats_gensec_killed", 	color = Color(1, 0.75, 1, 0.24),	update = {func = "session_enemy_killed_by_type", 	func_alltime = "enemy_killed_by_type", 	params = {"gensec", "count"}		}, 	},
-		{ name = "melee_killed", 		text_id = "wolfhud_tabstats_melee_kills", 		color = Color(1, 0.54, 0.02, 0.02),	update = {func = "session_enemy_killed_by_type", 	func_alltime = "enemy_killed_by_type", 	params = {"total", "melee"}			}, 	},
-		{ name = "explosion_killed", 	text_id = "wolfhud_tabstats_explosion_kills", 	color = Color(1, 1, 0.5, 0),		update = {func = "session_enemy_killed_by_type", 	func_alltime = "enemy_killed_by_type", 	params = {"total", "explosion"}		}, 	},
-		{ name = "total_killed", 		text_id = "wolfhud_tabstats_nonspecial_kills", 	color = Color(1, 0.78, 0.15, 0.21),	update = {func = "session_enemy_killed_by_type", 	func_alltime = "enemy_killed_by_type", 	params = {"non_special", "count"}	}, 	},
-		{ name = "total_downs", 		text_id = "victory_total_downed", 				color = Color(1, 0.5, 0.5, 0.5),	update = {func = "total_downed", 					func_alltime = "total_downed_alltime", 	params = {}							}, 	},
-		{ name = "total_revives", 		text_id = "wolfhud_tabstats_total_revives", 	color = Color(1, 1, 0, 0.4),		update = {func = "session_total_revives", 			func_alltime = "total_revives",			params = {}							}, 	},
+		{ name = "accuracy",			text_id = "victory_hit_accuracy",				color = Color.white,				update = {func = "session_hit_accuracy",			func_alltime = "",	params = {}, suffix = "%"	},		no_alltime = true		},
+		{ name = "total_damage",		text_id = "wolfhud_tabstats_total_damage",		color = Color(1, 0.69, 0.19, 0.38), update = {func = "session_damage",					func_alltime = "",	params = {}					},		no_alltime = true		},
+		{ name = "tanks_killed",		text_id = "wolfhud_tabstats_tanks_killed",		color = Color.red,					update = {func = "session_total_tanks_killed",		func_alltime = "total_tanks_killed",	params = {}							},	},
+		{ name = "cloakers_killed",		text_id = "wolfhud_tabstats_cloakers_killed",	color = Color.green,				update = {func = "session_enemy_killed_by_type",	func_alltime = "enemy_killed_by_type",	params = {"spooc", "count"}			},	},
+		{ name = "shields_killed",		text_id = "wolfhud_tabstats_shields_killed",	color = Color.yellow,				update = {func = "session_enemy_killed_by_type",	func_alltime = "enemy_killed_by_type",	params = {"shield", "count"}		},	},
+		{ name = "snipers_killed",		text_id = "wolfhud_tabstats_snipers_killed",	color = Color(1, 0.67, 0.84, 0.90),	update = {func = "session_enemy_killed_by_type",	func_alltime = "enemy_killed_by_type",	params = {"sniper", "count"}		},	},
+		{ name = "tasers_killed",		text_id = "wolfhud_tabstats_tasers_killed",		color = Color(1, 0, 0.55, 0.55),	update = {func = "session_enemy_killed_by_type",	func_alltime = "enemy_killed_by_type",	params = {"taser", "count"}			},	},
+		{ name = "medic_killed",		text_id = "wolfhud_tabstats_medic_killed",		color = Color(1, 1, 0.55, 0.24),	update = {func = "session_enemy_killed_by_type",	func_alltime = "enemy_killed_by_type",	params = {"medic", "count"}			},	},
+		{ name = "gensec_killed",		text_id = "wolfhud_tabstats_gensec_killed",		color = Color(1, 0.75, 1, 0.24),	update = {func = "session_enemy_killed_by_type",	func_alltime = "enemy_killed_by_type",	params = {"gensec", "count"}		},	},
+		{ name = "melee_killed",		text_id = "wolfhud_tabstats_melee_kills",		color = Color(1, 0.54, 0.02, 0.02),	update = {func = "session_enemy_killed_by_type",	func_alltime = "enemy_killed_by_type",	params = {"total", "melee"}			},	},
+		{ name = "explosion_killed",	text_id = "wolfhud_tabstats_explosion_kills",	color = Color(1, 1, 0.5, 0),		update = {func = "session_enemy_killed_by_type",	func_alltime = "enemy_killed_by_type",	params = {"total", "explosion"}		},	},
+		{ name = "total_killed",		text_id = "wolfhud_tabstats_nonspecial_kills",	color = Color(1, 0.78, 0.15, 0.21),	update = {func = "session_enemy_killed_by_type",	func_alltime = "enemy_killed_by_type",	params = {"non_special", "count"}	},	},
+		{ name = "total_downs",			text_id = "victory_total_downed",				color = Color(1, 0.5, 0.5, 0.5),	update = {func = "total_downed",					func_alltime = "total_downed_alltime",	params = {}							},	},
+		{ name = "total_revives",		text_id = "wolfhud_tabstats_total_revives",		color = Color(1, 1, 0, 0.4),		update = {func = "session_total_revives",			func_alltime = "total_revives",			params = {}							},	},
 	}
 
 	function HUDStatsScreen.getMaskImage()
@@ -857,12 +857,12 @@ if string.lower(RequiredScript) == "lib/managers/hud/newhudstatsscreen" then
 	function HUDStatsScreen:_update_stats_list(panel, item)
 		if not (self._use_tab_stats and panel) then return end
 		if managers.money and managers.statistics and managers.experience and not item then
-			local money_current_stage 	= managers.crime_spree:is_active() and managers.crime_spree:get_potential_payout_from_current_stage("cash") or managers.skirmish:is_skirmish() and managers.skirmish:current_ransom_amount() or managers.money:get_potential_payout_from_current_stage() or 0
-			local offshore_rate 		= managers.money:get_tweak_value("money_manager", "offshore_rate") or 0
-			local civilian_kills 		= managers.statistics:session_total_civilian_kills() or 0
+			local money_current_stage	= managers.crime_spree:is_active() and managers.crime_spree:get_potential_payout_from_current_stage("cash") or managers.skirmish:is_skirmish() and managers.skirmish:current_ransom_amount() or managers.money:get_potential_payout_from_current_stage() or 0
+			local offshore_rate			= managers.money:get_tweak_value("money_manager", "offshore_rate") or 0
+			local civilian_kills		= managers.statistics:session_total_civilian_kills() or 0
 			local cleaner_costs			= (managers.money:get_civilian_deduction() or 0) * civilian_kills
-			local offshore_money 		= money_current_stage - math.round(money_current_stage * offshore_rate)
-			local spending_cash 		= money_current_stage * offshore_rate - cleaner_costs
+			local offshore_money		= money_current_stage - math.round(money_current_stage * offshore_rate)
+			local spending_cash			= money_current_stage * offshore_rate - cleaner_costs
 			panel:child("offshore_payout_text"):set_text(managers.experience:cash_string(offshore_money))
 			panel:child("spending_cash_text"):set_text(managers.experience:cash_string(spending_cash))
 

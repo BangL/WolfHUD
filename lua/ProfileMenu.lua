@@ -135,7 +135,7 @@ elseif RequiredScript == "lib/managers/menu/renderers/menunodeskillswitchgui" th
 					{ "grenade", "armor" },
 					{ "deployable", "secondary_deployable" }
 				},
-				default =     { alpha = 0.9 },
+				default = { alpha = 0.9 },
 				margin = 5,
 				borders = { 1, 1, 1, 1 },
 				layer = 53,

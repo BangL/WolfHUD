@@ -20,226 +20,226 @@ if not _G.WolfHUD then
 		end
 
 		WolfHUD.settings = {
-			LANGUAGE 								= default_lang,
+			LANGUAGE										= default_lang,
 			CustomHUD = {
-				ENABLED 							= false,
+				ENABLED										= false,
 				PLAYER = {
-					POSITION						= 2,		-- left (1), center (2) or right (3)
-					SCALE 							= 1,		--Size of local Player HUD Panel
-					OPACITY							= 1,
-					NAME							= true,
-					RANK							= true,
-					TRUNCATE_TAGS					= true,
-					CHARACTER						= false,
-					STATUS							= true,
-					EQUIPMENT						= true,
-					SPECIAL_EQUIPMENT				= true,
-					SPECIAL_EQUIPMENT_ROWS			= 3,
-					CALLSIGN						= true,
-					STAMINA							= true,
-					DOWNCOUNTER						= true,
-					CARRY							= true,
-					CONDITION_ICON_COLOR			= "orange",
+					POSITION								= 2,		-- left (1), center (2) or right (3)
+					SCALE									= 1,		--Size of local Player HUD Panel
+					OPACITY									= 1,
+					NAME									= true,
+					RANK									= true,
+					TRUNCATE_TAGS							= true,
+					CHARACTER								= false,
+					STATUS									= true,
+					EQUIPMENT								= true,
+					SPECIAL_EQUIPMENT						= true,
+					SPECIAL_EQUIPMENT_ROWS					= 3,
+					CALLSIGN								= true,
+					STAMINA									= true,
+					DOWNCOUNTER								= true,
+					CARRY									= true,
+					CONDITION_ICON_COLOR					= "orange",
 					WEAPON = {
-						ICON						= 4,
-						NAME						= 4,
-						AMMO						= 4,
-						FIREMODE					= 4,
+						ICON								= 4,
+						NAME								= 4,
+						AMMO								= 4,
+						FIREMODE							= 4,
 					},
 					KILLCOUNTER = {
-						HIDE						= false,
-						SHOW_SPECIAL_KILLS 			= true,
-						SHOW_HEADSHOT_KILLS			= true,
-						COLOR						= "orange",
+						HIDE								= false,
+						SHOW_SPECIAL_KILLS					= true,
+						SHOW_HEADSHOT_KILLS					= true,
+						COLOR								= "orange",
 					},
-					SHOW_ACCURACY					= true,
+					SHOW_ACCURACY							= true,
 				},
 				TEAMMATE = {
-					POSITION						= 1,		-- left (1), center (2) or right (3)
-					SCALE 							= 0.8,		--Size of Teammates/AI's HUD Panels
-					OPACITY							= 1,
-					NAME							= true,
-					RANK							= true,
-					TRUNCATE_TAGS					= true,
-					CHARACTER						= false,
-					LATENCY							= true,
-					STATUS							= true,
-					EQUIPMENT						= true,
-					SPECIAL_EQUIPMENT				= true,
-					SPECIAL_EQUIPMENT_ROWS			= 3,
-					CALLSIGN						= true,
-					DOWNCOUNTER						= true,
-					CARRY							= true,
-					CONDITION_ICON_COLOR			= "orange",
+					POSITION								= 1,		-- left (1), center (2) or right (3)
+					SCALE									= 0.8,		--Size of Teammates/AI's HUD Panels
+					OPACITY									= 1,
+					NAME									= true,
+					RANK									= true,
+					TRUNCATE_TAGS							= true,
+					CHARACTER								= false,
+					LATENCY									= true,
+					STATUS									= true,
+					EQUIPMENT								= true,
+					SPECIAL_EQUIPMENT						= true,
+					SPECIAL_EQUIPMENT_ROWS					= 3,
+					CALLSIGN								= true,
+					DOWNCOUNTER								= true,
+					CARRY									= true,
+					CONDITION_ICON_COLOR					= "orange",
 					BUILD = {
-						HIDE						= false,
-						DURATION					= 15,
+						HIDE								= false,
+						DURATION							= 15,
 					},
 					AI_COLOR = {
-						USE							= true,
-						COLOR						= "white",
+						USE									= true,
+						COLOR								= "white",
 					},
 					WEAPON = {
-						ICON						= 1,
-						NAME						= 1,
-						AMMO						= 4,
-						FIREMODE					= 1,
+						ICON								= 1,
+						NAME								= 1,
+						AMMO								= 4,
+						FIREMODE							= 1,
 					},
 					INTERACTION = {
-						HIDE					= false,		-- Show Interaction
-						NUMBER					= true,
-						TEXT					= true,
-						MIN_DURATION			= 0,
+						HIDE								= false,	-- Show Interaction
+						NUMBER								= true,
+						TEXT								= true,
+						MIN_DURATION						= 0,
 					},
 					KILLCOUNTER = {
-						HIDE						= false,
-						SHOW_SPECIAL_KILLS 			= true,
-						SHOW_HEADSHOT_KILLS			= true,
-						COLOR						= "orange",
-						SHOW_BOT_KILLS 				= true,
+						HIDE								= false,
+						SHOW_SPECIAL_KILLS					= true,
+						SHOW_HEADSHOT_KILLS					= true,
+						COLOR								= "orange",
+						SHOW_BOT_KILLS						= true,
 					},
 				},
-				USE_REAL_AMMO 						= true,
+				USE_REAL_AMMO								= true,
 			},
 			HUDChat = {
-				CHAT_WAIT_TIME							= 10,		--Time before chat fades out, 0 = never
-				LINE_HEIGHT								= 15,		--Chat font Size
-				WIDTH									= 380,		--Width of the chat window
-				MAX_OUTPUT_LINES						= 8,		--Chat Output lines
-				MAX_INPUT_LINES							= 5,		--Number of lines of text you can type
-				COLORED_BG								= false,	--Colorize the line bg based on the message source
-				SCROLLBAR_ALIGN							= 1,		--Alignment of the scroll bar (1 = left, 2 = right)
-				SPAM_FILTER								= true,	--Filter PocoHud and NGBTO Chat Spam messages.
+				CHAT_WAIT_TIME								= 10,		--Time before chat fades out, 0 = never
+				LINE_HEIGHT									= 15,		--Chat font Size
+				WIDTH										= 380,		--Width of the chat window
+				MAX_OUTPUT_LINES							= 8,		--Chat Output lines
+				MAX_INPUT_LINES								= 5,		--Number of lines of text you can type
+				COLORED_BG									= false,	--Colorize the line bg based on the message source
+				SCROLLBAR_ALIGN								= 1,		--Alignment of the scroll bar (1 = left, 2 = right)
+				SPAM_FILTER									= true,		--Filter PocoHud and NGBTO Chat Spam messages.
 			},
 			EnemyHealthbar = {
-				ENABLED 								= true,		--Show healthbars
-				SHOW_CIVILIAN 							= true,		--Show Healthbars for Civilians and TeamAI
-				SHOW_VEHICLE							= true,		--Show Healthbar for vehicles
-				SHOW_POINTER		 					= false,	--Show pointer near the Healthbar, pointing at Healthbar owner
+				ENABLED										= true,		--Show healthbars
+				SHOW_CIVILIAN								= true,		--Show Healthbars for Civilians and TeamAI
+				SHOW_VEHICLE								= true,		--Show Healthbar for vehicles
+				SHOW_POINTER								= false,	--Show pointer near the Healthbar, pointing at Healthbar owner
 			},
 			DamageIndicator = {
-				ENABLED									= true,
-				SIZE									= 150,
-				DURATION								= 2,
-				MAX_AMOUNT								= 10,
-				SHIELD_COLOR							= "gray",
-				HEALTH_COLOR							= "red",
-				CRIT_COLOR								= "purple",
-				VEHICLE_COLOR							= "yellow",
-				FRIENDLY_FIRE_COLOR						= "orange",
+				ENABLED										= true,
+				SIZE										= 150,
+				DURATION									= 2,
+				MAX_AMOUNT									= 10,
+				SHIELD_COLOR								= "gray",
+				HEALTH_COLOR								= "red",
+				CRIT_COLOR									= "purple",
+				VEHICLE_COLOR								= "yellow",
+				FRIENDLY_FIRE_COLOR							= "orange",
 			},
 			DamagePopup = {
-				DISPLAY_MODE							= 3,
-				DURATION	 							= 2,
-				SCALE									= 0.6,
-				SKULL_SCALE								= 0.9,
-				SKULL_ALIGN								= 2,			-- left (1) or right (2)
-				HEIGHT	 								= 30,
-				ALPHA	 								= 0.8,
-				COLOR									= "yellow",
-				HEADSHOT_COLOR							= "red",
-				CRITICAL_COLOR 							= "light_purple",
+				DISPLAY_MODE								= 3,
+				DURATION									= 2,
+				SCALE										= 0.6,
+				SKULL_SCALE									= 0.9,
+				SKULL_ALIGN									= 2,		-- left (1) or right (2)
+				HEIGHT										= 30,
+				ALPHA										= 0.8,
+				COLOR										= "yellow",
+				HEADSHOT_COLOR								= "red",
+				CRITICAL_COLOR								= "light_purple",
 			},
 			AssaultBanner = {
-				POSITION								= 2,			-- left (1), center (2) or right (3)
-				USE_ADV_ASSAULT							= true,
+				POSITION									= 2,		-- left (1), center (2) or right (3)
+				USE_ADV_ASSAULT								= true,
 			},
 			HUDSuspicion = {
-				SCALE									= 1,
-				SHOW_PERCENTAGE							= true,
-				SHOW_PERCENTAGE_OUTLINE					= true,
-				SHOW_BARS								= true,
-				SHOW_PACIFIED_CIVILIANS					= true,
-				REMOVE_ANSWERED_PAGER_CONTOUR 			= true,
+				SCALE										= 1,
+				SHOW_PERCENTAGE								= true,
+				SHOW_PERCENTAGE_OUTLINE						= true,
+				SHOW_BARS									= true,
+				SHOW_PACIFIED_CIVILIANS						= true,
+				REMOVE_ANSWERED_PAGER_CONTOUR				= true,
 			},
 			DrivingHUD = {
-				ENABLED									= true,		--Show DrivingHUD Panel
-				SCALE									= 1,
-				SHOW_VEHICLE 							= true,		--Show Vehicle and Teammate Mask Images
-				SHOW_HEALTH								= true,
-				SHOW_LOOT								= true,
-				SHOW_PASSENGERS							= true,
-				SHOW_GEAR								= true,
-				SHOW_SPEED								= true,
-				SHOW_RPM								= true,
-				SPEED_IN_MPH 							= false,	--Display Speed in mph
+				ENABLED										= true,		--Show DrivingHUD Panel
+				SCALE										= 1,
+				SHOW_VEHICLE								= true,		--Show Vehicle and Teammate Mask Images
+				SHOW_HEALTH									= true,
+				SHOW_LOOT									= true,
+				SHOW_PASSENGERS								= true,
+				SHOW_GEAR									= true,
+				SHOW_SPEED									= true,
+				SHOW_RPM									= true,
+				SPEED_IN_MPH								= false,	--Display Speed in mph
 			},
 			TabStats = {
-				ENABLED									= true,
-				CLOCK_MODE								= 3,		-- 1 = disabled, 2 = 12h, 3 = 24h
-				COLOR		 							= "white",
-				FONT_SIZE		 						= 12,
-				SHOW_MASK								= true,
-				SHOW_LOOT_NUMBERS						= true,
+				ENABLED										= true,
+				CLOCK_MODE									= 3,		-- 1 = disabled, 2 = 12h, 3 = 24h
+				COLOR										= "white",
+				FONT_SIZE									= 12,
+				SHOW_MASK									= true,
+				SHOW_LOOT_NUMBERS							= true,
 			},
 			CrewLoadout = {
-				REPLACE_IN_BRIEFING 					= true,
-				SHOW_IN_LOBBY							= true,
-				SHOW_IN_CS_LOBBY 						= true,
-				SHOW_ON_STATS_PANEL						= true,
-				REPLACE_PROFILE_MENU                    = true,
+				REPLACE_IN_BRIEFING							= true,
+				SHOW_IN_LOBBY								= true,
+				SHOW_IN_CS_LOBBY							= true,
+				SHOW_ON_STATS_PANEL							= true,
+				REPLACE_PROFILE_MENU						= true,
 			},
 			HUDList = {
-				ENABLED	 								= true,
-				right_list_scale						= 1,
-				left_list_scale							= 1,
-				buff_list_scale							= 1,
-				right_list_progress_alpha 				= 1,
-				left_list_progress_alpha 				= 1,
-				buff_list_progress_alpha 				= 1.0,
-				list_color	 							= "white",		--Left and Right List font color
-				list_color_bg	 						= "black",		--Left and Right List BG color
-				civilian_color 							= "green", 		--EnemyCounter Civillian and Hostage icon color
-				thug_color 								= "orange",		--EnemyCounter Thug and Mobster icon color
-				enemy_color 							= "orange",		--EnemyCounter Cop and Specials icon color
-				special_color 							= "red",
+				ENABLED										= true,
+				right_list_scale							= 1,
+				left_list_scale								= 1,
+				buff_list_scale								= 1,
+				right_list_progress_alpha					= 1,
+				left_list_progress_alpha					= 1,
+				buff_list_progress_alpha					= 1.0,
+				list_color									= "white",	--Left and Right List font color
+				list_color_bg								= "black",	--Left and Right List BG color
+				civilian_color								= "green",	--EnemyCounter Civillian and Hostage icon color
+				thug_color									= "orange",	--EnemyCounter Thug and Mobster icon color
+				enemy_color									= "orange",	--EnemyCounter Cop and Specials icon color
+				special_color								= "red",
 				LEFT_LIST = {
-					show_timers 							= true,     --Drills, time locks, hacking etc.
-					show_ammo_bags							= true,  	--Deployables (ammo)
-					show_doc_bags							= true,  	--Deployables (doc bags)
+					show_timers								= true,		--Drills, time locks, hacking etc.
+					show_ammo_bags							= true,		--Deployables (ammo)
+					show_doc_bags							= true,		--Deployables (doc bags)
 					show_first_aid_kits						= true,		--Deployables (first_aid_kits)
-					show_body_bags							= true,  	--Deployables (body bags)
-					show_grenade_crates						= true,  	--Deployables (grenades)
-					show_sentries 							= true,   	--Deployable sentries
-					show_ecms 								= true,		--Active ECMs
-					show_ecm_retrigger 						= true,  	--Countdown for players own ECM feedback retrigger delay
-					show_minions 							= true,  	--Converted enemies, type and health
+					show_body_bags							= true,		--Deployables (body bags)
+					show_grenade_crates						= true,		--Deployables (grenades)
+					show_sentries							= true,		--Deployable sentries
+					show_ecms								= true,		--Active ECMs
+					show_ecm_retrigger						= true,		--Countdown for players own ECM feedback retrigger delay
+					show_minions							= true,		--Converted enemies, type and health
 						show_own_minions_only				= false,	--Only show player-owned minions
-					show_pagers 							= true,  	--Show currently active pagers
-					show_tape_loop 							= true,  	--Show active tape loop duration
+					show_pagers								= true,		--Show currently active pagers
+					show_tape_loop							= true,		--Show active tape loop duration
 					timer_in_seconds						= false,	--Timer format in just seconds, as opposed to minutes and seconds
 				},
 				RIGHT_LIST = {
-					show_enemies 							= true,		--Currently spawned enemies
-						aggregate_enemies 					= false,  	--Don't split enemies on type; use a single entry for all
-					show_turrets 							= true,    	--Show active SWAT turrets
-					show_civilians 							= true,  	--Currently spawned, untied civs
-					show_hostages 							= true,   	--Currently tied civilian and dominated cops
+					show_enemies							= true,		--Currently spawned enemies
+						aggregate_enemies					= false,	--Don't split enemies on type; use a single entry for all
+					show_turrets							= true,		--Show active SWAT turrets
+					show_civilians							= true,		--Currently spawned, untied civs
+					show_hostages							= true,		--Currently tied civilian and dominated cops
 						aggregate_hostages					= false,
-					show_minion_count 						= true,     --Current number of jokered enemies
-					show_pager_count 						= true,		--Show number of triggered pagers (only counts pagers triggered while you were present)
+					show_minion_count						= true,		--Current number of jokered enemies
+					show_pager_count						= true,		--Show number of triggered pagers (only counts pagers triggered while you were present)
 					show_cam_count							= true,
 					show_bodybags_count						= true,
 					show_corpse_count						= false,
-					show_loot 								= true,     --Show spawned and active loot bags/piles (may not be shown if certain mission parameters has not been met)
-						aggregate_loot		 				= false, 	--Don't split loot on type; use a single entry for all
-						separate_bagged_loot		 		= true,     --Show bagged loot as a separate value
+					show_loot								= true,		--Show spawned and active loot bags/piles (may not be shown if certain mission parameters has not been met)
+						aggregate_loot						= false,	--Don't split loot on type; use a single entry for all
+						separate_bagged_loot				= true,		--Show bagged loot as a separate value
 						show_potential_loot					= true,
-					show_special_pickups 					= true,    	--Show number of special equipment/items
+					show_special_pickups					= true,		--Show number of special equipment/items
 					SHOW_PICKUP_CATEGORIES = {
-						mission_pickups 					= true,
-						collectables 						= true,
-						valuables 							= true,
+						mission_pickups						= true,
+						collectables						= true,
+						valuables							= true,
 					}
 
 				},
 				BUFF_LIST = {
-					show_buffs 								= true,     --Active effects (buffs/debuffs). Also see HUDList.BuffItemBase.IGNORED_BUFFS table to ignore specific buffs that you don't want listed, or enable some of those not shown by default
+					show_buffs								= true,		--Active effects (buffs/debuffs). Also see HUDList.BuffItemBase.IGNORED_BUFFS table to ignore specific buffs that you don't want listed, or enable some of those not shown by default
 					damage_increase							= true,
 					damage_reduction						= true,
 					melee_damage_increase					= true,
-					passive_health_regen 					= true,
-					total_dodge_chance 						= true,
+					passive_health_regen					= true,
+					total_dodge_chance						= true,
 					MASTERMIND_BUFFS = {
 						forced_friendship					= true,
 						aggressive_reload_aced				= true,
@@ -277,7 +277,7 @@ if not _G.WolfHUD then
 						bloodthirst_basic					= false,
 						bloodthirst_aced					= true,
 						desperado							= true,
-						frenzy			 					= false,
+						frenzy								= false,
 						messiah								= true,
 						running_from_death					= true,
 						swan_song							= false,
@@ -293,8 +293,8 @@ if not _G.WolfHUD then
 						chico_injector						= false,
 						close_contact						= true,
 						crew_chief							= true,
-						damage_control_debuff 				= false,
-						delayed_damage 						= true,
+						damage_control_debuff				= false,
+						delayed_damage						= true,
 						hostage_situation					= false,
 						medical_supplies_debuff				= true,
 						grinder								= true,
@@ -304,12 +304,12 @@ if not _G.WolfHUD then
 						overdog								= false,
 						maniac								= false,
 						muscle_regen						= false,
-						pocket_ecm_jammer 					= true,
-						pocket_ecm_kill_dodge 				= false,
-						sicario_dodge 						= true,
-						smoke_screen_grenade 				= true,
+						pocket_ecm_jammer					= true,
+						pocket_ecm_kill_dodge				= false,
+						sicario_dodge						= true,
+						smoke_screen_grenade				= true,
 						sociopath_debuff					= true,
-						tag_team 							= true,
+						tag_team							= true,
 						yakuza								= false,
 					},
 					GAGE_BOOSTS = {
@@ -317,167 +317,167 @@ if not _G.WolfHUD then
 						life_steal_debuff					= true,
 					},
 					AI_SKILLS = {
-						crew_inspire_debuff 				= true,
-						crew_throwable_regen 				= true,
-						crew_health_regen 					= false,
+						crew_inspire_debuff					= true,
+						crew_throwable_regen				= true,
+						crew_health_regen					= false,
 					},
 				},
 			},
 			CustomWaypoints = {
-				WAYPOINTS_COLOR_ENABLE					= true,
-				WAYPOINTS_COLOR							= "orange",
-				SHOW_AMMO_BAG 							= true,
-				SHOW_DOC_BAG		 					= true,
-				SHOW_FIRST_AID_KIT						= true,
-				SHOW_BODY_BAG			 				= true,
-				SHOW_GRENADE_CRATE			 			= true,
-				SHOW_SENTRIES			 				= true,
-				SHOW_ECMS								= true,
-				SHOW_TIMERS			 					= true,
-				SHOW_MINIONS							= true,
-				SHOW_PAGER								= true,
-				SHOW_SPECIAL_EQUIPMENT					= true,
+				WAYPOINTS_COLOR_ENABLE						= true,
+				WAYPOINTS_COLOR								= "orange",
+				SHOW_AMMO_BAG								= true,
+				SHOW_DOC_BAG								= true,
+				SHOW_FIRST_AID_KIT							= true,
+				SHOW_BODY_BAG								= true,
+				SHOW_GRENADE_CRATE							= true,
+				SHOW_SENTRIES								= true,
+				SHOW_ECMS									= true,
+				SHOW_TIMERS									= true,
+				SHOW_MINIONS								= true,
+				SHOW_PAGER									= true,
+				SHOW_SPECIAL_EQUIPMENT						= true,
 				LOOT = {
-					SHOW								= true,
-					ICON								= false,
-					OFFSET								= 15,
-					BAGGED_OFFSET						= 15,
-					ANGLE								= 15,
+					SHOW									= true,
+					ICON									= false,
+					OFFSET									= 15,
+					BAGGED_OFFSET							= 15,
+					ANGLE									= 15,
 				},
 			},
 			INTERACTION = {
-				LOCK_MODE 								= 3,			--Disabled (1, Lock interaction, if MIN_TIMER_DURATION is longer then total interaction time (2), or current interaction time(3)
-				MIN_TIMER_DURATION 						= 0, 			--Min interaction duration (in seconds) for the toggle behavior to activate
-				EQUIPMENT_PRESS_INTERRUPT 				= true, 		--Use the equipment key ('G') to toggle off active interactions
-				SHOW_LOCK_INDICATOR						= false,
-				SHOW_CIRCLE								= false,
-				CIRCLE_SCALE							= 1,
-				TEXT_SCALE								= 1,
-				SHOW_INTERRUPT_HINT						= true,
-				SHOW_TIME_REMAINING 					= true,			--Show remaining Time in the Interaction-Circle
-				SHOW_TIME_REMAINING_OUTLINE				= true,			--Show black outline around remaining Time text
-				GRADIENT_COLOR_START					= "orange",		--Color, which the timer starts with
-				GRADIENT_COLOR							= "white",		--Color, which the timer reaches on completition
-				TIMER_SCALE								= 1,			--Timer scale (also takes CIRCLE_SCALE into account)
-				SHOW_RELOAD								= true,
-				SHOW_MELEE								= true,
-				SUPRESS_NADES_STEALTH					= true,
-				HOLD2PICK								= true,
+				LOCK_MODE									= 3,		--Disabled (1, Lock interaction, if MIN_TIMER_DURATION is longer then total interaction time (2), or current interaction time(3)
+				MIN_TIMER_DURATION							= 0,		--Min interaction duration (in seconds) for the toggle behavior to activate
+				EQUIPMENT_PRESS_INTERRUPT					= true,		--Use the equipment key ('G') to toggle off active interactions
+				SHOW_LOCK_INDICATOR							= false,
+				SHOW_CIRCLE									= false,
+				CIRCLE_SCALE								= 1,
+				TEXT_SCALE									= 1,
+				SHOW_INTERRUPT_HINT							= true,
+				SHOW_TIME_REMAINING							= true,		--Show remaining Time in the Interaction-Circle
+				SHOW_TIME_REMAINING_OUTLINE					= true,		--Show black outline around remaining Time text
+				GRADIENT_COLOR_START						= "orange",	--Color, which the timer starts with
+				GRADIENT_COLOR								= "white",	--Color, which the timer reaches on completition
+				TIMER_SCALE									= 1,		--Timer scale (also takes CIRCLE_SCALE into account)
+				SHOW_RELOAD									= true,
+				SHOW_MELEE									= true,
+				SUPRESS_NADES_STEALTH						= true,
+				HOLD2PICK									= true,
 			},
 			GADGETS = {
-				LASER_AUTO_ON 							= true,
+				LASER_AUTO_ON								= true,
 				laser = {
 					player = {
-						beam 							= { enabled = true, r = 0, g = 1, b = 0, a = 0.5 },
-						glow 							= { match_beam = true, r = 0, g = 1, b = 0, a = 0.05 },
-						dot 							= { match_beam = true, r = 0, g = 1, b = 0, a = 1 },
-						pulse 							= { enabled = false, min = 0.5, max = 2, frequency = 0.25 },
-						rainbow 						= { enabled = true, frequency = 0.3 },
+						beam								= { enabled = true, r = 0, g = 1, b = 0, a = 0.5 },
+						glow								= { match_beam = true, r = 0, g = 1, b = 0, a = 0.05 },
+						dot									= { match_beam = true, r = 0, g = 1, b = 0, a = 1 },
+						pulse								= { enabled = false, min = 0.5, max = 2, frequency = 0.25 },
+						rainbow								= { enabled = true, frequency = 0.3 },
 					},
 					team = {
-						beam 							= { enabled = true, r = 0, g = 1, b = 0, a = 0.05 },
-						glow 							= { match_beam = true, r = 0, g = 1, b = 0, a = 0.02 },
-						dot 							= { match_beam = true, r = 0, g = 1, b = 0, a = 1 },
-						pulse 							= { enabled = false, min = 0.5, max = 2, frequency = 0.25 },
-						rainbow 						= { enabled = false, frequency = 0.25 },
+						beam								= { enabled = true, r = 0, g = 1, b = 0, a = 0.05 },
+						glow								= { match_beam = true, r = 0, g = 1, b = 0, a = 0.02 },
+						dot									= { match_beam = true, r = 0, g = 1, b = 0, a = 1 },
+						pulse								= { enabled = false, min = 0.5, max = 2, frequency = 0.25 },
+						rainbow								= { enabled = false, frequency = 0.25 },
 					},
 					player_sentry = {
-						beam 							= { enabled = true, r = 0, g = 1, b = 0, a = 0.05 },
-						glow 							= { match_beam = true, r = 0, g = 1, b = 0, a = 0.02 },
-						dot 							= { match_beam = true, r = 0, g = 1, b = 0, a = 1 },
-						pulse 							= { enabled = false, min = 0.5, max = 2, frequency = 0.25 },
-						rainbow 						= { enabled = true, frequency = 0.25 },
+						beam								= { enabled = true, r = 0, g = 1, b = 0, a = 0.05 },
+						glow								= { match_beam = true, r = 0, g = 1, b = 0, a = 0.02 },
+						dot									= { match_beam = true, r = 0, g = 1, b = 0, a = 1 },
+						pulse								= { enabled = false, min = 0.5, max = 2, frequency = 0.25 },
+						rainbow								= { enabled = true, frequency = 0.25 },
 					},
 					team_sentry = {
-						beam 							= { enabled = true, r = 0, g = 1, b = 0, a = 0.05 },
-						glow 							= { match_beam = true, r = 0, g = 1, b = 0, a = 0.02 },
-						dot 							= { match_beam = true, r = 0, g = 1, b = 0, a = 1 },
-						pulse 							= { enabled = false, min = 0.5, max = 2, frequency = 0.25 },
-						rainbow 						= { enabled = false, frequency = 0.25 },
+						beam								= { enabled = true, r = 0, g = 1, b = 0, a = 0.05 },
+						glow								= { match_beam = true, r = 0, g = 1, b = 0, a = 0.02 },
+						dot									= { match_beam = true, r = 0, g = 1, b = 0, a = 1 },
+						pulse								= { enabled = false, min = 0.5, max = 2, frequency = 0.25 },
+						rainbow								= { enabled = false, frequency = 0.25 },
 					},
 					cop_sniper = {
-						beam 							= { enabled = true, r = 1, g = 0, b = 0, a = 0.15 },
-						glow 							= { match_beam = true, r = 1, g = 0, b = 0, a = 0.02 },
-						dot 							= { match_beam = true, r = 1, g = 0, b = 0, a = 1 },
-						pulse 							= { enabled = false, min = 0.5, max = 2, frequency = 0.25 },
-						rainbow 						= { enabled = false, frequency = 0.25 },
+						beam								= { enabled = true, r = 1, g = 0, b = 0, a = 0.15 },
+						glow								= { match_beam = true, r = 1, g = 0, b = 0, a = 0.02 },
+						dot									= { match_beam = true, r = 1, g = 0, b = 0, a = 1 },
+						pulse								= { enabled = false, min = 0.5, max = 2, frequency = 0.25 },
+						rainbow								= { enabled = false, frequency = 0.25 },
 					},
 					turret_module_active = {
-						beam 							= { enabled = true, r = 1, g = 0, b = 0, a = 0.15 },
-						glow 							= { match_beam = true, r = 1, g = 0, b = 0, a = 0.02 },
-						dot 							= { match_beam = true, r = 1, g = 0, b = 0, a = 1 },
-						pulse 							= { enabled = false, min = 0.5, max = 2, frequency = 0.25 },
-						rainbow 						= { enabled = false, frequency = 0.25 },
+						beam								= { enabled = true, r = 1, g = 0, b = 0, a = 0.15 },
+						glow								= { match_beam = true, r = 1, g = 0, b = 0, a = 0.02 },
+						dot									= { match_beam = true, r = 1, g = 0, b = 0, a = 1 },
+						pulse								= { enabled = false, min = 0.5, max = 2, frequency = 0.25 },
+						rainbow								= { enabled = false, frequency = 0.25 },
 					},
 					turret_module_rearming = {
-						beam 							= { enabled = true, r = 1, g = 1, b = 0, a = 0.11 },
-						glow 							= { match_beam = true, r = 1, g = 1, b = 0, a = 0.02 },
-						dot 							= { match_beam = true, r = 1, g = 1, b = 0, a = 1 },
-						pulse 							= { enabled = false, min = 0.5, max = 2, frequency = 0.25 },
-						rainbow 						= { enabled = false, frequency = 0.25 },
+						beam								= { enabled = true, r = 1, g = 1, b = 0, a = 0.11 },
+						glow								= { match_beam = true, r = 1, g = 1, b = 0, a = 0.02 },
+						dot									= { match_beam = true, r = 1, g = 1, b = 0, a = 1 },
+						pulse								= { enabled = false, min = 0.5, max = 2, frequency = 0.25 },
+						rainbow								= { enabled = false, frequency = 0.25 },
 					},
 					turret_module_mad = {
-						beam 							= { enabled = true, r = 0, g = 1, b = 0, a = 0.15 },
-						glow 							= { match_beam = true, r = 0, g = 1, b = 0, a = 0.02 },
-						dot 							= { match_beam = true, r = 0, g = 1, b = 0, a = 1 },
-						pulse 							= { enabled = false, min = 0.5, max = 2, frequency = 0.25 },
-						rainbow 						= { enabled = false, frequency = 0.25 },
+						beam								= { enabled = true, r = 0, g = 1, b = 0, a = 0.15 },
+						glow								= { match_beam = true, r = 0, g = 1, b = 0, a = 0.02 },
+						dot									= { match_beam = true, r = 0, g = 1, b = 0, a = 1 },
+						pulse								= { enabled = false, min = 0.5, max = 2, frequency = 0.25 },
+						rainbow								= { enabled = false, frequency = 0.25 },
 					},
 				},
 				flashlight = {
 					player = {
-						light 							= { enabled = true, r = 1, g = 1, b = 1, brightness = 1, range = 10, angle = 60 },
-						pulse 							= { enabled = false, min = 0.5, max = 2, frequency = 0.25 },
-						rainbow 						= { enabled = false, frequency = 0.25 },
+						light								= { enabled = true, r = 1, g = 1, b = 1, brightness = 1, range = 10, angle = 60 },
+						pulse								= { enabled = false, min = 0.5, max = 2, frequency = 0.25 },
+						rainbow								= { enabled = false, frequency = 0.25 },
 					},
 					team = {
-						light 							= { enabled = true, r = 1, g = 1, b = 1, brightness = 1, range = 10, angle = 60 },
-						pulse 							= { enabled = false, min = 0.5, max = 2, frequency = 0.25 },
-						rainbow 						= { enabled = false, frequency = 0.25 },
+						light								= { enabled = true, r = 1, g = 1, b = 1, brightness = 1, range = 10, angle = 60 },
+						pulse								= { enabled = false, min = 0.5, max = 2, frequency = 0.25 },
+						rainbow								= { enabled = false, frequency = 0.25 },
 					},
 				},
-				SHOW_ANGELED_SIGHT						= false,
+				SHOW_ANGELED_SIGHT							= false,
 			},
 			EQUIPMENT = {
-				SENTRY_AUTO_AP 							= true,
-				ECM_FEEDBACK_STEALTH_DISABLED			= true,
-				SHAPED_CHARGE_STEALTH_DISABLED			= true,
-				KEYCARD_DOORS_DISABLED					= true,
-				ENABLE_BURSTMODE						= false,
+				SENTRY_AUTO_AP								= true,
+				ECM_FEEDBACK_STEALTH_DISABLED				= true,
+				SHAPED_CHARGE_STEALTH_DISABLED				= true,
+				KEYCARD_DOORS_DISABLED						= true,
+				ENABLE_BURSTMODE							= false,
 			},
 			INVENTORY = {
-				SHOW_WEAPON_NAMES 						= true,
-				SHOW_WEAPON_MINI_ICONS 					= true,
-				USE_REAL_WEAPON_NAMES 					= true,
-				SHOW_SKILL_NAMES 						= true,
+				SHOW_WEAPON_NAMES							= true,
+				SHOW_WEAPON_MINI_ICONS						= true,
+				USE_REAL_WEAPON_NAMES						= true,
+				SHOW_SKILL_NAMES							= true,
 				CUSTOM_TAB_NAMES = {
-					primaries 							= { "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" },
-					secondaries 						= { "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" },
-					masks 								= { "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" },
-					melee_weapons 						= { "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" },
+					primaries								= { "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" },
+					secondaries								= { "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" },
+					masks									= { "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" },
+					melee_weapons							= { "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" },
 				},
 			},
 			SkipIt = {
-				SKIP_BLACKSCREEN 						= true,		--Skip the blackscreen on mission start
-				INSTANT_RESTART							= false,
-				STAT_SCREEN_SPEEDUP						= true,
-				STAT_SCREEN_DELAY 						= 5,		--Skip the experience screen after X seconds
-				AUTOPICK_CARD 							= true,		--Automatically pick a card on lootscreen
-				AUTOPICK_CARD_SPECIFIC 					= 4,		--left, center, right, random
-				LOOT_SCREEN_DELAY 						= 3,		--Skip the loot screen after X seconds
-				NO_SLOWMOTION 							= true,		--Disable mask-up and downed slow motion
+				SKIP_BLACKSCREEN							= true,		--Skip the blackscreen on mission start
+				INSTANT_RESTART								= false,
+				STAT_SCREEN_SPEEDUP							= true,
+				STAT_SCREEN_DELAY							= 5,		--Skip the experience screen after X seconds
+				AUTOPICK_CARD								= true,		--Automatically pick a card on lootscreen
+				AUTOPICK_CARD_SPECIFIC						= 4,		--left, center, right, random
+				LOOT_SCREEN_DELAY							= 3,		--Skip the loot screen after X seconds
+				NO_SLOWMOTION								= true,		--Disable mask-up and downed slow motion
 			},
 			LOBBY_SETTINGS = {
-				job_plan = -1,
-				kick_option = 1,
-				permission = "friends_only",
-				reputation_permission = 0,
-				drop_in_option = 2,
-				team_ai = true,
-				team_ai_option = 1,
-				auto_kick = true,
-				difficulty = "sm_wish",
-				one_down = true,
+				job_plan									= -1,
+				kick_option									= 1,
+				permission									= "friends_only",
+				reputation_permission						= 0,
+				drop_in_option								= 2,
+				team_ai										= true,
+				team_ai_option								= 1,
+				auto_kick									= true,
+				difficulty									= "sm_wish",
+				one_down									= true,
 			},
 		}
 	end

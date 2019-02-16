@@ -67,8 +67,8 @@
 
 	"wolfhud_loadout_hours_played" : "$HOURS 小时",
 
-    "wolfhud_profile_switch_title" : "切换配置文件",
-    "wolfhud_profile_switch_title_profiles" : "配置文件:",
+	"wolfhud_profile_switch_title" : "切换配置文件",
+	"wolfhud_profile_switch_title_profiles" : "配置文件:",
 
 	"victory_most_damage" : "最高伤害:",
 	"victory_session_damage" : "总伤害:",
@@ -143,7 +143,7 @@
 	"wolfhud_enemy_fbi" : "FBI特警",
 	"wolfhud_enemy_swat" : "特警",
 	"wolfhud_enemy_heavy_swat" : "重装特警",
-    "wolfhud_enemy_heavy_swat_sniper" : "重装狙击手",
+	"wolfhud_enemy_heavy_swat_sniper" : "重装狙击手",
 	"wolfhud_enemy_city_swat" : "城市精英部队",
 	"wolfhud_enemy_shield" : "持盾者",
 	"wolfhud_enemy_spook" : "隐伏者",
@@ -774,8 +774,8 @@
 	"wolfhud_crewloadout_briefing_desc" : "替换任务简报中的默认“队友装备”面板",
 	"wolfhud_crewloadout_tabscreen_title" : "在标签屏幕上显示",
 	"wolfhud_crewloadout_tabscreen_desc" : "在大厅中显示技能，天赋和当前玩家延迟\n(如果您使用Lobby Player Info的功能，则为禁用)",
-    "wolfhud_profilemenu_replace_title" : "更换配置文件菜单",
-    "wolfhud_profilemenu_replace_desc" : "用WolfHUD的配置文件菜单替换默认",
+	"wolfhud_profilemenu_replace_title" : "更换配置文件菜单",
+	"wolfhud_profilemenu_replace_desc" : "用WolfHUD的配置文件菜单替换默认",
 
 	"wolfhud_dmgindicator_options_name" : "伤害指示器",
 	"wolfhud_dmgindicator_options_help" : "为你的伤害指示器设置淡化时间、大小和颜色",

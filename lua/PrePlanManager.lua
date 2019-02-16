@@ -1,6 +1,6 @@
 -- TODO:
--- 	Maybe colorization for save, on which assets would get added/removed or stay. (seems to be not possible...?)
--- 	Include Hint for taging plans as stealth/loud to input dialog
+--  Maybe colorization for save, on which assets would get added/removed or stay. (seems to be not possible...?)
+--  Include Hint for taging plans as stealth/loud to input dialog
 -- Remove Save_ID from saved_plans node display.
 
 requiredScript = string.lower(RequiredScript)
@@ -138,7 +138,7 @@ if requiredScript == "lib/managers/menumanager" then
 
 		if table.size(saved_plans) <= 0 then
 			self:create_divider(node, "title_category_saved_plans", managers.localization:text("wolfhud_preplanning_error_no_saved_plans"), nil, tweak_data.screen_colors.text)
-			selected_item = "title_category_saved_plans"    -- TODO: crashing with controllers? Might have to set this 'nil' here...
+			selected_item = "title_category_saved_plans"	-- TODO: crashing with controllers? Might have to set this 'nil' here...
 		else
 			if PrePlanningManager._PREPLANNING_DELETE_MODE then
 				self:create_divider(node, "title_category_saved_plans", managers.localization:text("wolfhud_preplanning_delete"), nil, tweak_data.screen_colors.text)
@@ -647,7 +647,7 @@ elseif requiredScript == "lib/managers/preplanningmanager" then
 	end
 
 	function PrePlanningManager:get_default_votes()
-		local default_votes = {} 	--{plan = {element_type, element_index}}
+		local default_votes = {}	--{plan = {element_type, element_index}}
 
 		local location_data = self:_current_location_data()
 		local default_plans = location_data and location_data.default_plans and location_data.default_plans or {}

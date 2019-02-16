@@ -28,17 +28,17 @@ if RequiredScript == "lib/managers/hudmanager" then
 			AUTOREPAIR_COLOR = Color(1, 1, 0, 1),
 			BROKEN_COLOR = Color('FF7575'),
 			ICON_MAP = {
-				drill 			= "pd2_drill",
+				drill			= "pd2_drill",
 				drill_noupgrade = "pd2_drill",
-				saw 			= "wp_saw",
-				saw_noupgrade 	= "wp_saw",
-				hack 			= "pd2_computer",
-				timer 			= "pd2_computer",
-				securitylock 	= "pd2_computer",
-				digital 		= "pd2_computer",
+				saw				= "wp_saw",
+				saw_noupgrade	= "wp_saw",
+				hack			= "pd2_computer",
+				timer			= "pd2_computer",
+				securitylock	= "pd2_computer",
+				digital			= "pd2_computer",
 			},
 			OVERRIDE_DATA = {
-				[132864] = { class = "MeltdownTemperatureWaypoint" }, 	-- Meltdown Vault Timer
+				[132864] = { class = "MeltdownTemperatureWaypoint" },	-- Meltdown Vault Timer
 				[135076] = { ignore = true },							-- Lab rats cloaker safe 2
 				[135246] = { ignore = true },							-- Lab rats cloaker safe 3
 				[135247] = { ignore = true },							-- Lab rats cloaker safe 4
@@ -67,21 +67,21 @@ if RequiredScript == "lib/managers/hudmanager" then
 			},
 		},
 		EQUIPMENT = {
-			ammo_bag 		= { texture = "guis/textures/pd2/skilltree/icons_atlas", texture_rect = { 1*64, 0, 64, 64 }, 						 offset = Vector3(0, 0, 15)  },
-			doc_bag 		= { texture = "guis/textures/pd2/skilltree/icons_atlas", texture_rect = { 2*64, 7*64, 64, 64 }, 					 offset = Vector3(0, 0, 25)  },
-			first_aid_kit 	= { texture = "guis/textures/pd2/skilltree/icons_atlas", texture_rect = { 2*64, 11*64, 64, 48 }, 					 offset = Vector3(0, 0, 20)  },
-			body_bag 		= { texture = "guis/textures/pd2/skilltree/icons_atlas", texture_rect = { 5*64, 11*64, 64, 64 }, 					 offset = Vector3(0, 0, 25)  },
-			grenade_crate 	= { texture = "guis/dlcs/big_bank/textures/pd2/pre_planning/preplan_icon_types", texture_rect = { 1*48, 0, 48, 48 }, offset = Vector3(0, 0, 20)  },
+			ammo_bag					= { texture = "guis/textures/pd2/skilltree/icons_atlas", texture_rect = { 1*64, 0, 64, 64 },						 offset = Vector3(0, 0, 15)  },
+			doc_bag						= { texture = "guis/textures/pd2/skilltree/icons_atlas", texture_rect = { 2*64, 7*64, 64, 64 },					 offset = Vector3(0, 0, 25)  },
+			first_aid_kit				= { texture = "guis/textures/pd2/skilltree/icons_atlas", texture_rect = { 2*64, 11*64, 64, 48 },					 offset = Vector3(0, 0, 20)  },
+			body_bag					= { texture = "guis/textures/pd2/skilltree/icons_atlas", texture_rect = { 5*64, 11*64, 64, 64 },					 offset = Vector3(0, 0, 25)  },
+			grenade_crate				= { texture = "guis/dlcs/big_bank/textures/pd2/pre_planning/preplan_icon_types", texture_rect = { 1*48, 0, 48, 48 }, offset = Vector3(0, 0, 20)  },
 			UPGRADES = {
 				ammo_bag = {
-					bullet_storm 		= { texture = "guis/textures/pd2/skilltree_2/icons_atlas_2", texture_rect = {4 * 80, 5 * 80, 80, 80} },
+					bullet_storm		= { texture = "guis/textures/pd2/skilltree_2/icons_atlas_2", texture_rect = {4 * 80, 5 * 80, 80, 80} },
 				},
 				doc_bag = {
-					damage_reduction 	= { texture = "guis/textures/pd2/skilltree_2/icons_atlas_2", texture_rect = {1 * 80, 11 * 80, 80, 80} },
+					damage_reduction	= { texture = "guis/textures/pd2/skilltree_2/icons_atlas_2", texture_rect = {1 * 80, 11 * 80, 80, 80} },
 				},
 				first_aid_kit = {
-					damage_reduction 	= { texture = "guis/textures/pd2/skilltree_2/icons_atlas_2", texture_rect = {1 * 80, 11 * 80, 80, 80} },
-					auto_recovery 		= { texture = "guis/textures/pd2/skilltree_2/icons_atlas_2", texture_rect = {2 * 80, 11 * 80, 80, 80} },
+					damage_reduction	= { texture = "guis/textures/pd2/skilltree_2/icons_atlas_2", texture_rect = {1 * 80, 11 * 80, 80, 80} },
+					auto_recovery		= { texture = "guis/textures/pd2/skilltree_2/icons_atlas_2", texture_rect = {2 * 80, 11 * 80, 80, 80} },
 				},
 			},
 		},
@@ -97,17 +97,17 @@ if RequiredScript == "lib/managers/hudmanager" then
 				hydrogen_chloride =					{ texture = "guis/textures/pd2/hud_pickups", texture_rect = {2 * 32, 1 * 32, 32, 32}, offset = Vector3(0, 0, 85) },
 				caustic_soda =						{ texture = "guis/textures/pd2/hud_pickups", texture_rect = {3 * 32, 1 * 32, 32, 32}, offset = Vector3(0, 0, 50) },
 				gen_pku_blow_torch =				{ std_icon = "equipment_blow_torch" },
-				drk_pku_blow_torch = 				{ std_icon = "equipment_blow_torch" },
+				drk_pku_blow_torch =				{ std_icon = "equipment_blow_torch" },
 				hold_born_receive_item_blow_torch = { std_icon = "equipment_blow_torch" },
-				thermite = 							{ std_icon = "equipment_thermite" },
-				gasoline_engine = 					{ std_icon = "equipment_thermite" },
-				gen_pku_thermite = 					{ std_icon = "equipment_thermite" },
-				gen_pku_thermite_paste = 			{ std_icon = "equipment_thermite" },
-				hold_take_gas_can = 				{ std_icon = "equipment_thermite" },
-				gen_pku_thermite_paste_z_axis = 	{ std_icon = "equipment_thermite" },
-				c4_consume = 						{ std_icon = "equipment_c4", 		x_ray = true, offset = Vector3(0, 0, 0) },
-				c4_consume_x1 = 					{ std_icon = "equipment_c4", 		x_ray = true, offset = Vector3(0, 0, 0) },
-				--gasoline = 							{ std_icon = "equipment_thermite", 	x_ray = true, offset = Vector3(0, 0, 0) },
+				thermite =							{ std_icon = "equipment_thermite" },
+				gasoline_engine =					{ std_icon = "equipment_thermite" },
+				gen_pku_thermite =					{ std_icon = "equipment_thermite" },
+				gen_pku_thermite_paste =			{ std_icon = "equipment_thermite" },
+				hold_take_gas_can =					{ std_icon = "equipment_thermite" },
+				gen_pku_thermite_paste_z_axis =		{ std_icon = "equipment_thermite" },
+				c4_consume =						{ std_icon = "equipment_c4",		x_ray = true, offset = Vector3(0, 0, 0) },
+				c4_consume_x1 =						{ std_icon = "equipment_c4",		x_ray = true, offset = Vector3(0, 0, 0) },
+				--gasoline =						{ std_icon = "equipment_thermite",	x_ray = true, offset = Vector3(0, 0, 0) },
 			},
 		}
 	}
@@ -121,11 +121,11 @@ if RequiredScript == "lib/managers/hudmanager" then
 	function HUDManager:setup_custom_waypoints()
 		if managers.gameinfo and managers.waypoints then
 			local bag_equip_settings = {
-				["ammo_bag"] 		= WolfHUD:getSetting({"CustomWaypoints", "SHOW_AMMO_BAG"}, true),
-				["doc_bag"] 		= WolfHUD:getSetting({"CustomWaypoints", "SHOW_DOC_BAG"}, true),
-				["body_bag"] 		= WolfHUD:getSetting({"CustomWaypoints", "SHOW_BODY_BAG"}, true),
-				["grenade_crate"] 	= WolfHUD:getSetting({"CustomWaypoints", "SHOW_GRENADE_CRATE"}, true),
-				["first_aid_kit"] 	= WolfHUD:getSetting({"CustomWaypoints", "SHOW_FIRST_AID_KIT"}, false),
+				["ammo_bag"]		= WolfHUD:getSetting({"CustomWaypoints", "SHOW_AMMO_BAG"}, true),
+				["doc_bag"]			= WolfHUD:getSetting({"CustomWaypoints", "SHOW_DOC_BAG"}, true),
+				["body_bag"]		= WolfHUD:getSetting({"CustomWaypoints", "SHOW_BODY_BAG"}, true),
+				["grenade_crate"]	= WolfHUD:getSetting({"CustomWaypoints", "SHOW_GRENADE_CRATE"}, true),
+				["first_aid_kit"]	= WolfHUD:getSetting({"CustomWaypoints", "SHOW_FIRST_AID_KIT"}, false),
 			}
 			for equip, enabled in pairs(bag_equip_settings) do
 				if enabled then

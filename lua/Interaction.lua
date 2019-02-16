@@ -48,7 +48,7 @@ if string.lower(RequiredScript) == "lib/units/beings/player/states/playerstandar
 	end
 
 	function PlayerStandard:_check_interact_toggle(t, input)
-		PlayerStandard.EQUIPMENT_PRESS_INTERRUPT = WolfHUD:getSetting({"INTERACTION", "EQUIPMENT_PRESS_INTERRUPT"}, true) 	--Use the equipment key ('G') to toggle off active interactions
+		PlayerStandard.EQUIPMENT_PRESS_INTERRUPT = WolfHUD:getSetting({"INTERACTION", "EQUIPMENT_PRESS_INTERRUPT"}, true)	--Use the equipment key ('G') to toggle off active interactions
 		local interrupt_key_press = input.btn_interact_press
 		if PlayerStandard.EQUIPMENT_PRESS_INTERRUPT then
 			interrupt_key_press = input.btn_use_item_press
@@ -203,7 +203,7 @@ elseif string.lower(RequiredScript) == "lib/units/beings/player/states/playerdri
 	end
 
 	function PlayerDriving:_check_interact_toggle(t, input)
-		PlayerDriving.EQUIPMENT_PRESS_INTERRUPT = WolfHUD:getSetting({"INTERACTION", "EQUIPMENT_PRESS_INTERRUPT"}, true) 	--Use the equipment key ('G') to toggle off active interactions
+		PlayerDriving.EQUIPMENT_PRESS_INTERRUPT = WolfHUD:getSetting({"INTERACTION", "EQUIPMENT_PRESS_INTERRUPT"}, true)	--Use the equipment key ('G') to toggle off active interactions
 		local interrupt_key_press = input.btn_interact_press
 		if PlayerDriving.EQUIPMENT_PRESS_INTERRUPT then
 			interrupt_key_press = input.btn_use_item_press
@@ -243,7 +243,7 @@ elseif string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 	end
 
 elseif string.lower(RequiredScript) == "lib/managers/hud/hudinteraction" then
-	local init_original 				= HUDInteraction.init
+	local init_original					= HUDInteraction.init
 	local show_interaction_bar_original = HUDInteraction.show_interaction_bar
 	local hide_interaction_bar_original = HUDInteraction.hide_interaction_bar
 	local show_interact_original		= HUDInteraction.show_interact
@@ -290,7 +290,7 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudinteraction" then
 		HUDInteraction.SHOW_LOCK_INDICATOR = WolfHUD:getSetting({"INTERACTION", "SHOW_LOCK_INDICATOR"}, true)
 		HUDInteraction.SHOW_TIME_REMAINING = WolfHUD:getSetting({"INTERACTION", "SHOW_TIME_REMAINING"}, true)
 		HUDInteraction.SHOW_TIME_REMAINING_OUTLINE = WolfHUD:getSetting({"INTERACTION", "SHOW_TIME_REMAINING_OUTLINE"}, false)
-		HUDInteraction.SHOW_CIRCLE 	= WolfHUD:getSetting({"INTERACTION", "SHOW_CIRCLE"}, true)
+		HUDInteraction.SHOW_CIRCLE = WolfHUD:getSetting({"INTERACTION", "SHOW_CIRCLE"}, true)
 		HUDInteraction.LOCK_MODE = PlayerStandard.LOCK_MODE or 1
 		HUDInteraction.GRADIENT_COLOR_NAME = WolfHUD:getSetting({"INTERACTION", "GRADIENT_COLOR"}, "light_green")
 		HUDInteraction.GRADIENT_COLOR_START = WolfHUD:getColorSetting({"INTERACTION", "GRADIENT_COLOR_START"}, "white")

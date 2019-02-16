@@ -392,47 +392,47 @@ if string.lower(RequiredScript) == "lib/units/cameras/fpcameraplayerbase" then
 	}
 	FPCameraPlayerBase.angled_sight_translation = {
 		-- Vector3(x, y, z) -- x = right, y = forward, z = upward
-		m4 			= Vector3(-5, 9, -14),
-		amcar 		= Vector3(-5, 9, -14),
-		m16 		= Vector3(-5, 9, -14),
-		ak74 		= Vector3(-5, 9, -14),
-		akm 		= Vector3(-5, 9, -14),
-		akm_gold 	= Vector3(-5, 9, -14),
-		ak5 		= Vector3(-5, 9, -14),
-		aug 		= Vector3(-5, 9, -14),
-		g36 		= Vector3(-5, 9, -14),
-		m14 		= Vector3(-5, 9, -14),
-		s552 		= Vector3(-5, 9, -14),
-		scar 		= Vector3(-5, 9, -14),
-		fal 		= Vector3(-5, 9, -14),
-		g3 			= Vector3(-5, 9, -14),
-		galil 		= Vector3(-5, 9, -14),
-		famas 		= Vector3(-5, 9, -14),
-		l85a2 		= Vector3(-5, 9, -14),
-		asval 		= Vector3(-5, 9, -14),
-		vhs 		= Vector3(-5, 9, -14),
-		sub2000 	= Vector3(-5, 9, -14),
-		tecci 		= Vector3(-5, 9, -14),
+		m4			= Vector3(-5, 9, -14),
+		amcar		= Vector3(-5, 9, -14),
+		m16			= Vector3(-5, 9, -14),
+		ak74		= Vector3(-5, 9, -14),
+		akm			= Vector3(-5, 9, -14),
+		akm_gold	= Vector3(-5, 9, -14),
+		ak5			= Vector3(-5, 9, -14),
+		aug			= Vector3(-5, 9, -14),
+		g36			= Vector3(-5, 9, -14),
+		m14			= Vector3(-5, 9, -14),
+		s552		= Vector3(-5, 9, -14),
+		scar		= Vector3(-5, 9, -14),
+		fal			= Vector3(-5, 9, -14),
+		g3			= Vector3(-5, 9, -14),
+		galil		= Vector3(-5, 9, -14),
+		famas		= Vector3(-5, 9, -14),
+		l85a2		= Vector3(-5, 9, -14),
+		asval		= Vector3(-5, 9, -14),
+		vhs			= Vector3(-5, 9, -14),
+		sub2000		= Vector3(-5, 9, -14),
+		tecci		= Vector3(-5, 9, -14),
 		-- Sniper
-		msr 		= Vector3(-14.8, 9, -8),
-		m95 		= Vector3(-10.5, -8, -12),
-		r93 		= Vector3(-12.5, 7, -11),
-		model70 	= Vector3(-12.8, 10, -8),
+		msr			= Vector3(-14.8, 9, -8),
+		m95			= Vector3(-10.5, -8, -12),
+		r93			= Vector3(-12.5, 7, -11),
+		model70		= Vector3(-12.8, 10, -8),
 		wa2000		= Vector3(-12, 8.8, -11.3),		--TODO: Reload Stock clipping...
 		mosin		= Vector3(-10, 8, -9.5),
-		desertfox 	= Vector3(-12, 8.8, -11.3),		-- TODO: Stock clipping on stop running...
-		siltstone 	= Vector3(-12.8, 10, -8),		-- TODO: untested
+		desertfox	= Vector3(-12, 8.8, -11.3),		-- TODO: Stock clipping on stop running...
+		siltstone	= Vector3(-12.8, 10, -8),		-- TODO: untested
 	}
 
 	function FPCameraPlayerBase:clbk_stance_entered(new_shoulder_stance, new_head_stance, new_vel_overshot, new_fov, new_shakers, stance_mod, ...)
 		if self._want_rotated then
 			self._saved_stance = self._saved_stance or {
-				translation 	= stance_mod.translation,
-				rotation 		= stance_mod.rotation
+				translation		= stance_mod.translation,
+				rotation		= stance_mod.rotation
 			}
 			stance_mod = {
-				rotation 	= FPCameraPlayerBase.angled_sight_rotation[self._sight_id] 			or Rotation(0, 0, -45),
-				translation = FPCameraPlayerBase.angled_sight_translation[self._weapon_name] 	or Vector3(-13, 7, -12)
+				rotation	= FPCameraPlayerBase.angled_sight_rotation[self._sight_id]			or Rotation(0, 0, -45),
+				translation = FPCameraPlayerBase.angled_sight_translation[self._weapon_name]	or Vector3(-13, 7, -12)
 			}
 		elseif self._saved_stance and self._want_restored then
 			stance_mod = clone(self._saved_stance)

@@ -66,8 +66,8 @@
 
 	"wolfhud_loadout_hours_played" : "$HOURS 시간.",
 
-    "wolfhud_profile_switch_title" : "프로필 변경",
-    "wolfhud_profile_switch_title_profiles" : "프로필:",
+	"wolfhud_profile_switch_title" : "프로필 변경",
+	"wolfhud_profile_switch_title_profiles" : "프로필:",
 
 	"victory_most_damage" : "최다 데미지:",
 	"victory_session_damage" : "총 데미지:",
@@ -142,7 +142,7 @@
 	"wolfhud_enemy_fbi" : "FBI 유닛",
 	"wolfhud_enemy_swat" : "스왓 유닛",
 	"wolfhud_enemy_heavy_swat" : "해비 스왓",
-    "wolfhud_enemy_heavy_swat_sniper" : "해비 스왓 스나이퍼",
+	"wolfhud_enemy_heavy_swat_sniper" : "해비 스왓 스나이퍼",
 	"wolfhud_enemy_city_swat" : "엘리트 스왓",
 	"wolfhud_enemy_shield" : "쉴드",
 	"wolfhud_enemy_spook" : "클로커",
@@ -773,8 +773,8 @@
 	"wolfhud_crewloadout_briefing_desc" : "Replaces the default Crew Loadout Panel in Mission briefing.",
 	"wolfhud_crewloadout_tabscreen_title" : "Show on Tabscreen",
 	"wolfhud_crewloadout_tabscreen_desc" : "Displays the Skills, Perk and current Ping of players in your lobby. \n(Disabled if you use this feature of LobbyPlayerInfo)",
-    "wolfhud_profilemenu_replace_title" : "Replace Profile Menu",
-    "wolfhud_profilemenu_replace_desc" : "Replaces the default Profile-Selector with WolfHUDs advanced one.",
+	"wolfhud_profilemenu_replace_title" : "Replace Profile Menu",
+	"wolfhud_profilemenu_replace_desc" : "Replaces the default Profile-Selector with WolfHUDs advanced one.",
 
 	"wolfhud_dmgindicator_options_name" : "데미지 인디케이터",
 	"wolfhud_dmgindicator_options_help" : "데미지 인디케이터의 페이드 시간, 크기 등을 설정합니다.",
