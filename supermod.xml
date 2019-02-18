@@ -115,7 +115,6 @@
 				</group>
 
 				<group :hook_id="menu/">
-					<post :hook_id="blackmarketgui" :script_path="MenuTweaks.lua"/>
 					<post :hook_id="crimespreecontractboxgui" :script_path="EnhancedCrewLoadout.lua"/>
 					<post :hook_id="crimespreedetailsmenucomponent" :script_path="EnhancedCrewLoadout.lua"/>
 					<post :hook_id="menunodegui" :script_path="Scripts.lua"/>
@@ -125,6 +124,11 @@
 					<post :hook_id="playerinventorygui" :script_path="ProfileMenu.lua"/>
 					<post :hook_id="specializationboxgui" :script_path="Utils/InputDialog.lua"/>
 					<post :hook_id="items/multichoice" :script_path="Scripts.lua"/>
+
+					<group :hook_id="blackmarketgui">
+						<post :script_path="MenuTweaks.lua"/>
+						<post :script_path="ArmorSorting.lua"/>
+					</group>
 
 					<group :hook_id="contractboxgui">
 						<post :script_path="MenuTweaks.lua"/>

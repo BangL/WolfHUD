@@ -447,6 +447,7 @@ if not _G.JimHUD then
 				ENABLE_BURSTMODE							= false,
 			},
 			INVENTORY = {
+				FIX_ARMOR_SORTING							= true,
 				SHOW_WEAPON_NAMES							= true,
 				SHOW_WEAPON_MINI_ICONS						= true,
 				USE_REAL_WEAPON_NAMES						= true,

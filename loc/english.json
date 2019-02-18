@@ -256,6 +256,8 @@
 	"jimhud_loot_screen_pick_specific_card_desc" : "Specify which card to pick automatically.",
 	"jimhud_loot_screen_delay_title" : "Card Screen delay",
 	"jimhud_loot_screen_delay_desc" : "Proceeds X seconds after you got your loot drop.\n(Host only, 0 = disabled)",
+	"jimhud_fix_armor_sorting_title" : "Fix armor sorting",
+	"jimhud_fix_armor_sorting_desc" : "Sort armor by their sizes.",
 	"jimhud_replace_weapon_names_title" : "Real Weapon Names",
 	"jimhud_replace_weapon_names_desc" : "Replace the Weapon Names with their Real-World counterparts.\n(A Map change is needed to apply...)",
 	"jimhud_inventory_tab_names_title" : "Use Inventory Tab Names",

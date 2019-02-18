@@ -3839,6 +3839,17 @@ if JimHUD then
 				options = {
 					{
 						type = "toggle",
+						name_id = "jimhud_fix_armor_sorting_title",
+						desc_id = "jimhud_fix_armor_sorting_desc",
+						value = {"INVENTORY", "FIX_ARMOR_SORTING"},
+						visible_reqs = {}, enabled_reqs = {},
+					},
+					{
+						type = "divider",
+						size = 24,
+					},
+					{
+						type = "toggle",
 						name_id = "jimhud_replace_weapon_names_title",
 						desc_id = "jimhud_replace_weapon_names_desc",
 						value = {"INVENTORY", "USE_REAL_WEAPON_NAMES"},
