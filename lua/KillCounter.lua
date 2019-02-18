@@ -214,173 +214,171 @@ elseif RequiredScript == "lib/managers/hudmanagerpd2" then
 		return (JimHUD:getSetting({"CustomHUD", "PLAYER", "SHOW_ACCURACY"}, true) and not JimHUD:getSetting({"CustomHUD", "PLAYER", "KILLCOUNTER", "HIDE"}, false)) and 140 or 120
 	end
 
-elseif string.lower(RequiredScript) == "lib/managers/hud/hudteammate" then
+elseif string.lower(RequiredScript) == "lib/managers/hud/hudteammate" and not HUDManager.CUSTOM_TEAMMATE_PANELS then --Custom HUD compatibility
 
-	if not HUDManager.CUSTOM_TEAMMATE_PANELS then	--Custom HUD compatibility
-		local init_original = HUDTeammate.init
-		local set_name_original = HUDTeammate.set_name
-		local set_state_original = HUDTeammate.set_state
+	local init_original = HUDTeammate.init
+	local set_name_original = HUDTeammate.set_name
+	local set_state_original = HUDTeammate.set_state
 
-		function HUDTeammate:init(...)
-			init_original(self, ...)
-			self._setting_prefix = self._main_player and "PLAYER" or "TEAMMATE"
-			self:_init_killcount()
-			self:init_accuracy()
+	function HUDTeammate:init(...)
+		init_original(self, ...)
+		self._setting_prefix = self._main_player and "PLAYER" or "TEAMMATE"
+		self:_init_killcount()
+		self:init_accuracy()
+	end
+
+	function HUDTeammate:_init_killcount()
+		self._kills_panel = self._panel:panel({
+			name = "kills_panel",
+			visible = not JimHUD:getSetting({"CustomHUD", self._setting_prefix, "KILLCOUNTER", "HIDE"}, false),
+			w = 150,
+			h = 20,
+			x = 0,
+			halign = "right"
+		})
+
+		local player_panel = self._panel:child("player")
+		local name_label = self._panel:child("name")
+		self._kills_panel:set_rightbottom(player_panel:right(), (self._main_player or JimHUD:getSetting({"CustomHUD", "TEAMMATE", "INTERACTION", "TEXT"}, true)) and name_label:bottom() or name_label:top())
+		local killcount_color = JimHUD:getColorSetting({"CustomHUD", self._setting_prefix, "KILLCOUNTER", "COLOR"}, "yellow")
+
+		self._kill_icon = self._kills_panel:bitmap({
+			texture = "guis/textures/pd2/cn_miniskull",
+			w = self._kills_panel:h() * 0.75,
+			h = self._kills_panel:h(),
+			texture_rect = { 0, 0, 12, 16 },
+			alpha = 1,
+			blend_mode = "normal",
+			layer = 0,
+			color = killcount_color
+		})
+
+		self._kills_text = self._kills_panel:text({
+			name = "kills_text",
+			text = "-",
+			layer = 1,
+			color = killcount_color,
+			w = self._kills_panel:w() - self._kill_icon:w(),
+			h = self._kills_panel:h(),
+			vertical = "center",
+			align = "right",
+			font_size = self._kills_panel:h(),
+			font = tweak_data.hud_players.name_font
+		})
+		self._kills_text:set_right(self._kills_panel:w())
+
+		self:reset_kill_count()
+	end
+
+	function HUDTeammate:init_accuracy()
+		if not self._main_player then return end
+		self._accuracy_panel = self._panel:panel({
+			name = "accuracy_panel",
+			visible = JimHUD:getSetting({"CustomHUD", "PLAYER", "SHOW_ACCURACY"}, true),
+			w = 100,
+			h = 20,
+			x = 0,
+			halign = "right"
+		})
+
+		local player_panel = self._panel:child("player")
+		local name_label = self._panel:child("name")
+		self._accuracy_panel:set_rightbottom(player_panel:right(), self._kills_panel and self._kills_panel:visible() and self._kills_panel:top() or name_label:bottom())
+
+		self._accuracy_icon = self._accuracy_panel:bitmap({
+			texture = "guis/textures/pd2/pd2_waypoints",
+			w = self._accuracy_panel:h() * 0.75,
+			h = self._accuracy_panel:h(),
+			texture_rect = { 96, 0, 32, 32 },
+			alpha = 1,
+			blend_mode = "normal",
+			layer = 0,
+			color = Color.white
+		})
+
+		self._accuracy_text = self._accuracy_panel:text({
+			name = "accuracy_text",
+			text = "0%",
+			layer = 1,
+			color = Color.white,
+			w = self._accuracy_panel:w(),
+			h = self._accuracy_panel:h(),
+			vertical = "center",
+			align = "right",
+			font_size = self._accuracy_panel:h(),
+			font = tweak_data.hud_players.name_font
+		})
+		self:set_accuracy(0)
+	end
+
+	function HUDTeammate:increment_kill_count(is_special, headshot)
+		self._kill_count = self._kill_count + 1
+		self._kill_count_special = self._kill_count_special + (is_special and 1 or 0)
+		self._headshot_kills = self._headshot_kills + (headshot and 1 or 0)
+		self:_update_kill_count_text()
+	end
+
+	function HUDTeammate:_update_kill_count_text()
+		local kill_string = tostring(self._kill_count)
+		if JimHUD:getSetting({"CustomHUD", self._setting_prefix, "KILLCOUNTER", "SHOW_SPECIAL_KILLS"}, true) then
+			kill_string = kill_string .. "/" .. tostring(self._kill_count_special)
+		end
+		if JimHUD:getSetting({"CustomHUD", self._setting_prefix, "KILLCOUNTER", "SHOW_HEADSHOT_KILLS"}, true) then
+			kill_string = kill_string .. " (" .. tostring(self._headshot_kills) .. ")"
+		end
+		self._kills_text:set_text(kill_string)
+		local _, _, w, _ = self._kills_text:text_rect()
+		self._kill_icon:set_right(self._kills_panel:w() - w - self._kill_icon:w() * 0.15)
+
+		if (self._main_player or JimHUD:getSetting({"CustomHUD", "TEAMMATE", "INTERACTION", "TEXT"}, true)) and not JimHUD:getSetting({"CustomHUD", self._setting_prefix, "KILLCOUNTER", "HIDE"}, false) then
+			self._max_name_panel_width = (self._kills_panel:x() + self._kill_icon:x() - 4)
+			self:_truncate_name()
 		end
 
-		function HUDTeammate:_init_killcount()
-			self._kills_panel = self._panel:panel({
-				name = "kills_panel",
-				visible = not JimHUD:getSetting({"CustomHUD", self._setting_prefix, "KILLCOUNTER", "HIDE"}, false),
-				w = 150,
-				h = 20,
-				x = 0,
-				halign = "right"
-			})
+		local color = JimHUD:getColorSetting({"CustomHUD", self._setting_prefix, "KILLCOUNTER", "COLOR"}, "yellow")
+		self._kill_icon:set_color(color)
+		self._kills_text:set_color(color)
+	end
 
-			local player_panel = self._panel:child("player")
-			local name_label = self._panel:child("name")
-			self._kills_panel:set_rightbottom(player_panel:right(), (self._main_player or JimHUD:getSetting({"CustomHUD", "TEAMMATE", "INTERACTION", "TEXT"}, true)) and name_label:bottom() or name_label:top())
-			local killcount_color = JimHUD:getColorSetting({"CustomHUD", self._setting_prefix, "KILLCOUNTER", "COLOR"}, "yellow")
+	function HUDTeammate:reset_kill_count()
+		self._kill_count = 0
+		self._kill_count_special = 0
+		self._headshot_kills = 0
+		self:_update_kill_count_text()
+	end
 
-			self._kill_icon = self._kills_panel:bitmap({
-				texture = "guis/textures/pd2/cn_miniskull",
-				w = self._kills_panel:h() * 0.75,
-				h = self._kills_panel:h(),
-				texture_rect = { 0, 0, 12, 16 },
-				alpha = 1,
-				blend_mode = "normal",
-				layer = 0,
-				color = killcount_color
-			})
-
-			self._kills_text = self._kills_panel:text({
-				name = "kills_text",
-				text = "-",
-				layer = 1,
-				color = killcount_color,
-				w = self._kills_panel:w() - self._kill_icon:w(),
-				h = self._kills_panel:h(),
-				vertical = "center",
-				align = "right",
-				font_size = self._kills_panel:h(),
-				font = tweak_data.hud_players.name_font
-			})
-			self._kills_text:set_right(self._kills_panel:w())
-
+	function HUDTeammate:set_name(teammate_name, ...)
+		if teammate_name ~= self._name then
+			self._name = teammate_name
 			self:reset_kill_count()
 		end
 
-		function HUDTeammate:init_accuracy()
-			if not self._main_player then return end
-			self._accuracy_panel = self._panel:panel({
-				name = "accuracy_panel",
-				visible = JimHUD:getSetting({"CustomHUD", "PLAYER", "SHOW_ACCURACY"}, true),
-				w = 100,
-				h = 20,
-				x = 0,
-				halign = "right"
-			})
-
-			local player_panel = self._panel:child("player")
-			local name_label = self._panel:child("name")
-			self._accuracy_panel:set_rightbottom(player_panel:right(), self._kills_panel and self._kills_panel:visible() and self._kills_panel:top() or name_label:bottom())
-
-			self._accuracy_icon = self._accuracy_panel:bitmap({
-				texture = "guis/textures/pd2/pd2_waypoints",
-				w = self._accuracy_panel:h() * 0.75,
-				h = self._accuracy_panel:h(),
-				texture_rect = { 96, 0, 32, 32 },
-				alpha = 1,
-				blend_mode = "normal",
-				layer = 0,
-				color = Color.white
-			})
-
-			self._accuracy_text = self._accuracy_panel:text({
-				name = "accuracy_text",
-				text = "0%",
-				layer = 1,
-				color = Color.white,
-				w = self._accuracy_panel:w(),
-				h = self._accuracy_panel:h(),
-				vertical = "center",
-				align = "right",
-				font_size = self._accuracy_panel:h(),
-				font = tweak_data.hud_players.name_font
-			})
-			self:set_accuracy(0)
-		end
-
-		function HUDTeammate:increment_kill_count(is_special, headshot)
-			self._kill_count = self._kill_count + 1
-			self._kill_count_special = self._kill_count_special + (is_special and 1 or 0)
-			self._headshot_kills = self._headshot_kills + (headshot and 1 or 0)
-			self:_update_kill_count_text()
-		end
-
-		function HUDTeammate:_update_kill_count_text()
-			local kill_string = tostring(self._kill_count)
-			if JimHUD:getSetting({"CustomHUD", self._setting_prefix, "KILLCOUNTER", "SHOW_SPECIAL_KILLS"}, true) then
-				kill_string = kill_string .. "/" .. tostring(self._kill_count_special)
-			end
-			if JimHUD:getSetting({"CustomHUD", self._setting_prefix, "KILLCOUNTER", "SHOW_HEADSHOT_KILLS"}, true) then
-				kill_string = kill_string .. " (" .. tostring(self._headshot_kills) .. ")"
-			end
-			self._kills_text:set_text(kill_string)
-			local _, _, w, _ = self._kills_text:text_rect()
-			self._kill_icon:set_right(self._kills_panel:w() - w - self._kill_icon:w() * 0.15)
-
-			if (self._main_player or JimHUD:getSetting({"CustomHUD", "TEAMMATE", "INTERACTION", "TEXT"}, true)) and not JimHUD:getSetting({"CustomHUD", self._setting_prefix, "KILLCOUNTER", "HIDE"}, false) then
-				self._max_name_panel_width = (self._kills_panel:x() + self._kill_icon:x() - 4)
-				self:_truncate_name()
-			end
-
-			local color = JimHUD:getColorSetting({"CustomHUD", self._setting_prefix, "KILLCOUNTER", "COLOR"}, "yellow")
-			self._kill_icon:set_color(color)
-			self._kills_text:set_color(color)
-		end
-
-		function HUDTeammate:reset_kill_count()
-			self._kill_count = 0
-			self._kill_count_special = 0
-			self._headshot_kills = 0
-			self:_update_kill_count_text()
-		end
-
-		function HUDTeammate:set_name(teammate_name, ...)
-			if teammate_name ~= self._name then
-				self._name = teammate_name
-				self:reset_kill_count()
-			end
-
-			return set_name_original(self, teammate_name, ...)
-		end
-
-		function HUDTeammate:set_state(...)
-			set_state_original(self, ...)
-
-			local visible = not JimHUD:getSetting({"CustomHUD", self._setting_prefix, "KILLCOUNTER", "HIDE"}, false) and (not self._ai or JimHUD:getSetting({"CustomHUD", "TEAMMATE", "KILLCOUNTER", "SHOW_BOT_KILLS"}, true))
-			self._kills_panel:set_visible(visible)
-
-			if self._ai then
-				self._kills_panel:set_bottom(self._panel:child("player"):bottom())
-			else
-				local name_label = self._panel:child("name")
-				self._kills_panel:set_bottom((self._main_player or JimHUD:getSetting({"CustomHUD", "TEAMMATE", "INTERACTION", "TEXT"}, true)) and name_label:bottom() or name_label:top())
-			end
-		end
-
-		function HUDTeammate:set_accuracy(value)
-			self._accuracy_text:set_text(tostring(value) .. "%")
-			local _, _, w, _ = self._accuracy_text:text_rect()
-			self._accuracy_icon:set_right(self._accuracy_panel:w() - w - self._accuracy_icon:w() * 0.15)
-			if JimHUD:getSetting({"CustomHUD", "PLAYER", "KILLCOUNTER", "HIDE"}, false) and JimHUD:getSetting({"CustomHUD", "PLAYER", "SHOW_ACCURACY"}, true) then
-				self._max_name_panel_width = (self._accuracy_panel:x() + self._accuracy_icon:x() - 4)
-				self:_truncate_name()
-			end
-		end
-
-		HUDTeammate._truncate_name = HUDTeammate._truncate_name or function() end
+		return set_name_original(self, teammate_name, ...)
 	end
+
+	function HUDTeammate:set_state(...)
+		set_state_original(self, ...)
+
+		local visible = not JimHUD:getSetting({"CustomHUD", self._setting_prefix, "KILLCOUNTER", "HIDE"}, false) and (not self._ai or JimHUD:getSetting({"CustomHUD", "TEAMMATE", "KILLCOUNTER", "SHOW_BOT_KILLS"}, true))
+		self._kills_panel:set_visible(visible)
+
+		if self._ai then
+			self._kills_panel:set_bottom(self._panel:child("player"):bottom())
+		else
+			local name_label = self._panel:child("name")
+			self._kills_panel:set_bottom((self._main_player or JimHUD:getSetting({"CustomHUD", "TEAMMATE", "INTERACTION", "TEXT"}, true)) and name_label:bottom() or name_label:top())
+		end
+	end
+
+	function HUDTeammate:set_accuracy(value)
+		self._accuracy_text:set_text(tostring(value) .. "%")
+		local _, _, w, _ = self._accuracy_text:text_rect()
+		self._accuracy_icon:set_right(self._accuracy_panel:w() - w - self._accuracy_icon:w() * 0.15)
+		if JimHUD:getSetting({"CustomHUD", "PLAYER", "KILLCOUNTER", "HIDE"}, false) and JimHUD:getSetting({"CustomHUD", "PLAYER", "SHOW_ACCURACY"}, true) then
+			self._max_name_panel_width = (self._accuracy_panel:x() + self._accuracy_icon:x() - 4)
+			self:_truncate_name()
+		end
+	end
+
+	HUDTeammate._truncate_name = HUDTeammate._truncate_name or function() end
 end
