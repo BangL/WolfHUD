@@ -220,7 +220,6 @@
 					<post :hook_id="bodybags_bag/bodybagsbagbase" :script_path="GameInfoManager.lua"/>
 					<post :hook_id="first_aid_kit/firstaidkitbase" :script_path="GameInfoManager.lua"/>
 					<post :hook_id="grenade_crate/grenadecratebase" :script_path="GameInfoManager.lua"/>
-					<post :hook_id="sentry_gun/sentrygundamage" :script_path="GameInfoManager.lua"/>
 
 					<group :hook_id="doctor_bag/doctorbagbase">
 						<post :script_path="DownCounter.lua"/>
@@ -232,10 +231,13 @@
 						<post :script_path="EquipmentTweaks.lua"/>
 					</group>
 
-					<group :hook_id="sentry_gun/sentrygunbase">
+					<group :hook_id="sentry_gun/">
+						<post :hook_id="sentrygundamage" :script_path="GameInfoManager.lua"/>
+						<group :hook_id="sentrygunbase">
 						<post :script_path="GameInfoManager.lua"/>
 						<post :script_path="KillCounter.lua"/>
 					</group>
+				</group>
 				</group>
 
 				<group :hook_id="weapons/">

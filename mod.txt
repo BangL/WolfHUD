@@ -10,8 +10,5 @@
 	"color" : "0 255 128",
 	"updates" : [
 		{"identifier" : "jimhud"}
-	],
-	"pre_hooks" : [
-		{ "hook_id" : "lib/entry", "script_path" : "Core.lua" }
 	]
 }
