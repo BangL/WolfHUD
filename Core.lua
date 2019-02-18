@@ -2,7 +2,7 @@ if not WolfHUD and not _G.JimHUD then
 	_G.JimHUD = {}
 	JimHUD.mod_path = ModPath
 	JimHUD.save_path = SavePath
-	JimHUD.settings_path = JimHUD.save_path .. "JimHUD_v2.json"
+	JimHUD.settings_path = JimHUD.save_path .. "JimHUD.json"
 	JimHUD.tweak_file = "JimHUDTweakData.lua"
 	JimHUD.identifier = string.match(JimHUD.mod_path, "[\\/]([%w_-]+)[\\/]$") or "JimHUD"
 
