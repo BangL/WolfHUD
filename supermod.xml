@@ -238,10 +238,10 @@
 					<group :hook_id="sentry_gun/">
 						<post :hook_id="sentrygundamage" :script_path="GameInfoManager.lua"/>
 						<group :hook_id="sentrygunbase">
-						<post :script_path="GameInfoManager.lua"/>
-						<post :script_path="KillCounter.lua"/>
+							<post :script_path="GameInfoManager.lua"/>
+							<post :script_path="KillCounter.lua"/>
+						</group>
 					</group>
-				</group>
 				</group>
 
 				<group :hook_id="weapons/">
