@@ -225,7 +225,7 @@
 	"jimhud_colors_black" : "검은색",
 	"jimhud_colors_rainbow" : "무지개색",
 
-	"jimhud_options_name" : "JimHUD 설정",
+	"jimhud_options_name" : "JimHUD",
 	"jimhud_options_help" : "JimHUD 를 설정하는 곳 입니다.",
 
 	"jimhud_language_title" : "Language",

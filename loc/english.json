@@ -225,7 +225,7 @@
 	"jimhud_colors_black" : "Black",
 	"jimhud_colors_rainbow" : "Rainbow",
 
-	"jimhud_options_name" : "JimHUD Settings",
+	"jimhud_options_name" : "JimHUD",
 	"jimhud_options_help" : "Customize JimHUD with your personal preferences.",
 
 	"jimhud_language_title" : "Language",
