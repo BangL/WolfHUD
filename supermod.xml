@@ -286,6 +286,7 @@
 				<post :hook_id="ingamedriving" :script_path="DrivingHUD.lua"/>
 				<post :hook_id="ingamearrested" :script_path="EnemyHealthbar.lua"/>
 				<post :hook_id="ingamewaitingforplayers" :script_path="MenuTweaks.lua"/>
+				<post :hook_id="ingameaccesscamera" :script_path="ColoredCam.lua"/>
 			</group>
 
 			<group :hook_id="tweak_data/">

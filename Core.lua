@@ -100,6 +100,7 @@ if not _G.JimHUD then
 					},
 				},
 				USE_REAL_AMMO								= true,
+				COLORED_CAM									= true,
 			},
 			HUDChat = {
 				CHAT_WAIT_TIME								= 10,		--Time before chat fades out, 0 = never

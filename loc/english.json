@@ -285,6 +285,9 @@
 	"jimhud_pacified_civs_desc" : "Change the waypoint of untied civilians, while they are pacified.",
 	"jimhud_use_realammo_title" : "Use Real Ammo",
 	"jimhud_use_realammo_desc" : "Shows ammo left, not taking the rounds in your current magazine into account.",
+	"jimhud_colored_cam_title" : "Colored cameras",
+	"jimhud_colored_cam_desc" : "Shows camera feeds in color.",
+
 	"jimhud_enable_burstmode_title" : "Enable Burst mode",
 	"jimhud_enable_burstmode_desc" : "Enable a burst fire mode for your weapons.",
 

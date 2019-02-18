@@ -1156,6 +1156,13 @@ if JimHUD then
 						value = {"CustomHUD", "USE_REAL_AMMO"},
 					},
 					{
+						type = "toggle",
+						name_id = "jimhud_colored_cam_title",
+						desc_id = "jimhud_colored_cam_desc",
+						visible_reqs = {}, enabled_reqs = {},
+						value = {"CustomHUD", "COLORED_CAM"},
+					},
+					{
 						type = "divider",
 						size = 16,
 					},
