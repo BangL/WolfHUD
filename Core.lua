@@ -756,6 +756,11 @@ if not _G.JimHUD then
 					end
 				end
 			end,
+			["AssaultBanner"] = function(setting, value)
+				if managers.hud and managers.hud.change_assaultbanner_setting then
+					managers.hud:change_assaultbanner_setting(tostring(setting[#setting]), value)
+				end
+			end,
 			["TabStats"] = function(setting, value)
 				if managers.hud and managers.hud.change_tabstats_setting then
 					managers.hud:change_tabstats_setting(tostring(setting[#setting]), value)
