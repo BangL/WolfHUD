@@ -4,7 +4,7 @@
 	"author" : "BangL, Kamikaze94",
 	"contact" : "https://github.com/BangL/WolfHUD/tree/jimhud",
 	"version" : "1.00",
-	"priority" : 1,
+	"priority" : 2,
 	"blt_version" : 2,
 	"image" : "jimhud.png",
 	"color" : "0 255 128",
