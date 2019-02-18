@@ -1,5 +1,5 @@
 
-if JimHUD:getSetting({"CustomHUD", "ENABLED"}, true) then
+if JimHUD:getSetting({"CustomHUD", "ENABLED"}, false) then
 	return
 end
 
@@ -28,7 +28,7 @@ if RequiredScript == "lib/managers/hudmanagerpd2" then
 			if name_label then
 				teammate_panel:set_interact_text(name_label.panel:child("action"):text())
 			end
-			teammate_panel:set_interact_visibility(enabled and timer and JimHUD:getSetting({"CustomHUD", "TEAMMATE", "INTERACTION", "MIN_DURATION"}, 1) <= timer and not JimHUD:getSetting({"CustomHUD", "TEAMMATE", "INTERACTION", "HIDE"}, false) and JimHUD:getSetting({"CustomHUD", "TEAMMATE", "INTERACTION", "TEXT"}, true))
+			teammate_panel:set_interact_visibility(enabled and timer and JimHUD:getSetting({"CustomHUD", "TEAMMATE", "INTERACTION", "MIN_DURATION"}, 0) <= timer and not JimHUD:getSetting({"CustomHUD", "TEAMMATE", "INTERACTION", "HIDE"}, false) and JimHUD:getSetting({"CustomHUD", "TEAMMATE", "INTERACTION", "TEXT"}, true))
 		end
 	end
 
@@ -46,7 +46,7 @@ elseif RequiredScript == "lib/managers/hud/hudteammate" then
 		self._max_name_panel_width = self._panel:w()
 
 		self._condition_icon = self._panel:child("condition_icon")
-		self._condition_icon:set_color(JimHUD:getColorSetting({"CustomHUD", self._setting_prefix, "CONDITION_ICON_COLOR"}, "white"))
+		self._condition_icon:set_color(JimHUD:getColorSetting({"CustomHUD", self._setting_prefix, "CONDITION_ICON_COLOR"}, "orange"))
 
 		if self._main_player and not HUDManager.CUSTOM_TEAMMATE_PANELS then
 			self:_create_stamina_circle()
@@ -95,7 +95,7 @@ elseif RequiredScript == "lib/managers/hud/hudteammate" then
 		if not self._ai then
 			name_panel:set_range_color((self._color_pos or 0) + 1, name_panel:text():len() + 1, self._panel:child("callsign"):color():with_alpha(1))
 		else
-			name_panel:set_color(JimHUD:getSetting({"CustomHUD", "TEAMMATE", "AI_COLOR", "USE"}, false) and JimHUD:getColorSetting({"CustomHUD", "TEAMMATE", "AI_COLOR", "COLOR"}, "white") or tweak_data.chat_colors[5])
+			name_panel:set_color(JimHUD:getSetting({"CustomHUD", "TEAMMATE", "AI_COLOR", "USE"}, true) and JimHUD:getColorSetting({"CustomHUD", "TEAMMATE", "AI_COLOR", "COLOR"}, "white") or tweak_data.chat_colors[5])
 		end
 		name_bg_panel:set_w(w + 4)
 		name_bg_panel:set_h(h + 2)
@@ -211,7 +211,7 @@ elseif RequiredScript == "lib/managers/hud/hudteammate" then
 	end
 
 	function HUDTeammate:teammate_progress(enabled, tweak_data_id, timer, success, ...)
-		local show = timer and JimHUD:getSetting({"CustomHUD", "TEAMMATE", "INTERACTION", "MIN_DURATION"}, 1) <= timer and not JimHUD:getSetting({"CustomHUD", "TEAMMATE", "INTERACTION", "HIDE"}, false)
+		local show = timer and JimHUD:getSetting({"CustomHUD", "TEAMMATE", "INTERACTION", "MIN_DURATION"}, 0) <= timer and not JimHUD:getSetting({"CustomHUD", "TEAMMATE", "INTERACTION", "HIDE"}, false)
 		teammate_progress_original(self, enabled and show, tweak_data_id, timer, success and show, ...)
 		if enabled and show and JimHUD:getSetting({"CustomHUD", "TEAMMATE", "INTERACTION", "NUMBER"}, true) then
 			self:_start_interact_timer(timer)

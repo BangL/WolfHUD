@@ -240,7 +240,7 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudteammate" and not HU
 		local player_panel = self._panel:child("player")
 		local name_label = self._panel:child("name")
 		self._kills_panel:set_rightbottom(player_panel:right(), (self._main_player or JimHUD:getSetting({"CustomHUD", "TEAMMATE", "INTERACTION", "TEXT"}, true)) and name_label:bottom() or name_label:top())
-		local killcount_color = JimHUD:getColorSetting({"CustomHUD", self._setting_prefix, "KILLCOUNTER", "COLOR"}, "yellow")
+		local killcount_color = JimHUD:getColorSetting({"CustomHUD", self._setting_prefix, "KILLCOUNTER", "COLOR"}, "orange")
 
 		self._kill_icon = self._kills_panel:bitmap({
 			texture = "guis/textures/pd2/cn_miniskull",
@@ -335,7 +335,7 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudteammate" and not HU
 			self:_truncate_name()
 		end
 
-		local color = JimHUD:getColorSetting({"CustomHUD", self._setting_prefix, "KILLCOUNTER", "COLOR"}, "yellow")
+		local color = JimHUD:getColorSetting({"CustomHUD", self._setting_prefix, "KILLCOUNTER", "COLOR"}, "orange")
 		self._kill_icon:set_color(color)
 		self._kills_text:set_color(color)
 	end

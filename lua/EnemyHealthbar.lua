@@ -209,7 +209,7 @@ elseif string.lower(RequiredScript) == "lib/units/beings/player/states/playersta
 						health = unit:character_damage()._health * 10 or 0
 						max_health = unit:character_damage()._HEALTH_INIT * 10 or 0
 					end
-				elseif alive( unit ) and ( unit:in_slot( 12 ) or JimHUD:getSetting({"EnemyHealthbar", "SHOW_CIVILIAN"}, false) and ( unit:in_slot( 21 ) or unit:in_slot( 22 ) ) or unit:in_slot( 16 ) and Network:is_server()) and not unit:character_damage():dead() then
+				elseif alive( unit ) and ( unit:in_slot( 12 ) or JimHUD:getSetting({"EnemyHealthbar", "SHOW_CIVILIAN"}, true) and ( unit:in_slot( 21 ) or unit:in_slot( 22 ) ) or unit:in_slot( 16 ) and Network:is_server()) and not unit:character_damage():dead() then
 					self._last_unit = unit
 					visible = true
 					health = unit:character_damage()._health * 10 or 0

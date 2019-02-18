@@ -66,7 +66,7 @@ if string.lower(RequiredScript) == "lib/managers/hud/hudhitdirection" then
 		if damage_type == HUDHitDirection.DAMAGE_TYPES.HEALTH then
 			return JimHUD:getColorSetting({"DamageIndicator", "HEALTH_COLOR"}, "red")
 		elseif damage_type == HUDHitDirection.DAMAGE_TYPES.ARMOUR then
-			return JimHUD:getColorSetting({"DamageIndicator", "SHIELD_COLOR"}, "white")
+			return JimHUD:getColorSetting({"DamageIndicator", "SHIELD_COLOR"}, "gray")
 		elseif damage_type == HUDHitDirection.DAMAGE_TYPES.VEHICLE then
 			return JimHUD:getColorSetting({"DamageIndicator", "VEHICLE_COLOR"}, "yellow")
 		elseif damage_type == HUDHitDirection.DAMAGE_TYPES.CRIT then

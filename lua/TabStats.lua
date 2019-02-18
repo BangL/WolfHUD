@@ -574,8 +574,8 @@ if string.lower(RequiredScript) == "lib/managers/hud/newhudstatsscreen" then
 
 	function HUDStatsScreen:_create_stat_list(panel, ...)
 		self._tabstats_settings = {
-			FONT_SIZE = JimHUD:getSetting({"TabStats", "FONT_SIZE"}, 18),
-			COLOR = JimHUD:getSetting({"TabStats", "COLOR"}, "rainbow"),
+			FONT_SIZE = JimHUD:getSetting({"TabStats", "FONT_SIZE"}, 12),
+			COLOR = JimHUD:getSetting({"TabStats", "COLOR"}, "white"),
 			SHOW_MASK = JimHUD:getSetting({"TabStats", "SHOW_MASK"}, true)
 		}
 
@@ -679,14 +679,14 @@ if string.lower(RequiredScript) == "lib/managers/hud/newhudstatsscreen" then
 		end
 
 		local mask_icon = "guis/textures/pd2/blackmarket/icons/masks/grin"
-		local mask_color = JimHUD:getColorSetting({"TabStats", "COLOR"}, "red")
+		local mask_color = JimHUD:getColorSetting({"TabStats", "COLOR"}, "white")
 		if self._tabstats_settings.SHOW_MASK then
 			mask_icon = self.getMaskImage()
 		else
 			local char_data = HUDStatsScreen.CHARACTERS[managers.criminals:local_character_name()]
 			if char_data then
 				mask_icon = char_data.texture or mask_icon
-				mask_color = JimHUD:getSetting({"TabStats", "COLOR"}, "rainbow") == "rainbow" and char_data.color or mask_color
+				mask_color = JimHUD:getSetting({"TabStats", "COLOR"}, "white") == "rainbow" and char_data.color or mask_color
 			end
 		end
 

@@ -174,7 +174,6 @@ function JimHUD:Reset()
 			COLOR										= "white",
 			FONT_SIZE									= 12,
 			SHOW_MASK									= true,
-			SHOW_LOOT_NUMBERS							= true,
 		},
 		CrewLoadout = {
 			REPLACE_IN_BRIEFING							= true,
@@ -190,7 +189,7 @@ function JimHUD:Reset()
 			buff_list_scale								= 1,
 			right_list_progress_alpha					= 1,
 			left_list_progress_alpha					= 1,
-			buff_list_progress_alpha					= 1.0,
+			buff_list_progress_alpha					= 1,
 			list_color									= "white",	--Left and Right List font color
 			list_color_bg								= "black",	--Left and Right List BG color
 			civilian_color								= "green",	--EnemyCounter Civillian and Hostage icon color
@@ -453,7 +452,7 @@ function JimHUD:Reset()
 			FIX_ARMOR_SORTING							= true,
 			SHOW_WEAPON_NAMES							= true,
 			SHOW_WEAPON_MINI_ICONS						= true,
-			USE_REAL_WEAPON_NAMES						= true,
+			USE_REAL_WEAPON_NAMES						= false,
 			SHOW_SKILL_NAMES							= true,
 			CUSTOM_TAB_NAMES = {
 				primaries								= { "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" },
@@ -464,7 +463,7 @@ function JimHUD:Reset()
 		},
 		SkipIt = {
 			SKIP_BLACKSCREEN							= true,		--Skip the blackscreen on mission start
-			INSTANT_RESTART								= false,
+			INSTANT_RESTART								= true,
 			STAT_SCREEN_SPEEDUP							= true,
 			STAT_SCREEN_DELAY							= 5,		--Skip the experience screen after X seconds
 			AUTOPICK_CARD								= true,		--Automatically pick a card on lootscreen
@@ -482,7 +481,7 @@ function JimHUD:Reset()
 			team_ai_option								= 1,
 			auto_kick									= true,
 			difficulty									= "sm_wish",
-			one_down									= true,
+			one_down									= false,
 		},
 	}
 end

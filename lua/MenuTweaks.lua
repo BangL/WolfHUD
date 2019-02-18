@@ -498,7 +498,7 @@ elseif string.lower(RequiredScript) == "lib/tweak_data/tweakdata" then
 		tweak_data.menu.SFX_CHANGE = 1
 		tweak_data.menu.VOICE_CHANGE = 0.01
 
-		if Network:is_server() and JimHUD:getSetting({"SkipIt", "INSTANT_RESTART"}, false) then
+		if Network:is_server() and JimHUD:getSetting({"SkipIt", "INSTANT_RESTART"}, true) then
 			tweak_data.vote = tweak_data.vote or {}
 			tweak_data.voting.restart_delay = 0
 		end
@@ -621,7 +621,7 @@ elseif string.lower(RequiredScript) == "lib/managers/menu/stageendscreengui" the
 	function StageEndScreenGui:init(...)
 		init_original(self, ...)
 
-		if self._enabled and JimHUD:getSetting({"SkipIt", "STAT_SCREEN_SPEEDUP"}, false) and managers.hud then
+		if self._enabled and JimHUD:getSetting({"SkipIt", "STAT_SCREEN_SPEEDUP"}, true) and managers.hud then
 			managers.hud:set_speed_up_endscreen_hud(5)
 		end
 	end
@@ -640,20 +640,20 @@ elseif string.lower(RequiredScript) == "lib/managers/menu/stageendscreengui" the
 	end
 
 	function StageEndScreenGui:special_btn_pressed(...)
-		if not JimHUD:getSetting({"SkipIt", "STAT_SCREEN_SPEEDUP"}, false) then
+		if not JimHUD:getSetting({"SkipIt", "STAT_SCREEN_SPEEDUP"}, true) then
 			special_btn_pressed_original(self, ...)
 		end
 	end
 
 	function StageEndScreenGui:special_btn_released(...)
-		if not JimHUD:getSetting({"SkipIt", "STAT_SCREEN_SPEEDUP"}, false) then
+		if not JimHUD:getSetting({"SkipIt", "STAT_SCREEN_SPEEDUP"}, true) then
 			special_btn_released_original(self, ...)
 		end
 	end
 elseif string.lower(RequiredScript) == "lib/managers/menu/lootdropscreengui" then
 	local SKIP_LOOT_SCREEN_DELAY = JimHUD:getSetting({"SkipIt", "LOOT_SCREEN_DELAY"}, 3)
 	local AUTO_PICK_CARD = JimHUD:getSetting({"SkipIt", "AUTOPICK_CARD"}, true)
-	local AUTO_PICK_SPECIFIC_CARD = JimHUD:getSetting({"SkipIt", "AUTOPICK_CARD_SPECIFIC"}, 1)
+	local AUTO_PICK_SPECIFIC_CARD = JimHUD:getSetting({"SkipIt", "AUTOPICK_CARD_SPECIFIC"}, 4)
 	local update_original = LootDropScreenGui.update
 	function LootDropScreenGui:update(t, ...)
 		update_original(self, t, ...)

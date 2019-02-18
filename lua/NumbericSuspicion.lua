@@ -88,7 +88,7 @@ function HUDSuspicion:hide(...)
 end
 
 function HUDSuspicion:rescale()
-	local scale = JimHUD:getSetting({"HUDSuspicion", "SCALE"}, 0.8)
+	local scale = JimHUD:getSetting({"HUDSuspicion", "SCALE"}, 1)
 	if self._scale ~= scale then
 		local suspicion_left = self._suspicion_panel:child("suspicion_left")
 		local suspicion_right = self._suspicion_panel:child("suspicion_right")

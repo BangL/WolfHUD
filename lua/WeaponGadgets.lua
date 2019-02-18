@@ -466,7 +466,7 @@ elseif string.lower(RequiredScript) == "lib/units/beings/player/states/playersta
 	function PlayerStandard:_stance_entered(...)
 		local weapon_base = self._equipped_unit:base()
 		local sight_id = weapon_base and weapon_base._second_sight_data and weapon_base._second_sight_data.part_id
-		local rotate_weapon = JimHUD:getSetting({"GADGETS", "SHOW_ANGELED_SIGHT"}, true) and sight_id and PlayerStandard.ANGELED_SIGHTS[sight_id]
+		local rotate_weapon = JimHUD:getSetting({"GADGETS", "SHOW_ANGELED_SIGHT"}, false) and sight_id and PlayerStandard.ANGELED_SIGHTS[sight_id]
 		self._camera_unit:base():set_want_rotated(not self._state_data.in_steelsight and self._equipped_unit:base():is_second_sight_on() and not self:_is_reloading() and rotate_weapon)
 		self._camera_unit:base():set_want_restored(not self._state_data.in_steelsight and (not self._equipped_unit:base():is_second_sight_on() or self:_is_reloading()) and rotate_weapon)
 		self._camera_unit:base():set_weapon_name(weapon_base and weapon_base._name_id, sight_id)

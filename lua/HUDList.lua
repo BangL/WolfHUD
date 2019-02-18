@@ -5,7 +5,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 	local format_time_string = function(value)
 		local time_str
 
-		if math.floor(value) > 60 and not JimHUD:getSetting({"HUDList", "LEFT_LIST", "timer_in_seconds"}, true) then
+		if math.floor(value) > 60 and not JimHUD:getSetting({"HUDList", "LEFT_LIST", "timer_in_seconds"}, false) then
 			time_str = string.format("%d:%02d", math.floor(value / 60), math.floor(value % 60))
 		elseif math.floor(value) > 9.9 then
 			time_str = string.format("%d", math.floor(value))
@@ -180,22 +180,22 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 		right_list_scale				= JimHUD:getSetting({"HUDList", "right_list_scale"}, 1),	--Size scale of right list
 		left_list_scale					= JimHUD:getSetting({"HUDList", "left_list_scale"}, 1),	--Size scale of left list
 		buff_list_scale					= JimHUD:getSetting({"HUDList", "buff_list_scale"}, 1),	--Size scale of buff list
-		right_list_progress_alpha		= JimHUD:getSetting({"HUDList", "right_list_progress_alpha"}, 0.4),
-		left_list_progress_alpha		= JimHUD:getSetting({"HUDList", "left_list_progress_alpha"}, 0.4),
-		buff_list_progress_alpha		= JimHUD:getSetting({"HUDList", "buff_list_progress_alpha"}, 1.0),
+		right_list_progress_alpha		= JimHUD:getSetting({"HUDList", "right_list_progress_alpha"}, 1),
+		left_list_progress_alpha		= JimHUD:getSetting({"HUDList", "left_list_progress_alpha"}, 1),
+		buff_list_progress_alpha		= JimHUD:getSetting({"HUDList", "buff_list_progress_alpha"}, 1),
 
 		--Left side list
 		show_timers						= JimHUD:getSetting({"HUDList", "LEFT_LIST", "show_timers"}, true),				--Drills, time locks, hacking etc.
 		show_ammo_bags					= JimHUD:getSetting({"HUDList", "LEFT_LIST", "show_ammo_bags"}, true),
 		show_doc_bags					= JimHUD:getSetting({"HUDList", "LEFT_LIST", "show_doc_bags"}, true),
-		show_first_aid_kits				= JimHUD:getSetting({"HUDList", "LEFT_LIST", "show_first_aid_kits"}, false),
+		show_first_aid_kits				= JimHUD:getSetting({"HUDList", "LEFT_LIST", "show_first_aid_kits"}, true),
 		show_body_bags					= JimHUD:getSetting({"HUDList", "LEFT_LIST", "show_body_bags"}, true),
 		show_grenade_crates				= JimHUD:getSetting({"HUDList", "LEFT_LIST", "show_grenade_crates"}, true),
 		show_sentries					= JimHUD:getSetting({"HUDList", "LEFT_LIST", "show_sentries"}, true),				--Deployable sentries
 		show_ecms						= JimHUD:getSetting({"HUDList", "LEFT_LIST", "show_ecms"}, true),					--Active ECMs
 		show_ecm_retrigger				= JimHUD:getSetting({"HUDList", "LEFT_LIST", "show_ecm_retrigger"}, true),			--Countdown for player owned ECM feedback retrigger delay
 		show_minions					= JimHUD:getSetting({"HUDList", "LEFT_LIST", "show_minions"}, true),				--Converted enemies, type and health
-			show_own_minions_only		= JimHUD:getSetting({"HUDList", "LEFT_LIST", "show_own_minions_only"}, true),		--Only show player-owned minions
+			show_own_minions_only		= JimHUD:getSetting({"HUDList", "LEFT_LIST", "show_own_minions_only"}, false),		--Only show player-owned minions
 		show_pagers						= JimHUD:getSetting({"HUDList", "LEFT_LIST", "show_pagers"}, true),				--Show currently active pagers
 		show_tape_loop					= JimHUD:getSetting({"HUDList", "LEFT_LIST", "show_tape_loop"}, true),				--Show active tape loop duration
 
@@ -210,11 +210,11 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 		show_pager_count				= JimHUD:getSetting({"HUDList", "RIGHT_LIST", "show_pager_count"}, true),			--Show number of triggered pagers (only counts pagers triggered while you were present)
 		show_cam_count					= JimHUD:getSetting({"HUDList", "RIGHT_LIST", "show_cam_count"}, true),
 		show_bodybags_count				= JimHUD:getSetting({"HUDList", "RIGHT_LIST", "show_bodybags_count"}, true),
-		show_corpse_count				= JimHUD:getSetting({"HUDList", "RIGHT_LIST", "show_corpse_count"}, true),
+		show_corpse_count				= JimHUD:getSetting({"HUDList", "RIGHT_LIST", "show_corpse_count"}, false),
 		show_loot						= JimHUD:getSetting({"HUDList", "RIGHT_LIST", "show_loot"}, true),					--Show spawned and active loot bags/piles (may not be shown if certain mission parameters has not been met)
 			aggregate_loot				= JimHUD:getSetting({"HUDList", "RIGHT_LIST", "aggregate_loot"}, false),			--Aggregate all loot into a single item
 			separate_bagged_loot		= JimHUD:getSetting({"HUDList", "RIGHT_LIST", "separate_bagged_loot"}, true),		--Show bagged/unbagged loot as separate values
-			show_potential_loot			= JimHUD:getSetting({"HUDList", "RIGHT_LIST", "show_potential_loot"}, false),
+			show_potential_loot			= JimHUD:getSetting({"HUDList", "RIGHT_LIST", "show_potential_loot"}, true),
 		show_special_pickups			= JimHUD:getSetting({"HUDList", "RIGHT_LIST", "show_special_pickups"}, true),		--Show number of special equipment/items
 
 		--Buff list
@@ -222,13 +222,13 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 
 		list_color						= JimHUD:getColorSetting({"HUDList", "list_color"}, "white"),
 		list_color_bg					= JimHUD:getColorSetting({"HUDList", "list_color_bg"}, "black"),
-		civilian_color					= JimHUD:getColorSetting({"HUDList", "civilian_color"}, "white"),
-		hostage_color					= JimHUD:getColorSetting({"HUDList", "civilian_color"}, "white"),
-		thug_color						= JimHUD:getColorSetting({"HUDList", "thug_color"}, "white"),
-		enemy_color						= JimHUD:getColorSetting({"HUDList", "enemy_color"}, "white"),
-		guard_color						= JimHUD:getColorSetting({"HUDList", "enemy_color"}, "white"),
-		special_color					= JimHUD:getColorSetting({"HUDList", "special_color"}, "white"),
-		turret_color					= JimHUD:getColorSetting({"HUDList", "special_color"}, "white"),
+		civilian_color					= JimHUD:getColorSetting({"HUDList", "civilian_color"}, "green"),
+		hostage_color					= JimHUD:getColorSetting({"HUDList", "civilian_color"}, "green"),
+		thug_color						= JimHUD:getColorSetting({"HUDList", "thug_color"}, "orange"),
+		enemy_color						= JimHUD:getColorSetting({"HUDList", "enemy_color"}, "orange"),
+		guard_color						= JimHUD:getColorSetting({"HUDList", "enemy_color"}, "orange"),
+		special_color					= JimHUD:getColorSetting({"HUDList", "special_color"}, "red"),
+		turret_color					= JimHUD:getColorSetting({"HUDList", "special_color"}, "red"),
 	}
 
 	HUDListManager.TIMER_SETTINGS = {
@@ -2613,7 +2613,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 			bar_w = 2,
 			bar_color = self._default_text_color,
 			bg_color = (HUDListManager.ListOptions.list_color_bg or Color.black),
-			bar_alpha = HUDListManager.ListOptions.right_list_progress_alpha or 0.4,
+			bar_alpha = HUDListManager.ListOptions.right_list_progress_alpha or 1,
 			add_bg = true,
 		})
 		self._progress_bar:set_ratio(1)
@@ -3362,7 +3362,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 			bar_w = 2,
 			bar_color = params.progress_color or (HUDListManager.ListOptions.list_color or Color.white),
 			bg_color = (HUDListManager.ListOptions.list_color_bg or Color.black),
-			bar_alpha = params.progress_alpha or HUDListManager.ListOptions.left_list_progress_alpha or 0.4,
+			bar_alpha = params.progress_alpha or HUDListManager.ListOptions.left_list_progress_alpha or 1,
 			add_bg = true,
 		})
 		self._progress_bar:set_ratio(1)
@@ -5593,7 +5593,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 			class = "TimedInteractionItem",
 			priority = 15,
 			color = HUDList.BuffItemBase.ICON_COLOR.STANDARD,
-			ignore = (JimHUD:getSetting({"INTERACTION", "SHOW_CIRCLE"}, true) or JimHUD:getSetting({"INTERACTION", "SHOW_TIME_REMAINING"}, true))
+			ignore = (JimHUD:getSetting({"INTERACTION", "SHOW_CIRCLE"}, false) or JimHUD:getSetting({"INTERACTION", "SHOW_TIME_REMAINING"}, true))
 		},
 		interact_debuff = {
 			--skills_new = tweak_data.skilltree.skills.second_chances.icon_xy,

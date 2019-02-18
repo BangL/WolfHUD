@@ -4,10 +4,10 @@ if RequiredScript == "lib/managers/hudmanager" then
 
 	function HUDManager:add_waypoint(id, data, ...)
 		add_waypoint_original(self, id, data, ...)
-		if JimHUD:getSetting({"CustomWaypoints", "WAYPOINTS_COLOR_ENABLE"}) and id and self._hud and self._hud.waypoints and self._hud.waypoints[id] then
+		if JimHUD:getSetting({"CustomWaypoints", "WAYPOINTS_COLOR_ENABLE"}, true) and id and self._hud and self._hud.waypoints and self._hud.waypoints[id] then
 			local wp = self._hud.waypoints[id]
 			if wp and wp.bitmap and wp.distance and wp.arrow and data.distance then
-				local color = JimHUD:getColorSetting({"CustomWaypoints", "WAYPOINTS_COLOR"}, "white")
+				local color = JimHUD:getColorSetting({"CustomWaypoints", "WAYPOINTS_COLOR"}, "orange")
 				wp.bitmap:set_color(color)
 				wp.distance:set_color(color)
 				wp.arrow:set_color(color:with_alpha(0.75))
@@ -125,7 +125,7 @@ if RequiredScript == "lib/managers/hudmanager" then
 				["doc_bag"]			= JimHUD:getSetting({"CustomWaypoints", "SHOW_DOC_BAG"}, true),
 				["body_bag"]		= JimHUD:getSetting({"CustomWaypoints", "SHOW_BODY_BAG"}, true),
 				["grenade_crate"]	= JimHUD:getSetting({"CustomWaypoints", "SHOW_GRENADE_CRATE"}, true),
-				["first_aid_kit"]	= JimHUD:getSetting({"CustomWaypoints", "SHOW_FIRST_AID_KIT"}, false),
+				["first_aid_kit"]	= JimHUD:getSetting({"CustomWaypoints", "SHOW_FIRST_AID_KIT"}, true),
 			}
 			for equip, enabled in pairs(bag_equip_settings) do
 				if enabled then
@@ -623,14 +623,14 @@ if RequiredScript == "lib/managers/hudmanager" then
 
 		if event == "add" then
 			if tweak_entry and not tweak_entry.is_vehicle and not tweak_entry.skip_exit_secure and (data.carry_id ~= "person" or managers.job:current_level_id() == "mad" and (data.bagged or data.unit:editor_id() ~= -1)) then
-				local angle = HUDManager.CUSTOM_WAYPOINTS.DEBUGGING and 180 or JimHUD:getSetting({"CustomWaypoints", "LOOT", "ANGLE"}, 25)
+				local angle = HUDManager.CUSTOM_WAYPOINTS.DEBUGGING and 180 or JimHUD:getSetting({"CustomWaypoints", "LOOT", "ANGLE"}, 15)
 				local name_id = data.carry_id and tweak_data.carry[data.carry_id] and tweak_data.carry[data.carry_id].name_id
 				local bag_name = name_id and managers.localization:to_upper_text(name_id)
 				local count = data.count or 1
 				if bag_name then
 					local params = {
 						unit = data.unit,
-						offset = data.bagged and Vector3(0, 0, JimHUD:getSetting({"CustomWaypoints", "LOOT", "BAGGED_OFFSET"}, 30)) or Vector3(0, 0, JimHUD:getSetting({"CustomWaypoints", "LOOT", "OFFSET"}, 15)),
+						offset = data.bagged and Vector3(0, 0, JimHUD:getSetting({"CustomWaypoints", "LOOT", "BAGGED_OFFSET"}, 15)) or Vector3(0, 0, JimHUD:getSetting({"CustomWaypoints", "LOOT", "OFFSET"}, 15)),
 						visible_through_walls = HUDManager.CUSTOM_WAYPOINTS.DEBUGGING or data.bagged,
 						alpha = HUDManager.CUSTOM_WAYPOINTS.DEBUGGING and 1 or 0.1,
 						visible_angle = { max = angle },
@@ -639,7 +639,7 @@ if RequiredScript == "lib/managers/hudmanager" then
 						scale = 1.25,
 						icon = {
 							type = "icon",
-							show = data.bagged and JimHUD:getSetting({"CustomWaypoints", "LOOT", "ICON"}, true),
+							show = data.bagged and JimHUD:getSetting({"CustomWaypoints", "LOOT", "ICON"}, false),
 							std_wp = "wp_bag",
 							alpha = 0.5,
 							on_minimap = true,

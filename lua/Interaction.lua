@@ -25,7 +25,7 @@ if string.lower(RequiredScript) == "lib/units/beings/player/states/playerstandar
 
 	function PlayerStandard:_check_interaction_locked(t)
 		PlayerStandard.LOCK_MODE = JimHUD:getSetting({"INTERACTION", "LOCK_MODE"}, 3)						--Lock interaction, if MIN_TIMER_DURATION is longer then total interaction time, or current interaction time
-		PlayerStandard.MIN_TIMER_DURATION = JimHUD:getSetting({"INTERACTION", "MIN_TIMER_DURATION"}, 5)			--Min interaction duration (in seconds) for the toggle behavior to activate
+		PlayerStandard.MIN_TIMER_DURATION = JimHUD:getSetting({"INTERACTION", "MIN_TIMER_DURATION"}, 0)			--Min interaction duration (in seconds) for the toggle behavior to activate
 		local is_locked = false
 		if self._interact_params ~= nil then
 			local tweak_data = self._interact_params.tweak_data or ""
@@ -220,7 +220,7 @@ elseif string.lower(RequiredScript) == "lib/units/beings/player/states/playerdri
 
 	function PlayerDriving:_check_interaction_locked(t)
 		PlayerDriving.LOCK_MODE = JimHUD:getSetting({"INTERACTION", "LOCK_MODE"}, 3)						--Lock interaction, if MIN_TIMER_DURATION is longer then total interaction time, or current interaction time
-		PlayerDriving.MIN_TIMER_DURATION = JimHUD:getSetting({"INTERACTION", "MIN_TIMER_DURATION"}, 5)			--Min interaction duration (in seconds) for the toggle behavior to activate
+		PlayerDriving.MIN_TIMER_DURATION = JimHUD:getSetting({"INTERACTION", "MIN_TIMER_DURATION"}, 0)			--Min interaction duration (in seconds) for the toggle behavior to activate
 		local is_locked = false
 		if self._exit_vehicle_expire_t ~= nil then
 			if PlayerDriving.LOCK_MODE == 3 then
@@ -287,13 +287,13 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudinteraction" then
 
 		local val = show_interaction_bar_original(self, current, total)
 
-		HUDInteraction.SHOW_LOCK_INDICATOR = JimHUD:getSetting({"INTERACTION", "SHOW_LOCK_INDICATOR"}, true)
+		HUDInteraction.SHOW_LOCK_INDICATOR = JimHUD:getSetting({"INTERACTION", "SHOW_LOCK_INDICATOR"}, false)
 		HUDInteraction.SHOW_TIME_REMAINING = JimHUD:getSetting({"INTERACTION", "SHOW_TIME_REMAINING"}, true)
-		HUDInteraction.SHOW_TIME_REMAINING_OUTLINE = JimHUD:getSetting({"INTERACTION", "SHOW_TIME_REMAINING_OUTLINE"}, false)
-		HUDInteraction.SHOW_CIRCLE = JimHUD:getSetting({"INTERACTION", "SHOW_CIRCLE"}, true)
+		HUDInteraction.SHOW_TIME_REMAINING_OUTLINE = JimHUD:getSetting({"INTERACTION", "SHOW_TIME_REMAINING_OUTLINE"}, true)
+		HUDInteraction.SHOW_CIRCLE = JimHUD:getSetting({"INTERACTION", "SHOW_CIRCLE"}, false)
 		HUDInteraction.LOCK_MODE = PlayerStandard.LOCK_MODE or 1
-		HUDInteraction.GRADIENT_COLOR_NAME = JimHUD:getSetting({"INTERACTION", "GRADIENT_COLOR"}, "light_green")
-		HUDInteraction.GRADIENT_COLOR_START = JimHUD:getColorSetting({"INTERACTION", "GRADIENT_COLOR_START"}, "white")
+		HUDInteraction.GRADIENT_COLOR_NAME = JimHUD:getSetting({"INTERACTION", "GRADIENT_COLOR"}, "white")
+		HUDInteraction.GRADIENT_COLOR_START = JimHUD:getColorSetting({"INTERACTION", "GRADIENT_COLOR_START"}, "orange")
 		if HUDInteraction.SHOW_CIRCLE then
 			if HUDInteraction.LOCK_MODE > 1 and HUDInteraction.SHOW_LOCK_INDICATOR then
 				self._interact_circle_locked = CircleBitmapGuiObject:new(self._hud_panel, {
@@ -403,8 +403,8 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudinteraction" then
 	end
 
 	function HUDInteraction:_rescale(circle_scale, text_scale)
-		local circle_scale = circle_scale or JimHUD:getSetting({"INTERACTION", "CIRCLE_SCALE"}, 0.8)
-		local text_scale = text_scale or JimHUD:getSetting({"INTERACTION", "TEXT_SCALE"}, 0.8)
+		local circle_scale = circle_scale or JimHUD:getSetting({"INTERACTION", "CIRCLE_SCALE"}, 1)
+		local text_scale = text_scale or JimHUD:getSetting({"INTERACTION", "TEXT_SCALE"}, 1)
 		local interact_text = self._hud_panel:child(self._child_name_text)
 		local invalid_text = self._hud_panel:child(self._child_ivalid_name_text)
 		local changed = false

@@ -1,6 +1,6 @@
 --TODO: Setting update for interaction, but probably not necessary as they are temporary anyway
 --TODO: Clean up interaction activation/deactivation animation, probably a lot of unnecessary rearranges going on
-if not JimHUD:getSetting({"CustomHUD", "ENABLED"}, true) then
+if not JimHUD:getSetting({"CustomHUD", "ENABLED"}, false) then
 	return
 end
 
@@ -40,19 +40,19 @@ if RequiredScript == "lib/managers/hud/hudteammate" then
 
 		PLAYER = {
 			SCALE = JimHUD:getSetting({"CustomHUD", "PLAYER", "SCALE"}, 1),			--Scale of all elements of the panel
-			OPACITY = JimHUD:getSetting({"CustomHUD", "PLAYER", "OPACITY"}, 0.85),	--Transparency/alpha of panel (1 is solid, 0 is invisible)
+			OPACITY = JimHUD:getSetting({"CustomHUD", "PLAYER", "OPACITY"}, 1),	--Transparency/alpha of panel (1 is solid, 0 is invisible)
 
-			NAME = JimHUD:getSetting({"CustomHUD", "PLAYER", "NAME"}, false),	--Show name
-			TRUNCATE_TAGS = JimHUD:getSetting({"CustomHUD", "PLAYER", "TRUNCATE_TAGS"}, false),	--Truncate tags
-			RANK = JimHUD:getSetting({"CustomHUD", "PLAYER", "RANK"}, false),	--Show infamy/level
+			NAME = JimHUD:getSetting({"CustomHUD", "PLAYER", "NAME"}, true),	--Show name
+			TRUNCATE_TAGS = JimHUD:getSetting({"CustomHUD", "PLAYER", "TRUNCATE_TAGS"}, true),	--Truncate tags
+			RANK = JimHUD:getSetting({"CustomHUD", "PLAYER", "RANK"}, true),	--Show infamy/level
 			CHARACTER = JimHUD:getSetting({"CustomHUD", "PLAYER", "CHARACTER"}, false),	--Show character name
 			LATENCY = false,	--Show latency (not used by player panel)
 			STATUS = JimHUD:getSetting({"CustomHUD", "PLAYER", "STATUS"}, true),	--Show health/armor/condition etc.
-			CONDITION_ICON_COLOR = JimHUD:getColorSetting({"CustomHUD", "PLAYER", "CONDITION_ICON_COLOR"}, "white"),
+			CONDITION_ICON_COLOR = JimHUD:getColorSetting({"CustomHUD", "PLAYER", "CONDITION_ICON_COLOR"}, "orange"),
 			EQUIPMENT = JimHUD:getSetting({"CustomHUD", "PLAYER", "EQUIPMENT"}, true),	--Show throwables, cable ties and deployables
 			SPECIAL_EQUIPMENT = JimHUD:getSetting({"CustomHUD", "PLAYER", "SPECIAL_EQUIPMENT"}, true),	--Show special equipment/tools (keycards etc.)
 			SPECIAL_EQUIPMENT_ROWS = JimHUD:getSetting({"CustomHUD", "PLAYER", "SPECIAL_EQUIPMENT_ROWS"}, 3),
-			CALLSIGN = JimHUD:getSetting({"CustomHUD", "PLAYER", "CALLSIGN"}, false),	--Show the callsign and voice chat icon
+			CALLSIGN = JimHUD:getSetting({"CustomHUD", "PLAYER", "CALLSIGN"}, true),	--Show the callsign and voice chat icon
 			STAMINA = JimHUD:getSetting({"CustomHUD", "PLAYER", "STAMINA"}, true),
 			DOWNCOUNTER = JimHUD:getSetting({"CustomHUD", "PLAYER", "DOWNCOUNTER"}, true),
 			CARRY = JimHUD:getSetting({"CustomHUD", "PLAYER", "CARRY"}, true),	--Show currently carried bag
@@ -71,7 +71,7 @@ if RequiredScript == "lib/managers/hud/hudteammate" then
 					UNSELECTED_ONLY = (JimHUD:getSetting({"CustomHUD", "PLAYER", "WEAPON", "ICON"}, 4) == 3),
 				},
 				NAME = {
-					HIDE = (JimHUD:getSetting({"CustomHUD", "PLAYER", "WEAPON", "NAME"}, 1) == 1),
+					HIDE = (JimHUD:getSetting({"CustomHUD", "PLAYER", "WEAPON", "NAME"}, 4) == 1),
 					SELECTED_ONLY = (JimHUD:getSetting({"CustomHUD", "PLAYER", "WEAPON", "NAME"}, 1) == 2),
 					UNSELECTED_ONLY = (JimHUD:getSetting({"CustomHUD", "PLAYER", "WEAPON", "NAME"}, 1) == 3),
 				},
@@ -82,7 +82,7 @@ if RequiredScript == "lib/managers/hud/hudteammate" then
 					TOTAL_AMMO_ONLY = (JimHUD:getSetting({"CustomHUD", "PLAYER", "WEAPON", "AMMO"}, 4) == 5),	--Shows only total ammo for all weapons
 				},
 				FIREMODE = {
-					HIDE = (JimHUD:getSetting({"CustomHUD", "PLAYER", "WEAPON", "FIREMODE"}, 2) == 1),
+					HIDE = (JimHUD:getSetting({"CustomHUD", "PLAYER", "WEAPON", "FIREMODE"}, 4) == 1),
 					SELECTED_ONLY = (JimHUD:getSetting({"CustomHUD", "PLAYER", "WEAPON", "FIREMODE"}, 2) == 2),
 					UNSELECTED_ONLY = (JimHUD:getSetting({"CustomHUD", "PLAYER", "WEAPON", "FIREMODE"}, 2) == 3),
 				},
@@ -97,26 +97,26 @@ if RequiredScript == "lib/managers/hud/hudteammate" then
 				SHOW_BOT_KILLS = false,	--Show the kill counter for criminal bots
 				SHOW_SPECIAL_KILLS = JimHUD:getSetting({"CustomHUD", "PLAYER", "KILLCOUNTER", "SHOW_SPECIAL_KILLS"}, true),	--Separate counter for specials
 				SHOW_HEADSHOT_KILLS = JimHUD:getSetting({"CustomHUD", "PLAYER", "KILLCOUNTER", "SHOW_HEADSHOT_KILLS"}, true),	--Separate counter, of how many kills were due to headshots
-				COLOR = JimHUD:getColorSetting({"CustomHUD", "PLAYER", "KILLCOUNTER", "COLOR"}, "yellow")
+				COLOR = JimHUD:getColorSetting({"CustomHUD", "PLAYER", "KILLCOUNTER", "COLOR"}, "orange")
 			},
 			SHOW_ACCURACY = JimHUD:getSetting({"CustomHUD", "PLAYER", "SHOW_ACCURACY"}, true),	--Show accuracy information
 		},
 
 		TEAMMATE = {
 			SCALE = JimHUD:getSetting({"CustomHUD", "TEAMMATE", "SCALE"}, 0.8),			--Scale of all elements of the panel
-			OPACITY = JimHUD:getSetting({"CustomHUD", "TEAMMATE", "OPACITY"}, 0.85),	--Transparency/alpha of panel (1 is solid, 0 is invisible)
+			OPACITY = JimHUD:getSetting({"CustomHUD", "TEAMMATE", "OPACITY"}, 1),	--Transparency/alpha of panel (1 is solid, 0 is invisible)
 
 			NAME = JimHUD:getSetting({"CustomHUD", "TEAMMATE", "NAME"}, true),	--Show name
-			TRUNCATE_TAGS = JimHUD:getSetting({"CustomHUD", "TEAMMATE", "TRUNCATE_TAGS"}, false),	--Truncate tags
+			TRUNCATE_TAGS = JimHUD:getSetting({"CustomHUD", "TEAMMATE", "TRUNCATE_TAGS"}, true),	--Truncate tags
 			RANK = JimHUD:getSetting({"CustomHUD", "TEAMMATE", "RANK"}, true),	--Show infamy/level
 			CHARACTER = JimHUD:getSetting({"CustomHUD", "TEAMMATE", "CHARACTER"}, false),	--Show character name
 			LATENCY = JimHUD:getSetting({"CustomHUD", "TEAMMATE", "LATENCY"}, true),	--Show latency (not used by player panel)
 			STATUS = JimHUD:getSetting({"CustomHUD", "TEAMMATE", "STATUS"}, true),	--Show health/armor/condition etc.
-			CONDITION_ICON_COLOR = JimHUD:getColorSetting({"CustomHUD", "TEAMMATE", "CONDITION_ICON_COLOR"}, "white"),
+			CONDITION_ICON_COLOR = JimHUD:getColorSetting({"CustomHUD", "TEAMMATE", "CONDITION_ICON_COLOR"}, "orange"),
 			EQUIPMENT = JimHUD:getSetting({"CustomHUD", "TEAMMATE", "EQUIPMENT"}, true),	--Show throwables, cable ties and deployables
 			SPECIAL_EQUIPMENT = JimHUD:getSetting({"CustomHUD", "TEAMMATE", "SPECIAL_EQUIPMENT"}, true),	--Show special equipment/tools (keycards etc.)
 			SPECIAL_EQUIPMENT_ROWS = JimHUD:getSetting({"CustomHUD", "TEAMMATE", "SPECIAL_EQUIPMENT_ROWS"}, 3),
-			CALLSIGN = JimHUD:getSetting({"CustomHUD", "TEAMMATE", "CALLSIGN"}, false),	--Show the callsign and voice chat icon
+			CALLSIGN = JimHUD:getSetting({"CustomHUD", "TEAMMATE", "CALLSIGN"}, true),	--Show the callsign and voice chat icon
 			STAMINA = false,
 			DOWNCOUNTER = JimHUD:getSetting({"CustomHUD", "TEAMMATE", "DOWNCOUNTER"}, true),
 			CARRY = JimHUD:getSetting({"CustomHUD", "TEAMMATE", "CARRY"}, true),	--Show currently carried bag
@@ -130,7 +130,7 @@ if RequiredScript == "lib/managers/hud/hudteammate" then
 				--HIDE option hides the element. SELECTED_ONLY shows only if the weapon is currently selected, UNSELECTED_ONLY the reverse
 				--Pick max *one* setting for each element or results are undefined
 				ICON = {
-					HIDE = (JimHUD:getSetting({"CustomHUD", "TEAMMATE", "WEAPON", "ICON"}, 4) == 1),
+					HIDE = (JimHUD:getSetting({"CustomHUD", "TEAMMATE", "WEAPON", "ICON"}, 1) == 1),
 					SELECTED_ONLY = (JimHUD:getSetting({"CustomHUD", "TEAMMATE", "WEAPON", "ICON"}, 4) == 2),
 					UNSELECTED_ONLY = (JimHUD:getSetting({"CustomHUD", "TEAMMATE", "WEAPON", "ICON"}, 4) == 3),
 				},
@@ -153,7 +153,7 @@ if RequiredScript == "lib/managers/hud/hudteammate" then
 			},
 			INTERACTION = {	--(Interaction display only used by teammates, included for reference)
 				HIDE = JimHUD:getSetting({"CustomHUD", "TEAMMATE", "INTERACTION", "HIDE"}, false),	--Hides the interaction activity/time/progress
-				MIN_DURATION = JimHUD:getSetting({"CustomHUD", "TEAMMATE", "INTERACTION", "MIN_DURATION"}, 1),	--Shows the interaction display only if interaction duration in seconds exceeds this threshold
+				MIN_DURATION = JimHUD:getSetting({"CustomHUD", "TEAMMATE", "INTERACTION", "MIN_DURATION"}, 0),	--Shows the interaction display only if interaction duration in seconds exceeds this threshold
 			},
 			KILLCOUNTER = {
 				--Requires external plugin to be loaded, else will be disabled no matter what
@@ -161,7 +161,7 @@ if RequiredScript == "lib/managers/hud/hudteammate" then
 				SHOW_BOT_KILLS = JimHUD:getSetting({"CustomHUD", "TEAMMATE", "KILLCOUNTER", "SHOW_BOT_KILLS"}, true),	--Show the kill counter for criminal bots
 				SHOW_SPECIAL_KILLS = JimHUD:getSetting({"CustomHUD", "TEAMMATE", "KILLCOUNTER", "SHOW_SPECIAL_KILLS"}, true),	--Separate counter for specials
 				SHOW_HEADSHOT_KILLS = JimHUD:getSetting({"CustomHUD", "TEAMMATE", "KILLCOUNTER", "SHOW_HEADSHOT_KILLS"}, true),	--Separate counter, of how many kills were due to headshots
-				COLOR = JimHUD:getColorSetting({"CustomHUD", "TEAMMATE", "KILLCOUNTER", "COLOR"}, "yellow")
+				COLOR = JimHUD:getColorSetting({"CustomHUD", "TEAMMATE", "KILLCOUNTER", "COLOR"}, "orange")
 			},
 			SHOW_ACCURACY = false,	--Show accuracy information
 		},
@@ -1091,7 +1091,7 @@ if RequiredScript == "lib/managers/hud/hudteammate" then
 
 	function PlayerInfoComponent.PlayerInfo:set_id(id)
 		self._id = id
-		self:_set_text_color((id == 5 and JimHUD:getSetting({"CustomHUD", "TEAMMATE", "AI_COLOR", "USE"}, false)) and JimHUD:getColorSetting({"CustomHUD", "TEAMMATE", "AI_COLOR", "COLOR"}, "white") or tweak_data.chat_colors[id])
+		self:_set_text_color((id == 5 and JimHUD:getSetting({"CustomHUD", "TEAMMATE", "AI_COLOR", "USE"}, true)) and JimHUD:getColorSetting({"CustomHUD", "TEAMMATE", "AI_COLOR", "COLOR"}, "white") or tweak_data.chat_colors[id])
 	end
 
 	function PlayerInfoComponent.PlayerInfo:set_cheater(state)
