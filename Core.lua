@@ -1,4 +1,4 @@
-if not _G.JimHUD then
+if not WolfHUD and not _G.JimHUD then
 	_G.JimHUD = {}
 	JimHUD.mod_path = ModPath
 	JimHUD.save_path = SavePath
