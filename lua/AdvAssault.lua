@@ -1,6 +1,6 @@
 if string.lower(RequiredScript) == "lib/managers/hud/hudassaultcorner" then
 	local init_original = HUDAssaultCorner.init
-	local _start_assault_original = HUDAssaultCorner._start_assault
+	local _set_text_list_original = HUDAssaultCorner._set_text_list
 	local _set_hostage_offseted_original = HUDAssaultCorner._set_hostage_offseted
 	local set_buff_enabled_original = HUDAssaultCorner.set_buff_enabled
 	local show_point_of_no_return_timer_original = HUDAssaultCorner.show_point_of_no_return_timer
@@ -121,13 +121,17 @@ if string.lower(RequiredScript) == "lib/managers/hud/hudassaultcorner" then
 		--self:update_hudlist_offset(false)
 	end
 
-	function HUDAssaultCorner:_start_assault(text_list, ...)
+	function HUDAssaultCorner:_set_text_list(text_list, ...)
 		for i, string_id in ipairs(text_list) do
 			if string_id == "hud_assault_assault" then
 				text_list[i] = "hud_adv_assault"
+			elseif string_id == "hud_assault_vip" then
+				text_list[i] = "hud_adv_vip"
+			elseif string_id == "hud_assault_survived" then
+				text_list[i] = "hud_adv_survived"
 			end
 		end
-		return _start_assault_original(self, text_list, ...)
+		return _set_text_list_original(self, text_list, ...)
 	end
 
 	function HUDAssaultCorner:_animate_wave_started(...)
@@ -232,16 +236,24 @@ elseif string.lower(RequiredScript) == "lib/managers/localizationmanager" then
 
 	function LocalizationManager:text(string_id, ...)
 		if string_id == "hud_adv_assault" then
-			return self:hud_adv_assault()
+			return self:hud_adv_assault("hud_assault_assault")
+		elseif string_id == "hud_adv_vip" then
+			return self:hud_adv_assault("hud_assault_vip")
+		elseif string_id == "hud_adv_survived" then
+			return self:hud_adv_assault("hud_assault_survived")
 		end
 		return text_original(self, string_id, ...)
 	end
 
-	function LocalizationManager:hud_adv_assault()
+	function LocalizationManager:hud_adv_assault(default)
 		if JimHUD:getSetting({"AssaultBanner", "USE_ADV_ASSAULT"}, true) then
 			if managers.hud and managers.hud:_locked_assault() then
 				return self:text("jimhud_locked_assault")
-			else
+			elseif default == "hud_assault_survived" then
+				return self:text("jimhud_survived_assault")
+			elseif default == "hud_assault_vip" then
+				return self:text("jimhud_vip_assault")
+			elseif default == "hud_assault_assault" then
 				local tweak = tweak_data.group_ai.besiege.assault
 				local gai_state = managers.groupai:state()
 				local assault_data = Network:is_server() and gai_state and gai_state._task_data.assault
@@ -275,6 +287,6 @@ elseif string.lower(RequiredScript) == "lib/managers/localizationmanager" then
 				end
 			end
 		end
-		return self:text("hud_assault_assault")
+		return self:text(default)
 	end
 end

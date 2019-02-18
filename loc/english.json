@@ -81,6 +81,8 @@
 	"jimhud_advassault_phase_fade" : "Fade",
 	"jimhud_advassault_time_overdue" : "OVERDUE",
 	"jimhud_locked_assault" : "Endless Police Assault!!!  Get out as soon as possible!!!",
+	"jimhud_vip_assault" : "Captain around!!!  Make him flee as soon as possible!!!",
+	"jimhud_survived_assault" : "Police Assault Survived!!!",
 
 	"jimhud_customhud_interaction_done" : "DONE",
 	"jimhud_customhud_interaction_aborted" : "ABORTED",
