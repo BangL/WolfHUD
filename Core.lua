@@ -882,7 +882,7 @@ Hooks:Add("MenuManagerPopulateCustomMenus", "MenuManagerPopulateCustomMenus_JimH
 
 		--Associate visual callback with item
 		local menu = MenuHelper:GetMenu(menu_id)
-		for i, item in pairs(menu._items_list) do
+		for i, item in pairs(menu._items_list or {}) do
 			if item:parameters().name == id then
 				item._visible_callback_name_list = { visual_clbk_id }
 				item._enabled_callback_name_list = { enabled_clbk_id }
@@ -1040,7 +1040,7 @@ Hooks:Add("MenuManagerPopulateCustomMenus", "MenuManagerPopulateCustomMenus_JimH
 
 			if data.add_color_options then
 				local menu = MenuHelper:GetMenu(menu_id)
-				for i, item in pairs(menu._items_list) do
+				for i, item in pairs(menu._items_list or {}) do
 					if item:parameters().name == id then
 						item:clear_options()
 						for k, v in ipairs(JimHUD:getTweakEntry("color_table", "table") or {}) do
@@ -1235,7 +1235,7 @@ Hooks:Add("MenuManagerBuildCustomMenus", "MenuManagerBuildCustomMenus_JimHUDCore
 					for i, menu_id in ipairs(JimHUD.menu_ids) do
 						local menu = MenuHelper:GetMenu(menu_id)
 						if menu then
-							for __, menu_item in ipairs(menu._items_list) do
+							for __, menu_item in ipairs(menu._items_list or {}) do
 								local setting = menu_item._create_data and clone(menu_item._create_data.value)
 								if menu_item.set_value and setting then
 									local value = JimHUD:getSetting(setting, nil)
