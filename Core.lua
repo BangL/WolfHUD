@@ -25,7 +25,7 @@ function JimHUD:Reset()
 	JimHUD.settings = {
 		LANGUAGE										= default_lang,
 		CustomHUD = {
-			ENABLED										= false,
+			STYLE										= 1,		-- vanilla (1), customhud (2), banghud (3)
 			PLAYER = {
 				POSITION								= 2,		-- left (1), center (2) or right (3)
 				SCALE									= 1,		--Size of local Player HUD Panel

@@ -496,13 +496,6 @@ if JimHUD then
 						visible_reqs = {}, enabled_reqs = {},
 					},
 					{
-						type = "toggle", -- duplicate on purpose, for usabilty
-						name_id = "jimhud_profilemenu_replace_title",
-						desc_id = "jimhud_profilemenu_replace_desc",
-						value = {"CrewLoadout", "REPLACE_PROFILE_MENU"},
-						visible_reqs = {}, enabled_reqs = {},
-					},
-					{
 						type = "divider",
 						size = 12,
 					},
@@ -607,13 +600,6 @@ if JimHUD then
 						visible_reqs = {}, enabled_reqs = {},
 					},
 					{
-						type = "toggle", -- duplicate on purpose, for usabilty
-						name_id = "jimhud_profilemenu_replace_title",
-						desc_id = "jimhud_profilemenu_replace_desc",
-						value = {"CrewLoadout", "REPLACE_PROFILE_MENU"},
-						visible_reqs = {}, enabled_reqs = {},
-					},
-					{
 						type = "divider",
 						size = 12,
 					},
@@ -670,6 +656,13 @@ if JimHUD then
 					},
 				},
 			},
+			{ -- Advanced Profile-Selector
+				type = "toggle",
+				name_id = "jimhud_profilemenu_replace_title",
+				desc_id = "jimhud_profilemenu_replace_desc",
+				value = {"CrewLoadout", "REPLACE_PROFILE_MENU"},
+				visible_reqs = {}, enabled_reqs = {},
+			},
 			{ -- Ingame
 				type = "divider",
 				size = 12,
@@ -679,25 +672,1834 @@ if JimHUD then
 				size = 12,
 				text_id = "jimhud_ingame_options_text",
 			},
-			{ -- Instant restart
-				type = "toggle",
-				name_id = "jimhud_instant_restart_title",
-				desc_id = "jimhud_instant_restart_desc",
-				value = {"SkipIt", "INSTANT_RESTART"},
-				visible_reqs = {}, enabled_reqs = {},
-			},
-			{ -- Ingame tweaks
+			{ -- HUD
 				type = "menu",
 				menu_id = "jimhud_customhud_options_menu",
 				name_id = "jimhud_panels_options_name",
 				desc_id = "jimhud_panels_options_help",
 				options = {
 					{
-						type = "toggle",
-						name_id = "jimhud_use_customhud_title",
-						desc_id = "jimhud_use_customhud_desc",
-						value = {"CustomHUD", "ENABLED"},
-						visible_reqs = {}, enabled_reqs = {},
+						type = "multi_choice",
+						name_id = "jimhud_hud_style_title",
+						desc_id = "jimhud_hud_style_desc",
+						options = {
+							"jimhud_hud_style_vanilla",
+							"jimhud_hud_style_customhud",
+							--"jimhud_hud_style_banghud",
+						},
+						visible_reqs = {},
+						enabled_reqs = {},
+						value = {"CustomHUD", "STYLE"},
+					},
+					{
+						type = "divider",
+						size = 12,
+					},
+					{ --HUDList
+						type = "menu",
+						menu_id = "jimhud_hudlist_options_menu",
+						name_id = "jimhud_infopanels_options_name",
+						desc_id = "jimhud_infopanels_options_help",
+						options = {
+							{
+								type = "toggle",
+								name_id = "jimhud_use_hudlist_title",
+								desc_id = "jimhud_use_hudlist_desc",
+								value = {"HUDList", "ENABLED"},
+								visible_reqs = {}, enabled_reqs = {},
+							},
+							{
+								type ="divider",
+								size = 12,
+							},
+							{
+								type = "slider",
+								name_id = "jimhud_hudlist_scale_left_title",
+								desc_id = "jimhud_hudlist_scale_left_desc",
+								value = {"HUDList", "left_list_scale"},
+								visible_reqs = {},
+										enabled_reqs = {
+									{ setting = { "HUDList", "ENABLED" }, invert = false },
+								},
+								min_value = 0.5,
+								max_value = 2,
+								step_size = 0.01,
+							},
+							{
+								type = "slider",
+								name_id = "jimhud_hudlist_scale_right_title",
+								desc_id = "jimhud_hudlist_scale_right_desc",
+								value = {"HUDList", "right_list_scale"},
+								visible_reqs = {},
+								enabled_reqs = {
+									{ setting = { "HUDList", "ENABLED" }, invert = false },
+								},
+								min_value = 0.5,
+								max_value = 2,
+								step_size = 0.01,
+							},
+							{
+								type = "slider",
+								name_id = "jimhud_hudlist_scale_buff_title",
+								desc_id = "jimhud_hudlist_scale_buff_desc",
+								value = {"HUDList", "buff_list_scale"},
+								visible_reqs = {},
+								enabled_reqs = {
+									{ setting = { "HUDList", "ENABLED" }, invert = false },
+								},
+								min_value = 0.5,
+								max_value = 2,
+								step_size = 0.01,
+							},
+							{
+								type ="divider",
+								size = 12,
+							},
+							{
+								type = "multi_choice",
+								name_id = "jimhud_hudlist_box_color_title",
+								desc_id = "jimhud_hudlist_box_color_desc",
+								value = {"HUDList", "list_color"},
+								visible_reqs = {},
+								enabled_reqs = {
+									{ setting = { "HUDList", "ENABLED" }, invert = false },
+								},
+								options = {},
+								add_color_options = true,
+								add_rainbow = false,
+							},
+							{
+								type = "multi_choice",
+								name_id = "jimhud_hudlist_box_bg_color_title",
+								desc_id = "jimhud_hudlist_box_bg_color_desc",
+								value = {"HUDList", "list_color_bg"},
+								visible_reqs = {},
+								enabled_reqs = {
+									{ setting = { "HUDList", "ENABLED" }, invert = false },
+								},
+								options = {},
+								add_color_options = true,
+								add_rainbow = false,
+							},
+							{
+								type = "multi_choice",
+								name_id = "jimhud_hudlist_civcolor_title",
+								desc_id = "jimhud_hudlist_civcolor_desc",
+								value = {"HUDList", "civilian_color"},
+								visible_reqs = {},
+								enabled_reqs = {
+									{ setting = { "HUDList", "ENABLED" }, invert = false },
+								},
+								options = {},
+								add_color_options = true,
+								add_rainbow = false,
+							},
+							{
+								type = "multi_choice",
+								name_id = "jimhud_hudlist_thugcolor_title",
+								desc_id = "jimhud_hudlist_thugcolor_desc",
+								value = {"HUDList", "thug_color"},
+								visible_reqs = {},
+								enabled_reqs = {
+									{ setting = { "HUDList", "ENABLED" }, invert = false },
+								},
+								options = {},
+								add_color_options = true,
+								add_rainbow = false,
+							},
+							{
+								type = "multi_choice",
+								name_id = "jimhud_hudlist_copcolor_title",
+								desc_id = "jimhud_hudlist_copcolor_desc",
+								value = {"HUDList", "enemy_color"},
+								visible_reqs = {},
+								enabled_reqs = {
+									{ setting = { "HUDList", "ENABLED" }, invert = false },
+								},
+								options = {},
+								add_color_options = true,
+								add_rainbow = false,
+							},
+							{
+								type = "multi_choice",
+								name_id = "jimhud_hudlist_specialcolor_title",
+								desc_id = "jimhud_hudlist_specialcolor_desc",
+								value = {"HUDList", "special_color"},
+								visible_reqs = {},
+								enabled_reqs = {
+									{ setting = { "HUDList", "ENABLED" }, invert = false },
+								},
+								options = {},
+								add_color_options = true,
+								add_rainbow = false,
+							},
+							{
+								type ="divider",
+								size = 12,
+							},
+							{
+								type = "slider",
+								name_id = "jimhud_hudlist_progress_alpha_left_title",
+								desc_id = "jimhud_hudlist_progress_alpha_left_desc",
+								value = {"HUDList", "left_list_progress_alpha"},
+								visible_reqs = {},
+								enabled_reqs = {
+									{ setting = { "HUDList", "ENABLED" }, invert = false },
+								},
+								min_value = 0.0,
+								max_value = 1.0,
+								step_size = 0.01,
+							},
+							{
+								type = "slider",
+								name_id = "jimhud_hudlist_progress_alpha_right_title",
+								desc_id = "jimhud_hudlist_progress_alpha_right_desc",
+								value = {"HUDList", "right_list_progress_alpha"},
+								visible_reqs = {},
+								enabled_reqs = {
+									{ setting = { "HUDList", "ENABLED" }, invert = false },
+								},
+								min_value = 0.0,
+								max_value = 1.0,
+								step_size = 0.01,
+							},
+							{
+								type = "slider",
+								name_id = "jimhud_hudlist_progress_alpha_buff_title",
+								desc_id = "jimhud_hudlist_progress_alpha_buff_desc",
+								value = {"HUDList", "buff_list_progress_alpha"},
+								visible_reqs = {},
+								enabled_reqs = {
+									{ setting = { "HUDList", "ENABLED" }, invert = false },
+								},
+								min_value = 0.0,
+								max_value = 1.0,
+								step_size = 0.01,
+							},
+							{
+								type ="divider",
+								size = 12,
+							},
+							{	--HUDList Left List
+								type = "menu",
+								menu_id = "jimhud_hudlist_left_options_menu",
+								name_id = "jimhud_infopanels_left_options_name",
+								desc_id = "jimhud_infopanels_left_options_help",
+								options = {
+									{
+										type = "toggle",
+										name_id = "jimhud_hudlist_show_timers_title",
+										desc_id = "jimhud_hudlist_show_timers_desc",
+										value = {"HUDList", "LEFT_LIST", "show_timers"},
+										visible_reqs = {},
+										enabled_reqs = {
+											{ setting = { "HUDList", "ENABLED" }, invert = false },
+										},
+									},
+									{
+										type = "divider",
+										size = 12,
+									},
+									{
+										type = "toggle",
+										name_id = "jimhud_hudlist_show_ammo_bags_title",
+										desc_id = "jimhud_hudlist_show_equipment_desc",
+										value = {"HUDList", "LEFT_LIST", "show_ammo_bags"},
+										visible_reqs = {},
+										enabled_reqs = {
+											{ setting = { "HUDList", "ENABLED" }, invert = false },
+										},
+									},
+									{
+										type = "toggle",
+										name_id = "jimhud_hudlist_show_doc_bags_title",
+										desc_id = "jimhud_hudlist_show_equipment_desc",
+										value = {"HUDList", "LEFT_LIST", "show_doc_bags"},
+										visible_reqs = {},
+										enabled_reqs = {
+											{ setting = { "HUDList", "ENABLED" }, invert = false },
+										},
+									},
+									{
+										type = "toggle",
+										name_id = "jimhud_hudlist_show_first_aid_kits_title",
+										desc_id = "jimhud_hudlist_show_equipment_desc",
+										value = {"HUDList", "LEFT_LIST", "show_first_aid_kits"},
+										visible_reqs = {},
+										enabled_reqs = {
+											{ setting = { "HUDList", "ENABLED" }, invert = false },
+										},
+									},
+									{
+										type = "toggle",
+										name_id = "jimhud_hudlist_show_body_bags_title",
+										desc_id = "jimhud_hudlist_show_equipment_desc",
+										value = {"HUDList", "LEFT_LIST", "show_body_bags"},
+										visible_reqs = {},
+										enabled_reqs = {
+											{ setting = { "HUDList", "ENABLED" }, invert = false },
+										},
+									},
+									{
+										type = "toggle",
+										name_id = "jimhud_hudlist_show_grenade_crates_title",
+										desc_id = "jimhud_hudlist_show_equipment_desc",
+										value = {"HUDList", "LEFT_LIST", "show_grenade_crates"},
+										visible_reqs = {},
+										enabled_reqs = {
+											{ setting = { "HUDList", "ENABLED" }, invert = false },
+										},
+									},
+									{
+										type = "toggle",
+										name_id = "jimhud_hudlist_sentries_title",
+										desc_id = "jimhud_hudlist_sentries_desc",
+										value = {"HUDList", "LEFT_LIST", "show_sentries"},
+										visible_reqs = {},
+										enabled_reqs = {
+											{ setting = { "HUDList", "ENABLED" }, invert = false },
+										},
+									},
+									{
+										type = "divider",
+										size = 12,
+									},
+									{
+										type = "toggle",
+										name_id = "jimhud_hudlist_show_ecms_title",
+										desc_id = "jimhud_hudlist_show_ecms_desc",
+										value = {"HUDList", "LEFT_LIST", "show_ecms"},
+										visible_reqs = {},
+										enabled_reqs = {
+											{ setting = { "HUDList", "ENABLED" }, invert = false },
+										},
+									},
+									{
+										type = "toggle",
+										name_id = "jimhud_hudlist_show_ecm_retrigger_title",
+										desc_id = "jimhud_hudlist_show_ecm_retrigger_desc",
+										value = {"HUDList", "LEFT_LIST", "show_ecm_retrigger"},
+										visible_reqs = {},
+										enabled_reqs = {
+											{ setting = { "HUDList", "ENABLED" }, invert = false },
+										},
+									},
+									{
+										type = "divider",
+										size = 12,
+									},
+									{
+										type = "toggle",
+										name_id = "jimhud_hudlist_show_minions_title",
+										desc_id = "jimhud_hudlist_show_minions_desc",
+										value = {"HUDList", "LEFT_LIST", "show_minions"},
+										visible_reqs = {},
+										enabled_reqs = {
+											{ setting = { "HUDList", "ENABLED" }, invert = false },
+										},
+									},
+									{
+										type = "toggle",
+										name_id = "jimhud_hudlist_show_own_minions_only_title",
+										desc_id = "jimhud_hudlist_show_own_minions_only_desc",
+										value = {"HUDList", "LEFT_LIST", "show_minions"},
+										visible_reqs = {},
+										enabled_reqs = {
+											{ setting = { "HUDList", "ENABLED" }, invert = false },
+											{ setting = { "HUDList", "LEFT_LIST", "show_minions" }, invert = false },
+										},
+									},
+									{
+										type = "divider",
+										size = 12,
+									},
+									{
+										type = "toggle",
+										name_id = "jimhud_hudlist_show_pagers_title",
+										desc_id = "jimhud_hudlist_show_pagers_desc",
+										value = {"HUDList", "LEFT_LIST", "show_pagers"},
+										visible_reqs = {},
+										enabled_reqs = {
+											{ setting = { "HUDList", "ENABLED" }, invert = false },
+										},
+									},
+									{
+										type = "divider",
+										size = 12,
+									},
+									{
+										type = "toggle",
+										name_id = "jimhud_hudlist_show_tape_loop_title",
+										desc_id = "jimhud_hudlist_show_tape_loop_desc",
+										value = {"HUDList", "LEFT_LIST", "show_tape_loop"},
+										visible_reqs = {},
+										enabled_reqs = {
+											{ setting = { "HUDList", "ENABLED" }, invert = false },
+										},
+									},
+									{
+										type = "divider",
+										size = 12,
+									},
+									{
+										type = "toggle",
+										name_id = "jimhud_hudlist_timer_format_title",
+										desc_id = "jimhud_hudlist_timer_format_desc",
+										value = {"HUDList", "LEFT_LIST", "timer_in_seconds"},
+										visible_reqs = {
+											{ setting = { "HUDList", "ENABLED" }, invert = false },
+										},
+									},
+								},
+							},
+							{	--HUDList Right List
+								type = "menu",
+								menu_id = "jimhud_hudlist_right_options_menu",
+								name_id = "jimhud_infopanels_right_options_name",
+								desc_id = "jimhud_infopanels_right_options_help",
+								options = {
+									{
+										type = "toggle",
+										name_id = "jimhud_hudlist_show_enemies_title",
+										desc_id = "jimhud_hudlist_show_enemies_desc",
+										value = {"HUDList", "RIGHT_LIST", "show_enemies"},
+										visible_reqs = {},
+										enabled_reqs = {
+											{ setting = { "HUDList", "ENABLED" }, invert = false },
+										},
+									},
+									{
+										type = "toggle",
+										name_id = "jimhud_hudlist_aggregate_enemies_title",
+										desc_id = "jimhud_hudlist_aggregate_enemies_desc",
+										value = {"HUDList", "RIGHT_LIST", "aggregate_enemies"},
+										visible_reqs = {},
+										enabled_reqs = {
+											{ setting = { "HUDList", "ENABLED" }, invert = false },
+											{ setting = { "HUDList", "RIGHT_LIST", "show_enemies" }, invert = false },
+										},
+									},
+									{
+										type = "toggle",
+										name_id = "jimhud_hudlist_show_turrets_title",
+										desc_id = "jimhud_hudlist_show_turrets_desc",
+										value = {"HUDList", "RIGHT_LIST", "show_turrets"},
+										visible_reqs = {},
+										enabled_reqs = {
+											{ setting = { "HUDList", "ENABLED" }, invert = false },
+										},
+									},
+									{
+										type = "toggle",
+										name_id = "jimhud_hudlist_show_civilians_title",
+										desc_id = "jimhud_hudlist_show_civilians_desc",
+										value = {"HUDList", "RIGHT_LIST", "show_civilians"},
+										visible_reqs = {},
+										enabled_reqs = {
+											{ setting = { "HUDList", "ENABLED" }, invert = false },
+										},
+									},
+									{
+										type = "toggle",
+										name_id = "jimhud_hudlist_show_hostages_title",
+										desc_id = "jimhud_hudlist_show_hostages_desc",
+										value = {"HUDList", "RIGHT_LIST", "show_hostages"},
+										visible_reqs = {},
+										enabled_reqs = {
+											{ setting = { "HUDList", "ENABLED" }, invert = false },
+										},
+									},
+									{
+										type = "toggle",
+										name_id = "jimhud_hudlist_aggregate_hostages_title",
+										desc_id = "jimhud_hudlist_aggregate_hostages_desc",
+										value = {"HUDList", "RIGHT_LIST", "aggregate_hostages"},
+										visible_reqs = {},
+										enabled_reqs = {
+											{ setting = { "HUDList", "ENABLED" }, invert = false },
+											{ setting = {"HUDList", "RIGHT_LIST",  "show_hostages"}, invert = false },
+										},
+									},
+									{
+										type = "toggle",
+										name_id = "jimhud_hudlist_show_minion_count_title",
+										desc_id = "jimhud_hudlist_show_minion_count_desc",
+										value = {"HUDList", "RIGHT_LIST", "show_minion_count"},
+										visible_reqs = {},
+										enabled_reqs = {
+											{ setting = { "HUDList", "ENABLED" }, invert = false },
+										},
+									},
+									{
+										type = "divider",
+										size = 12,
+									},
+									{
+										type = "toggle",
+										name_id = "jimhud_hudlist_show_pager_count_title",
+										desc_id = "jimhud_hudlist_show_pager_count_desc",
+										value = {"HUDList", "RIGHT_LIST", "show_pager_count"},
+										visible_reqs = {},
+										enabled_reqs = {
+											{ setting = { "HUDList", "ENABLED" }, invert = false },
+										},
+									},
+									{
+										type = "toggle",
+										name_id = "jimhud_hudlist_show_cam_count_title",
+										desc_id = "jimhud_hudlist_show_cam_count_desc",
+										value = {"HUDList", "RIGHT_LIST", "show_cam_count"},
+										visible_reqs = {},
+										enabled_reqs = {
+											{ setting = { "HUDList", "ENABLED" }, invert = false },
+										},
+									},
+									{
+										type = "toggle",
+										name_id = "jimhud_hudlist_show_bodybags_count_title",
+										desc_id = "jimhud_hudlist_show_bodybags_count_desc",
+										value = {"HUDList", "RIGHT_LIST", "show_bodybags_count"},
+										visible_reqs = {},
+										enabled_reqs = {
+											{ setting = { "HUDList", "ENABLED" }, invert = false },
+										},
+									},
+									{
+										type = "toggle",
+										name_id = "jimhud_hudlist_show_corpse_count_title",
+										desc_id = "jimhud_hudlist_show_corpse_count_desc",
+										value = {"HUDList", "RIGHT_LIST", "show_corpse_count"},
+										visible_reqs = {},
+										enabled_reqs = {
+											{ setting = { "HUDList", "ENABLED" }, invert = false },
+										},
+									},
+									{
+										type = "divider",
+										size = 12,
+									},
+									{
+										type = "toggle",
+										name_id = "jimhud_hudlist_show_loot_title",
+										desc_id = "jimhud_hudlist_show_loot_desc",
+										value = {"HUDList", "RIGHT_LIST", "show_loot"},
+										visible_reqs = {},
+										enabled_reqs = {
+											{ setting = { "HUDList", "ENABLED" }, invert = false },
+										},
+									},
+									{
+										type = "toggle",
+										name_id = "jimhud_hudlist_aggregate_loot_title",
+										desc_id = "jimhud_hudlist_aggregate_loot_desc",
+										value = {"HUDList", "RIGHT_LIST", "aggregate_loot"},
+										visible_reqs = {},
+										enabled_reqs = {
+											{ setting = { "HUDList", "ENABLED" }, invert = false },
+											{ setting = { "HUDList", "RIGHT_LIST",  "show_loot" }, invert = false },
+										},
+									},
+									{
+										type = "toggle",
+										name_id = "jimhud_hudlist_separate_bagged_loot_title",
+										desc_id = "jimhud_hudlist_separate_bagged_loot_desc",
+										value = {"HUDList", "RIGHT_LIST", "separate_bagged_loot"},
+										visible_reqs = {},
+										enabled_reqs = {
+											{ setting = { "HUDList", "ENABLED" }, invert = false },
+											{ setting = { "HUDList", "RIGHT_LIST",  "show_loot" }, invert = false },
+										},
+									},
+									{
+										type = "toggle",
+										name_id = "jimhud_hudlist_show_potential_loot_title",
+										desc_id = "jimhud_hudlist_show_potential_loot_desc",
+										value = {"HUDList", "RIGHT_LIST", "show_potential_loot"},
+										visible_reqs = {},
+										enabled_reqs = {
+											{ setting = { "HUDList", "ENABLED" }, invert = false },
+										},
+									},
+									{
+										type = "divider",
+										size = 12,
+									},
+									{
+										type = "toggle",
+										name_id = "jimhud_hudlist_show_special_pickups_title",
+										desc_id = "jimhud_hudlist_show_special_pickups_desc",
+										value = {"HUDList", "RIGHT_LIST", "show_special_pickups"},
+										visible_reqs = {},
+										enabled_reqs = {
+											{ setting = { "HUDList", "ENABLED" }, invert = false },
+										},
+									},
+									{
+										type = "toggle",
+										name_id = "jimhud_hudlist_show_mission_pickups_title",
+										desc_id = "jimhud_hudlist_show_mission_pickups_desc",
+										value = {"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "mission_pickups"},
+										visible_reqs = {},
+										enabled_reqs = {
+											{ setting = { "HUDList", "ENABLED" }, invert = false },
+											{ setting = { "HUDList", "RIGHT_LIST", "show_special_pickups" }, invert = false },
+										},
+									},
+									{
+										type = "toggle",
+										name_id = "jimhud_hudlist_show_collectables_pickups_title",
+										desc_id = "jimhud_hudlist_show_collectables_pickups_desc",
+										value = {"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "collectables"},
+										visible_reqs = {},
+										enabled_reqs = {
+											{ setting = { "HUDList", "ENABLED" }, invert = false },
+											{ setting = { "HUDList", "RIGHT_LIST", "show_special_pickups" }, invert = false },
+										},
+									},
+									{
+										type = "toggle",
+										name_id = "jimhud_hudlist_show_valuables_pickups_title",
+										desc_id = "jimhud_hudlist_show_valuables_pickups_desc",
+										value = {"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "valuables"},
+										visible_reqs = {},
+										enabled_reqs = {
+											{ setting = { "HUDList", "ENABLED" }, invert = false },
+											{ setting = { "HUDList", "RIGHT_LIST", "show_special_pickups" }, invert = false },
+										},
+									},
+								},
+							},
+							{	--HUDList Buff List
+								type = "menu",
+								menu_id = "jimhud_hudlist_buffs_options_menu",
+								name_id = "jimhud_infopanels_buff_options_name",
+								desc_id = "jimhud_infopanels_buff_options_help",
+								options = {
+									{
+										type = "toggle",
+										name_id = "jimhud_hudlist_show_buffs_title",
+										desc_id = "jimhud_hudlist_show_buffs_desc",
+										value = {"HUDList", "BUFF_LIST", "show_buffs"},
+										visible_reqs = {},
+										enabled_reqs = {
+											{ setting = { "HUDList", "ENABLED" }, invert = false },
+										},
+									},
+									{
+										type = "divider",
+										size = 12,
+									},
+									{
+										type = "toggle",
+										name_id = "jimhud_hudlist_damage_increase_compbuff_title",
+										desc_id = "jimhud_hudlist_damage_increase_compbuff_desc",
+										value = {"HUDList", "BUFF_LIST", "damage_increase"},
+										visible_reqs = {},
+										enabled_reqs = {
+											{ setting = { "HUDList", "ENABLED" }, invert = false },
+											{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
+										},
+									},
+									{
+										type = "toggle",
+										name_id = "jimhud_hudlist_damage_reduction_compbuff_title",
+										desc_id = "jimhud_hudlist_damage_reduction_compbuff_desc",
+										value = {"HUDList", "BUFF_LIST", "damage_reduction"},
+										visible_reqs = {},
+										enabled_reqs = {
+											{ setting = { "HUDList", "ENABLED" }, invert = false },
+											{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
+										},
+									},
+									{
+										type = "toggle",
+										name_id = "jimhud_hudlist_melee_damage_increase_compbuff_title",
+										desc_id = "jimhud_hudlist_melee_damage_increase_compbuff_desc",
+										value = {"HUDList", "BUFF_LIST", "melee_damage_increase"},
+										visible_reqs = {},
+										enabled_reqs = {
+											{ setting = { "HUDList", "ENABLED" }, invert = false },
+											{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
+										},
+									},
+									{
+										type = "toggle",
+										name_id = "jimhud_hudlist_passive_health_regen_compbuff_title",
+										desc_id = "jimhud_hudlist_passive_health_regen_compbuff_desc",
+										value = {"HUDList", "BUFF_LIST", "passive_health_regen"},
+										visible_reqs = {},
+										enabled_reqs = {
+											{ setting = { "HUDList", "ENABLED" }, invert = false },
+											{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
+										},
+									},
+									{
+										type = "toggle",
+										name_id = "jimhud_hudlist_total_dodge_chance_compbuff_title",
+										desc_id = "jimhud_hudlist_total_dodge_chance_compbuff_desc",
+										value = {"HUDList", "BUFF_LIST", "total_dodge_chance"},
+										visible_reqs = {},
+										enabled_reqs = {
+											{ setting = { "HUDList", "ENABLED" }, invert = false },
+											{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
+										},
+									},
+									{
+										type = "divider",
+										size = 12,
+									},
+									{
+										type = "menu",
+										menu_id = "jimhud_hudlist_buffs_mastermind_options_menu",
+										name_id = "jimhud_infopanels_buff_mastermind_options_name",
+										desc_id = "jimhud_infopanels_buff_mastermind_options_help",
+										options = {
+											{
+												type = "toggle",
+												name_id = "jimhud_hudlist_forced_friendship_teambuff_title",
+												desc_id = "jimhud_hudlist_forced_friendship_teambuff_desc",
+												value = {"HUDList", "BUFF_LIST", "MASTERMIND_BUFFS", "forced_friendship"},
+												visible_reqs = {},
+												enabled_reqs = {
+													{ setting = { "HUDList", "ENABLED" }, invert = false },
+													{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
+												},
+											},
+											{
+												type = "divider",
+												size = 12,
+											},
+											{
+												type = "toggle",
+												name_id = "jimhud_hudlist_aggressive_reload_aced_buff_title",
+												desc_id = "jimhud_hudlist_aggressive_reload_aced_buff_desc",
+												value = {"HUDList", "BUFF_LIST", "MASTERMIND_BUFFS", "aggressive_reload_aced"},
+												visible_reqs = {},
+												enabled_reqs = {
+													{ setting = { "HUDList", "ENABLED" }, invert = false },
+													{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
+												},
+											},
+											{
+												type = "toggle",
+												name_id = "jimhud_hudlist_ammo_efficiency_buff_title",
+												desc_id = "jimhud_hudlist_ammo_efficiency_buff_desc",
+												value = {"HUDList", "BUFF_LIST", "MASTERMIND_BUFFS", "ammo_efficiency"},
+												visible_reqs = {},
+												enabled_reqs = {
+													{ setting = { "HUDList", "ENABLED" }, invert = false },
+													{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
+												},
+											},
+											{
+												type = "toggle",
+												name_id = "jimhud_hudlist_combat_medic_buff_title",
+												desc_id = "jimhud_hudlist_combat_medic_buff_desc",
+												value = {"HUDList", "BUFF_LIST", "MASTERMIND_BUFFS", "combat_medic"},
+												visible_reqs = {},
+												enabled_reqs = {
+													{ setting = { "HUDList", "ENABLED" }, invert = false },
+													{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
+												},
+											},
+											{
+												type = "toggle",
+												name_id = "jimhud_hudlist_combat_medic_passive_buff_title",
+												desc_id = "jimhud_hudlist_combat_medic_passive_buff_desc",
+												value = {"HUDList", "BUFF_LIST", "MASTERMIND_BUFFS", "combat_medic_passive"},
+												visible_reqs = {},
+												enabled_reqs = {
+													{ setting = { "HUDList", "ENABLED" }, invert = false },
+													{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
+												},
+											},
+											{
+												type = "toggle",
+												name_id = "jimhud_hudlist_hostage_taker_buff_title",
+												desc_id = "jimhud_hudlist_hostage_taker_buff_desc",
+												value = {"HUDList", "BUFF_LIST", "MASTERMIND_BUFFS", "hostage_taker"},
+												visible_reqs = {},
+												enabled_reqs = {
+													{ setting = { "HUDList", "ENABLED" }, invert = false },
+													{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
+												},
+											},
+											{
+												type = "toggle",
+												name_id = "jimhud_hudlist_inspire_buff_title",
+												desc_id = "jimhud_hudlist_inspire_buff_desc",
+												value = {"HUDList", "BUFF_LIST", "MASTERMIND_BUFFS", "inspire"},
+												visible_reqs = {},
+												enabled_reqs = {
+													{ setting = { "HUDList", "ENABLED" }, invert = false },
+													{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
+												},
+											},
+											{
+												type = "toggle",
+												name_id = "jimhud_hudlist_painkiller_buff_title",
+												desc_id = "jimhud_hudlist_painkiller_buff_desc",
+												value = {"HUDList", "BUFF_LIST", "MASTERMIND_BUFFS", "painkiller"},
+												visible_reqs = {},
+												enabled_reqs = {
+													{ setting = { "HUDList", "ENABLED" }, invert = false },
+													{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
+												},
+											},
+											{
+												type = "toggle",
+												name_id = "jimhud_hudlist_partner_in_crime_buff_title",
+												desc_id = "jimhud_hudlist_partner_in_crime_buff_desc",
+												value = {"HUDList", "BUFF_LIST", "MASTERMIND_BUFFS", "partner_in_crime"},
+												visible_reqs = {},
+												enabled_reqs = {
+													{ setting = { "HUDList", "ENABLED" }, invert = false },
+													{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
+												},
+											},
+											{
+												type = "toggle",
+												name_id = "jimhud_hudlist_quick_fix_buff_title",
+												desc_id = "jimhud_hudlist_quick_fix_buff_desc",
+												value = {"HUDList", "BUFF_LIST", "MASTERMIND_BUFFS", "quick_fix"},
+												visible_reqs = {},
+												enabled_reqs = {
+													{ setting = { "HUDList", "ENABLED" }, invert = false },
+													{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
+												},
+											},
+											{
+												type = "toggle",
+												name_id = "jimhud_hudlist_uppers_buff_title",
+												desc_id = "jimhud_hudlist_uppers_buff_desc",
+												value = {"HUDList", "BUFF_LIST", "MASTERMIND_BUFFS", "uppers"},
+												visible_reqs = {},
+												enabled_reqs = {
+													{ setting = { "HUDList", "ENABLED" }, invert = false },
+													{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
+												},
+											},
+											{
+												type = "divider",
+												size = 12,
+											},
+											{
+												type = "toggle",
+												name_id = "jimhud_hudlist_inspire_debuff_title",
+												desc_id = "jimhud_hudlist_inspire_debuff_desc",
+												value = {"HUDList", "BUFF_LIST", "MASTERMIND_BUFFS", "inspire_debuff"},
+												visible_reqs = {},
+												enabled_reqs = {
+													{ setting = { "HUDList", "ENABLED" }, invert = false },
+													{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
+												},
+											},
+											{
+												type = "toggle",
+												name_id = "jimhud_hudlist_inspire_revive_debuff_title",
+												desc_id = "jimhud_hudlist_inspire_revive_debuff_desc",
+												value = {"HUDList", "BUFF_LIST", "MASTERMIND_BUFFS", "inspire_revive_debuff"},
+												visible_reqs = {},
+												enabled_reqs = {
+													{ setting = { "HUDList", "ENABLED" }, invert = false },
+													{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
+												},
+											},
+										},
+									},
+									{
+										type = "menu",
+										menu_id = "jimhud_hudlist_buffs_enforcer_options_menu",
+										name_id = "jimhud_infopanels_buff_enforcer_options_name",
+										desc_id = "jimhud_infopanels_buff_enforcer_options_help",
+										options = {
+											{
+												type = "toggle",
+												name_id = "jimhud_hudlist_bulletproof_teambuff_title",
+												desc_id = "jimhud_hudlist_bulletproof_teambuff_desc",
+												value = {"HUDList", "BUFF_LIST", "ENFORCER_BUFFS", "bulletproof"},
+												visible_reqs = {},
+												enabled_reqs = {
+													{ setting = { "HUDList", "ENABLED" }, invert = false },
+													{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
+												},
+											},
+											{
+												type = "divider",
+												size = 12,
+											},
+											{
+												type = "toggle",
+												name_id = "jimhud_hudlist_bullet_storm_buff_title",
+												desc_id = "jimhud_hudlist_bullet_storm_buff_desc",
+												value = {"HUDList", "BUFF_LIST", "ENFORCER_BUFFS", "bullet_storm"},
+												visible_reqs = {},
+												enabled_reqs = {
+													{ setting = { "HUDList", "ENABLED" }, invert = false },
+													{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
+												},
+											},
+											{
+												type = "toggle",
+												name_id = "jimhud_hudlist_die_hard_buff_title",
+												desc_id = "jimhud_hudlist_die_hard_buff_desc",
+												value = {"HUDList", "BUFF_LIST", "ENFORCER_BUFFS", "die_hard"},
+												visible_reqs = {},
+												enabled_reqs = {
+													{ setting = { "HUDList", "ENABLED" }, invert = false },
+													{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
+												},
+											},
+											{
+												type = "toggle",
+												name_id = "jimhud_hudlist_overkill_buff_title",
+												desc_id = "jimhud_hudlist_overkill_buff_desc",
+												value = {"HUDList", "BUFF_LIST", "ENFORCER_BUFFS", "overkill"},
+												visible_reqs = {},
+												enabled_reqs = {
+													{ setting = { "HUDList", "ENABLED" }, invert = false },
+													{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
+												},
+											},
+											{
+												type = "toggle",
+												name_id = "jimhud_hudlist_underdog_buff_title",
+												desc_id = "jimhud_hudlist_underdog_buff_desc",
+												value = {"HUDList", "BUFF_LIST", "ENFORCER_BUFFS", "underdog"},
+												visible_reqs = {},
+												enabled_reqs = {
+													{ setting = { "HUDList", "ENABLED" }, invert = false },
+													{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
+												},
+											},
+											{
+												type = "divider",
+												size = 12,
+											},
+											{
+												type = "toggle",
+												name_id = "jimhud_hudlist_bullseye_debuff_title",
+												desc_id = "jimhud_hudlist_bullseye_debuff_desc",
+												value = {"HUDList", "BUFF_LIST", "ENFORCER_BUFFS", "bullseye_debuff"},
+												visible_reqs = {},
+												enabled_reqs = {
+													{ setting = { "HUDList", "ENABLED" }, invert = false },
+													{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
+												},
+											},
+										},
+									},
+									{
+										type = "menu",
+										menu_id = "jimhud_hudlist_buffs_technician_options_menu",
+										name_id = "jimhud_infopanels_buff_technician_options_name",
+										desc_id = "jimhud_infopanels_buff_technician_options_help",
+										options = {
+											{
+												type = "toggle",
+												name_id = "jimhud_hudlist_lock_n_load_buff_title",
+												desc_id = "jimhud_hudlist_lock_n_load_buff_desc",
+												value = {"HUDList", "BUFF_LIST", "TECHNICIAN_BUFFS", "lock_n_load"},
+												visible_reqs = {},
+												enabled_reqs = {
+													{ setting = { "HUDList", "ENABLED" }, invert = false },
+													{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
+												},
+											},
+										},
+									},
+									{
+										type = "menu",
+										menu_id = "jimhud_hudlist_buffs_ghost_options_menu",
+										name_id = "jimhud_infopanels_buff_ghost_options_name",
+										desc_id = "jimhud_infopanels_buff_ghost_options_help",
+										options = {
+											{
+												type = "toggle",
+												name_id = "jimhud_hudlist_dire_need_buff_title",
+												desc_id = "jimhud_hudlist_dire_need_buff_desc",
+												value = {"HUDList", "BUFF_LIST", "GHOST_BUFFS", "dire_need"},
+												visible_reqs = {},
+												enabled_reqs = {
+													{ setting = { "HUDList", "ENABLED" }, invert = false },
+													{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
+												},
+											},
+											{
+												type = "toggle",
+												name_id = "jimhud_hudlist_second_wind_buff_title",
+												desc_id = "jimhud_hudlist_second_wind_buff_desc",
+												value = {"HUDList", "BUFF_LIST", "GHOST_BUFFS", "second_wind"},
+												visible_reqs = {},
+												enabled_reqs = {
+													{ setting = { "HUDList", "ENABLED" }, invert = false },
+													{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
+												},
+											},
+											{
+												type = "toggle",
+												name_id = "jimhud_hudlist_sixth_sense_buff_title",
+												desc_id = "jimhud_hudlist_sixth_sense_buff_desc",
+												value = {"HUDList", "BUFF_LIST", "GHOST_BUFFS", "sixth_sense"},
+												visible_reqs = {},
+												enabled_reqs = {
+													{ setting = { "HUDList", "ENABLED" }, invert = false },
+													{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
+												},
+											},
+											{
+												type = "toggle",
+												name_id = "jimhud_hudlist_unseen_strike_buff_title",
+												desc_id = "jimhud_hudlist_unseen_strike_buff_desc",
+												value = {"HUDList", "BUFF_LIST", "GHOST_BUFFS", "unseen_strike"},
+												visible_reqs = {},
+												enabled_reqs = {
+													{ setting = { "HUDList", "ENABLED" }, invert = false },
+													{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
+												},
+											},
+										},
+									},
+									{
+										type = "menu",
+										menu_id = "jimhud_hudlist_buffs_fugitive_options_menu",
+										name_id = "jimhud_infopanels_buff_fugitive_options_name",
+										desc_id = "jimhud_infopanels_buff_fugitive_options_help",
+										options = {
+											{
+												type = "toggle",
+												name_id = "jimhud_hudlist_berserker_buff_title",
+												desc_id = "jimhud_hudlist_berserker_buff_desc",
+												value = {"HUDList", "BUFF_LIST", "FUGITIVE_BUFFS", "berserker"},
+												visible_reqs = {},
+												enabled_reqs = {
+													{ setting = { "HUDList", "ENABLED" }, invert = false },
+													{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
+												},
+											},
+											{
+												type = "toggle",
+												name_id = "jimhud_hudlist_bloodthirst_basic_buff_title",
+												desc_id = "jimhud_hudlist_bloodthirst_basic_buff_desc",
+												value = {"HUDList", "BUFF_LIST", "FUGITIVE_BUFFS", "bloodthirst_basic"},
+												visible_reqs = {},
+												enabled_reqs = {
+													{ setting = { "HUDList", "ENABLED" }, invert = false },
+													{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
+												},
+											},
+											{
+												type = "toggle",
+												name_id = "jimhud_hudlist_bloodthirst_aced_buff_title",
+												desc_id = "jimhud_hudlist_bloodthirst_aced_buff_desc",
+												value = {"HUDList", "BUFF_LIST", "FUGITIVE_BUFFS", "bloodthirst_aced"},
+												visible_reqs = {},
+												enabled_reqs = {
+													{ setting = { "HUDList", "ENABLED" }, invert = false },
+													{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
+												},
+											},
+											{
+												type = "toggle",
+												name_id = "jimhud_hudlist_desperado_buff_title",
+												desc_id = "jimhud_hudlist_desperado_buff_desc",
+												value = {"HUDList", "BUFF_LIST", "FUGITIVE_BUFFS", "desperado"},
+												visible_reqs = {},
+												enabled_reqs = {
+													{ setting = { "HUDList", "ENABLED" }, invert = false },
+													{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
+												},
+											},
+											{
+												type = "toggle",
+												name_id = "jimhud_hudlist_frenzy_buff_title",
+												desc_id = "jimhud_hudlist_frenzy_buff_desc",
+												value = {"HUDList", "BUFF_LIST", "FUGITIVE_BUFFS", "frenzy"},
+												visible_reqs = {},
+												enabled_reqs = {
+													{ setting = { "HUDList", "ENABLED" }, invert = false },
+													{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
+												},
+											},
+											{
+												type = "toggle",
+												name_id = "jimhud_hudlist_messiah_buff_title",
+												desc_id = "jimhud_hudlist_messiah_buff_desc",
+												value = {"HUDList", "BUFF_LIST", "FUGITIVE_BUFFS", "messiah"},
+												visible_reqs = {},
+												enabled_reqs = {
+													{ setting = { "HUDList", "ENABLED" }, invert = false },
+													{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
+												},
+											},
+											{
+												type = "toggle",
+												name_id = "jimhud_hudlist_running_from_death_buff_title",
+												desc_id = "jimhud_hudlist_running_from_death_buff_desc",
+												value = {"HUDList", "BUFF_LIST", "FUGITIVE_BUFFS", "running_from_death"},
+												visible_reqs = {},
+												enabled_reqs = {
+													{ setting = { "HUDList", "ENABLED" }, invert = false },
+													{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
+												},
+											},
+											{
+												type = "toggle",
+												name_id = "jimhud_hudlist_swan_song_buff_title",
+												desc_id = "jimhud_hudlist_swan_song_buff_desc",
+												value = {"HUDList", "BUFF_LIST", "FUGITIVE_BUFFS", "swan_song"},
+												visible_reqs = {},
+												enabled_reqs = {
+													{ setting = { "HUDList", "ENABLED" }, invert = false },
+													{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
+												},
+											},
+											{
+												type = "toggle",
+												name_id = "jimhud_hudlist_trigger_happy_buff_title",
+												desc_id = "jimhud_hudlist_trigger_happy_buff_desc",
+												value = {"HUDList", "BUFF_LIST", "FUGITIVE_BUFFS", "trigger_happy"},
+												visible_reqs = {},
+												enabled_reqs = {
+													{ setting = { "HUDList", "ENABLED" }, invert = false },
+													{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
+												},
+											},
+											{
+												type = "toggle",
+												name_id = "jimhud_hudlist_up_you_go_buff_title",
+												desc_id = "jimhud_hudlist_up_you_go_buff_desc",
+												value = {"HUDList", "BUFF_LIST", "FUGITIVE_BUFFS", "up_you_go"},
+												visible_reqs = {},
+												enabled_reqs = {
+													{ setting = { "HUDList", "ENABLED" }, invert = false },
+													{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
+												},
+											},
+										},
+									},
+									{
+										type = "menu",
+										menu_id = "jimhud_hudlist_buffs_perkdecks_options_menu",
+										name_id = "jimhud_infopanels_buff_perkdecks_options_name",
+										desc_id = "jimhud_infopanels_buff_perkdecks_options_help",
+										options = {
+											{
+												type = "toggle",
+												name_id = "jimhud_hudlist_armor_break_invulnerable_buff_title",
+												desc_id = "jimhud_hudlist_armor_break_invulnerable_buff_desc",
+												value = {"HUDList", "BUFF_LIST", "PERK_BUFFS", "armor_break_invulnerable"},
+												visible_reqs = {},
+												enabled_reqs = {
+													{ setting = { "HUDList", "ENABLED" }, invert = false },
+													{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
+												},
+											},
+											{
+												type = "toggle",
+												name_id = "jimhud_hudlist_anarchist_armor_recovery_debuff_title",
+												desc_id = "jimhud_hudlist_anarchist_armor_recovery_debuff_desc",
+												value = {"HUDList", "BUFF_LIST", "PERK_BUFFS", "anarchist_armor_recovery_debuff"},
+												visible_reqs = {},
+												enabled_reqs = {
+													{ setting = { "HUDList", "ENABLED" }, invert = false },
+													{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
+												},
+											},
+											{
+												type = "toggle",
+												name_id = "jimhud_hudlist_armorer_teambuff_title",
+												desc_id = "jimhud_hudlist_armorer_teambuff_desc",
+												value = {"HUDList", "BUFF_LIST", "PERK_BUFFS", "armorer"},
+												visible_reqs = {},
+												enabled_reqs = {
+													{ setting = { "HUDList", "ENABLED" }, invert = false },
+													{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
+												},
+											},
+											{
+												type = "toggle",
+												name_id = "jimhud_hudlist_biker_buff_title",
+												desc_id = "jimhud_hudlist_biker_buff_desc",
+												value = {"HUDList", "BUFF_LIST", "PERK_BUFFS", "biker"},
+												visible_reqs = {},
+												enabled_reqs = {
+													{ setting = { "HUDList", "ENABLED" }, invert = false },
+													{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
+												},
+											},
+											{
+												type = "toggle",
+												name_id = "jimhud_hudlist_crew_chief_teambuff_title",
+												desc_id = "jimhud_hudlist_crew_chief_teambuff_desc",
+												value = {"HUDList", "BUFF_LIST", "PERK_BUFFS", "crew_chief"},
+												visible_reqs = {},
+												enabled_reqs = {
+													{ setting = { "HUDList", "ENABLED" }, invert = false },
+													{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
+												},
+											},
+											{
+												type = "toggle",
+												name_id = "jimhud_hudlist_hostage_situation_buff_title",
+												desc_id = "jimhud_hudlist_hostage_situation_buff_desc",
+												value = {"HUDList", "BUFF_LIST", "PERK_BUFFS", "hostage_situation"},
+												visible_reqs = {},
+												enabled_reqs = {
+													{ setting = { "HUDList", "ENABLED" }, invert = false },
+													{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
+												},
+											},
+											{
+												type = "toggle",
+												name_id = "jimhud_hudlist_ammo_give_out_debuff_title",
+												desc_id = "jimhud_hudlist_ammo_give_out_debuff_desc",
+												value = {"HUDList", "BUFF_LIST", "PERK_BUFFS", "ammo_give_out_debuff"},
+												visible_reqs = {},
+												enabled_reqs = {
+													{ setting = { "HUDList", "ENABLED" }, invert = false },
+													{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
+												},
+											},
+											{
+												type = "toggle",
+												name_id = "jimhud_hudlist_medical_supplies_debuff_title",
+												desc_id = "jimhud_hudlist_medical_supplies_debuff_desc",
+												value = {"HUDList", "BUFF_LIST", "PERK_BUFFS", "medical_supplies_debuff"},
+												visible_reqs = {},
+												enabled_reqs = {
+													{ setting = { "HUDList", "ENABLED" }, invert = false },
+													{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
+												},
+											},
+											{
+												type = "toggle",
+												name_id = "jimhud_hudlist_grinder_buff_title",
+												desc_id = "jimhud_hudlist_grinder_buff_desc",
+												value = {"HUDList", "BUFF_LIST", "PERK_BUFFS", "grinder"},
+												visible_reqs = {},
+												enabled_reqs = {
+													{ setting = { "HUDList", "ENABLED" }, invert = false },
+													{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
+												},
+											},
+											{
+												type = "toggle",
+												name_id = "jimhud_hudlist_chico_injector_buff_title",
+												desc_id = "jimhud_hudlist_chico_injector_buff_desc",
+												value = {"HUDList", "BUFF_LIST", "PERK_BUFFS", "chico_injector"},
+												visible_reqs = {},
+												enabled_reqs = {
+													{ setting = { "HUDList", "ENABLED" }, invert = false },
+													{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
+												},
+											},
+											{
+												type = "toggle",
+												name_id = "jimhud_hudlist_damage_control_debuff_title",
+												desc_id = "jimhud_hudlist_damage_control_debuff_desc",
+												value = {"HUDList", "BUFF_LIST", "PERK_BUFFS", "damage_control_debuff"},
+												visible_reqs = {},
+												enabled_reqs = {
+													{ setting = { "HUDList", "ENABLED" }, invert = false },
+													{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
+												},
+											},
+											{
+												type = "toggle",
+												name_id = "jimhud_hudlist_delayed_damage_buff_title",
+												desc_id = "jimhud_hudlist_delayed_damage_buff_desc",
+												value = {"HUDList", "BUFF_LIST", "PERK_BUFFS", "delayed_damage"},
+												visible_reqs = {},
+												enabled_reqs = {
+													{ setting = { "HUDList", "ENABLED" }, invert = false },
+													{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
+												},
+											},
+											{
+												type = "toggle",
+												name_id = "jimhud_hudlist_tooth_and_claw_buff_title",
+												desc_id = "jimhud_hudlist_tooth_and_claw_buff_desc",
+												value = {"HUDList", "BUFF_LIST", "PERK_BUFFS", "tooth_and_claw"},
+												visible_reqs = {},
+												enabled_reqs = {
+													{ setting = { "HUDList", "ENABLED" }, invert = false },
+													{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
+												},
+											},
+											{
+												type = "toggle",
+												name_id = "jimhud_hudlist_close_contact_buff_title",
+												desc_id = "jimhud_hudlist_close_contact_buff_desc",
+												value = {"HUDList", "BUFF_LIST", "PERK_BUFFS", "close_contact"},
+												visible_reqs = {},
+												enabled_reqs = {
+													{ setting = { "HUDList", "ENABLED" }, invert = false },
+													{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
+												},
+											},
+											{
+												type = "toggle",
+												name_id = "jimhud_hudlist_life_drain_debuff_title",
+												desc_id = "jimhud_hudlist_life_drain_debuff_desc",
+												value = {"HUDList", "BUFF_LIST", "PERK_BUFFS", "life_drain_debuff"},
+												visible_reqs = {},
+												enabled_reqs = {
+													{ setting = { "HUDList", "ENABLED" }, invert = false },
+													{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
+												},
+											},
+											{
+												type = "toggle",
+												name_id = "jimhud_hudlist_melee_stack_damage_buff_title",
+												desc_id = "jimhud_hudlist_melee_stack_damage_buff_desc",
+												value = {"HUDList", "BUFF_LIST", "PERK_BUFFS", "melee_stack_damage"},
+												visible_reqs = {},
+												enabled_reqs = {
+													{ setting = { "HUDList", "ENABLED" }, invert = false },
+													{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
+												},
+											},
+											{
+												type = "toggle",
+												name_id = "jimhud_hudlist_overdog_buff_title",
+												desc_id = "jimhud_hudlist_overdog_buff_desc",
+												value = {"HUDList", "BUFF_LIST", "PERK_BUFFS", "overdog"},
+												visible_reqs = {},
+												enabled_reqs = {
+													{ setting = { "HUDList", "ENABLED" }, invert = false },
+													{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
+												},
+											},
+											{
+												type = "toggle",
+												name_id = "jimhud_hudlist_maniac_buff_title",
+												desc_id = "jimhud_hudlist_maniac_buff_desc",
+												value = {"HUDList", "BUFF_LIST", "PERK_BUFFS", "maniac"},
+												visible_reqs = {},
+												enabled_reqs = {
+													{ setting = { "HUDList", "ENABLED" }, invert = false },
+													{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
+												},
+											},
+											{
+												type = "toggle",
+												name_id = "jimhud_hudlist_muscle_regen_buff_title",
+												desc_id = "jimhud_hudlist_muscle_regen_buff_desc",
+												value = {"HUDList", "BUFF_LIST", "PERK_BUFFS", "muscle_regen"},
+												visible_reqs = {},
+												enabled_reqs = {
+													{ setting = { "HUDList", "ENABLED" }, invert = false },
+													{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
+												},
+											},
+											{
+												type = "toggle",
+												name_id = "jimhud_hudlist_pocket_ecm_jammer_buff_title",
+												desc_id = "jimhud_hudlist_pocket_ecm_jammer_buff_desc",
+												value = {"HUDList", "BUFF_LIST", "PERK_BUFFS", "pocket_ecm_jammer"},
+												visible_reqs = {},
+												enabled_reqs = {
+													{ setting = { "HUDList", "ENABLED" }, invert = false },
+													{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
+												},
+											},
+											{
+												type = "toggle",
+												name_id = "jimhud_hudlist_pocket_ecm_kill_dodge_buff_title",
+												desc_id = "jimhud_hudlist_pocket_ecm_kill_dodge_buff_desc",
+												value = {"HUDList", "BUFF_LIST", "PERK_BUFFS", "pocket_ecm_kill_dodge"},
+												visible_reqs = {},
+												enabled_reqs = {
+													{ setting = { "HUDList", "ENABLED" }, invert = false },
+													{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
+												},
+											},
+											{
+												type = "toggle",
+												name_id = "jimhud_hudlist_sicario_dodge_buff_title",
+												desc_id = "jimhud_hudlist_sicario_dodge_buff_desc",
+												value = {"HUDList", "BUFF_LIST", "PERK_BUFFS", "sicario_dodge"},
+												visible_reqs = {},
+												enabled_reqs = {
+													{ setting = { "HUDList", "ENABLED" }, invert = false },
+													{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
+												},
+											},
+											{
+												type = "toggle",
+												name_id = "jimhud_hudlist_smoke_screen_buff_title",
+												desc_id = "jimhud_hudlist_smoke_screen_buff_desc",
+												value = {"HUDList", "BUFF_LIST", "PERK_BUFFS", "smoke_screen_grenade"},
+												visible_reqs = {},
+												enabled_reqs = {
+													{ setting = { "HUDList", "ENABLED" }, invert = false },
+													{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
+												},
+											},
+											{
+												type = "toggle",
+												name_id = "jimhud_hudlist_sociopath_debuff_title",
+												desc_id = "jimhud_hudlist_sociopath_debuff_desc",
+												value = {"HUDList", "BUFF_LIST", "PERK_BUFFS", "sociopath_debuff"},
+												visible_reqs = {},
+												enabled_reqs = {
+													{ setting = { "HUDList", "ENABLED" }, invert = false },
+													{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
+												},
+											},
+											{
+												type = "toggle",
+												name_id = "jimhud_hudlist_tag_team_buff_title",
+												desc_id = "jimhud_hudlist_tag_team_buff_desc",
+												value = {"HUDList", "BUFF_LIST", "PERK_BUFFS", "tag_team"},
+												visible_reqs = {},
+												enabled_reqs = {
+													{ setting = { "HUDList", "ENABLED" }, invert = false },
+													{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
+												},
+											},
+											{
+												type = "toggle",
+												name_id = "jimhud_hudlist_yakuza_buff_title",
+												desc_id = "jimhud_hudlist_yakuza_buff_desc",
+												value = {"HUDList", "BUFF_LIST", "PERK_BUFFS", "yakuza"},
+												visible_reqs = {},
+												enabled_reqs = {
+													{ setting = { "HUDList", "ENABLED" }, invert = false },
+													{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
+												},
+											},
+										},
+									},
+									{
+										type = "menu",
+										menu_id = "jimhud_hudlist_buffs_gageboosts_options_menu",
+										name_id = "jimhud_infopanels_buff_gageboosts_options_name",
+										desc_id = "jimhud_infopanels_buff_gageboosts_options_help",
+										options = {
+											{
+												type = "toggle",
+												name_id = "jimhud_hudlist_life_steal_gage_debuff_title",
+												desc_id = "jimhud_hudlist_life_steal_gage_debuff_desc",
+												value = {"HUDList", "BUFF_LIST", "GAGE_BOOSTS", "life_steal_debuff"},
+												visible_reqs = {},
+												enabled_reqs = {
+													{ setting = { "HUDList", "ENABLED" }, invert = false },
+													{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
+												},
+											},
+											{
+												type = "toggle",
+												name_id = "jimhud_hudlist_invulnerable_gage_buff_title",
+												desc_id = "jimhud_hudlist_invulnerable_gage_buff_desc",
+												value = {"HUDList", "BUFF_LIST", "GAGE_BOOSTS", "invulnerable_buff"},
+												visible_reqs = {},
+												enabled_reqs = {
+													{ setting = { "HUDList", "ENABLED" }, invert = false },
+													{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
+												},
+											},
+										},
+									},
+									{
+										type = "menu",
+										menu_id = "jimhud_hudlist_buffs_henchmen_options_menu",
+										name_id = "jimhud_infopanels_buff_henchmen_options_name",
+										desc_id = "jimhud_infopanels_buff_henchmen_options_help",
+										options = {
+											{
+												type = "toggle",
+												name_id = "jimhud_hudlist_crew_inspire_debuff_title",
+												desc_id = "jimhud_hudlist_crew_inspire_debuff_desc",
+												value = {"HUDList", "BUFF_LIST", "AI_SKILLS", "crew_inspire_debuff"},
+												visible_reqs = {},
+												enabled_reqs = {
+													{ setting = { "HUDList", "ENABLED" }, invert = false },
+													{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
+												},
+											},
+											{
+												type = "toggle",
+												name_id = "jimhud_hudlist_crew_throwable_regen_buff_title",
+												desc_id = "jimhud_hudlist_crew_throwable_regen_buff_desc",
+												value = {"HUDList", "BUFF_LIST", "AI_SKILLS", "crew_throwable_regen"},
+												visible_reqs = {},
+												enabled_reqs = {
+													{ setting = { "HUDList", "ENABLED" }, invert = false },
+													{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
+												},
+											},
+											{
+												type = "toggle",
+												name_id = "jimhud_hudlist_crew_health_regen_buff_title",
+												desc_id = "jimhud_hudlist_crew_health_regen_buff_desc",
+												value = {"HUDList", "BUFF_LIST", "AI_SKILLS", "crew_health_regen"},
+												visible_reqs = {},
+												enabled_reqs = {
+													{ setting = { "HUDList", "ENABLED" }, invert = false },
+													{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
+												},
+											},
+										},
+									},
+								},
+							},
+						},
+					},
+					{ --CustomWaypoints
+						type = "menu",
+						menu_id = "jimhud_waypoint_options_menu",
+						name_id = "jimhud_waypoints_options_name",
+						desc_id = "jimhud_waypoints_options_help",
+						options = {
+							{
+								type = "toggle",
+								name_id = "jimhud_waypoints_color_enable_title",
+								desc_id = "jimhud_waypoints_color_enable_desc",
+								value = {"CustomWaypoints", "WAYPOINTS_COLOR_ENABLE"},
+								visible_reqs = {},
+							},
+							{
+								type = "multi_choice",
+								name_id = "jimhud_waypoints_color_title",
+								desc_id = "jimhud_waypoints_color_desc",
+								value = {"CustomWaypoints", "WAYPOINTS_COLOR"},
+								visible_reqs = {},
+								enabled_reqs = {
+									{ setting = {"CustomWaypoints", "WAYPOINTS_COLOR_ENABLE"}, invert = false }
+								},
+								options = {},
+								add_color_options = true,
+								add_rainbow = false,
+							},
+							{
+								type = "divider",
+								size = 12,
+							},
+							{
+								type = "toggle",
+								name_id = "jimhud_waypoints_show_ammo_bag_title",
+								desc_id = "jimhud_waypoints_show_ammo_bag_desc",
+								value = {"CustomWaypoints", "SHOW_AMMO_BAG"},
+								visible_reqs = {}, enabled_reqs = {},
+							},
+							{
+								type = "toggle",
+								name_id = "jimhud_waypoints_show_doc_bag_title",
+								desc_id = "jimhud_waypoints_show_doc_bag_desc",
+								value = {"CustomWaypoints", "SHOW_DOC_BAG"},
+								visible_reqs = {}, enabled_reqs = {},
+							},
+							{
+								type = "toggle",
+								name_id = "jimhud_waypoints_show_first_aid_kit_title",
+								desc_id = "jimhud_waypoints_show_first_aid_kit_desc",
+								value = {"CustomWaypoints", "SHOW_FIRST_AID_KIT"},
+								visible_reqs = {}, enabled_reqs = {},
+							},
+							{
+								type = "toggle",
+								name_id = "jimhud_waypoints_show_body_bag_title",
+								desc_id = "jimhud_waypoints_show_body_bag_desc",
+								value = {"CustomWaypoints", "SHOW_BODY_BAG"},
+								visible_reqs = {}, enabled_reqs = {},
+							},
+							{
+								type = "toggle",
+								name_id = "jimhud_waypoints_show_grenade_crate_title",
+								desc_id = "jimhud_waypoints_show_grenade_crate_desc",
+								value = {"CustomWaypoints", "SHOW_GRENADE_CRATE"},
+								visible_reqs = {}, enabled_reqs = {},
+							},
+							{
+								type = "toggle",
+								name_id = "jimhud_waypoints_show_sentries_title",
+								desc_id = "jimhud_waypoints_show_sentries_desc",
+								value = {"CustomWaypoints", "SHOW_SENTRIES"},
+								visible_reqs = {}, enabled_reqs = {},
+							},
+							{
+								type = "toggle",
+								name_id = "jimhud_waypoints_show_ecms_title",
+								desc_id = "jimhud_waypoints_show_ecms_desc",
+								value = {"CustomWaypoints", "SHOW_ECMS"},
+								visible_reqs = {}, enabled_reqs = {},
+							},
+							{
+								type = "divider",
+								size = 12,
+							},
+							{
+								type = "toggle",
+								name_id = "jimhud_waypoints_show_timers_title",
+								desc_id = "jimhud_waypoints_show_timers_desc",
+								value = {"CustomWaypoints", "SHOW_TIMERS"},
+								visible_reqs = {}, enabled_reqs = {},
+							},
+							{
+								type = "toggle",
+								name_id = "jimhud_waypoints_show_pager_title",
+								desc_id = "jimhud_waypoints_show_pager_desc",
+								value = {"CustomWaypoints", "SHOW_PAGER"},
+								visible_reqs = {}, enabled_reqs = {},
+							},
+							{
+								type = "toggle",
+								name_id = "jimhud_waypoints_show_minions_title",
+								desc_id = "jimhud_waypoints_show_minions_desc",
+								value = {"CustomWaypoints", "SHOW_MINIONS"},
+								visible_reqs = {}, enabled_reqs = {},
+							},
+							{
+								type = "divider",
+								size = 12,
+							},
+							{
+								type = "toggle",
+								name_id = "jimhud_waypoints_show_loot_title",
+								desc_id = "jimhud_waypoints_show_loot_desc",
+								value = {"CustomWaypoints", "LOOT", "SHOW"},
+								visible_reqs = {}, enabled_reqs = {},
+							},
+							{
+								type = "toggle",
+								name_id = "jimhud_waypoints_loot_icon_title",
+								desc_id = "jimhud_waypoints_loot_icon_desc",
+								value = {"CustomWaypoints", "LOOT", "ICON"},
+								visible_reqs = {},
+								enabled_reqs = {
+									{ setting = {"CustomWaypoints", "LOOT", "SHOW"}, invert = false },
+								},
+							},
+							{
+								type = "slider",
+								name_id = "jimhud_waypoints_loot_offset_title",
+								desc_id = "jimhud_waypoints_loot_offset_desc",
+								value = {"CustomWaypoints", "LOOT", "OFFSET"},
+								visible_reqs = {},
+								enabled_reqs = {
+									{ setting = {"CustomWaypoints", "LOOT", "SHOW"}, invert = false },
+								},
+								min_value = 0,
+								max_value = 30,
+								step_size = 1,
+							},
+							{
+								type = "slider",
+								name_id = "jimhud_waypoints_loot_bagged_offset_title",
+								desc_id = "jimhud_waypoints_loot_bagged_offset_desc",
+								value = {"CustomWaypoints", "LOOT", "BAGGED_OFFSET"},
+								visible_reqs = {},
+								enabled_reqs = {
+									{ setting = {"CustomWaypoints", "LOOT", "SHOW"}, invert = false },
+								},
+								min_value = 0,
+								max_value = 30,
+								step_size = 1,
+							},
+							{
+								type = "slider",
+								name_id = "jimhud_waypoints_loot_angle_title",
+								desc_id = "jimhud_waypoints_loot_angle_desc",
+								value = {"CustomWaypoints", "LOOT", "ANGLE"},
+								visible_reqs = {},
+								enabled_reqs = {
+									{ setting = {"CustomWaypoints", "LOOT", "SHOW"}, invert = false },
+								},
+								min_value = 5,
+								max_value = 90,
+								step_size = 1,
+							},
+							{
+								type = "divider",
+								size = 12,
+							},
+							{
+								type = "toggle",
+								name_id = "jimhud_waypoints_show_special_equipment_title",
+								desc_id = "jimhud_waypoints_show_special_equipment_desc",
+								value = {"CustomWaypoints", "SHOW_SPECIAL_EQUIPMENT"},
+								visible_reqs = {}, enabled_reqs = {},
+							},
+						},
+					},
+					{ -- Laser colors
+						type = "menu",
+						menu_id = "jimhud_laser_options_menu",
+						name_id = "jimhud_laser_options_name",
+						desc_id = "jimhud_laser_options_help",
+						options = {
+							{
+								type = "menu",
+								menu_id = "jimhud_gadget_player_laser_options_menu",
+								name_id = "jimhud_gadget_player_laser_options_name",
+								desc_id = "jimhud_gadget_player_laser_options_help",
+								options = get_gadget_options("laser", "player")
+							},
+							{
+								type = "menu",
+								menu_id = "jimhud_gadget_team_laser_options_menu",
+								name_id = "jimhud_gadget_team_laser_options_name",
+								desc_id = "jimhud_gadget_team_laser_options_help",
+								options = get_gadget_options("laser", "team")
+							},
+							{
+								type = "divider",
+								size = 12,
+							},
+							{
+								type = "menu",
+								menu_id = "jimhud_gadget_player_sentry_laser_options_menu",
+								name_id = "jimhud_gadget_player_sentry_laser_options_name",
+								desc_id = "jimhud_gadget_player_sentry_laser_options_help",
+								options = get_gadget_options("laser", "player_sentry")
+							},
+							{
+								type = "menu",
+								menu_id = "jimhud_gadget_team_sentry_laser_options_menu",
+								name_id = "jimhud_gadget_team_sentry_laser_options_name",
+								desc_id = "jimhud_gadget_team_sentry_laser_options_help",
+								options = get_gadget_options("laser", "team_sentry")
+							},
+							{
+								type = "divider",
+								size = 12,
+							},
+							{
+								type = "menu",
+								menu_id = "jimhud_gadget_sniper_laser_options_menu",
+								name_id = "jimhud_gadget_sniper_laser_options_name",
+								desc_id = "jimhud_gadget_sniper_laser_options_help",
+								options = get_gadget_options("laser", "cop_sniper")
+							},
+							{
+								type = "divider",
+								size = 12,
+							},
+							{
+								type = "menu",
+								menu_id = "jimhud_gadget_turret_laser_active_options_menu",
+								name_id = "jimhud_gadget_turret_laser_active_options_name",
+								desc_id = "jimhud_gadget_turret_laser_active_options_help",
+								options = get_gadget_options("laser", "turret_module_active")
+							},
+							{
+								type = "menu",
+								menu_id = "jimhud_gadget_turret_laser_rearming_options_menu",
+								name_id = "jimhud_gadget_turret_laser_rearming_options_name",
+								desc_id = "jimhud_gadget_turret_laser_rearming_options_help",
+								options = get_gadget_options("laser", "turret_module_rearming")
+							},
+							{
+								type = "menu",
+								menu_id = "jimhud_gadget_turret_laser_mad_options_menu",
+								name_id = "jimhud_gadget_turret_laser_mad_options_name",
+								desc_id = "jimhud_gadget_turret_laser_mad_options_help",
+								options = get_gadget_options("laser", "turret_module_mad")
+							},
+						},
+					},
+					{ -- Flashlight cones
+						type = "menu",
+						menu_id = "jimhud_flashlight_options_menu",
+						name_id = "jimhud_flashlight_options_name",
+						desc_id = "jimhud_flashlight_options_help",
+						options = {
+							{
+								type = "menu",
+								menu_id = "jimhud_gadget_player_flashlight_options_menu",
+								name_id = "jimhud_gadget_player_flashlight_options_name",
+								desc_id = "jimhud_gadget_player_flashlight_options_help",
+								options = get_gadget_options("flashlight", "player")
+							},
+							{
+								type = "menu",
+								menu_id = "jimhud_gadget_team_flashlight_options_menu",
+								name_id = "jimhud_gadget_team_flashlight_options_name",
+								desc_id = "jimhud_gadget_team_flashlight_options_help",
+								options = get_gadget_options("flashlight", "team")
+							},
+						},
+					},
+					{ -- TabStats
+						type = "menu",
+						menu_id = "jimhud_tabstats_options_menu",
+						name_id = "jimhud_tabstats_options_name",
+						desc_id = "jimhud_tabstats_options_help",
+						options = {
+							{
+								type = "multi_choice",
+								name_id = "jimhud_tabstats_clock_mode_title",
+								desc_id = "jimhud_tabstats_clock_mode_desc",
+								options = {
+									"jimhud_multiselect_disabled",
+									"jimhud_tabstats_clock_mode_a",
+									"jimhud_tabstats_clock_mode_b",
+									"jimhud_tabstats_clock_mode_c"
+								},
+								visible_reqs = {}, enabled_reqs = {},
+								value = {"TabStats", "CLOCK_MODE"},
+							},
+							{
+								type = "divider",
+								size = 12,
+							},
+							{
+								type = "toggle",
+								name_id = "jimhud_use_tabstats_title",
+								desc_id = "jimhud_use_tabstats_desc",
+								value = {"TabStats", "ENABLED"},
+								visible_reqs = {}, enabled_reqs = {},
+							},
+							{
+								type = "slider",
+								name_id = "jimhud_tabstats_font_size_title",
+								desc_id = "jimhud_tabstats_font_size_desc",
+								value = {"TabStats", "FONT_SIZE"},
+								visible_reqs = {},
+								enabled_reqs = {
+									{ setting = { "TabStats", "ENABLED" }, invert = false },
+								},
+								min_value = 10,
+								max_value = 24,
+								step_size = 1,
+							},
+							{
+								type = "multi_choice",
+								name_id = "jimhud_tabstats_color_title",
+								desc_id = "jimhud_tabstats_color_desc",
+								value = {"TabStats", "COLOR"},
+								visible_reqs = {},
+								enabled_reqs = {
+									{ setting = { "TabStats", "ENABLED" }, invert = false },
+								},
+								options = {},
+								add_color_options = true,
+								add_rainbow = true,
+							},
+							{
+								type = "toggle",
+								name_id = "jimhud_tabstats_actual_mask_title",
+								desc_id = "jimhud_tabstats_actual_mask_desc",
+								value = {"TabStats", "SHOW_MASK"},
+								visible_reqs = {},
+								enabled_reqs = {
+									{ setting = { "TabStats", "ENABLED" }, inverted = false }
+								},
+							},
+							{
+								type = "divider",
+								size = 12,
+							},
+							{
+								type = "toggle",
+								name_id = "jimhud_crewloadout_tabscreen_title",
+								desc_id = "jimhud_crewloadout_tabscreen_desc",
+								value = {"CrewLoadout", "SHOW_ON_STATS_PANEL"},
+								visible_reqs = {}, enabled_reqs = {},
+							},
+						},
 					},
 					{
 						type = "divider",
@@ -716,11 +2518,11 @@ if JimHUD then
 								options = {
 									"jimhud_multiselect_left",
 									"jimhud_multiselect_center",
-									"jimhud_multiselect_right"
+									"jimhud_multiselect_right",
 								},
 								visible_reqs = {},
 								enabled_reqs = {
-									{ setting = {"CustomHUD", "ENABLED"}, invert = false }
+									{ setting = {"CustomHUD", "STYLE"}, equal = 2 }
 								},
 								value = {"CustomHUD", "PLAYER", "POSITION"},
 							},
@@ -730,7 +2532,7 @@ if JimHUD then
 								desc_id = "jimhud_panels_scale_desc",
 								visible_reqs = {},
 								enabled_reqs = {
-									{ setting = {"CustomHUD", "ENABLED"}, invert = false }
+									{ setting = {"CustomHUD", "STYLE"}, equal = 2 }
 								},
 								value = {"CustomHUD", "PLAYER", "SCALE"},
 								min_value = 0.01,
@@ -743,7 +2545,7 @@ if JimHUD then
 								desc_id = "jimhud_panels_oppacity_desc",
 								visible_reqs = {},
 								enabled_reqs = {
-									{ setting = {"CustomHUD", "ENABLED"}, invert = false }
+									{ setting = {"CustomHUD", "STYLE"}, equal = 2 }
 								},
 								value = {"CustomHUD", "PLAYER", "OPACITY"},
 								min_value = 0,
@@ -760,7 +2562,7 @@ if JimHUD then
 								desc_id = "jimhud_panels_show_name_desc",
 								visible_reqs = {},
 								enabled_reqs = {
-									{ setting = {"CustomHUD", "ENABLED"}, invert = false }
+									{ setting = {"CustomHUD", "STYLE"}, equal = 2 }
 								},
 								value = {"CustomHUD", "PLAYER", "NAME"},
 							},
@@ -784,7 +2586,7 @@ if JimHUD then
 								desc_id = "jimhud_panels_show_char_desc",
 								visible_reqs = {},
 								enabled_reqs = {
-									{ setting = {"CustomHUD", "ENABLED"}, invert = false }
+									{ setting = {"CustomHUD", "STYLE"}, equal = 2 }
 								},
 								value = {"CustomHUD", "PLAYER", "CHARACTER"},
 							},
@@ -794,7 +2596,7 @@ if JimHUD then
 								desc_id = "jimhud_panels_show_status_desc",
 								visible_reqs = {},
 								enabled_reqs = {
-									{ setting = {"CustomHUD", "ENABLED"}, invert = false }
+									{ setting = {"CustomHUD", "STYLE"}, equal = 2 }
 								},
 								value = {"CustomHUD", "PLAYER", "STATUS"},
 							},
@@ -828,7 +2630,7 @@ if JimHUD then
 								desc_id = "jimhud_panels_show_equip_desc",
 								visible_reqs = {},
 								enabled_reqs = {
-									{ setting = {"CustomHUD", "ENABLED"}, invert = false }
+									{ setting = {"CustomHUD", "STYLE"}, equal = 2 }
 								},
 								value = {"CustomHUD", "PLAYER", "EQUIPMENT"},
 							},
@@ -838,7 +2640,7 @@ if JimHUD then
 								desc_id = "jimhud_panels_show_special_equip_desc",
 								visible_reqs = {},
 								enabled_reqs = {
-									{ setting = {"CustomHUD", "ENABLED"}, invert = false }
+									{ setting = {"CustomHUD", "STYLE"}, equal = 2 }
 								},
 								value = {"CustomHUD", "PLAYER", "SPECIAL_EQUIPMENT"},
 							},
@@ -848,7 +2650,7 @@ if JimHUD then
 								desc_id = "jimhud_panels_special_equip_rows_desc",
 								visible_reqs = {},
 								enabled_reqs = {
-									{ setting = {"CustomHUD", "ENABLED"}, invert = false },
+									{ setting = {"CustomHUD", "STYLE"}, equal = 2 },
 									{ setting = {"CustomHUD", "PLAYER", "SPECIAL_EQUIPMENT"}, invert = false },
 								},
 								value = {"CustomHUD", "PLAYER", "SPECIAL_EQUIPMENT_ROWS"},
@@ -862,7 +2664,7 @@ if JimHUD then
 								desc_id = "jimhud_panels_show_callsign_desc",
 								visible_reqs = {},
 								enabled_reqs = {
-									{ setting = {"CustomHUD", "ENABLED"}, invert = false }
+									{ setting = {"CustomHUD", "STYLE"}, equal = 2 }
 								},
 								value = {"CustomHUD", "PLAYER", "CALLSIGN"},
 							},
@@ -872,7 +2674,7 @@ if JimHUD then
 								desc_id = "jimhud_panels_show_carry_desc",
 								visible_reqs = {},
 								enabled_reqs = {
-									{ setting = {"CustomHUD", "ENABLED"}, invert = false }
+									{ setting = {"CustomHUD", "STYLE"}, equal = 2 }
 								},
 								value = {"CustomHUD", "PLAYER", "CARRY"},
 							},
@@ -886,7 +2688,7 @@ if JimHUD then
 								desc_id = "jimhud_panels_weapon_icon_desc",
 								visible_reqs = {},
 								enabled_reqs = {
-									{ setting = {"CustomHUD", "ENABLED"}, invert = false }
+									{ setting = {"CustomHUD", "STYLE"}, equal = 2 }
 								},
 								options = {
 									"jimhud_panels_hide",
@@ -902,7 +2704,7 @@ if JimHUD then
 								desc_id = "jimhud_panels_weapon_name_desc",
 								visible_reqs = {},
 								enabled_reqs = {
-									{ setting = {"CustomHUD", "ENABLED"}, invert = false }
+									{ setting = {"CustomHUD", "STYLE"}, equal = 2 }
 								},
 								options = {
 									"jimhud_panels_hide",
@@ -918,7 +2720,7 @@ if JimHUD then
 								desc_id = "jimhud_panels_weapon_ammo_desc",
 								visible_reqs = {},
 								enabled_reqs = {
-									{ setting = {"CustomHUD", "ENABLED"}, invert = false }
+									{ setting = {"CustomHUD", "STYLE"}, equal = 2 }
 								},
 								options = {
 									"jimhud_panels_hide",
@@ -935,7 +2737,7 @@ if JimHUD then
 								desc_id = "jimhud_panels_weapon_firemode_desc",
 								visible_reqs = {},
 								enabled_reqs = {
-									{ setting = {"CustomHUD", "ENABLED"}, invert = false }
+									{ setting = {"CustomHUD", "STYLE"}, equal = 2 }
 								},
 								options = {
 									"jimhud_panels_hide",
@@ -944,7 +2746,63 @@ if JimHUD then
 									"jimhud_panels_both"
 								},
 								value = {"CustomHUD", "PLAYER", "WEAPON", "FIREMODE"},
-							}
+							},
+							{
+								type = "divider",
+								size = 12,
+							},
+							{
+								type = "toggle",
+								name_id = "jimhud_killcounter_player_show_killcount_title",
+								desc_id = "jimhud_killcounter_player_show_killcount_desc",
+								visible_reqs = {}, enabled_reqs = {},
+								value = {"CustomHUD", "PLAYER", "KILLCOUNTER", "HIDE"},
+								invert_value = true,
+							},
+							{
+								type = "toggle",
+								name_id = "jimhud_killcounter_player_show_special_title",
+								desc_id = "jimhud_killcounter_player_show_special_desc",
+								visible_reqs = {},
+								enabled_reqs = {
+									{ setting = {"CustomHUD", "PLAYER", "KILLCOUNTER", "HIDE"}, invert = true }
+								},
+								value = {"CustomHUD", "PLAYER", "KILLCOUNTER", "SHOW_SPECIAL_KILLS"},
+							},
+							{
+								type = "toggle",
+								name_id = "jimhud_killcounter_player_show_head_title",
+								desc_id = "jimhud_killcounter_player_show_head_desc",
+								visible_reqs = {},
+								enabled_reqs = {
+									{ setting = {"CustomHUD", "PLAYER", "KILLCOUNTER", "HIDE"}, invert = true }
+								},
+								value = {"CustomHUD", "PLAYER", "KILLCOUNTER", "SHOW_HEADSHOT_KILLS"},
+							},
+							{
+								type = "multi_choice",
+								name_id = "jimhud_killcounter_player_color_title",
+								desc_id = "jimhud_killcounter_player_color_desc",
+								value = {"CustomHUD", "PLAYER", "KILLCOUNTER", "COLOR"},
+								visible_reqs = {},
+								enabled_reqs = {
+									{ setting = {"CustomHUD", "PLAYER", "KILLCOUNTER", "HIDE"}, invert = true }
+								},
+								options = {},
+								add_color_options = true,
+								add_rainbow = false,
+							},
+							{
+								type = "divider",
+								size = 12,
+							},
+							{
+								type = "toggle",
+								name_id = "jimhud_killcounter_player_show_accuracy_title",
+								desc_id = "jimhud_killcounter_player_show_accuracy_desc",
+								visible_reqs = {}, enabled_reqs = {},
+								value = {"CustomHUD", "PLAYER", "SHOW_ACCURACY"},
+							},
 						},
 					},
 					{	--CustomHUD Teammate
@@ -964,7 +2822,7 @@ if JimHUD then
 								},
 								visible_reqs = {},
 								enabled_reqs = {
-									{ setting = {"CustomHUD", "ENABLED"}, invert = false }
+									{ setting = {"CustomHUD", "STYLE"}, equal = 2 }
 								},
 								value = {"CustomHUD", "TEAMMATE", "POSITION"},
 							},
@@ -974,7 +2832,7 @@ if JimHUD then
 								desc_id = "jimhud_panels_scale_desc",
 								visible_reqs = {},
 								enabled_reqs = {
-									{ setting = {"CustomHUD", "ENABLED"}, invert = false }
+									{ setting = {"CustomHUD", "STYLE"}, equal = 2 }
 								},
 								value = {"CustomHUD", "TEAMMATE", "SCALE"},
 								min_value = 0.01,
@@ -987,7 +2845,7 @@ if JimHUD then
 								desc_id = "jimhud_panels_oppacity_desc",
 								visible_reqs = {},
 								enabled_reqs = {
-									{ setting = {"CustomHUD", "ENABLED"}, invert = false }
+									{ setting = {"CustomHUD", "STYLE"}, equal = 2 }
 								},
 								value = {"CustomHUD", "TEAMMATE", "OPACITY"},
 								min_value = 0,
@@ -1004,7 +2862,7 @@ if JimHUD then
 								desc_id = "jimhud_panels_show_name_desc",
 								visible_reqs = {},
 								enabled_reqs = {
-									{ setting = {"CustomHUD", "ENABLED"}, invert = false }
+									{ setting = {"CustomHUD", "STYLE"}, equal = 2 }
 								},
 								value = {"CustomHUD", "TEAMMATE", "NAME"},
 							},
@@ -1028,7 +2886,7 @@ if JimHUD then
 								desc_id = "jimhud_panels_show_char_desc",
 								visible_reqs = {},
 								enabled_reqs = {
-									{ setting = {"CustomHUD", "ENABLED"}, invert = false }
+									{ setting = {"CustomHUD", "STYLE"}, equal = 2 }
 								},
 								value = {"CustomHUD", "TEAMMATE", "CHARACTER"},
 							},
@@ -1038,7 +2896,7 @@ if JimHUD then
 								desc_id = "jimhud_panels_show_ping_desc",
 								visible_reqs = {},
 								enabled_reqs = {
-									{ setting = {"CustomHUD", "ENABLED"}, invert = false }
+									{ setting = {"CustomHUD", "STYLE"}, equal = 2 }
 								},
 								value = {"CustomHUD", "TEAMMATE", "LATENCY"},
 							},
@@ -1048,7 +2906,7 @@ if JimHUD then
 								desc_id = "jimhud_panels_show_status_desc",
 								visible_reqs = {},
 								enabled_reqs = {
-									{ setting = {"CustomHUD", "ENABLED"}, invert = false }
+									{ setting = {"CustomHUD", "STYLE"}, equal = 2 }
 								},
 								value = {"CustomHUD", "TEAMMATE", "STATUS"},
 							},
@@ -1075,7 +2933,7 @@ if JimHUD then
 								desc_id = "jimhud_panels_show_equip_desc",
 								visible_reqs = {},
 								enabled_reqs = {
-									{ setting = {"CustomHUD", "ENABLED"}, invert = false }
+									{ setting = {"CustomHUD", "STYLE"}, equal = 2 }
 								},
 								value = {"CustomHUD", "TEAMMATE", "EQUIPMENT"},
 							},
@@ -1085,7 +2943,7 @@ if JimHUD then
 								desc_id = "jimhud_panels_show_special_equip_desc",
 								visible_reqs = {},
 								enabled_reqs = {
-									{ setting = {"CustomHUD", "ENABLED"}, invert = false }
+									{ setting = {"CustomHUD", "STYLE"}, equal = 2 }
 								},
 								value = {"CustomHUD", "TEAMMATE", "SPECIAL_EQUIPMENT"},
 							},
@@ -1095,7 +2953,7 @@ if JimHUD then
 								desc_id = "jimhud_panels_special_equip_rows_desc",
 								visible_reqs = {},
 								enabled_reqs = {
-									{ setting = {"CustomHUD", "ENABLED"}, invert = false },
+									{ setting = {"CustomHUD", "STYLE"}, equal = 2 },
 									{ setting = {"CustomHUD", "TEAMMATE", "SPECIAL_EQUIPMENT"}, invert = false },
 								},
 								value = {"CustomHUD", "TEAMMATE", "SPECIAL_EQUIPMENT_ROWS"},
@@ -1109,7 +2967,7 @@ if JimHUD then
 								desc_id = "jimhud_panels_show_callsign_desc",
 								visible_reqs = {},
 								enabled_reqs = {
-									{ setting = {"CustomHUD", "ENABLED"}, invert = false }
+									{ setting = {"CustomHUD", "STYLE"}, equal = 2 }
 								},
 								value = {"CustomHUD", "TEAMMATE", "CALLSIGN"},
 							},
@@ -1119,7 +2977,7 @@ if JimHUD then
 								desc_id = "jimhud_panels_show_carry_desc",
 								visible_reqs = {},
 								enabled_reqs = {
-									{ setting = {"CustomHUD", "ENABLED"}, invert = false }
+									{ setting = {"CustomHUD", "STYLE"}, equal = 2 }
 								},
 								value = {"CustomHUD", "TEAMMATE", "CARRY"},
 							},
@@ -1133,7 +2991,7 @@ if JimHUD then
 								desc_id = "jimhud_panels_build_show_desc",
 								visible_reqs = {},
 								enabled_reqs = {
-									{ setting = {"CustomHUD", "ENABLED"}, invert = false }
+									{ setting = {"CustomHUD", "STYLE"}, equal = 2 }
 								},
 								value = {"CustomHUD", "TEAMMATE", "BUILD", "HIDE"},
 								invert_value = true,
@@ -1144,7 +3002,7 @@ if JimHUD then
 								desc_id = "jimhud_panels_build_time_desc",
 								visible_reqs = {},
 								enabled_reqs = {
-									{ setting = {"CustomHUD", "ENABLED"}, invert = false }
+									{ setting = {"CustomHUD", "STYLE"}, equal = 2 }
 								},
 								value = {"CustomHUD", "TEAMMATE", "BUILD", "DURATION"},
 								min_value = 0,
@@ -1161,7 +3019,7 @@ if JimHUD then
 								desc_id = "jimhud_panels_weapon_icon_desc",
 								visible_reqs = {},
 								enabled_reqs = {
-									{ setting = {"CustomHUD", "ENABLED"}, invert = false }
+									{ setting = {"CustomHUD", "STYLE"}, equal = 2 }
 								},
 								options = {
 									"jimhud_panels_hide",
@@ -1177,7 +3035,7 @@ if JimHUD then
 								desc_id = "jimhud_panels_weapon_name_desc",
 								visible_reqs = {},
 								enabled_reqs = {
-									{ setting = {"CustomHUD", "ENABLED"}, invert = false }
+									{ setting = {"CustomHUD", "STYLE"}, equal = 2 }
 								},
 								options = {
 									"jimhud_panels_hide",
@@ -1193,7 +3051,7 @@ if JimHUD then
 								desc_id = "jimhud_panels_weapon_ammo_desc",
 								visible_reqs = {},
 								enabled_reqs = {
-									{ setting = {"CustomHUD", "ENABLED"}, invert = false }
+									{ setting = {"CustomHUD", "STYLE"}, equal = 2 }
 								},
 								options = {
 									"jimhud_panels_hide",
@@ -1210,7 +3068,7 @@ if JimHUD then
 								desc_id = "jimhud_panels_weapon_firemode_desc",
 								visible_reqs = {},
 								enabled_reqs = {
-									{ setting = {"CustomHUD", "ENABLED"}, invert = false }
+									{ setting = {"CustomHUD", "STYLE"}, equal = 2 }
 								},
 								options = {
 									"jimhud_panels_hide",
@@ -1219,6 +3077,61 @@ if JimHUD then
 									"jimhud_panels_both"
 								},
 								value = {"CustomHUD", "TEAMMATE", "WEAPON", "FIREMODE"},
+							},
+							{
+								type = "divider",
+								size = 12,
+							},
+							{
+								type = "toggle",
+								name_id = "jimhud_killcounter_team_show_killcount_title",
+								desc_id = "jimhud_killcounter_team_show_killcount_desc",
+								visible_reqs = {}, enabled_reqs = {},
+								value = {"CustomHUD", "TEAMMATE", "KILLCOUNTER", "HIDE"},
+								invert_value = true,
+							},
+							{
+								type = "toggle",
+								name_id = "jimhud_killcounter_team_show_special_title",
+								desc_id = "jimhud_killcounter_team_show_special_desc",
+								visible_reqs = {},
+								enabled_reqs = {
+									{ setting = {"CustomHUD", "TEAMMATE", "KILLCOUNTER", "HIDE"}, invert = true }
+								},
+								value = {"CustomHUD", "TEAMMATE", "KILLCOUNTER", "SHOW_SPECIAL_KILLS"},
+							},
+							{
+								type = "toggle",
+								name_id = "jimhud_killcounter_team_show_head_title",
+								desc_id = "jimhud_killcounter_team_show_head_desc",
+								visible_reqs = {},
+								enabled_reqs = {
+									{ setting = {"CustomHUD", "TEAMMATE", "KILLCOUNTER", "HIDE"}, invert = true }
+								},
+								value = {"CustomHUD", "TEAMMATE", "KILLCOUNTER", "SHOW_HEADSHOT_KILLS"},
+							},
+							{
+								type = "toggle",
+								name_id = "jimhud_killcounter_team_show_ai_title",
+								desc_id = "jimhud_killcounter_team_show_ai_desc",
+								visible_reqs = {},
+								enabled_reqs = {
+									{ setting = {"CustomHUD", "TEAMMATE", "KILLCOUNTER", "HIDE"}, invert = true }
+								},
+								value = {"CustomHUD", "TEAMMATE", "KILLCOUNTER", "SHOW_BOT_KILLS"},
+							},
+							{
+								type = "multi_choice",
+								name_id = "jimhud_killcounter_team_color_title",
+								desc_id = "jimhud_killcounter_team_color_desc",
+								value = {"CustomHUD", "TEAMMATE", "KILLCOUNTER", "COLOR"},
+								visible_reqs = {},
+								enabled_reqs = {
+									{ setting = {"CustomHUD", "TEAMMATE", "KILLCOUNTER", "HIDE"}, invert = true }
+								},
+								options = {},
+								add_color_options = true,
+								add_rainbow = false,
 							},
 							{
 								type = "divider",
@@ -1294,121 +3207,6 @@ if JimHUD then
 					{
 						type = "divider",
 						size = 12,
-					},
-					{	--KillCounter
-						type = "menu",
-						menu_id = "jimhud_killcounter_options_menu",
-						name_id = "jimhud_killcounter_options_name",
-						desc_id = "jimhud_killcounter_options_help",
-						options = {
-							{
-								type = "toggle",
-								name_id = "jimhud_killcounter_player_show_killcount_title",
-								desc_id = "jimhud_killcounter_player_show_killcount_desc",
-								visible_reqs = {}, enabled_reqs = {},
-								value = {"CustomHUD", "PLAYER", "KILLCOUNTER", "HIDE"},
-								invert_value = true,
-							},
-							{
-								type = "toggle",
-								name_id = "jimhud_killcounter_player_show_special_title",
-								desc_id = "jimhud_killcounter_player_show_special_desc",
-								visible_reqs = {},
-								enabled_reqs = {
-									{ setting = {"CustomHUD", "PLAYER", "KILLCOUNTER", "HIDE"}, invert = true }
-								},
-								value = {"CustomHUD", "PLAYER", "KILLCOUNTER", "SHOW_SPECIAL_KILLS"},
-							},
-							{
-								type = "toggle",
-								name_id = "jimhud_killcounter_player_show_head_title",
-								desc_id = "jimhud_killcounter_player_show_head_desc",
-								visible_reqs = {},
-								enabled_reqs = {
-									{ setting = {"CustomHUD", "PLAYER", "KILLCOUNTER", "HIDE"}, invert = true }
-								},
-								value = {"CustomHUD", "PLAYER", "KILLCOUNTER", "SHOW_HEADSHOT_KILLS"},
-							},
-							{
-								type = "multi_choice",
-								name_id = "jimhud_killcounter_player_color_title",
-								desc_id = "jimhud_killcounter_player_color_desc",
-								value = {"CustomHUD", "PLAYER", "KILLCOUNTER", "COLOR"},
-								visible_reqs = {},
-								enabled_reqs = {
-									{ setting = {"CustomHUD", "PLAYER", "KILLCOUNTER", "HIDE"}, invert = true }
-								},
-								options = {},
-								add_color_options = true,
-								add_rainbow = false,
-							},
-							{
-								type = "divider",
-								size = 12,
-							},
-							{
-								type = "toggle",
-								name_id = "jimhud_killcounter_player_show_accuracy_title",
-								desc_id = "jimhud_killcounter_player_show_accuracy_desc",
-								visible_reqs = {}, enabled_reqs = {},
-								value = {"CustomHUD", "PLAYER", "SHOW_ACCURACY"},
-							},
-							{
-								type = "divider",
-								size = 12,
-							},
-							{
-								type = "toggle",
-								name_id = "jimhud_killcounter_team_show_killcount_title",
-								desc_id = "jimhud_killcounter_team_show_killcount_desc",
-								visible_reqs = {}, enabled_reqs = {},
-								value = {"CustomHUD", "TEAMMATE", "KILLCOUNTER", "HIDE"},
-								invert_value = true,
-							},
-							{
-								type = "toggle",
-								name_id = "jimhud_killcounter_team_show_special_title",
-								desc_id = "jimhud_killcounter_team_show_special_desc",
-								visible_reqs = {},
-								enabled_reqs = {
-									{ setting = {"CustomHUD", "TEAMMATE", "KILLCOUNTER", "HIDE"}, invert = true }
-								},
-								value = {"CustomHUD", "TEAMMATE", "KILLCOUNTER", "SHOW_SPECIAL_KILLS"},
-							},
-							{
-								type = "toggle",
-								name_id = "jimhud_killcounter_team_show_head_title",
-								desc_id = "jimhud_killcounter_team_show_head_desc",
-								visible_reqs = {},
-								enabled_reqs = {
-									{ setting = {"CustomHUD", "TEAMMATE", "KILLCOUNTER", "HIDE"}, invert = true }
-								},
-								value = {"CustomHUD", "TEAMMATE", "KILLCOUNTER", "SHOW_HEADSHOT_KILLS"},
-							},
-							{
-								type = "toggle",
-								name_id = "jimhud_killcounter_team_show_ai_title",
-								desc_id = "jimhud_killcounter_team_show_ai_desc",
-								visible_reqs = {},
-								enabled_reqs = {
-									{ setting = {"CustomHUD", "TEAMMATE", "KILLCOUNTER", "HIDE"}, invert = true }
-								},
-								value = {"CustomHUD", "TEAMMATE", "KILLCOUNTER", "SHOW_BOT_KILLS"},
-							},
-							{
-								type = "multi_choice",
-								name_id = "jimhud_killcounter_team_color_title",
-								desc_id = "jimhud_killcounter_team_color_desc",
-								value = {"CustomHUD", "TEAMMATE", "KILLCOUNTER", "COLOR"},
-								visible_reqs = {},
-								enabled_reqs = {
-									{ setting = {"CustomHUD", "TEAMMATE", "KILLCOUNTER", "HIDE"}, invert = true }
-								},
-								options = {},
-								add_color_options = true,
-								add_rainbow = false,
-							},
-						},
 					},
 					{
 						type = "toggle",
@@ -2029,208 +3827,52 @@ if JimHUD then
 							},
 						},
 					},
-				},
-			},
-			{ --HUDList
-				type = "menu",
-				menu_id = "jimhud_hudlist_options_menu",
-				name_id = "jimhud_infopanels_options_name",
-				desc_id = "jimhud_infopanels_options_help",
-				options = {
-					{
-						type = "toggle",
-						name_id = "jimhud_use_hudlist_title",
-						desc_id = "jimhud_use_hudlist_desc",
-						value = {"HUDList", "ENABLED"},
-						visible_reqs = {}, enabled_reqs = {},
-					},
-					{
-						type ="divider",
-						size = 12,
-					},
-					{
-						type = "slider",
-						name_id = "jimhud_hudlist_scale_left_title",
-						desc_id = "jimhud_hudlist_scale_left_desc",
-						value = {"HUDList", "left_list_scale"},
-						visible_reqs = {},
-								enabled_reqs = {
-							{ setting = { "HUDList", "ENABLED" }, invert = false },
-						},
-						min_value = 0.5,
-						max_value = 2,
-						step_size = 0.01,
-					},
-					{
-						type = "slider",
-						name_id = "jimhud_hudlist_scale_right_title",
-						desc_id = "jimhud_hudlist_scale_right_desc",
-						value = {"HUDList", "right_list_scale"},
-						visible_reqs = {},
-						enabled_reqs = {
-							{ setting = { "HUDList", "ENABLED" }, invert = false },
-						},
-						min_value = 0.5,
-						max_value = 2,
-						step_size = 0.01,
-					},
-					{
-						type = "slider",
-						name_id = "jimhud_hudlist_scale_buff_title",
-						desc_id = "jimhud_hudlist_scale_buff_desc",
-						value = {"HUDList", "buff_list_scale"},
-						visible_reqs = {},
-						enabled_reqs = {
-							{ setting = { "HUDList", "ENABLED" }, invert = false },
-						},
-						min_value = 0.5,
-						max_value = 2,
-						step_size = 0.01,
-					},
-					{
-						type ="divider",
-						size = 12,
-					},
-					{
-						type = "multi_choice",
-						name_id = "jimhud_hudlist_box_color_title",
-						desc_id = "jimhud_hudlist_box_color_desc",
-						value = {"HUDList", "list_color"},
-						visible_reqs = {},
-						enabled_reqs = {
-							{ setting = { "HUDList", "ENABLED" }, invert = false },
-						},
-						options = {},
-						add_color_options = true,
-						add_rainbow = false,
-					},
-					{
-						type = "multi_choice",
-						name_id = "jimhud_hudlist_box_bg_color_title",
-						desc_id = "jimhud_hudlist_box_bg_color_desc",
-						value = {"HUDList", "list_color_bg"},
-						visible_reqs = {},
-						enabled_reqs = {
-							{ setting = { "HUDList", "ENABLED" }, invert = false },
-						},
-						options = {},
-						add_color_options = true,
-						add_rainbow = false,
-					},
-					{
-						type = "multi_choice",
-						name_id = "jimhud_hudlist_civcolor_title",
-						desc_id = "jimhud_hudlist_civcolor_desc",
-						value = {"HUDList", "civilian_color"},
-						visible_reqs = {},
-						enabled_reqs = {
-							{ setting = { "HUDList", "ENABLED" }, invert = false },
-						},
-						options = {},
-						add_color_options = true,
-						add_rainbow = false,
-					},
-					{
-						type = "multi_choice",
-						name_id = "jimhud_hudlist_thugcolor_title",
-						desc_id = "jimhud_hudlist_thugcolor_desc",
-						value = {"HUDList", "thug_color"},
-						visible_reqs = {},
-						enabled_reqs = {
-							{ setting = { "HUDList", "ENABLED" }, invert = false },
-						},
-						options = {},
-						add_color_options = true,
-						add_rainbow = false,
-					},
-					{
-						type = "multi_choice",
-						name_id = "jimhud_hudlist_copcolor_title",
-						desc_id = "jimhud_hudlist_copcolor_desc",
-						value = {"HUDList", "enemy_color"},
-						visible_reqs = {},
-						enabled_reqs = {
-							{ setting = { "HUDList", "ENABLED" }, invert = false },
-						},
-						options = {},
-						add_color_options = true,
-						add_rainbow = false,
-					},
-					{
-						type = "multi_choice",
-						name_id = "jimhud_hudlist_specialcolor_title",
-						desc_id = "jimhud_hudlist_specialcolor_desc",
-						value = {"HUDList", "special_color"},
-						visible_reqs = {},
-						enabled_reqs = {
-							{ setting = { "HUDList", "ENABLED" }, invert = false },
-						},
-						options = {},
-						add_color_options = true,
-						add_rainbow = false,
-					},
-					{
-						type ="divider",
-						size = 12,
-					},
-					{
-						type = "slider",
-						name_id = "jimhud_hudlist_progress_alpha_left_title",
-						desc_id = "jimhud_hudlist_progress_alpha_left_desc",
-						value = {"HUDList", "left_list_progress_alpha"},
-						visible_reqs = {},
-						enabled_reqs = {
-							{ setting = { "HUDList", "ENABLED" }, invert = false },
-						},
-						min_value = 0.0,
-						max_value = 1.0,
-						step_size = 0.01,
-					},
-					{
-						type = "slider",
-						name_id = "jimhud_hudlist_progress_alpha_right_title",
-						desc_id = "jimhud_hudlist_progress_alpha_right_desc",
-						value = {"HUDList", "right_list_progress_alpha"},
-						visible_reqs = {},
-						enabled_reqs = {
-							{ setting = { "HUDList", "ENABLED" }, invert = false },
-						},
-						min_value = 0.0,
-						max_value = 1.0,
-						step_size = 0.01,
-					},
-					{
-						type = "slider",
-						name_id = "jimhud_hudlist_progress_alpha_buff_title",
-						desc_id = "jimhud_hudlist_progress_alpha_buff_desc",
-						value = {"HUDList", "buff_list_progress_alpha"},
-						visible_reqs = {},
-						enabled_reqs = {
-							{ setting = { "HUDList", "ENABLED" }, invert = false },
-						},
-						min_value = 0.0,
-						max_value = 1.0,
-						step_size = 0.01,
-					},
-					{
-						type ="divider",
-						size = 12,
-					},
-					{	--HUDList Left List
+					{ --INTERACTION
 						type = "menu",
-						menu_id = "jimhud_hudlist_left_options_menu",
-						name_id = "jimhud_infopanels_left_options_name",
-						desc_id = "jimhud_infopanels_left_options_help",
+						menu_id = "jimhud_interaction_indicator_options_menu",
+						name_id = "jimhud_interaction_indicator_options_name",
+						desc_id = "jimhud_interaction_indicator_options_help",
 						options = {
 							{
 								type = "toggle",
-								name_id = "jimhud_hudlist_show_timers_title",
-								desc_id = "jimhud_hudlist_show_timers_desc",
-								value = {"HUDList", "LEFT_LIST", "show_timers"},
-								visible_reqs = {},
-								enabled_reqs = {
-									{ setting = { "HUDList", "ENABLED" }, invert = false },
-								},
+								name_id = "jimhud_press2hold_show_circle_title",
+								desc_id = "jimhud_press2hold_show_circle_desc",
+								value = {"INTERACTION", "SHOW_CIRCLE"},
+								visible_reqs = {}, enabled_reqs = {},
+							},
+							{
+								type = "slider",
+								name_id = "jimhud_press2hold_circle_scale_title",
+								desc_id = "jimhud_press2hold_circle_scale_desc",
+								value = {"INTERACTION", "CIRCLE_SCALE"},
+								visible_reqs = {}, enabled_reqs = {},
+								min_value = 0.3,
+								max_value = 2,
+								step_size = 0.01,
+							},
+							{
+								type = "slider",
+								name_id = "jimhud_press2hold_text_scale_title",
+								desc_id = "jimhud_press2hold_text_scale_desc",
+								value = {"INTERACTION", "TEXT_SCALE"},
+								visible_reqs = {}, enabled_reqs = {},
+								min_value = 0.3,
+								max_value = 2,
+								step_size = 0.01,
+							},
+							{
+								type = "toggle",
+								name_id = "jimhud_press2hold_show_reload_circle_title",
+								desc_id = "jimhud_press2hold_show_reload_circle_desc",
+								value = {"INTERACTION", "SHOW_RELOAD"},
+								visible_reqs = {}, enabled_reqs = {},
+							},
+							{
+								type = "toggle",
+								name_id = "jimhud_press2hold_show_melee_circle_title",
+								desc_id = "jimhud_press2hold_show_melee_circle_desc",
+								value = {"INTERACTION", "SHOW_MELEE"},
+								visible_reqs = {}, enabled_reqs = {},
 							},
 							{
 								type = "divider",
@@ -2238,1791 +3880,61 @@ if JimHUD then
 							},
 							{
 								type = "toggle",
-								name_id = "jimhud_hudlist_show_ammo_bags_title",
-								desc_id = "jimhud_hudlist_show_equipment_desc",
-								value = {"HUDList", "LEFT_LIST", "show_ammo_bags"},
+								name_id = "jimhud_press2hold_show_timer_title",
+								desc_id = "jimhud_press2hold_show_timer_desc",
+								value = {"INTERACTION", "SHOW_TIME_REMAINING"},
+								visible_reqs = {}, enabled_reqs = {},
+							},
+							{
+								type = "slider",
+								name_id = "jimhud_press2hold_timer_scale_title",
+								desc_id = "jimhud_press2hold_timer_scale_desc",
+								value = {"INTERACTION", "TIMER_SCALE"},
 								visible_reqs = {},
 								enabled_reqs = {
-									{ setting = { "HUDList", "ENABLED" }, invert = false },
+									{ setting = { "INTERACTION", "SHOW_TIME_REMAINING" }, invert = false },
 								},
+								min_value = 0.3,
+								max_value = 2,
+								step_size = 0.01,
+							},
+							{
+								type = "multi_choice",
+								name_id = "jimhud_press2hold_timer_color_start_title",
+								desc_id = "jimhud_press2hold_timer_color_start_desc",
+								value = {"INTERACTION", "GRADIENT_COLOR_START"},
+								visible_reqs = {},
+								enabled_reqs = {
+									{ setting = { "INTERACTION", "SHOW_TIME_REMAINING" }, invert = false },
+								},
+								options = {},
+								add_color_options = true,
+								add_rainbow = false,
+							},
+							{
+								type = "multi_choice",
+								name_id = "jimhud_press2hold_timer_color_title",
+								desc_id = "jimhud_press2hold_timer_color_desc",
+								value = {"INTERACTION", "GRADIENT_COLOR"},
+								visible_reqs = {},
+								enabled_reqs = {
+									{ setting = { "INTERACTION", "SHOW_TIME_REMAINING" }, invert = false },
+								},
+								options = {},
+								add_color_options = true,
+								add_rainbow = true,
 							},
 							{
 								type = "toggle",
-								name_id = "jimhud_hudlist_show_doc_bags_title",
-								desc_id = "jimhud_hudlist_show_equipment_desc",
-								value = {"HUDList", "LEFT_LIST", "show_doc_bags"},
+								name_id = "jimhud_press2hold_show_timer_outline_title",
+								desc_id = "jimhud_press2hold_show_timer_outline_desc",
+								value = {"INTERACTION", "SHOW_TIME_REMAINING_OUTLINE"},
 								visible_reqs = {},
 								enabled_reqs = {
-									{ setting = { "HUDList", "ENABLED" }, invert = false },
-								},
-							},
-							{
-								type = "toggle",
-								name_id = "jimhud_hudlist_show_first_aid_kits_title",
-								desc_id = "jimhud_hudlist_show_equipment_desc",
-								value = {"HUDList", "LEFT_LIST", "show_first_aid_kits"},
-								visible_reqs = {},
-								enabled_reqs = {
-									{ setting = { "HUDList", "ENABLED" }, invert = false },
-								},
-							},
-							{
-								type = "toggle",
-								name_id = "jimhud_hudlist_show_body_bags_title",
-								desc_id = "jimhud_hudlist_show_equipment_desc",
-								value = {"HUDList", "LEFT_LIST", "show_body_bags"},
-								visible_reqs = {},
-								enabled_reqs = {
-									{ setting = { "HUDList", "ENABLED" }, invert = false },
-								},
-							},
-							{
-								type = "toggle",
-								name_id = "jimhud_hudlist_show_grenade_crates_title",
-								desc_id = "jimhud_hudlist_show_equipment_desc",
-								value = {"HUDList", "LEFT_LIST", "show_grenade_crates"},
-								visible_reqs = {},
-								enabled_reqs = {
-									{ setting = { "HUDList", "ENABLED" }, invert = false },
-								},
-							},
-							{
-								type = "toggle",
-								name_id = "jimhud_hudlist_sentries_title",
-								desc_id = "jimhud_hudlist_sentries_desc",
-								value = {"HUDList", "LEFT_LIST", "show_sentries"},
-								visible_reqs = {},
-								enabled_reqs = {
-									{ setting = { "HUDList", "ENABLED" }, invert = false },
-								},
-							},
-							{
-								type = "divider",
-								size = 12,
-							},
-							{
-								type = "toggle",
-								name_id = "jimhud_hudlist_show_ecms_title",
-								desc_id = "jimhud_hudlist_show_ecms_desc",
-								value = {"HUDList", "LEFT_LIST", "show_ecms"},
-								visible_reqs = {},
-								enabled_reqs = {
-									{ setting = { "HUDList", "ENABLED" }, invert = false },
-								},
-							},
-							{
-								type = "toggle",
-								name_id = "jimhud_hudlist_show_ecm_retrigger_title",
-								desc_id = "jimhud_hudlist_show_ecm_retrigger_desc",
-								value = {"HUDList", "LEFT_LIST", "show_ecm_retrigger"},
-								visible_reqs = {},
-								enabled_reqs = {
-									{ setting = { "HUDList", "ENABLED" }, invert = false },
-								},
-							},
-							{
-								type = "divider",
-								size = 12,
-							},
-							{
-								type = "toggle",
-								name_id = "jimhud_hudlist_show_minions_title",
-								desc_id = "jimhud_hudlist_show_minions_desc",
-								value = {"HUDList", "LEFT_LIST", "show_minions"},
-								visible_reqs = {},
-								enabled_reqs = {
-									{ setting = { "HUDList", "ENABLED" }, invert = false },
-								},
-							},
-							{
-								type = "toggle",
-								name_id = "jimhud_hudlist_show_own_minions_only_title",
-								desc_id = "jimhud_hudlist_show_own_minions_only_desc",
-								value = {"HUDList", "LEFT_LIST", "show_minions"},
-								visible_reqs = {},
-								enabled_reqs = {
-									{ setting = { "HUDList", "ENABLED" }, invert = false },
-									{ setting = { "HUDList", "LEFT_LIST", "show_minions" }, invert = false },
-								},
-							},
-							{
-								type = "divider",
-								size = 12,
-							},
-							{
-								type = "toggle",
-								name_id = "jimhud_hudlist_show_pagers_title",
-								desc_id = "jimhud_hudlist_show_pagers_desc",
-								value = {"HUDList", "LEFT_LIST", "show_pagers"},
-								visible_reqs = {},
-								enabled_reqs = {
-									{ setting = { "HUDList", "ENABLED" }, invert = false },
-								},
-							},
-							{
-								type = "divider",
-								size = 12,
-							},
-							{
-								type = "toggle",
-								name_id = "jimhud_hudlist_show_tape_loop_title",
-								desc_id = "jimhud_hudlist_show_tape_loop_desc",
-								value = {"HUDList", "LEFT_LIST", "show_tape_loop"},
-								visible_reqs = {},
-								enabled_reqs = {
-									{ setting = { "HUDList", "ENABLED" }, invert = false },
-								},
-							},
-							{
-								type = "divider",
-								size = 12,
-							},
-							{
-								type = "toggle",
-								name_id = "jimhud_hudlist_timer_format_title",
-								desc_id = "jimhud_hudlist_timer_format_desc",
-								value = {"HUDList", "LEFT_LIST", "timer_in_seconds"},
-								visible_reqs = {
-									{ setting = { "HUDList", "ENABLED" }, invert = false },
+									{ setting = { "INTERACTION", "SHOW_TIME_REMAINING" }, invert = false },
 								},
 							},
 						},
-					},
-					{	--HUDList Right List
-						type = "menu",
-						menu_id = "jimhud_hudlist_right_options_menu",
-						name_id = "jimhud_infopanels_right_options_name",
-						desc_id = "jimhud_infopanels_right_options_help",
-						options = {
-							{
-								type = "toggle",
-								name_id = "jimhud_hudlist_show_enemies_title",
-								desc_id = "jimhud_hudlist_show_enemies_desc",
-								value = {"HUDList", "RIGHT_LIST", "show_enemies"},
-								visible_reqs = {},
-								enabled_reqs = {
-									{ setting = { "HUDList", "ENABLED" }, invert = false },
-								},
-							},
-							{
-								type = "toggle",
-								name_id = "jimhud_hudlist_aggregate_enemies_title",
-								desc_id = "jimhud_hudlist_aggregate_enemies_desc",
-								value = {"HUDList", "RIGHT_LIST", "aggregate_enemies"},
-								visible_reqs = {},
-								enabled_reqs = {
-									{ setting = { "HUDList", "ENABLED" }, invert = false },
-									{ setting = { "HUDList", "RIGHT_LIST", "show_enemies" }, invert = false },
-								},
-							},
-							{
-								type = "toggle",
-								name_id = "jimhud_hudlist_show_turrets_title",
-								desc_id = "jimhud_hudlist_show_turrets_desc",
-								value = {"HUDList", "RIGHT_LIST", "show_turrets"},
-								visible_reqs = {},
-								enabled_reqs = {
-									{ setting = { "HUDList", "ENABLED" }, invert = false },
-								},
-							},
-							{
-								type = "toggle",
-								name_id = "jimhud_hudlist_show_civilians_title",
-								desc_id = "jimhud_hudlist_show_civilians_desc",
-								value = {"HUDList", "RIGHT_LIST", "show_civilians"},
-								visible_reqs = {},
-								enabled_reqs = {
-									{ setting = { "HUDList", "ENABLED" }, invert = false },
-								},
-							},
-							{
-								type = "toggle",
-								name_id = "jimhud_hudlist_show_hostages_title",
-								desc_id = "jimhud_hudlist_show_hostages_desc",
-								value = {"HUDList", "RIGHT_LIST", "show_hostages"},
-								visible_reqs = {},
-								enabled_reqs = {
-									{ setting = { "HUDList", "ENABLED" }, invert = false },
-								},
-							},
-							{
-								type = "toggle",
-								name_id = "jimhud_hudlist_aggregate_hostages_title",
-								desc_id = "jimhud_hudlist_aggregate_hostages_desc",
-								value = {"HUDList", "RIGHT_LIST", "aggregate_hostages"},
-								visible_reqs = {},
-								enabled_reqs = {
-									{ setting = { "HUDList", "ENABLED" }, invert = false },
-									{ setting = {"HUDList", "RIGHT_LIST",  "show_hostages"}, invert = false },
-								},
-							},
-							{
-								type = "toggle",
-								name_id = "jimhud_hudlist_show_minion_count_title",
-								desc_id = "jimhud_hudlist_show_minion_count_desc",
-								value = {"HUDList", "RIGHT_LIST", "show_minion_count"},
-								visible_reqs = {},
-								enabled_reqs = {
-									{ setting = { "HUDList", "ENABLED" }, invert = false },
-								},
-							},
-							{
-								type = "divider",
-								size = 12,
-							},
-							{
-								type = "toggle",
-								name_id = "jimhud_hudlist_show_pager_count_title",
-								desc_id = "jimhud_hudlist_show_pager_count_desc",
-								value = {"HUDList", "RIGHT_LIST", "show_pager_count"},
-								visible_reqs = {},
-								enabled_reqs = {
-									{ setting = { "HUDList", "ENABLED" }, invert = false },
-								},
-							},
-							{
-								type = "toggle",
-								name_id = "jimhud_hudlist_show_cam_count_title",
-								desc_id = "jimhud_hudlist_show_cam_count_desc",
-								value = {"HUDList", "RIGHT_LIST", "show_cam_count"},
-								visible_reqs = {},
-								enabled_reqs = {
-									{ setting = { "HUDList", "ENABLED" }, invert = false },
-								},
-							},
-							{
-								type = "toggle",
-								name_id = "jimhud_hudlist_show_bodybags_count_title",
-								desc_id = "jimhud_hudlist_show_bodybags_count_desc",
-								value = {"HUDList", "RIGHT_LIST", "show_bodybags_count"},
-								visible_reqs = {},
-								enabled_reqs = {
-									{ setting = { "HUDList", "ENABLED" }, invert = false },
-								},
-							},
-							{
-								type = "toggle",
-								name_id = "jimhud_hudlist_show_corpse_count_title",
-								desc_id = "jimhud_hudlist_show_corpse_count_desc",
-								value = {"HUDList", "RIGHT_LIST", "show_corpse_count"},
-								visible_reqs = {},
-								enabled_reqs = {
-									{ setting = { "HUDList", "ENABLED" }, invert = false },
-								},
-							},
-							{
-								type = "divider",
-								size = 12,
-							},
-							{
-								type = "toggle",
-								name_id = "jimhud_hudlist_show_loot_title",
-								desc_id = "jimhud_hudlist_show_loot_desc",
-								value = {"HUDList", "RIGHT_LIST", "show_loot"},
-								visible_reqs = {},
-								enabled_reqs = {
-									{ setting = { "HUDList", "ENABLED" }, invert = false },
-								},
-							},
-							{
-								type = "toggle",
-								name_id = "jimhud_hudlist_aggregate_loot_title",
-								desc_id = "jimhud_hudlist_aggregate_loot_desc",
-								value = {"HUDList", "RIGHT_LIST", "aggregate_loot"},
-								visible_reqs = {},
-								enabled_reqs = {
-									{ setting = { "HUDList", "ENABLED" }, invert = false },
-									{ setting = { "HUDList", "RIGHT_LIST",  "show_loot" }, invert = false },
-								},
-							},
-							{
-								type = "toggle",
-								name_id = "jimhud_hudlist_separate_bagged_loot_title",
-								desc_id = "jimhud_hudlist_separate_bagged_loot_desc",
-								value = {"HUDList", "RIGHT_LIST", "separate_bagged_loot"},
-								visible_reqs = {},
-								enabled_reqs = {
-									{ setting = { "HUDList", "ENABLED" }, invert = false },
-									{ setting = { "HUDList", "RIGHT_LIST",  "show_loot" }, invert = false },
-								},
-							},
-							{
-								type = "toggle",
-								name_id = "jimhud_hudlist_show_potential_loot_title",
-								desc_id = "jimhud_hudlist_show_potential_loot_desc",
-								value = {"HUDList", "RIGHT_LIST", "show_potential_loot"},
-								visible_reqs = {},
-								enabled_reqs = {
-									{ setting = { "HUDList", "ENABLED" }, invert = false },
-								},
-							},
-							{
-								type = "divider",
-								size = 12,
-							},
-							{
-								type = "toggle",
-								name_id = "jimhud_hudlist_show_special_pickups_title",
-								desc_id = "jimhud_hudlist_show_special_pickups_desc",
-								value = {"HUDList", "RIGHT_LIST", "show_special_pickups"},
-								visible_reqs = {},
-								enabled_reqs = {
-									{ setting = { "HUDList", "ENABLED" }, invert = false },
-								},
-							},
-							{
-								type = "toggle",
-								name_id = "jimhud_hudlist_show_mission_pickups_title",
-								desc_id = "jimhud_hudlist_show_mission_pickups_desc",
-								value = {"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "mission_pickups"},
-								visible_reqs = {},
-								enabled_reqs = {
-									{ setting = { "HUDList", "ENABLED" }, invert = false },
-									{ setting = { "HUDList", "RIGHT_LIST", "show_special_pickups" }, invert = false },
-								},
-							},
-							{
-								type = "toggle",
-								name_id = "jimhud_hudlist_show_collectables_pickups_title",
-								desc_id = "jimhud_hudlist_show_collectables_pickups_desc",
-								value = {"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "collectables"},
-								visible_reqs = {},
-								enabled_reqs = {
-									{ setting = { "HUDList", "ENABLED" }, invert = false },
-									{ setting = { "HUDList", "RIGHT_LIST", "show_special_pickups" }, invert = false },
-								},
-							},
-							{
-								type = "toggle",
-								name_id = "jimhud_hudlist_show_valuables_pickups_title",
-								desc_id = "jimhud_hudlist_show_valuables_pickups_desc",
-								value = {"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "valuables"},
-								visible_reqs = {},
-								enabled_reqs = {
-									{ setting = { "HUDList", "ENABLED" }, invert = false },
-									{ setting = { "HUDList", "RIGHT_LIST", "show_special_pickups" }, invert = false },
-								},
-							},
-						},
-					},
-					{	--HUDList Buff List
-						type = "menu",
-						menu_id = "jimhud_hudlist_buffs_options_menu",
-						name_id = "jimhud_infopanels_buff_options_name",
-						desc_id = "jimhud_infopanels_buff_options_help",
-						options = {
-							{
-								type = "toggle",
-								name_id = "jimhud_hudlist_show_buffs_title",
-								desc_id = "jimhud_hudlist_show_buffs_desc",
-								value = {"HUDList", "BUFF_LIST", "show_buffs"},
-								visible_reqs = {},
-								enabled_reqs = {
-									{ setting = { "HUDList", "ENABLED" }, invert = false },
-								},
-							},
-							{
-								type = "divider",
-								size = 12,
-							},
-							{
-								type = "toggle",
-								name_id = "jimhud_hudlist_damage_increase_compbuff_title",
-								desc_id = "jimhud_hudlist_damage_increase_compbuff_desc",
-								value = {"HUDList", "BUFF_LIST", "damage_increase"},
-								visible_reqs = {},
-								enabled_reqs = {
-									{ setting = { "HUDList", "ENABLED" }, invert = false },
-									{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
-								},
-							},
-							{
-								type = "toggle",
-								name_id = "jimhud_hudlist_damage_reduction_compbuff_title",
-								desc_id = "jimhud_hudlist_damage_reduction_compbuff_desc",
-								value = {"HUDList", "BUFF_LIST", "damage_reduction"},
-								visible_reqs = {},
-								enabled_reqs = {
-									{ setting = { "HUDList", "ENABLED" }, invert = false },
-									{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
-								},
-							},
-							{
-								type = "toggle",
-								name_id = "jimhud_hudlist_melee_damage_increase_compbuff_title",
-								desc_id = "jimhud_hudlist_melee_damage_increase_compbuff_desc",
-								value = {"HUDList", "BUFF_LIST", "melee_damage_increase"},
-								visible_reqs = {},
-								enabled_reqs = {
-									{ setting = { "HUDList", "ENABLED" }, invert = false },
-									{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
-								},
-							},
-							{
-								type = "toggle",
-								name_id = "jimhud_hudlist_passive_health_regen_compbuff_title",
-								desc_id = "jimhud_hudlist_passive_health_regen_compbuff_desc",
-								value = {"HUDList", "BUFF_LIST", "passive_health_regen"},
-								visible_reqs = {},
-								enabled_reqs = {
-									{ setting = { "HUDList", "ENABLED" }, invert = false },
-									{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
-								},
-							},
-							{
-								type = "toggle",
-								name_id = "jimhud_hudlist_total_dodge_chance_compbuff_title",
-								desc_id = "jimhud_hudlist_total_dodge_chance_compbuff_desc",
-								value = {"HUDList", "BUFF_LIST", "total_dodge_chance"},
-								visible_reqs = {},
-								enabled_reqs = {
-									{ setting = { "HUDList", "ENABLED" }, invert = false },
-									{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
-								},
-							},
-							{
-								type = "divider",
-								size = 12,
-							},
-							{
-								type = "menu",
-								menu_id = "jimhud_hudlist_buffs_mastermind_options_menu",
-								name_id = "jimhud_infopanels_buff_mastermind_options_name",
-								desc_id = "jimhud_infopanels_buff_mastermind_options_help",
-								options = {
-									{
-										type = "toggle",
-										name_id = "jimhud_hudlist_forced_friendship_teambuff_title",
-										desc_id = "jimhud_hudlist_forced_friendship_teambuff_desc",
-										value = {"HUDList", "BUFF_LIST", "MASTERMIND_BUFFS", "forced_friendship"},
-										visible_reqs = {},
-										enabled_reqs = {
-											{ setting = { "HUDList", "ENABLED" }, invert = false },
-											{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
-										},
-									},
-									{
-										type = "divider",
-										size = 12,
-									},
-									{
-										type = "toggle",
-										name_id = "jimhud_hudlist_aggressive_reload_aced_buff_title",
-										desc_id = "jimhud_hudlist_aggressive_reload_aced_buff_desc",
-										value = {"HUDList", "BUFF_LIST", "MASTERMIND_BUFFS", "aggressive_reload_aced"},
-										visible_reqs = {},
-										enabled_reqs = {
-											{ setting = { "HUDList", "ENABLED" }, invert = false },
-											{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
-										},
-									},
-									{
-										type = "toggle",
-										name_id = "jimhud_hudlist_ammo_efficiency_buff_title",
-										desc_id = "jimhud_hudlist_ammo_efficiency_buff_desc",
-										value = {"HUDList", "BUFF_LIST", "MASTERMIND_BUFFS", "ammo_efficiency"},
-										visible_reqs = {},
-										enabled_reqs = {
-											{ setting = { "HUDList", "ENABLED" }, invert = false },
-											{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
-										},
-									},
-									{
-										type = "toggle",
-										name_id = "jimhud_hudlist_combat_medic_buff_title",
-										desc_id = "jimhud_hudlist_combat_medic_buff_desc",
-										value = {"HUDList", "BUFF_LIST", "MASTERMIND_BUFFS", "combat_medic"},
-										visible_reqs = {},
-										enabled_reqs = {
-											{ setting = { "HUDList", "ENABLED" }, invert = false },
-											{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
-										},
-									},
-									{
-										type = "toggle",
-										name_id = "jimhud_hudlist_combat_medic_passive_buff_title",
-										desc_id = "jimhud_hudlist_combat_medic_passive_buff_desc",
-										value = {"HUDList", "BUFF_LIST", "MASTERMIND_BUFFS", "combat_medic_passive"},
-										visible_reqs = {},
-										enabled_reqs = {
-											{ setting = { "HUDList", "ENABLED" }, invert = false },
-											{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
-										},
-									},
-									{
-										type = "toggle",
-										name_id = "jimhud_hudlist_hostage_taker_buff_title",
-										desc_id = "jimhud_hudlist_hostage_taker_buff_desc",
-										value = {"HUDList", "BUFF_LIST", "MASTERMIND_BUFFS", "hostage_taker"},
-										visible_reqs = {},
-										enabled_reqs = {
-											{ setting = { "HUDList", "ENABLED" }, invert = false },
-											{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
-										},
-									},
-									{
-										type = "toggle",
-										name_id = "jimhud_hudlist_inspire_buff_title",
-										desc_id = "jimhud_hudlist_inspire_buff_desc",
-										value = {"HUDList", "BUFF_LIST", "MASTERMIND_BUFFS", "inspire"},
-										visible_reqs = {},
-										enabled_reqs = {
-											{ setting = { "HUDList", "ENABLED" }, invert = false },
-											{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
-										},
-									},
-									{
-										type = "toggle",
-										name_id = "jimhud_hudlist_painkiller_buff_title",
-										desc_id = "jimhud_hudlist_painkiller_buff_desc",
-										value = {"HUDList", "BUFF_LIST", "MASTERMIND_BUFFS", "painkiller"},
-										visible_reqs = {},
-										enabled_reqs = {
-											{ setting = { "HUDList", "ENABLED" }, invert = false },
-											{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
-										},
-									},
-									{
-										type = "toggle",
-										name_id = "jimhud_hudlist_partner_in_crime_buff_title",
-										desc_id = "jimhud_hudlist_partner_in_crime_buff_desc",
-										value = {"HUDList", "BUFF_LIST", "MASTERMIND_BUFFS", "partner_in_crime"},
-										visible_reqs = {},
-										enabled_reqs = {
-											{ setting = { "HUDList", "ENABLED" }, invert = false },
-											{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
-										},
-									},
-									{
-										type = "toggle",
-										name_id = "jimhud_hudlist_quick_fix_buff_title",
-										desc_id = "jimhud_hudlist_quick_fix_buff_desc",
-										value = {"HUDList", "BUFF_LIST", "MASTERMIND_BUFFS", "quick_fix"},
-										visible_reqs = {},
-										enabled_reqs = {
-											{ setting = { "HUDList", "ENABLED" }, invert = false },
-											{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
-										},
-									},
-									{
-										type = "toggle",
-										name_id = "jimhud_hudlist_uppers_buff_title",
-										desc_id = "jimhud_hudlist_uppers_buff_desc",
-										value = {"HUDList", "BUFF_LIST", "MASTERMIND_BUFFS", "uppers"},
-										visible_reqs = {},
-										enabled_reqs = {
-											{ setting = { "HUDList", "ENABLED" }, invert = false },
-											{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
-										},
-									},
-									{
-										type = "divider",
-										size = 12,
-									},
-									{
-										type = "toggle",
-										name_id = "jimhud_hudlist_inspire_debuff_title",
-										desc_id = "jimhud_hudlist_inspire_debuff_desc",
-										value = {"HUDList", "BUFF_LIST", "MASTERMIND_BUFFS", "inspire_debuff"},
-										visible_reqs = {},
-										enabled_reqs = {
-											{ setting = { "HUDList", "ENABLED" }, invert = false },
-											{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
-										},
-									},
-									{
-										type = "toggle",
-										name_id = "jimhud_hudlist_inspire_revive_debuff_title",
-										desc_id = "jimhud_hudlist_inspire_revive_debuff_desc",
-										value = {"HUDList", "BUFF_LIST", "MASTERMIND_BUFFS", "inspire_revive_debuff"},
-										visible_reqs = {},
-										enabled_reqs = {
-											{ setting = { "HUDList", "ENABLED" }, invert = false },
-											{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
-										},
-									},
-								},
-							},
-							{
-								type = "menu",
-								menu_id = "jimhud_hudlist_buffs_enforcer_options_menu",
-								name_id = "jimhud_infopanels_buff_enforcer_options_name",
-								desc_id = "jimhud_infopanels_buff_enforcer_options_help",
-								options = {
-									{
-										type = "toggle",
-										name_id = "jimhud_hudlist_bulletproof_teambuff_title",
-										desc_id = "jimhud_hudlist_bulletproof_teambuff_desc",
-										value = {"HUDList", "BUFF_LIST", "ENFORCER_BUFFS", "bulletproof"},
-										visible_reqs = {},
-										enabled_reqs = {
-											{ setting = { "HUDList", "ENABLED" }, invert = false },
-											{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
-										},
-									},
-									{
-										type = "divider",
-										size = 12,
-									},
-									{
-										type = "toggle",
-										name_id = "jimhud_hudlist_bullet_storm_buff_title",
-										desc_id = "jimhud_hudlist_bullet_storm_buff_desc",
-										value = {"HUDList", "BUFF_LIST", "ENFORCER_BUFFS", "bullet_storm"},
-										visible_reqs = {},
-										enabled_reqs = {
-											{ setting = { "HUDList", "ENABLED" }, invert = false },
-											{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
-										},
-									},
-									{
-										type = "toggle",
-										name_id = "jimhud_hudlist_die_hard_buff_title",
-										desc_id = "jimhud_hudlist_die_hard_buff_desc",
-										value = {"HUDList", "BUFF_LIST", "ENFORCER_BUFFS", "die_hard"},
-										visible_reqs = {},
-										enabled_reqs = {
-											{ setting = { "HUDList", "ENABLED" }, invert = false },
-											{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
-										},
-									},
-									{
-										type = "toggle",
-										name_id = "jimhud_hudlist_overkill_buff_title",
-										desc_id = "jimhud_hudlist_overkill_buff_desc",
-										value = {"HUDList", "BUFF_LIST", "ENFORCER_BUFFS", "overkill"},
-										visible_reqs = {},
-										enabled_reqs = {
-											{ setting = { "HUDList", "ENABLED" }, invert = false },
-											{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
-										},
-									},
-									{
-										type = "toggle",
-										name_id = "jimhud_hudlist_underdog_buff_title",
-										desc_id = "jimhud_hudlist_underdog_buff_desc",
-										value = {"HUDList", "BUFF_LIST", "ENFORCER_BUFFS", "underdog"},
-										visible_reqs = {},
-										enabled_reqs = {
-											{ setting = { "HUDList", "ENABLED" }, invert = false },
-											{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
-										},
-									},
-									{
-										type = "divider",
-										size = 12,
-									},
-									{
-										type = "toggle",
-										name_id = "jimhud_hudlist_bullseye_debuff_title",
-										desc_id = "jimhud_hudlist_bullseye_debuff_desc",
-										value = {"HUDList", "BUFF_LIST", "ENFORCER_BUFFS", "bullseye_debuff"},
-										visible_reqs = {},
-										enabled_reqs = {
-											{ setting = { "HUDList", "ENABLED" }, invert = false },
-											{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
-										},
-									},
-								},
-							},
-							{
-								type = "menu",
-								menu_id = "jimhud_hudlist_buffs_technician_options_menu",
-								name_id = "jimhud_infopanels_buff_technician_options_name",
-								desc_id = "jimhud_infopanels_buff_technician_options_help",
-								options = {
-									{
-										type = "toggle",
-										name_id = "jimhud_hudlist_lock_n_load_buff_title",
-										desc_id = "jimhud_hudlist_lock_n_load_buff_desc",
-										value = {"HUDList", "BUFF_LIST", "TECHNICIAN_BUFFS", "lock_n_load"},
-										visible_reqs = {},
-										enabled_reqs = {
-											{ setting = { "HUDList", "ENABLED" }, invert = false },
-											{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
-										},
-									},
-								},
-							},
-							{
-								type = "menu",
-								menu_id = "jimhud_hudlist_buffs_ghost_options_menu",
-								name_id = "jimhud_infopanels_buff_ghost_options_name",
-								desc_id = "jimhud_infopanels_buff_ghost_options_help",
-								options = {
-									{
-										type = "toggle",
-										name_id = "jimhud_hudlist_dire_need_buff_title",
-										desc_id = "jimhud_hudlist_dire_need_buff_desc",
-										value = {"HUDList", "BUFF_LIST", "GHOST_BUFFS", "dire_need"},
-										visible_reqs = {},
-										enabled_reqs = {
-											{ setting = { "HUDList", "ENABLED" }, invert = false },
-											{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
-										},
-									},
-									{
-										type = "toggle",
-										name_id = "jimhud_hudlist_second_wind_buff_title",
-										desc_id = "jimhud_hudlist_second_wind_buff_desc",
-										value = {"HUDList", "BUFF_LIST", "GHOST_BUFFS", "second_wind"},
-										visible_reqs = {},
-										enabled_reqs = {
-											{ setting = { "HUDList", "ENABLED" }, invert = false },
-											{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
-										},
-									},
-									{
-										type = "toggle",
-										name_id = "jimhud_hudlist_sixth_sense_buff_title",
-										desc_id = "jimhud_hudlist_sixth_sense_buff_desc",
-										value = {"HUDList", "BUFF_LIST", "GHOST_BUFFS", "sixth_sense"},
-										visible_reqs = {},
-										enabled_reqs = {
-											{ setting = { "HUDList", "ENABLED" }, invert = false },
-											{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
-										},
-									},
-									{
-										type = "toggle",
-										name_id = "jimhud_hudlist_unseen_strike_buff_title",
-										desc_id = "jimhud_hudlist_unseen_strike_buff_desc",
-										value = {"HUDList", "BUFF_LIST", "GHOST_BUFFS", "unseen_strike"},
-										visible_reqs = {},
-										enabled_reqs = {
-											{ setting = { "HUDList", "ENABLED" }, invert = false },
-											{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
-										},
-									},
-								},
-							},
-							{
-								type = "menu",
-								menu_id = "jimhud_hudlist_buffs_fugitive_options_menu",
-								name_id = "jimhud_infopanels_buff_fugitive_options_name",
-								desc_id = "jimhud_infopanels_buff_fugitive_options_help",
-								options = {
-									{
-										type = "toggle",
-										name_id = "jimhud_hudlist_berserker_buff_title",
-										desc_id = "jimhud_hudlist_berserker_buff_desc",
-										value = {"HUDList", "BUFF_LIST", "FUGITIVE_BUFFS", "berserker"},
-										visible_reqs = {},
-										enabled_reqs = {
-											{ setting = { "HUDList", "ENABLED" }, invert = false },
-											{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
-										},
-									},
-									{
-										type = "toggle",
-										name_id = "jimhud_hudlist_bloodthirst_basic_buff_title",
-										desc_id = "jimhud_hudlist_bloodthirst_basic_buff_desc",
-										value = {"HUDList", "BUFF_LIST", "FUGITIVE_BUFFS", "bloodthirst_basic"},
-										visible_reqs = {},
-										enabled_reqs = {
-											{ setting = { "HUDList", "ENABLED" }, invert = false },
-											{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
-										},
-									},
-									{
-										type = "toggle",
-										name_id = "jimhud_hudlist_bloodthirst_aced_buff_title",
-										desc_id = "jimhud_hudlist_bloodthirst_aced_buff_desc",
-										value = {"HUDList", "BUFF_LIST", "FUGITIVE_BUFFS", "bloodthirst_aced"},
-										visible_reqs = {},
-										enabled_reqs = {
-											{ setting = { "HUDList", "ENABLED" }, invert = false },
-											{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
-										},
-									},
-									{
-										type = "toggle",
-										name_id = "jimhud_hudlist_desperado_buff_title",
-										desc_id = "jimhud_hudlist_desperado_buff_desc",
-										value = {"HUDList", "BUFF_LIST", "FUGITIVE_BUFFS", "desperado"},
-										visible_reqs = {},
-										enabled_reqs = {
-											{ setting = { "HUDList", "ENABLED" }, invert = false },
-											{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
-										},
-									},
-									{
-										type = "toggle",
-										name_id = "jimhud_hudlist_frenzy_buff_title",
-										desc_id = "jimhud_hudlist_frenzy_buff_desc",
-										value = {"HUDList", "BUFF_LIST", "FUGITIVE_BUFFS", "frenzy"},
-										visible_reqs = {},
-										enabled_reqs = {
-											{ setting = { "HUDList", "ENABLED" }, invert = false },
-											{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
-										},
-									},
-									{
-										type = "toggle",
-										name_id = "jimhud_hudlist_messiah_buff_title",
-										desc_id = "jimhud_hudlist_messiah_buff_desc",
-										value = {"HUDList", "BUFF_LIST", "FUGITIVE_BUFFS", "messiah"},
-										visible_reqs = {},
-										enabled_reqs = {
-											{ setting = { "HUDList", "ENABLED" }, invert = false },
-											{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
-										},
-									},
-									{
-										type = "toggle",
-										name_id = "jimhud_hudlist_running_from_death_buff_title",
-										desc_id = "jimhud_hudlist_running_from_death_buff_desc",
-										value = {"HUDList", "BUFF_LIST", "FUGITIVE_BUFFS", "running_from_death"},
-										visible_reqs = {},
-										enabled_reqs = {
-											{ setting = { "HUDList", "ENABLED" }, invert = false },
-											{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
-										},
-									},
-									{
-										type = "toggle",
-										name_id = "jimhud_hudlist_swan_song_buff_title",
-										desc_id = "jimhud_hudlist_swan_song_buff_desc",
-										value = {"HUDList", "BUFF_LIST", "FUGITIVE_BUFFS", "swan_song"},
-										visible_reqs = {},
-										enabled_reqs = {
-											{ setting = { "HUDList", "ENABLED" }, invert = false },
-											{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
-										},
-									},
-									{
-										type = "toggle",
-										name_id = "jimhud_hudlist_trigger_happy_buff_title",
-										desc_id = "jimhud_hudlist_trigger_happy_buff_desc",
-										value = {"HUDList", "BUFF_LIST", "FUGITIVE_BUFFS", "trigger_happy"},
-										visible_reqs = {},
-										enabled_reqs = {
-											{ setting = { "HUDList", "ENABLED" }, invert = false },
-											{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
-										},
-									},
-									{
-										type = "toggle",
-										name_id = "jimhud_hudlist_up_you_go_buff_title",
-										desc_id = "jimhud_hudlist_up_you_go_buff_desc",
-										value = {"HUDList", "BUFF_LIST", "FUGITIVE_BUFFS", "up_you_go"},
-										visible_reqs = {},
-										enabled_reqs = {
-											{ setting = { "HUDList", "ENABLED" }, invert = false },
-											{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
-										},
-									},
-								},
-							},
-							{
-								type = "menu",
-								menu_id = "jimhud_hudlist_buffs_perkdecks_options_menu",
-								name_id = "jimhud_infopanels_buff_perkdecks_options_name",
-								desc_id = "jimhud_infopanels_buff_perkdecks_options_help",
-								options = {
-									{
-										type = "toggle",
-										name_id = "jimhud_hudlist_armor_break_invulnerable_buff_title",
-										desc_id = "jimhud_hudlist_armor_break_invulnerable_buff_desc",
-										value = {"HUDList", "BUFF_LIST", "PERK_BUFFS", "armor_break_invulnerable"},
-										visible_reqs = {},
-										enabled_reqs = {
-											{ setting = { "HUDList", "ENABLED" }, invert = false },
-											{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
-										},
-									},
-									{
-										type = "toggle",
-										name_id = "jimhud_hudlist_anarchist_armor_recovery_debuff_title",
-										desc_id = "jimhud_hudlist_anarchist_armor_recovery_debuff_desc",
-										value = {"HUDList", "BUFF_LIST", "PERK_BUFFS", "anarchist_armor_recovery_debuff"},
-										visible_reqs = {},
-										enabled_reqs = {
-											{ setting = { "HUDList", "ENABLED" }, invert = false },
-											{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
-										},
-									},
-									{
-										type = "toggle",
-										name_id = "jimhud_hudlist_armorer_teambuff_title",
-										desc_id = "jimhud_hudlist_armorer_teambuff_desc",
-										value = {"HUDList", "BUFF_LIST", "PERK_BUFFS", "armorer"},
-										visible_reqs = {},
-										enabled_reqs = {
-											{ setting = { "HUDList", "ENABLED" }, invert = false },
-											{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
-										},
-									},
-									{
-										type = "toggle",
-										name_id = "jimhud_hudlist_biker_buff_title",
-										desc_id = "jimhud_hudlist_biker_buff_desc",
-										value = {"HUDList", "BUFF_LIST", "PERK_BUFFS", "biker"},
-										visible_reqs = {},
-										enabled_reqs = {
-											{ setting = { "HUDList", "ENABLED" }, invert = false },
-											{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
-										},
-									},
-									{
-										type = "toggle",
-										name_id = "jimhud_hudlist_crew_chief_teambuff_title",
-										desc_id = "jimhud_hudlist_crew_chief_teambuff_desc",
-										value = {"HUDList", "BUFF_LIST", "PERK_BUFFS", "crew_chief"},
-										visible_reqs = {},
-										enabled_reqs = {
-											{ setting = { "HUDList", "ENABLED" }, invert = false },
-											{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
-										},
-									},
-									{
-										type = "toggle",
-										name_id = "jimhud_hudlist_hostage_situation_buff_title",
-										desc_id = "jimhud_hudlist_hostage_situation_buff_desc",
-										value = {"HUDList", "BUFF_LIST", "PERK_BUFFS", "hostage_situation"},
-										visible_reqs = {},
-										enabled_reqs = {
-											{ setting = { "HUDList", "ENABLED" }, invert = false },
-											{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
-										},
-									},
-									{
-										type = "toggle",
-										name_id = "jimhud_hudlist_ammo_give_out_debuff_title",
-										desc_id = "jimhud_hudlist_ammo_give_out_debuff_desc",
-										value = {"HUDList", "BUFF_LIST", "PERK_BUFFS", "ammo_give_out_debuff"},
-										visible_reqs = {},
-										enabled_reqs = {
-											{ setting = { "HUDList", "ENABLED" }, invert = false },
-											{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
-										},
-									},
-									{
-										type = "toggle",
-										name_id = "jimhud_hudlist_medical_supplies_debuff_title",
-										desc_id = "jimhud_hudlist_medical_supplies_debuff_desc",
-										value = {"HUDList", "BUFF_LIST", "PERK_BUFFS", "medical_supplies_debuff"},
-										visible_reqs = {},
-										enabled_reqs = {
-											{ setting = { "HUDList", "ENABLED" }, invert = false },
-											{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
-										},
-									},
-									{
-										type = "toggle",
-										name_id = "jimhud_hudlist_grinder_buff_title",
-										desc_id = "jimhud_hudlist_grinder_buff_desc",
-										value = {"HUDList", "BUFF_LIST", "PERK_BUFFS", "grinder"},
-										visible_reqs = {},
-										enabled_reqs = {
-											{ setting = { "HUDList", "ENABLED" }, invert = false },
-											{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
-										},
-									},
-									{
-										type = "toggle",
-										name_id = "jimhud_hudlist_chico_injector_buff_title",
-										desc_id = "jimhud_hudlist_chico_injector_buff_desc",
-										value = {"HUDList", "BUFF_LIST", "PERK_BUFFS", "chico_injector"},
-										visible_reqs = {},
-										enabled_reqs = {
-											{ setting = { "HUDList", "ENABLED" }, invert = false },
-											{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
-										},
-									},
-									{
-										type = "toggle",
-										name_id = "jimhud_hudlist_damage_control_debuff_title",
-										desc_id = "jimhud_hudlist_damage_control_debuff_desc",
-										value = {"HUDList", "BUFF_LIST", "PERK_BUFFS", "damage_control_debuff"},
-										visible_reqs = {},
-										enabled_reqs = {
-											{ setting = { "HUDList", "ENABLED" }, invert = false },
-											{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
-										},
-									},
-									{
-										type = "toggle",
-										name_id = "jimhud_hudlist_delayed_damage_buff_title",
-										desc_id = "jimhud_hudlist_delayed_damage_buff_desc",
-										value = {"HUDList", "BUFF_LIST", "PERK_BUFFS", "delayed_damage"},
-										visible_reqs = {},
-										enabled_reqs = {
-											{ setting = { "HUDList", "ENABLED" }, invert = false },
-											{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
-										},
-									},
-									{
-										type = "toggle",
-										name_id = "jimhud_hudlist_tooth_and_claw_buff_title",
-										desc_id = "jimhud_hudlist_tooth_and_claw_buff_desc",
-										value = {"HUDList", "BUFF_LIST", "PERK_BUFFS", "tooth_and_claw"},
-										visible_reqs = {},
-										enabled_reqs = {
-											{ setting = { "HUDList", "ENABLED" }, invert = false },
-											{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
-										},
-									},
-									{
-										type = "toggle",
-										name_id = "jimhud_hudlist_close_contact_buff_title",
-										desc_id = "jimhud_hudlist_close_contact_buff_desc",
-										value = {"HUDList", "BUFF_LIST", "PERK_BUFFS", "close_contact"},
-										visible_reqs = {},
-										enabled_reqs = {
-											{ setting = { "HUDList", "ENABLED" }, invert = false },
-											{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
-										},
-									},
-									{
-										type = "toggle",
-										name_id = "jimhud_hudlist_life_drain_debuff_title",
-										desc_id = "jimhud_hudlist_life_drain_debuff_desc",
-										value = {"HUDList", "BUFF_LIST", "PERK_BUFFS", "life_drain_debuff"},
-										visible_reqs = {},
-										enabled_reqs = {
-											{ setting = { "HUDList", "ENABLED" }, invert = false },
-											{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
-										},
-									},
-									{
-										type = "toggle",
-										name_id = "jimhud_hudlist_melee_stack_damage_buff_title",
-										desc_id = "jimhud_hudlist_melee_stack_damage_buff_desc",
-										value = {"HUDList", "BUFF_LIST", "PERK_BUFFS", "melee_stack_damage"},
-										visible_reqs = {},
-										enabled_reqs = {
-											{ setting = { "HUDList", "ENABLED" }, invert = false },
-											{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
-										},
-									},
-									{
-										type = "toggle",
-										name_id = "jimhud_hudlist_overdog_buff_title",
-										desc_id = "jimhud_hudlist_overdog_buff_desc",
-										value = {"HUDList", "BUFF_LIST", "PERK_BUFFS", "overdog"},
-										visible_reqs = {},
-										enabled_reqs = {
-											{ setting = { "HUDList", "ENABLED" }, invert = false },
-											{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
-										},
-									},
-									{
-										type = "toggle",
-										name_id = "jimhud_hudlist_maniac_buff_title",
-										desc_id = "jimhud_hudlist_maniac_buff_desc",
-										value = {"HUDList", "BUFF_LIST", "PERK_BUFFS", "maniac"},
-										visible_reqs = {},
-										enabled_reqs = {
-											{ setting = { "HUDList", "ENABLED" }, invert = false },
-											{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
-										},
-									},
-									{
-										type = "toggle",
-										name_id = "jimhud_hudlist_muscle_regen_buff_title",
-										desc_id = "jimhud_hudlist_muscle_regen_buff_desc",
-										value = {"HUDList", "BUFF_LIST", "PERK_BUFFS", "muscle_regen"},
-										visible_reqs = {},
-										enabled_reqs = {
-											{ setting = { "HUDList", "ENABLED" }, invert = false },
-											{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
-										},
-									},
-									{
-										type = "toggle",
-										name_id = "jimhud_hudlist_pocket_ecm_jammer_buff_title",
-										desc_id = "jimhud_hudlist_pocket_ecm_jammer_buff_desc",
-										value = {"HUDList", "BUFF_LIST", "PERK_BUFFS", "pocket_ecm_jammer"},
-										visible_reqs = {},
-										enabled_reqs = {
-											{ setting = { "HUDList", "ENABLED" }, invert = false },
-											{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
-										},
-									},
-									{
-										type = "toggle",
-										name_id = "jimhud_hudlist_pocket_ecm_kill_dodge_buff_title",
-										desc_id = "jimhud_hudlist_pocket_ecm_kill_dodge_buff_desc",
-										value = {"HUDList", "BUFF_LIST", "PERK_BUFFS", "pocket_ecm_kill_dodge"},
-										visible_reqs = {},
-										enabled_reqs = {
-											{ setting = { "HUDList", "ENABLED" }, invert = false },
-											{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
-										},
-									},
-									{
-										type = "toggle",
-										name_id = "jimhud_hudlist_sicario_dodge_buff_title",
-										desc_id = "jimhud_hudlist_sicario_dodge_buff_desc",
-										value = {"HUDList", "BUFF_LIST", "PERK_BUFFS", "sicario_dodge"},
-										visible_reqs = {},
-										enabled_reqs = {
-											{ setting = { "HUDList", "ENABLED" }, invert = false },
-											{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
-										},
-									},
-									{
-										type = "toggle",
-										name_id = "jimhud_hudlist_smoke_screen_buff_title",
-										desc_id = "jimhud_hudlist_smoke_screen_buff_desc",
-										value = {"HUDList", "BUFF_LIST", "PERK_BUFFS", "smoke_screen_grenade"},
-										visible_reqs = {},
-										enabled_reqs = {
-											{ setting = { "HUDList", "ENABLED" }, invert = false },
-											{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
-										},
-									},
-									{
-										type = "toggle",
-										name_id = "jimhud_hudlist_sociopath_debuff_title",
-										desc_id = "jimhud_hudlist_sociopath_debuff_desc",
-										value = {"HUDList", "BUFF_LIST", "PERK_BUFFS", "sociopath_debuff"},
-										visible_reqs = {},
-										enabled_reqs = {
-											{ setting = { "HUDList", "ENABLED" }, invert = false },
-											{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
-										},
-									},
-									{
-										type = "toggle",
-										name_id = "jimhud_hudlist_tag_team_buff_title",
-										desc_id = "jimhud_hudlist_tag_team_buff_desc",
-										value = {"HUDList", "BUFF_LIST", "PERK_BUFFS", "tag_team"},
-										visible_reqs = {},
-										enabled_reqs = {
-											{ setting = { "HUDList", "ENABLED" }, invert = false },
-											{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
-										},
-									},
-									{
-										type = "toggle",
-										name_id = "jimhud_hudlist_yakuza_buff_title",
-										desc_id = "jimhud_hudlist_yakuza_buff_desc",
-										value = {"HUDList", "BUFF_LIST", "PERK_BUFFS", "yakuza"},
-										visible_reqs = {},
-										enabled_reqs = {
-											{ setting = { "HUDList", "ENABLED" }, invert = false },
-											{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
-										},
-									},
-								},
-							},
-							{
-								type = "menu",
-								menu_id = "jimhud_hudlist_buffs_gageboosts_options_menu",
-								name_id = "jimhud_infopanels_buff_gageboosts_options_name",
-								desc_id = "jimhud_infopanels_buff_gageboosts_options_help",
-								options = {
-									{
-										type = "toggle",
-										name_id = "jimhud_hudlist_life_steal_gage_debuff_title",
-										desc_id = "jimhud_hudlist_life_steal_gage_debuff_desc",
-										value = {"HUDList", "BUFF_LIST", "GAGE_BOOSTS", "life_steal_debuff"},
-										visible_reqs = {},
-										enabled_reqs = {
-											{ setting = { "HUDList", "ENABLED" }, invert = false },
-											{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
-										},
-									},
-									{
-										type = "toggle",
-										name_id = "jimhud_hudlist_invulnerable_gage_buff_title",
-										desc_id = "jimhud_hudlist_invulnerable_gage_buff_desc",
-										value = {"HUDList", "BUFF_LIST", "GAGE_BOOSTS", "invulnerable_buff"},
-										visible_reqs = {},
-										enabled_reqs = {
-											{ setting = { "HUDList", "ENABLED" }, invert = false },
-											{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
-										},
-									},
-								},
-							},
-							{
-								type = "menu",
-								menu_id = "jimhud_hudlist_buffs_henchmen_options_menu",
-								name_id = "jimhud_infopanels_buff_henchmen_options_name",
-								desc_id = "jimhud_infopanels_buff_henchmen_options_help",
-								options = {
-									{
-										type = "toggle",
-										name_id = "jimhud_hudlist_crew_inspire_debuff_title",
-										desc_id = "jimhud_hudlist_crew_inspire_debuff_desc",
-										value = {"HUDList", "BUFF_LIST", "AI_SKILLS", "crew_inspire_debuff"},
-										visible_reqs = {},
-										enabled_reqs = {
-											{ setting = { "HUDList", "ENABLED" }, invert = false },
-											{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
-										},
-									},
-									{
-										type = "toggle",
-										name_id = "jimhud_hudlist_crew_throwable_regen_buff_title",
-										desc_id = "jimhud_hudlist_crew_throwable_regen_buff_desc",
-										value = {"HUDList", "BUFF_LIST", "AI_SKILLS", "crew_throwable_regen"},
-										visible_reqs = {},
-										enabled_reqs = {
-											{ setting = { "HUDList", "ENABLED" }, invert = false },
-											{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
-										},
-									},
-									{
-										type = "toggle",
-										name_id = "jimhud_hudlist_crew_health_regen_buff_title",
-										desc_id = "jimhud_hudlist_crew_health_regen_buff_desc",
-										value = {"HUDList", "BUFF_LIST", "AI_SKILLS", "crew_health_regen"},
-										visible_reqs = {},
-										enabled_reqs = {
-											{ setting = { "HUDList", "ENABLED" }, invert = false },
-											{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
-										},
-									},
-								},
-							},
-						},
-					},
-				},
-			},
-			{ --CustomWaypoints
-				type = "menu",
-				menu_id = "jimhud_waypoint_options_menu",
-				name_id = "jimhud_waypoints_options_name",
-				desc_id = "jimhud_waypoints_options_help",
-				options = {
-					{
-						type = "toggle",
-						name_id = "jimhud_waypoints_color_enable_title",
-						desc_id = "jimhud_waypoints_color_enable_desc",
-						value = {"CustomWaypoints", "WAYPOINTS_COLOR_ENABLE"},
-						visible_reqs = {},
-					},
-					{
-						type = "multi_choice",
-						name_id = "jimhud_waypoints_color_title",
-						desc_id = "jimhud_waypoints_color_desc",
-						value = {"CustomWaypoints", "WAYPOINTS_COLOR"},
-						visible_reqs = {},
-						enabled_reqs = {
-							{ setting = {"CustomWaypoints", "WAYPOINTS_COLOR_ENABLE"}, invert = false }
-						},
-						options = {},
-						add_color_options = true,
-						add_rainbow = false,
-					},
-					{
-						type = "divider",
-						size = 12,
-					},
-					{
-						type = "toggle",
-						name_id = "jimhud_waypoints_show_ammo_bag_title",
-						desc_id = "jimhud_waypoints_show_ammo_bag_desc",
-						value = {"CustomWaypoints", "SHOW_AMMO_BAG"},
-						visible_reqs = {}, enabled_reqs = {},
-					},
-					{
-						type = "toggle",
-						name_id = "jimhud_waypoints_show_doc_bag_title",
-						desc_id = "jimhud_waypoints_show_doc_bag_desc",
-						value = {"CustomWaypoints", "SHOW_DOC_BAG"},
-						visible_reqs = {}, enabled_reqs = {},
-					},
-					{
-						type = "toggle",
-						name_id = "jimhud_waypoints_show_first_aid_kit_title",
-						desc_id = "jimhud_waypoints_show_first_aid_kit_desc",
-						value = {"CustomWaypoints", "SHOW_FIRST_AID_KIT"},
-						visible_reqs = {}, enabled_reqs = {},
-					},
-					{
-						type = "toggle",
-						name_id = "jimhud_waypoints_show_body_bag_title",
-						desc_id = "jimhud_waypoints_show_body_bag_desc",
-						value = {"CustomWaypoints", "SHOW_BODY_BAG"},
-						visible_reqs = {}, enabled_reqs = {},
-					},
-					{
-						type = "toggle",
-						name_id = "jimhud_waypoints_show_grenade_crate_title",
-						desc_id = "jimhud_waypoints_show_grenade_crate_desc",
-						value = {"CustomWaypoints", "SHOW_GRENADE_CRATE"},
-						visible_reqs = {}, enabled_reqs = {},
-					},
-					{
-						type = "toggle",
-						name_id = "jimhud_waypoints_show_sentries_title",
-						desc_id = "jimhud_waypoints_show_sentries_desc",
-						value = {"CustomWaypoints", "SHOW_SENTRIES"},
-						visible_reqs = {}, enabled_reqs = {},
-					},
-					{
-						type = "toggle",
-						name_id = "jimhud_waypoints_show_ecms_title",
-						desc_id = "jimhud_waypoints_show_ecms_desc",
-						value = {"CustomWaypoints", "SHOW_ECMS"},
-						visible_reqs = {}, enabled_reqs = {},
-					},
-					{
-						type = "divider",
-						size = 12,
-					},
-					{
-						type = "toggle",
-						name_id = "jimhud_waypoints_show_timers_title",
-						desc_id = "jimhud_waypoints_show_timers_desc",
-						value = {"CustomWaypoints", "SHOW_TIMERS"},
-						visible_reqs = {}, enabled_reqs = {},
-					},
-					{
-						type = "toggle",
-						name_id = "jimhud_waypoints_show_pager_title",
-						desc_id = "jimhud_waypoints_show_pager_desc",
-						value = {"CustomWaypoints", "SHOW_PAGER"},
-						visible_reqs = {}, enabled_reqs = {},
-					},
-					{
-						type = "toggle",
-						name_id = "jimhud_waypoints_show_minions_title",
-						desc_id = "jimhud_waypoints_show_minions_desc",
-						value = {"CustomWaypoints", "SHOW_MINIONS"},
-						visible_reqs = {}, enabled_reqs = {},
-					},
-					{
-						type = "divider",
-						size = 12,
-					},
-					{
-						type = "toggle",
-						name_id = "jimhud_waypoints_show_loot_title",
-						desc_id = "jimhud_waypoints_show_loot_desc",
-						value = {"CustomWaypoints", "LOOT", "SHOW"},
-						visible_reqs = {}, enabled_reqs = {},
-					},
-					{
-						type = "toggle",
-						name_id = "jimhud_waypoints_loot_icon_title",
-						desc_id = "jimhud_waypoints_loot_icon_desc",
-						value = {"CustomWaypoints", "LOOT", "ICON"},
-						visible_reqs = {},
-						enabled_reqs = {
-							{ setting = {"CustomWaypoints", "LOOT", "SHOW"}, invert = false },
-						},
-					},
-					{
-						type = "slider",
-						name_id = "jimhud_waypoints_loot_offset_title",
-						desc_id = "jimhud_waypoints_loot_offset_desc",
-						value = {"CustomWaypoints", "LOOT", "OFFSET"},
-						visible_reqs = {},
-						enabled_reqs = {
-							{ setting = {"CustomWaypoints", "LOOT", "SHOW"}, invert = false },
-						},
-						min_value = 0,
-						max_value = 30,
-						step_size = 1,
-					},
-					{
-						type = "slider",
-						name_id = "jimhud_waypoints_loot_bagged_offset_title",
-						desc_id = "jimhud_waypoints_loot_bagged_offset_desc",
-						value = {"CustomWaypoints", "LOOT", "BAGGED_OFFSET"},
-						visible_reqs = {},
-						enabled_reqs = {
-							{ setting = {"CustomWaypoints", "LOOT", "SHOW"}, invert = false },
-						},
-						min_value = 0,
-						max_value = 30,
-						step_size = 1,
-					},
-					{
-						type = "slider",
-						name_id = "jimhud_waypoints_loot_angle_title",
-						desc_id = "jimhud_waypoints_loot_angle_desc",
-						value = {"CustomWaypoints", "LOOT", "ANGLE"},
-						visible_reqs = {},
-						enabled_reqs = {
-							{ setting = {"CustomWaypoints", "LOOT", "SHOW"}, invert = false },
-						},
-						min_value = 5,
-						max_value = 90,
-						step_size = 1,
-					},
-					{
-						type = "divider",
-						size = 12,
-					},
-					{
-						type = "toggle",
-						name_id = "jimhud_waypoints_show_special_equipment_title",
-						desc_id = "jimhud_waypoints_show_special_equipment_desc",
-						value = {"CustomWaypoints", "SHOW_SPECIAL_EQUIPMENT"},
-						visible_reqs = {}, enabled_reqs = {},
-					},
-				},
-			},
-			{ --INTERACTION
-				type = "menu",
-				menu_id = "jimhud_interaction_options_menu",
-				name_id = "jimhud_interaction_options_name",
-				desc_id = "jimhud_interaction_options_help",
-				options = {
-					{
-						type = "toggle",
-						name_id = "jimhud_press2hold_show_circle_title",
-						desc_id = "jimhud_press2hold_show_circle_desc",
-						value = {"INTERACTION", "SHOW_CIRCLE"},
-						visible_reqs = {}, enabled_reqs = {},
-					},
-					{
-						type = "slider",
-						name_id = "jimhud_press2hold_circle_scale_title",
-						desc_id = "jimhud_press2hold_circle_scale_desc",
-						value = {"INTERACTION", "CIRCLE_SCALE"},
-						visible_reqs = {}, enabled_reqs = {},
-						min_value = 0.3,
-						max_value = 2,
-						step_size = 0.01,
-					},
-					{
-						type = "slider",
-						name_id = "jimhud_press2hold_text_scale_title",
-						desc_id = "jimhud_press2hold_text_scale_desc",
-						value = {"INTERACTION", "TEXT_SCALE"},
-						visible_reqs = {}, enabled_reqs = {},
-						min_value = 0.3,
-						max_value = 2,
-						step_size = 0.01,
-					},
-					{
-						type = "toggle",
-						name_id = "jimhud_press2hold_show_reload_circle_title",
-						desc_id = "jimhud_press2hold_show_reload_circle_desc",
-						value = {"INTERACTION", "SHOW_RELOAD"},
-						visible_reqs = {}, enabled_reqs = {},
-					},
-					{
-						type = "toggle",
-						name_id = "jimhud_press2hold_show_melee_circle_title",
-						desc_id = "jimhud_press2hold_show_melee_circle_desc",
-						value = {"INTERACTION", "SHOW_MELEE"},
-						visible_reqs = {}, enabled_reqs = {},
-					},
-					{
-						type = "divider",
-						size = 12,
-					},
-					{
-						type = "toggle",
-						name_id = "jimhud_press2hold_show_timer_title",
-						desc_id = "jimhud_press2hold_show_timer_desc",
-						value = {"INTERACTION", "SHOW_TIME_REMAINING"},
-						visible_reqs = {}, enabled_reqs = {},
-					},
-					{
-						type = "slider",
-						name_id = "jimhud_press2hold_timer_scale_title",
-						desc_id = "jimhud_press2hold_timer_scale_desc",
-						value = {"INTERACTION", "TIMER_SCALE"},
-						visible_reqs = {},
-						enabled_reqs = {
-							{ setting = { "INTERACTION", "SHOW_TIME_REMAINING" }, invert = false },
-						},
-						min_value = 0.3,
-						max_value = 2,
-						step_size = 0.01,
-					},
-					{
-						type = "multi_choice",
-						name_id = "jimhud_press2hold_timer_color_start_title",
-						desc_id = "jimhud_press2hold_timer_color_start_desc",
-						value = {"INTERACTION", "GRADIENT_COLOR_START"},
-						visible_reqs = {},
-						enabled_reqs = {
-							{ setting = { "INTERACTION", "SHOW_TIME_REMAINING" }, invert = false },
-						},
-						options = {},
-						add_color_options = true,
-						add_rainbow = false,
-					},
-					{
-						type = "multi_choice",
-						name_id = "jimhud_press2hold_timer_color_title",
-						desc_id = "jimhud_press2hold_timer_color_desc",
-						value = {"INTERACTION", "GRADIENT_COLOR"},
-						visible_reqs = {},
-						enabled_reqs = {
-							{ setting = { "INTERACTION", "SHOW_TIME_REMAINING" }, invert = false },
-						},
-						options = {},
-						add_color_options = true,
-						add_rainbow = true,
-					},
-					{
-						type = "toggle",
-						name_id = "jimhud_press2hold_show_timer_outline_title",
-						desc_id = "jimhud_press2hold_show_timer_outline_desc",
-						value = {"INTERACTION", "SHOW_TIME_REMAINING_OUTLINE"},
-						visible_reqs = {},
-						enabled_reqs = {
-							{ setting = { "INTERACTION", "SHOW_TIME_REMAINING" }, invert = false },
-						},
-					},
-					{
-						type = "divider",
-						size = 12,
-					},
-					{
-						type = "multi_choice",
-						name_id = "jimhud_press2hold_lock_mode_title",
-						desc_id = "jimhud_press2hold_lock_mode_desc",
-						options = {
-							"jimhud_multiselect_disabled",
-							"jimhud_press2hold_lock_mode_a",
-							"jimhud_press2hold_lock_mode_b",
-							"jimhud_press2hold_lock_mode_c",
-							"jimhud_press2hold_lock_mode_d"
-						},
-						visible_reqs = {}, enabled_reqs = {},
-						value = {"INTERACTION", "LOCK_MODE"},
-					},
-					{
-						type = "slider",
-						name_id = "jimhud_press2hold_min_timer_duration_title",
-						desc_id = "jimhud_press2hold_min_timer_duration_desc",
-						value = {"INTERACTION", "MIN_TIMER_DURATION"},
-						visible_reqs = {},
-						enabled_reqs = {
-							{ setting = { "INTERACTION", "LOCK_MODE" }, min = 2, max = 3 },
-						},
-						min_value = 0,
-						max_value = 45,
-						step_size = 0.1,
-					},
-					{
-						type = "toggle",
-						name_id = "jimhud_press2hold_show_lockindicator_title",
-						desc_id = "jimhud_press2hold_show_lockindicator_desc",
-						value = {"INTERACTION", "SHOW_LOCK_INDICATOR"},
-						visible_reqs = {},
-						enabled_reqs = {
-							{ setting = { "INTERACTION", "LOCK_MODE" }, min = 2 },
-							{ setting = { "INTERACTION", "SHOW_CIRCLE" }, invert = false },
-						},
-					},
-					{
-						type = "toggle",
-						name_id = "jimhud_press2hold_equipment_cancel_title",
-						desc_id = "jimhud_press2hold_equipment_cancel_desc",
-						value = {"INTERACTION", "EQUIPMENT_PRESS_INTERRUPT"},
-						visible_reqs = {},
-						enabled_reqs = {
-							{ setting = { "INTERACTION", "LOCK_MODE" }, min = 2 },
-						},
-					},
-					{
-						type = "toggle",
-						name_id = "jimhud_press2hold_interrupt_hint_title",
-						desc_id = "jimhud_press2hold_interrupt_hint_desc",
-						value = {"INTERACTION", "SHOW_INTERRUPT_HINT"},
-						visible_reqs = {},
-						enabled_reqs = {
-							{ setting = { "INTERACTION", "LOCK_MODE" }, min = 2 },
-						},
-					},
-					{
-						type = "divider",
-						size = 12,
-					},
-					{
-						type = "toggle",
-						name_id = "jimhud_hold_to_pick_title",
-						desc_id = "jimhud_hold_to_pick_desc",
-						value = {"INTERACTION", "HOLD2PICK"},
-						visible_reqs = {}, enabled_reqs = {},
-					},
-					{
-						type = "toggle",
-						name_id = "jimhud_doubletap_nades_stealth_title",
-						desc_id = "jimhud_doubletap_nades_stealth_desc",
-						value = {"INTERACTION", "SUPRESS_NADES_STEALTH"},
-						visible_reqs = {}, enabled_reqs = {},
-					},
-				},
-			},
-			{ -- Laser colors
-				type = "menu",
-				menu_id = "jimhud_laser_options_menu",
-				name_id = "jimhud_laser_options_name",
-				desc_id = "jimhud_laser_options_help",
-				options = {
-					{
-						type = "menu",
-						menu_id = "jimhud_gadget_player_laser_options_menu",
-						name_id = "jimhud_gadget_player_laser_options_name",
-						desc_id = "jimhud_gadget_player_laser_options_help",
-						options = get_gadget_options("laser", "player")
-					},
-					{
-						type = "menu",
-						menu_id = "jimhud_gadget_team_laser_options_menu",
-						name_id = "jimhud_gadget_team_laser_options_name",
-						desc_id = "jimhud_gadget_team_laser_options_help",
-						options = get_gadget_options("laser", "team")
-					},
-					{
-						type = "divider",
-						size = 12,
-					},
-					{
-						type = "menu",
-						menu_id = "jimhud_gadget_player_sentry_laser_options_menu",
-						name_id = "jimhud_gadget_player_sentry_laser_options_name",
-						desc_id = "jimhud_gadget_player_sentry_laser_options_help",
-						options = get_gadget_options("laser", "player_sentry")
-					},
-					{
-						type = "menu",
-						menu_id = "jimhud_gadget_team_sentry_laser_options_menu",
-						name_id = "jimhud_gadget_team_sentry_laser_options_name",
-						desc_id = "jimhud_gadget_team_sentry_laser_options_help",
-						options = get_gadget_options("laser", "team_sentry")
-					},
-					{
-						type = "divider",
-						size = 12,
-					},
-					{
-						type = "menu",
-						menu_id = "jimhud_gadget_sniper_laser_options_menu",
-						name_id = "jimhud_gadget_sniper_laser_options_name",
-						desc_id = "jimhud_gadget_sniper_laser_options_help",
-						options = get_gadget_options("laser", "cop_sniper")
-					},
-					{
-						type = "divider",
-						size = 12,
-					},
-					{
-						type = "menu",
-						menu_id = "jimhud_gadget_turret_laser_active_options_menu",
-						name_id = "jimhud_gadget_turret_laser_active_options_name",
-						desc_id = "jimhud_gadget_turret_laser_active_options_help",
-						options = get_gadget_options("laser", "turret_module_active")
-					},
-					{
-						type = "menu",
-						menu_id = "jimhud_gadget_turret_laser_rearming_options_menu",
-						name_id = "jimhud_gadget_turret_laser_rearming_options_name",
-						desc_id = "jimhud_gadget_turret_laser_rearming_options_help",
-						options = get_gadget_options("laser", "turret_module_rearming")
-					},
-					{
-						type = "menu",
-						menu_id = "jimhud_gadget_turret_laser_mad_options_menu",
-						name_id = "jimhud_gadget_turret_laser_mad_options_name",
-						desc_id = "jimhud_gadget_turret_laser_mad_options_help",
-						options = get_gadget_options("laser", "turret_module_mad")
-					},
-				},
-			},
-			{ -- Flashlight cones
-				type = "menu",
-				menu_id = "jimhud_flashlight_options_menu",
-				name_id = "jimhud_flashlight_options_name",
-				desc_id = "jimhud_flashlight_options_help",
-				options = {
-					{
-						type = "menu",
-						menu_id = "jimhud_gadget_player_flashlight_options_menu",
-						name_id = "jimhud_gadget_player_flashlight_options_name",
-						desc_id = "jimhud_gadget_player_flashlight_options_help",
-						options = get_gadget_options("flashlight", "player")
-					},
-					{
-						type = "menu",
-						menu_id = "jimhud_gadget_team_flashlight_options_menu",
-						name_id = "jimhud_gadget_team_flashlight_options_name",
-						desc_id = "jimhud_gadget_team_flashlight_options_help",
-						options = get_gadget_options("flashlight", "team")
-					},
-				},
-			},
-			{ -- TabStats
-				type = "menu",
-				menu_id = "jimhud_tabstats_options_menu",
-				name_id = "jimhud_tabstats_options_name",
-				desc_id = "jimhud_tabstats_options_help",
-				options = {
-					{
-						type = "multi_choice",
-						name_id = "jimhud_tabstats_clock_mode_title",
-						desc_id = "jimhud_tabstats_clock_mode_desc",
-						options = {
-							"jimhud_multiselect_disabled",
-							"jimhud_tabstats_clock_mode_a",
-							"jimhud_tabstats_clock_mode_b",
-							"jimhud_tabstats_clock_mode_c"
-						},
-						visible_reqs = {}, enabled_reqs = {},
-						value = {"TabStats", "CLOCK_MODE"},
-					},
-					{
-						type = "divider",
-						size = 12,
-					},
-					{
-						type = "toggle",
-						name_id = "jimhud_use_tabstats_title",
-						desc_id = "jimhud_use_tabstats_desc",
-						value = {"TabStats", "ENABLED"},
-						visible_reqs = {}, enabled_reqs = {},
-					},
-					{
-						type = "slider",
-						name_id = "jimhud_tabstats_font_size_title",
-						desc_id = "jimhud_tabstats_font_size_desc",
-						value = {"TabStats", "FONT_SIZE"},
-						visible_reqs = {},
-						enabled_reqs = {
-							{ setting = { "TabStats", "ENABLED" }, invert = false },
-						},
-						min_value = 10,
-						max_value = 24,
-						step_size = 1,
-					},
-					{
-						type = "multi_choice",
-						name_id = "jimhud_tabstats_color_title",
-						desc_id = "jimhud_tabstats_color_desc",
-						value = {"TabStats", "COLOR"},
-						visible_reqs = {},
-						enabled_reqs = {
-							{ setting = { "TabStats", "ENABLED" }, invert = false },
-						},
-						options = {},
-						add_color_options = true,
-						add_rainbow = true,
-					},
-					{
-						type = "toggle",
-						name_id = "jimhud_tabstats_actual_mask_title",
-						desc_id = "jimhud_tabstats_actual_mask_desc",
-						value = {"TabStats", "SHOW_MASK"},
-						visible_reqs = {},
-						enabled_reqs = {
-							{ setting = { "TabStats", "ENABLED" }, inverted = false }
-						},
-					},
-					{
-						type = "divider",
-						size = 12,
-					},
-					{
-						type = "toggle",
-						name_id = "jimhud_crewloadout_tabscreen_title",
-						desc_id = "jimhud_crewloadout_tabscreen_desc",
-						value = {"CrewLoadout", "SHOW_ON_STATS_PANEL"},
-						visible_reqs = {}, enabled_reqs = {},
 					},
 				},
 			},
@@ -4036,6 +3948,83 @@ if JimHUD then
 						type = "divider",
 						size = 12,
 						text_id = "jimhud_general_text",
+					},
+					{ -- Interaction Lock
+						type = "menu",
+						menu_id = "jimhud_press2hold_options_menu",
+						name_id = "jimhud_press2hold_options_name",
+						desc_id = "jimhud_press2hold_options_help",
+						options = {
+							{
+								type = "multi_choice",
+								name_id = "jimhud_press2hold_lock_mode_title",
+								desc_id = "jimhud_press2hold_lock_mode_desc",
+								options = {
+									"jimhud_multiselect_disabled",
+									"jimhud_press2hold_lock_mode_a",
+									"jimhud_press2hold_lock_mode_b",
+									"jimhud_press2hold_lock_mode_c",
+									"jimhud_press2hold_lock_mode_d"
+								},
+								visible_reqs = {}, enabled_reqs = {},
+								value = {"INTERACTION", "LOCK_MODE"},
+							},
+							{
+								type = "slider",
+								name_id = "jimhud_press2hold_min_timer_duration_title",
+								desc_id = "jimhud_press2hold_min_timer_duration_desc",
+								value = {"INTERACTION", "MIN_TIMER_DURATION"},
+								visible_reqs = {},
+								enabled_reqs = {
+									{ setting = { "INTERACTION", "LOCK_MODE" }, min = 2, max = 3 },
+								},
+								min_value = 0,
+								max_value = 45,
+								step_size = 0.1,
+							},
+							{
+								type = "toggle",
+								name_id = "jimhud_press2hold_show_lockindicator_title",
+								desc_id = "jimhud_press2hold_show_lockindicator_desc",
+								value = {"INTERACTION", "SHOW_LOCK_INDICATOR"},
+								visible_reqs = {},
+								enabled_reqs = {
+									{ setting = { "INTERACTION", "LOCK_MODE" }, min = 2 },
+									{ setting = { "INTERACTION", "SHOW_CIRCLE" }, invert = false },
+								},
+							},
+							{
+								type = "toggle",
+								name_id = "jimhud_press2hold_equipment_cancel_title",
+								desc_id = "jimhud_press2hold_equipment_cancel_desc",
+								value = {"INTERACTION", "EQUIPMENT_PRESS_INTERRUPT"},
+								visible_reqs = {},
+								enabled_reqs = {
+									{ setting = { "INTERACTION", "LOCK_MODE" }, min = 2 },
+								},
+							},
+							{
+								type = "toggle",
+								name_id = "jimhud_press2hold_interrupt_hint_title",
+								desc_id = "jimhud_press2hold_interrupt_hint_desc",
+								value = {"INTERACTION", "SHOW_INTERRUPT_HINT"},
+								visible_reqs = {},
+								enabled_reqs = {
+									{ setting = { "INTERACTION", "LOCK_MODE" }, min = 2 },
+								},
+							},
+							{
+								type = "divider",
+								size = 12,
+							},
+							{
+								type = "toggle",
+								name_id = "jimhud_hold_to_pick_title",
+								desc_id = "jimhud_hold_to_pick_desc",
+								value = {"INTERACTION", "HOLD2PICK"},
+								visible_reqs = {}, enabled_reqs = {},
+							},
+						},
 					},
 					{
 						type = "toggle",
@@ -4102,7 +4091,21 @@ if JimHUD then
 						value = {"EQUIPMENT", "SHAPED_CHARGE_STEALTH_DISABLED"},
 						visible_reqs = {}, enabled_reqs = {},
 					},
+					{
+						type = "toggle",
+						name_id = "jimhud_doubletap_nades_stealth_title",
+						desc_id = "jimhud_doubletap_nades_stealth_desc",
+						value = {"INTERACTION", "SUPRESS_NADES_STEALTH"},
+						visible_reqs = {}, enabled_reqs = {},
+					},
 				},
+			},
+			{ -- Instant restart
+				type = "toggle",
+				name_id = "jimhud_instant_restart_title",
+				desc_id = "jimhud_instant_restart_desc",
+				value = {"SkipIt", "INSTANT_RESTART"},
+				visible_reqs = {}, enabled_reqs = {},
 			},
 		},
 	}

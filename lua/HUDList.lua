@@ -4973,7 +4973,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 			class = "TimedBuffItem",
 			priority = 4,
 			color = HUDList.BuffItemBase.ICON_COLOR.STANDARD,
-			ignore = not JimHUD:getSetting({"HUDList", "BUFF_LIST", "PERK_BUFFS", "chico_injector"}, false) and (JimHUD:getSetting({"CustomHUD", "PLAYER", "STATUS"}, true) or JimHUD:getSetting({"CustomHUD", "ENABLED"}, false)),
+			ignore = not JimHUD:getSetting({"HUDList", "BUFF_LIST", "PERK_BUFFS", "chico_injector"}, false) and (JimHUD:getSetting({"CustomHUD", "PLAYER", "STATUS"}, true) or JimHUD:getSetting({"CustomHUD", "STYLE"}, 1) == 2),
 		},
 		close_contact = {
 			perks = {5, 4},
@@ -5078,7 +5078,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 			priority = 4,
 			color = HUDList.BuffItemBase.ICON_COLOR.STANDARD,
 			show_value = "-%.1f",
-			ignore = not JimHUD:getSetting({"HUDList", "BUFF_LIST", "PERK_BUFFS", "maniac"}, false) and (JimHUD:getSetting({"CustomHUD", "PLAYER", "STATUS"}, true) or JimHUD:getSetting({"CustomHUD", "ENABLED"}, false)),
+			ignore = not JimHUD:getSetting({"HUDList", "BUFF_LIST", "PERK_BUFFS", "maniac"}, false) and (JimHUD:getSetting({"CustomHUD", "PLAYER", "STATUS"}, true) or JimHUD:getSetting({"CustomHUD", "STYLE"}, 1) == 2),
 		},
 		messiah = {
 			skills_new = tweak_data.skilltree.skills.messiah.icon_xy,
@@ -5196,7 +5196,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 			class = "TimedBuffItem",
 			priority = 4,
 			color = HUDList.BuffItemBase.ICON_COLOR.STANDARD,
-			ignore = not JimHUD:getSetting({"HUDList", "BUFF_LIST", "FUGITIVE_BUFFS", "swan_song"}, false) and (JimHUD:getSetting({"CustomHUD", "PLAYER", "STATUS"}, true) or JimHUD:getSetting({"CustomHUD", "ENABLED"}, false)),
+			ignore = not JimHUD:getSetting({"HUDList", "BUFF_LIST", "FUGITIVE_BUFFS", "swan_song"}, false) and (JimHUD:getSetting({"CustomHUD", "PLAYER", "STATUS"}, true) or JimHUD:getSetting({"CustomHUD", "STYLE"}, 1) == 2),
 		},
 		tag_team = {
 			perks = {0, 0},
@@ -5205,7 +5205,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 			priority = 4,
 			color = HUDList.BuffItemBase.ICON_COLOR.STANDARD,
 			show_value = true,
-			ignore = not JimHUD:getSetting({"HUDList", "BUFF_LIST", "PERK_BUFFS", "tag_team"}, true) and (JimHUD:getSetting({"CustomHUD", "PLAYER", "STATUS"}, true) or JimHUD:getSetting({"CustomHUD", "ENABLED"}, false)),
+			ignore = not JimHUD:getSetting({"HUDList", "BUFF_LIST", "PERK_BUFFS", "tag_team"}, true) and (JimHUD:getSetting({"CustomHUD", "PLAYER", "STATUS"}, true) or JimHUD:getSetting({"CustomHUD", "STYLE"}, 1) == 2),
 		},
 		tooth_and_claw = {
 			perks = {0, 3},

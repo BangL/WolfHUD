@@ -1,5 +1,5 @@
 
-if JimHUD:getSetting({"CustomHUD", "ENABLED"}, false) then
+if JimHUD:getSetting({"CustomHUD", "STYLE"}, 1) == 2 then
 	return
 end
 
