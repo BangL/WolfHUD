@@ -256,8 +256,6 @@
 	"jimhud_loot_screen_pick_specific_card_desc" : "Précise quelle carte doit être choisie.",
 	"jimhud_loot_screen_delay_title" : "Attente avant le choix d'une carte",
 	"jimhud_loot_screen_delay_desc" : "Attends X secondes avant que vous ayez votre récompense.\n(Uniquement pour l'hôte, 0 = désactivé)",
-	"jimhud_replace_weapon_names_title" : "Utiliser Real Weapon Names",
-	"jimhud_replace_weapon_names_desc" : "Remplace le nom des armes par leur équivalent dans la réalité.\n(Changez de map pour que les changements s'effectuent...)",
 	"jimhud_inventory_tab_names_title" : "Utiliser Inventory Tab Names",
 	"jimhud_inventory_tab_names_desc" : "Personnalisez vos onglets d'inventaire.\n(Changer les noms en modfiant le fichier '/mods/saves/JimHUD_InventoryNames.txt')",
 	"jimhud_inventory_names_title" : "Noms d'emplacement",
@@ -272,9 +270,6 @@
 	"jimhud_reset_options_desc" : "Réintialise tous le sparamètres à leur valeur par défaut.",
 	"jimhud_reset_options_confirm" : "Êtes-vous sûrde vouloir réinitialiser tous vos paramètres à leur valeur par défaut?",
 
-	"jimhud_panels_options_name" : "Paramètres du HUD",
-	"jimhud_panels_options_help" : "Paramètres pour les composants du HUD, comme la détection, l'indicateur de dégâts, DrivingHUD, CustomHUD etc...",
-
 	"jimhud_use_customhud_title" : "Utiliser CustomHUD",
 	"jimhud_use_customhud_desc" : "Remplace le HUD par défaut par le HUD amélioré customHUD, réalisé par Se7en.\n(Changez de map pour que les changements s'effectuent...)",
 	"jimhud_adv_assault_title" : "Bannière d'assaut améliorée",
@@ -285,7 +280,6 @@
 	"jimhud_pacified_civs_desc" : "Change le curseur des civils qui ne sont pas attachés jusqu'à ce qu'ils maîtrisés.",
 	"jimhud_use_realammo_title" : "Utiliser Real Ammo",
 	"jimhud_use_realammo_desc" : "Afficher les munitions restantes, sans compter celles qui se trouvent dans votre chargeur.",
-	"jimhud_enable_burstmode_title" : "Activer le tir en rafale",
 	"jimhud_enable_burstmode_desc" : "Permet d'activer le tir en rafale pour vos armes.",
 
 	"jimhud_playerpanel_options_name" : "Interface joueur",
@@ -749,7 +743,6 @@
 	"jimhud_tabstats_clock_mode_a" : "12 heures",
 	"jimhud_tabstats_clock_mode_b" : "24 heures",
 	"jimhud_tabstats_clock_mode_c" : "Temps de jeu",
-	"jimhud_use_tabstats_title" : "Utiliser TabStats",
 	"jimhud_use_tabstats_desc" : "Affiche vos statistiques dans le menu TAB, au lieu de les afficher à la fin de la mission.\n(Changez de map pour que les changements s'effectuent...)",
 	"jimhud_tabstats_font_size_title" : "Taille du texte",
 	"jimhud_tabstats_font_size_desc" : "Définit la taille du texte à utiliser pour la liste des statistiques avancées.",
@@ -759,20 +752,6 @@
 	"jimhud_tabstats_actual_mask_desc" : "Affiche le masque que vous portez actuellement au lieu d'afficher celui de votre personnage.",
 	"jimhud_tabstats_numberic_loot_title" : "Numeric Loot Counter",
 	"jimhud_tabstats_numberic_loot_desc" : "Disable the bag counting minigame and display the number right away.",
-
-	"jimhud_crewloadout_options_name" : "Paramètres de configuration d'équipe",
-	"jimhud_crewloadout_options_help" : "Choisissez où vous voulez afficher les informations concernant l'équipement et les compétences de vos coéquipiers.",
-
-	"jimhud_crewloadout_lobby_title" : "Afficher en salon",
-	"jimhud_crewloadout_lobby_desc" : "Ajoute un bouton dans un salon qui permet d'afficher votre équipement ainsi que celui de vos coéquipiers.",
-	"jimhud_crewloadout_cs_lobby_title" : "Afficher en salon de série de crime",
-	"jimhud_crewloadout_cs_lobby_desc" : "Affiche un nouvel onglet \"CONFIG.ÉQUIPE\" à côté de celui des modificateurs et des récompenses dans les salons de série de crimes.",
-	"jimhud_crewloadout_briefing_title" : "Afficher en résumé",
-	"jimhud_crewloadout_briefing_desc" : "Remplace l'onglet \"CONFIG.ÉQUIPE\" par défaut en résumé de contrat par un onglet plus précis.",
-	"jimhud_crewloadout_tabscreen_title" : "Afficher dans le menu TAB",
-	"jimhud_crewloadout_tabscreen_desc" : "Affiche les coméptences, la pioche d'atous et le ping des joueurs présents dans la partie. \n(Est désactivé si vous utilisez la fonctionnalité similaire du mod LobbyPlayer)",
-	"jimhud_profilemenu_replace_title" : "Remplacer le menu des profils",
-	"jimhud_profilemenu_replace_desc" : "Remplace le sélecteur de profils par défaut par celui du JimHUD, plus précis.",
 
 	"jimhud_dmgindicator_options_name" : "Indicateur de dégâts",
 	"jimhud_dmgindicator_options_help" : "Définit la durée d'affichage, la taille et la couleur de l'indicateur de dégâts.",
@@ -891,9 +870,6 @@
 	"jimhud_equipment_keycard_doors_disabled_title" : "Suppression portes à cartes d'accès",
 	"jimhud_equipment_keycard_doors_disabled_desc" : "Si cochée, vous aurez à appuyer deux fois sur votre touche d'action pour fermer une porte à carte d'accès, dans le jour 2 de l'Évasion d'Hoxton. \nCela a pour but d'éviter les accidents.",
 
-	"jimhud_gadget_options_name" : "Paramètres des gadgets d'armes",
-	"jimhud_gadget_options_help" : "Définit la couleur des lasers.",
-
 	"jimhud_laser_autoon_title" : "Laser auto",
 	"jimhud_laser_autoon_desc" : "Allume automatiquement le laser de votre arme, si celle-ci en possède un.",
 	"jimhud_show_angeled_sight_title" : "Viseur incliné",
@@ -975,8 +951,6 @@
 	"jimhud_gadgets_pulse_frequency_title" : "Fréquence",
 	"jimhud_gadgets_pulse_frequency_desc" : "Détermine le temps que mets une impulsion à passer de l'opacité minimale à l'opacité maximale.",
 
-	"jimhud_skipit_options_name" : "Paramètres : Skip-It",
-	"jimhud_skipit_options_help" : "Paramètres qui permet de sauter automatiquement des menus inutiles afin de gagner du temps.",
 	"jimhud_assaultbanner_options_name" : "Paramètres de la bannière d'assaut",
 	"jimhud_assaultbanner_options_help" : "Paramètres pour changer l'apparence de la bannière d'assaut."
 }

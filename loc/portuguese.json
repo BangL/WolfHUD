@@ -257,8 +257,6 @@
 	"jimhud_loot_screen_pick_specific_card_desc" : "Especifica que carta pegar automaticamente.",
 	"jimhud_loot_screen_delay_title" : "Atraso na tela de cartas",
 	"jimhud_loot_screen_delay_desc" : "Continua em X segundos depois de pegar o seu loot drop.\n(Apenas o Host, 0 = desativado)",
-	"jimhud_replace_weapon_names_title" : "Nomes reais das armas",
-	"jimhud_replace_weapon_names_desc" : "Substitui os nomes das armas com seus nomes reais.\n(É necessária uma mudança de mapa para aplicar...)",
 	"jimhud_inventory_tab_names_title" : "Usar nomes nas abas de inventário",
 	"jimhud_inventory_tab_names_desc" : "Customize os nomes nas abas de inventário.\n(Mude os nomes editando '/mods/saves/JimHUD_InventoryNames.txt')",
 	"jimhud_inventory_names_title" : "Mostrar os nomes das caixas de inventário",
@@ -273,9 +271,6 @@
 	"jimhud_reset_options_desc" : "Resetar todas as configurações para os valores padrão.",
 	"jimhud_reset_options_confirm" : "Você tem certeza que quer resetar todas as configurações para os valores padrão?",
 
-	"jimhud_panels_options_name" : "Opções gerais do painel do HUD",
-	"jimhud_panels_options_help" : "Opções gerais para todos os painéis do HUD, como CustomHUD, Suspeita, Indicador de dano, DrivingHUD e muito mais.",
-
 	"jimhud_use_customhud_title" : "Usar CustomHUD",
 	"jimhud_use_customhud_desc" : "Substitui o HUD padrão pelo CustomHUD avançado, criado pelo Se7en.\n(Mudar de mapa é necessário para aplicar...)",
 	"jimhud_adv_assault_title" : "Banner de Assault Avançado",
@@ -286,7 +281,6 @@
 	"jimhud_pacified_civs_desc" : "Muda a posição dos civis desamarrados, enquanto estiverem pacificados.",
 	"jimhud_use_realammo_title" : "Usar munição real",
 	"jimhud_use_realammo_desc" : "Mostra a munição restante, sem considerar a contagem de balas do magazine.",
-	"jimhud_enable_burstmode_title" : "Ativar modo rajada",
 	"jimhud_enable_burstmode_desc" : "Ativa o modo rajada para suas armas.",
 
 	"jimhud_playerpanel_options_name" : "Painel do jogador",
@@ -752,7 +746,6 @@
 	"jimhud_tabstats_clock_mode_a" : "12-h",
 	"jimhud_tabstats_clock_mode_b" : "24-h",
 	"jimhud_tabstats_clock_mode_c" : "Tempo do assalto",
-	"jimhud_use_tabstats_title" : "Usar TabStats",
 	"jimhud_use_tabstats_desc" : "Mostra suas estatísticas na tela de inventário estendido, em vez do sumário da missão.\n(Uma mudança de mapa é necessária para aplicar...)",
 	"jimhud_tabstats_font_size_title" : "Tamanho da fonte da lista",
 	"jimhud_tabstats_font_size_desc" : "Tamanho da fonte da lista avançada de estatísticas.",
@@ -762,20 +755,6 @@
 	"jimhud_tabstats_actual_mask_desc" : "Usa a máscara vigente em vez da máscara do personagem.",
 	"jimhud_tabstats_numberic_loot_title" : "Contador numérico de loot",
 	"jimhud_tabstats_numberic_loot_desc" : "Desativa o minigame de contagem de sacos e mostra o número imediato.",
-
-	"jimhud_crewloadout_options_name" : "Opções do Crew Loadout",
-	"jimhud_crewloadout_options_help" : "Escolha onde você deseja obter Informações sobre quais equipamentos e habilidades seus companheiros de equipe estão trazendo.",
-
-	"jimhud_crewloadout_lobby_title" : "Mostrar no Lobby",
-	"jimhud_crewloadout_lobby_desc" : "Adiciona um botão na tela do lobby, que exibe o seu equipamento e o da equipe.",
-	"jimhud_crewloadout_cs_lobby_title" : "Mostrar no Lobby do Crimespree",
-	"jimhud_crewloadout_cs_lobby_desc" : "Adiciona uma nova aba a direita dos modificadores e recompensas no lobby do CrimeSpree.",
-	"jimhud_crewloadout_briefing_title" : "Substituir no sumário",
-	"jimhud_crewloadout_briefing_desc" : "Substitui o painel padrão do Crew Loadout no sumário da missão.",
-	"jimhud_crewloadout_tabscreen_title" : "Mostrar no inventário estendido",
-	"jimhud_crewloadout_tabscreen_desc" : "Exibe as Skills, Perk e o ping atual dos jogadores no seu lobby. \n(Fica desativado se você usar esse recurso do LobbyPlayerInfo)",
-	"jimhud_profilemenu_replace_title" : "Substituir o menu de perfil",
-	"jimhud_profilemenu_replace_desc" : " Substitui o seletor de perfil padrão pelo do JimHUD.",
 
 	"jimhud_dmgindicator_options_name" : "Indicador de dano",
 	"jimhud_dmgindicator_options_help" : "Configura o tempo de desaparecimento, o tamanho e cor ou os seus indicadores de dano.",
@@ -893,9 +872,6 @@
 	"jimhud_equipment_keycard_doors_disabled_title" : "Supressão de Keycard para portas",
 	"jimhud_equipment_keycard_doors_disabled_desc" : "Quando marcado, você precisa apertar a tecla 2x para fechar portas na hoxton breakout dia 2. \nApenas para prevenir acidentes.",
 
-	"jimhud_gadget_options_name" : "Opções para os gadgets das armas",
-	"jimhud_gadget_options_help" : "Especifica a cor dos lasers.",
-
 	"jimhud_laser_autoon_title" : "Ativar laser automaticamente",
 	"jimhud_laser_autoon_desc" : "Ativa o laser automaticamente ao iniciar, nas armas que o possui.",
 	"jimhud_show_angeled_sight_title" : "Mostra mira angulada",
@@ -977,8 +953,6 @@
 	"jimhud_gadgets_pulse_frequency_title" : "Frequencia do pulso",
 	"jimhud_gadgets_pulse_frequency_desc" : "Determina o tempo que o multiplicador leva do pulso mínimo ao máximo.",
 
-	"jimhud_skipit_options_name" : "Opções de pulo",
-	"jimhud_skipit_options_help" : "Opções para pular menus desnecessários automaticamente e poupar seu tempo.",
 	"jimhud_assaultbanner_options_name" : "Opções do Assault Banner",
 	"jimhud_assaultbanner_options_help" : "Opções para mudar o Assault Banner."
 }

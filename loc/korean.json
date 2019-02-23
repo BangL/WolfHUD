@@ -256,8 +256,6 @@
 	"jimhud_loot_screen_pick_specific_card_desc" : "어떤 카드를 자동으로 고를건지 설정합니다.",
 	"jimhud_loot_screen_delay_title" : "카드 화면 딜레이",
 	"jimhud_loot_screen_delay_desc" : "X 초 후에 다음화면 으로 넘어갑니다.\n(방장 전용, 0 = 비활성화)",
-	"jimhud_replace_weapon_names_title" : "현실 무기 이름",
-	"jimhud_replace_weapon_names_desc" : "무기 이름을 현실에 존재하는 무기 이름으로 바꿉니다.\n(맵을 바꿔야 적용됩니다...)",
 	"jimhud_inventory_tab_names_title" : "인벤토리 탭 이름 사용",
 	"jimhud_inventory_tab_names_desc" : "인벤토리 탭 이름을 바꿉니다.\n(이름은 '/mods/saves/JimHUD_InventoryNames.txt' 에서 바꿀 수 있습니다.)",
 	"jimhud_inventory_names_title" : "인벤토리 이름 표시",
@@ -272,9 +270,6 @@
 	"jimhud_reset_options_desc" : "모든 설정을 기본값으로 초기화시킵니다.",
 	"jimhud_reset_options_confirm" : "정말로 모든 설정을 기본값으로 되돌리시겠습니까?",
 
-	"jimhud_panels_options_name" : "일반 HUD 패널 설정",
-	"jimhud_panels_options_help" : "CustomHUD, 의심도, 데미지 인디케이터 등을 설정합니다.",
-
 	"jimhud_use_customhud_title" : "CustomHUD 를 사용합니다",
 	"jimhud_use_customhud_desc" : "Se7en 님이 만든 고급 CustomHUD 를 사용합니다.\n(맵을 바꿔야 적용됩니다...)",
 	"jimhud_adv_assault_title" : "자세한 어설트 배너",
@@ -285,7 +280,6 @@
 	"jimhud_pacified_civs_desc" : "시민이 엎드리면 느낌표 대신에 체크마크를 표시합니다.",
 	"jimhud_use_realammo_title" : "탄약 표시",
 	"jimhud_use_realammo_desc" : "탄약 표시를 다른게임처럼(예 : C-S:S) 표시합니다.",
-	"jimhud_enable_burstmode_title" : "점사 모드",
 	"jimhud_enable_burstmode_desc" : "당신의 무기에 점사 모드를 활성화시킵니다.",
 
 	"jimhud_playerpanel_options_name" : "플레이어 패널",
@@ -751,7 +745,6 @@
 	"jimhud_tabstats_clock_mode_a" : "12시간",
 	"jimhud_tabstats_clock_mode_b" : "24시간",
 	"jimhud_tabstats_clock_mode_c" : "Heist Time",
-	"jimhud_use_tabstats_title" : "TabStats 사용",
 	"jimhud_use_tabstats_desc" : "미션 정보 대신에 당신의 통계를 표시합니다.\n(맵을 바꿔야 적용됩니다...)",
 	"jimhud_tabstats_font_size_title" : "리스트 폰트 크기",
 	"jimhud_tabstats_font_size_desc" : "고급 통계 리스트 폰트 크기를 설정합니다.",
@@ -761,20 +754,6 @@
 	"jimhud_tabstats_actual_mask_desc" : "현재 당신이 쓰고있는 마스크를 표시합니다\n(기본적으로 캐릭터의 마스크로 표시됩니다).",
 	"jimhud_tabstats_numberic_loot_title" : "Numberic Loot Counter",
 	"jimhud_tabstats_numberic_loot_desc" : "Disable the bag counting minigame and display the number right away.",
-
-	"jimhud_crewloadout_options_name" : "Crew Loadout Options",
-	"jimhud_crewloadout_options_help" : "Choose where you want to get Information on which gear and skills your teammates are bringing.",
-
-	"jimhud_crewloadout_lobby_title" : "Show in Lobby",
-	"jimhud_crewloadout_lobby_desc" : "Adds a button to your Lobby screen, that can display the loadout of you and your crew.",
-	"jimhud_crewloadout_cs_lobby_title" : "Show in Crimespree Lobby",
-	"jimhud_crewloadout_cs_lobby_desc" : "Adds a new tab right next to the modifiers and rewards in the crimespree lobby.",
-	"jimhud_crewloadout_briefing_title" : "Replace in briefing",
-	"jimhud_crewloadout_briefing_desc" : "Replaces the default Crew Loadout Panel in Mission briefing.",
-	"jimhud_crewloadout_tabscreen_title" : "Show on Tabscreen",
-	"jimhud_crewloadout_tabscreen_desc" : "Displays the Skills, Perk and current Ping of players in your lobby. \n(Disabled if you use this feature of LobbyPlayerInfo)",
-	"jimhud_profilemenu_replace_title" : "Replace Profile Menu",
-	"jimhud_profilemenu_replace_desc" : "Replaces the default Profile-Selector with JimHUDs advanced one.",
 
 	"jimhud_dmgindicator_options_name" : "데미지 인디케이터",
 	"jimhud_dmgindicator_options_help" : "데미지 인디케이터의 페이드 시간, 크기 등을 설정합니다.",
@@ -892,9 +871,6 @@
 	"jimhud_equipment_keycard_doors_disabled_title" : "Key-card Door Suppression",
 	"jimhud_equipment_keycard_doors_disabled_desc" : "When checked, you need to doubletap to close doors in hoxton breakout day 2. \nOnly to prevent accidents.",
 
-	"jimhud_gadget_options_name" : "무기 가젯 옵션",
-	"jimhud_gadget_options_help" : "무기 가젯을 사용자에 맞게 설정합니다.",
-
 	"jimhud_laser_autoon_title" : "자동 레이저",
 	"jimhud_laser_autoon_desc" : "자동으로 레이저를 활성화 시킵니다.",
 	"jimhud_show_angeled_sight_title" : "기울어진 무기",
@@ -976,8 +952,6 @@
 	"jimhud_gadgets_pulse_frequency_title" : "Pulse Frequency",
 	"jimhud_gadgets_pulse_frequency_desc" : "Determines the time it takes the pulse from minimum to maximum oppacity multiplicator.",
 
-	"jimhud_skipit_options_name" : "Skip-It 설정",
-	"jimhud_skipit_options_help" : "자동으로 스킵될지 설정합니다.\n(시작할때 Enter 꾹 누르기, 카드 자동 고르기 등등..)",
 	"jimhud_assaultbanner_options_name" : "어설트 배너 설정",
 	"jimhud_assaultbanner_options_help" : "어설트 배너를 설정합니다."
 }

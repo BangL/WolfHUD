@@ -244,6 +244,29 @@
 	"jimhud_languages_chinese" : "Chinese",
 	"jimhud_languages_korean" : "Korean",
 
+	"jimhud_reset_text" : "Reset",
+	"jimhud_menu_options_text" : "Menus",
+	"jimhud_ingame_options_text" : "Ingame",
+	"jimhud_other_options_text" : "Other",
+	"jimhud_lobby_text" : "Lobby",
+	"jimhud_briefing_text" : "Briefing",
+	"jimhud_loading_text" : "Loading Screen",
+	"jimhud_stat_screen_text" : "Statistics Screen",
+	"jimhud_loot_screen_text" : "Payday Screen",
+	"jimhud_profiles_text" : "Profiles",
+	"jimhud_skills_text" : "Skills",
+	"jimhud_weapons_text" : "Weapons",
+	"jimhud_armor_text" : "Armor",
+
+	"jimhud_general_text" : "General",
+	"jimhud_stealth_text" : "Stealth",
+
+	"jimhud_menu_options_name" : "Main Menu",
+	"jimhud_menu_options_help" : "Change how the main menu works.",
+
+	"jimhud_gameplay_options_name" : "Gameplay / Controls",
+	"jimhud_gameplay_options_help" : "Change some of the ingame gameplay/controls.",
+
 	"jimhud_skip_blackscreen_title" : "Skip Blackscreen",
 	"jimhud_skip_blackscreen_desc" : "Automatically skips the Blackscreen on Mission start.\n(Host only)",
 	"jimhud_instant_restart_title" : "Instant Restart",
@@ -260,7 +283,7 @@
 	"jimhud_loot_screen_delay_desc" : "Proceeds X seconds after you got your loot drop.\n(Host only, 0 = disabled)",
 	"jimhud_fix_armor_sorting_title" : "Fix armor sorting",
 	"jimhud_fix_armor_sorting_desc" : "Sort armor by their sizes.",
-	"jimhud_replace_weapon_names_title" : "Real Weapon Names",
+	"jimhud_replace_weapon_names_title" : "Show Real Weapon Names",
 	"jimhud_replace_weapon_names_desc" : "Replace the Weapon Names with their Real-World counterparts.\n(A Map change is needed to apply...)",
 	"jimhud_inventory_tab_names_title" : "Use Inventory Tab Names",
 	"jimhud_inventory_tab_names_desc" : "Customize your Inventory Tab Names.\n(Change names by editing '/mods/saves/JimHUD_InventoryNames.txt')",
@@ -276,7 +299,7 @@
 	"jimhud_reset_options_desc" : "Reset all Settings to their default value.",
 	"jimhud_reset_options_confirm" : "Are you sure, you want to reset all Settings to their default value?",
 
-	"jimhud_panels_options_name" : "General HUD Panel Options",
+	"jimhud_panels_options_name" : "HUD",
 	"jimhud_panels_options_help" : "Options for all the general HUD panels, as CustomHUD, Suspicion, Damage Indicator, DrivingHUD and many more.",
 
 	"jimhud_use_customhud_title" : "Use CustomHUD",
@@ -292,7 +315,7 @@
 	"jimhud_colored_cam_title" : "Colored cameras",
 	"jimhud_colored_cam_desc" : "Shows camera feeds in color.",
 
-	"jimhud_enable_burstmode_title" : "Enable Burst mode",
+	"jimhud_enable_burstmode_title" : "Enable Burst Fire mode",
 	"jimhud_enable_burstmode_desc" : "Enable a burst fire mode for your weapons.",
 
 	"jimhud_playerpanel_options_name" : "Player Panel",
@@ -365,7 +388,7 @@
 	"jimhud_panels_ai_color_title" : "Custom bot color",
 	"jimhud_panels_ai_color_desc" : "Set the custom color to use for the names of bots. (This also affects dmg popups)",
 
-	"jimhud_chat_options_name" : "Chat options",
+	"jimhud_chat_options_name" : "Chat",
 	"jimhud_chat_options_help" : "Options to customize chat behavior.",
 
 	"jimhud_chat_waittime_title" : "Chat Fade Time",
@@ -385,8 +408,8 @@
 	"jimhud_chat_scrollbar_align_title" : "Scrollbar Align",
 	"jimhud_chat_scrollbar_align_desc" : "Alignment of the scroll bar",
 
-	"jimhud_suspicion_options_name" : "Suspicion options",
-	"jimhud_suspicion_options_help" : "Options for the size of the suspicion panel, as well as its visible components.",
+	"jimhud_suspicion_options_name" : "Detection Meter",
+	"jimhud_suspicion_options_help" : "Options for the size of the detection panel, as well as its visible components.",
 
 	"jimhud_suspicion_scale_title" : "Suspicion Scale",
 	"jimhud_suspicion_scale_desc" : "Scaling factor for the suspicion panel elements.",
@@ -397,7 +420,7 @@
 	"jimhud_susp_numberic_outline_title" : "Black outline",
 	"jimhud_susp_numberic_outline_desc" : "Show a black outline around the numeric Suspicion text.",
 
-	"jimhud_killcounter_options_name" : "Killcounter Options",
+	"jimhud_killcounter_options_name" : "Killcounters",
 	"jimhud_killcounter_options_help" : "Options for the appearance of the kill counter",
 
 	"jimhud_killcounter_player_show_killcount_title" : "Display Player Killcounter",
@@ -423,7 +446,7 @@
 	"jimhud_corpse_limit_title" : "Corpse Limit",
 	"jimhud_corpse_limit_desc" : "How much corpses should we allow to lay around at the same time?\n(A Map change is needed to apply...)",
 
-	"jimhud_drivinghud_options_name" : "DrivingHUD Options",
+	"jimhud_drivinghud_options_name" : "Driving HUD",
 	"jimhud_drivinghud_options_help" : "Some options for DrivingHUD.",
 
 	"jimhud_show_drivinghud_title" : "Show Driving HUD",
@@ -447,7 +470,7 @@
 	"jimhud_drivinghud_show_rpm_title" : "Show RPM",
 	"jimhud_drivinghud_show_rpm_desc" : "Display the vehicles revolutions per minute.",
 
-	"jimhud_infopanels_options_name" : "HUD Info Options",
+	"jimhud_infopanels_options_name" : "HUD Info Boxes",
 	"jimhud_infopanels_options_help" : "Options for the info boxes of HUD List.",
 
 	"jimhud_use_hudlist_title" : "Use HUDList",
@@ -477,7 +500,7 @@
 	"jimhud_hudlist_progress_alpha_buff_title" : "Buff Progress Alpha",
 	"jimhud_hudlist_progress_alpha_buff_desc" : "Alpha value for the progress bars on buff list items.",
 
-	"jimhud_infopanels_left_options_name" : "Left List Options",
+	"jimhud_infopanels_left_options_name" : "Left List",
 	"jimhud_infopanels_left_options_help" : "Options for the left info list.",
 
 	"jimhud_hudlist_show_timers_title" : "Show Timers",
@@ -507,7 +530,7 @@
 	"jimhud_hudlist_remove_answered_pagers_title" : "Remove Pager Contour",
 	"jimhud_hudlist_remove_answered_pagers_desc" : "Remove the pager contour, if it is already getting answered.",
 
-	"jimhud_infopanels_right_options_name" : "Right List Options",
+	"jimhud_infopanels_right_options_name" : "Right List",
 	"jimhud_infopanels_right_options_help" : "Options for the right info list.",
 
 	"jimhud_hudlist_show_enemies_title" : "Show Enemies",
@@ -549,7 +572,7 @@
 	"jimhud_hudlist_show_valuables_pickups_title" : "Show Loot Pickups",
 	"jimhud_hudlist_show_valuables_pickups_desc" : "Show amount of valuable items, like money bundles or necklaces on the map.",
 
-	"jimhud_infopanels_buff_options_name" : "Buff List Options",
+	"jimhud_infopanels_buff_options_name" : "Buff List",
 	"jimhud_infopanels_buff_options_help" : "Options for the buff info list.",
 
 	"jimhud_infopanels_buff_mastermind_options_name" : "Mastermind Skills",
@@ -715,10 +738,10 @@
 	"jimhud_hudlist_timer_format_title" : "Show timer in seconds",
 	"jimhud_hudlist_timer_format_desc" : "Format timer in seconds only",
 
-	"jimhud_waypoints_options_name" : "Custom Waypoints Options",
-	"jimhud_waypoints_options_help" : "Options to control Custom Waypoints.",
+	"jimhud_waypoints_options_name" : "Waypoints",
+	"jimhud_waypoints_options_help" : "Options to control Waypoints.",
 
-	"jimhud_waypoints_color_enable_title" : "Enable Waypoints Color",
+	"jimhud_waypoints_color_enable_title" : "Custom Waypoints Color",
 	"jimhud_waypoints_color_enable_desc" : "Changing color of the default mission waypoints.",
 	"jimhud_waypoints_color_title" : "Waypoints Color",
 	"jimhud_waypoints_color_desc" : "The color of the default mission waypoints.",
@@ -755,7 +778,7 @@
 	"jimhud_waypoints_show_pager_title" : "Show Pager",
 	"jimhud_waypoints_show_pager_desc" : "Show a waypoint for activated pagers. Changes its color, when someone is answering it.",
 
-	"jimhud_tabstats_options_name" : "TabStats Options",
+	"jimhud_tabstats_options_name" : "TabStats",
 	"jimhud_tabstats_options_help" : "Configure the look of your Tabscreen.",
 
 	"jimhud_tabstats_clock_mode_title" : "Clock Mode",
@@ -763,7 +786,7 @@
 	"jimhud_tabstats_clock_mode_a" : "12-h",
 	"jimhud_tabstats_clock_mode_b" : "24-h",
 	"jimhud_tabstats_clock_mode_c" : "Heist Time",
-	"jimhud_use_tabstats_title" : "Use TabStats",
+	"jimhud_use_tabstats_title" : "Show Statistics",
 	"jimhud_use_tabstats_desc" : "Show your Statistics on Tab Screen instead, of the Mission briefing.\n(A Map change is needed to apply...)",
 	"jimhud_tabstats_font_size_title" : "List Font Size",
 	"jimhud_tabstats_font_size_desc" : "Font Size for the advanced statistics list.",
@@ -774,21 +797,21 @@
 	"jimhud_tabstats_numberic_loot_title" : "Numeric Loot Counter",
 	"jimhud_tabstats_numberic_loot_desc" : "Disable the bag counting minigame and display the number right away.",
 
-	"jimhud_crewloadout_options_name" : "Crew Loadout Options",
-	"jimhud_crewloadout_options_help" : "Choose where you want to get Information on which gear and skills your teammates are bringing.",
+	"jimhud_lobby_options_name" : "Lobby / Briefing",
+	"jimhud_lobby_options_help" : "Change how the Lobby and Briefing screens work.",
 
-	"jimhud_crewloadout_lobby_title" : "Show in Lobby",
+	"jimhud_crewloadout_lobby_title" : "Show loadout in online Lobby",
 	"jimhud_crewloadout_lobby_desc" : "Adds a button to your Lobby screen, that can display the loadout of you and your crew.",
-	"jimhud_crewloadout_cs_lobby_title" : "Show in Crimespree Lobby",
-	"jimhud_crewloadout_cs_lobby_desc" : "Adds a new tab right next to the modifiers and rewards in the crimespree lobby.",
-	"jimhud_crewloadout_briefing_title" : "Replace in briefing",
-	"jimhud_crewloadout_briefing_desc" : "Replaces the default Crew Loadout Panel in Mission briefing.",
-	"jimhud_crewloadout_tabscreen_title" : "Show on Tabscreen",
+	"jimhud_crewloadout_cs_lobby_title" : "Show loadout in crimespree Lobby",
+	"jimhud_crewloadout_cs_lobby_desc" : "Adds a loadout tab right next to the modifiers and rewards in the crimespree lobby.",
+	"jimhud_crewloadout_briefing_title" : "Show full loadout in briefing",
+	"jimhud_crewloadout_briefing_desc" : "Replaces the default Crew Loadout Panel in Mission briefing with an extended one, that shows all equipment.",
+	"jimhud_crewloadout_tabscreen_title" : "Show skills on Tab screen",
 	"jimhud_crewloadout_tabscreen_desc" : "Displays the Skills, Perk and current Ping of players in your lobby. \n(Disabled if you use this feature of LobbyPlayerInfo)",
-	"jimhud_profilemenu_replace_title" : "Replace Profile Menu",
+	"jimhud_profilemenu_replace_title" : "Advanced profile-selector",
 	"jimhud_profilemenu_replace_desc" : "Replaces the default Profile-Selector with JimHUDs advanced one.",
 
-	"jimhud_dmgindicator_options_name" : "Damage Indicator",
+	"jimhud_dmgindicator_options_name" : "Hit Indicators",
 	"jimhud_dmgindicator_options_help" : "Set the fade time, size and colors or your damage indicators.",
 
 	"jimhud_show_dmg_indicator_title" : "Dynamic Damage Indicator",
@@ -848,7 +871,7 @@
 	"jimhud_show_healthbar_pointer_title" : "Show Pointer",
 	"jimhud_show_healthbar_pointer_desc" : "Show Arrow under the Healthbar, aiming at the Owner of the Healthbar.",
 
-	"jimhud_interaction_options_name" : "Interaction Options",
+	"jimhud_interaction_options_name" : "Interaction",
 	"jimhud_interaction_options_help" : "Choose your personal Interaction preferences.",
 
 	"jimhud_press2hold_lock_mode_title" : "Lock Mode",
@@ -890,7 +913,7 @@
 	"jimhud_hold_to_pick_title" : "Auto Pickup",
 	"jimhud_hold_to_pick_desc" : "Small loot will be automatically picked up, while pressing your interaction key.",
 
-	"jimhud_inventory_options_name" : "Inventory Tweak Options",
+	"jimhud_inventory_options_name" : "Inventory",
 	"jimhud_inventory_options_help" : "Options to change the visuals of your Inventory and alter Equipment behavior.",
 
 	"jimhud_equipment_senty_auto_ap_title" : "Sentry Auto AP-Mode",
@@ -904,8 +927,11 @@
 	"jimhud_equipment_keycard_doors_disabled_title" : "Key-card Door Suppression",
 	"jimhud_equipment_keycard_doors_disabled_desc" : "When checked, you need to doubletap to close doors in hoxton breakout day 2. \nOnly to prevent accidents.",
 
-	"jimhud_gadget_options_name" : "Weapon Gadget Options",
-	"jimhud_gadget_options_help" : "Specify your custom laser colors.",
+	"jimhud_laser_options_name" : "Laser colors",
+	"jimhud_laser_options_help" : "Specify your custom laser colors.",
+
+	"jimhud_flashlight_options_name" : "Flashlight cones",
+	"jimhud_flashlight_options_help" : "Specify your custom flashlight cone options.",
 
 	"jimhud_laser_autoon_title" : "Automatic Laser On",
 	"jimhud_laser_autoon_desc" : "Automatically turns the laser gadget on at startup, on weapons that have one.",
@@ -988,8 +1014,6 @@
 	"jimhud_gadgets_pulse_frequency_title" : "Pulse Frequency",
 	"jimhud_gadgets_pulse_frequency_desc" : "Determines the time it takes the pulse from minimum to maximum opacity multiplicator.",
 
-	"jimhud_skipit_options_name" : "Skip-It Options",
-	"jimhud_skipit_options_help" : "Options to skip unnecessary menus automatically to save your time.",
-	"jimhud_assaultbanner_options_name" : "Assault Banner Options",
+	"jimhud_assaultbanner_options_name" : "Assault Banner",
 	"jimhud_assaultbanner_options_help" : "Options to change the Assault Banner."
 }

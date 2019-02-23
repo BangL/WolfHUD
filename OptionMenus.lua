@@ -6,7 +6,7 @@ if JimHUD then
 		local rainbow_pulse_options = {
 			{
 				type = "divider",
-				size = 24
+				size = 12
 			},
 			{
 				type = "toggle",
@@ -35,7 +35,7 @@ if JimHUD then
 			},
 			{
 				type = "divider",
-				size = 24
+				size = 12
 			},
 			{
 				type = "toggle",
@@ -100,7 +100,7 @@ if JimHUD then
 				},
 				{
 					type = "divider",
-					size = can_be_deactivated and 8 or 0
+					size = can_be_deactivated and 12 or 0
 				},
 				{
 					type = "slider",
@@ -306,7 +306,7 @@ if JimHUD then
 				},
 				{
 					type = "divider",
-					size = can_be_deactivated and 8 or 0
+					size = can_be_deactivated and 12 or 0
 				},
 				{
 					type = "slider",
@@ -400,9 +400,26 @@ if JimHUD then
 		desc_id = "jimhud_options_help",
 		position = 3,
 		options = {
+			{ -- Reset
+				type = "divider",
+				size = 12,
+				text_id = "jimhud_reset_text",
+			},
+			{
+				type = "button",
+				name_id = "jimhud_reset_options_title",
+				desc_id = "jimhud_reset_options_desc",
+				clbk = "jimhud_reset_clbk",
+			},
+			{ -- Language
+				type = "divider",
+				size = 12,
+				text_id = "jimhud_language_title",
+			},
 			{
 				type = "multi_choice",
-				name_id = "jimhud_language_title",
+				--name_id = "jimhud_language_title",
+				no_text = true,
 				desc_id = "jimhud_language_desc",
 				options = {
 					["english"] = "jimhud_languages_english",
@@ -420,11 +437,256 @@ if JimHUD then
 				enabled_reqs = {},
 				value = {"LANGUAGE"},
 			},
-			{
+			{ -- Menu
 				type = "divider",
 				size = 12,
 			},
-			{	--General HUD
+			{
+				type = "divider",
+				size = 12,
+				text_id = "jimhud_menu_options_text",
+			},
+			--[[{ -- Main Menu
+				type = "menu",
+				menu_id = "jimhud_menu_options_menu",
+				name_id = "jimhud_menu_options_name",
+				desc_id = "jimhud_menu_options_help",
+				options = {
+				},
+			},]]
+			{ -- Lobby/Briefing
+				type = "menu",
+				menu_id = "jimhud_lobby_options_menu",
+				name_id = "jimhud_lobby_options_name",
+				desc_id = "jimhud_lobby_options_help",
+				options = {
+					{
+						type = "divider",
+						size = 12,
+						text_id = "jimhud_lobby_text",
+					},
+					{
+						type = "toggle",
+						name_id = "jimhud_crewloadout_lobby_title",
+						desc_id = "jimhud_crewloadout_lobby_desc",
+						value = {"CrewLoadout", "SHOW_IN_LOBBY"},
+						visible_reqs = {}, enabled_reqs = {},
+					},
+					{
+						type = "toggle",
+						name_id = "jimhud_crewloadout_cs_lobby_title",
+						desc_id = "jimhud_crewloadout_cs_lobby_desc",
+						value = {"CrewLoadout", "SHOW_IN_CS_LOBBY"},
+						visible_reqs = {}, enabled_reqs = {},
+					},
+					{
+						type = "divider",
+						size = 12,
+					},
+					{
+						type = "divider",
+						size = 12,
+						text_id = "jimhud_briefing_text"
+					},
+					{
+						type = "toggle",
+						name_id = "jimhud_crewloadout_briefing_title",
+						desc_id = "jimhud_crewloadout_briefing_desc",
+						value = {"CrewLoadout", "REPLACE_IN_BRIEFING"},
+						visible_reqs = {}, enabled_reqs = {},
+					},
+					{
+						type = "toggle", -- duplicate on purpose, for usabilty
+						name_id = "jimhud_profilemenu_replace_title",
+						desc_id = "jimhud_profilemenu_replace_desc",
+						value = {"CrewLoadout", "REPLACE_PROFILE_MENU"},
+						visible_reqs = {}, enabled_reqs = {},
+					},
+					{
+						type = "divider",
+						size = 12,
+					},
+					{
+						type = "divider",
+						size = 12,
+						text_id = "jimhud_loading_text"
+					},
+					{
+						type = "toggle",
+						name_id = "jimhud_skip_blackscreen_title",
+						desc_id = "jimhud_skip_blackscreen_desc",
+						value = {"SkipIt", "SKIP_BLACKSCREEN"},
+						visible_reqs = {}, enabled_reqs = {},
+					},
+					{
+						type = "divider",
+						size = 12,
+					},
+					{
+						type = "divider",
+						size = 12,
+						text_id = "jimhud_stat_screen_text"
+					},
+					{
+						type = "toggle",
+						name_id = "jimhud_stat_screen_speedup_title",
+						desc_id = "jimhud_stat_screen_speedup_desc",
+						value = {"SkipIt", "STAT_SCREEN_SPEEDUP"},
+						visible_reqs = {}, enabled_reqs = {},
+					},
+					{
+						type = "slider",
+						name_id = "jimhud_stat_screen_delay_title",
+						desc_id = "jimhud_stat_screen_delay_desc",
+						value = {"SkipIt", "STAT_SCREEN_DELAY"},
+						visible_reqs = {}, enabled_reqs = {},
+						min_value = 0,
+						max_value = 20,
+						step_size = 0.1,
+					},
+					{
+						type = "divider",
+						size = 12,
+					},
+					{
+						type = "divider",
+						size = 12,
+						text_id = "jimhud_loot_screen_text",
+					},
+					{
+						type = "toggle",
+						name_id = "jimhud_loot_screen_pick_card_title",
+						desc_id = "jimhud_loot_screen_pick_card_desc",
+						value = {"SkipIt", "AUTOPICK_CARD"},
+						visible_reqs = {}, enabled_reqs = {},
+					},
+					{
+						type = "multi_choice",
+						name_id = "jimhud_loot_screen_pick_specific_card_title",
+						desc_id = "jimhud_loot_screen_pick_specific_card_desc",
+						options = {
+							"jimhud_multiselect_left",
+							"jimhud_multiselect_center",
+							"jimhud_multiselect_right",
+							"jimhud_multiselect_random",
+						},
+						visible_reqs = {},
+						enabled_reqs = {
+							{ setting = {"SkipIt", "AUTOPICK_CARD"}, invert = false },
+						},
+						value = {"SkipIt", "AUTOPICK_CARD_SPECIFIC"},
+					},
+					{
+						type = "slider",
+						name_id = "jimhud_loot_screen_delay_title",
+						desc_id = "jimhud_loot_screen_delay_desc",
+						value = {"SkipIt", "LOOT_SCREEN_DELAY"},
+						visible_reqs = {}, enabled_reqs = {},
+						min_value = 0,
+						max_value = 20,
+						step_size = 0.1,
+					},
+				},
+			},
+			{ -- Inventory
+				type = "menu",
+				menu_id = "jimhud_inventory_options_menu",
+				name_id = "jimhud_inventory_options_name",
+				desc_id = "jimhud_inventory_options_help",
+				options = {
+					{
+						type = "divider",
+						size = 12,
+						text_id = "jimhud_profiles_text",
+					},
+					{
+						type = "toggle",
+						name_id = "jimhud_inventory_names_title",
+						desc_id = "jimhud_inventory_names_desc",
+						value = {"INVENTORY", "SHOW_WEAPON_NAMES"},
+						visible_reqs = {}, enabled_reqs = {},
+					},
+					{
+						type = "toggle", -- duplicate on purpose, for usabilty
+						name_id = "jimhud_profilemenu_replace_title",
+						desc_id = "jimhud_profilemenu_replace_desc",
+						value = {"CrewLoadout", "REPLACE_PROFILE_MENU"},
+						visible_reqs = {}, enabled_reqs = {},
+					},
+					{
+						type = "divider",
+						size = 12,
+					},
+					{
+						type = "divider",
+						size = 12,
+						text_id = "jimhud_skills_text",
+					},
+					{
+						type = "toggle",
+						name_id = "jimhud_skill_names_title",
+						desc_id = "jimhud_skill_names_desc",
+						value = {"INVENTORY", "SHOW_SKILL_NAMES"},
+						visible_reqs = {}, enabled_reqs = {},
+					},
+					{
+						type = "divider",
+						size = 12,
+					},
+					{
+						type = "divider",
+						size = 12,
+						text_id = "jimhud_weapons_text",
+					},
+					{
+						type = "toggle",
+						name_id = "jimhud_replace_weapon_names_title",
+						desc_id = "jimhud_replace_weapon_names_desc",
+						value = {"INVENTORY", "USE_REAL_WEAPON_NAMES"},
+						visible_reqs = {}, enabled_reqs = {},
+					},
+					{
+						type = "toggle",
+						name_id = "jimhud_show_mini_icons_title",
+						desc_id = "jimhud_show_mini_icons_desc",
+						value = {"INVENTORY", "SHOW_WEAPON_MINI_ICONS"},
+						visible_reqs = {}, enabled_reqs = {},
+					},
+					{
+						type = "divider",
+						size = 12,
+					},
+					{
+						type = "divider",
+						size = 12,
+						text_id = "jimhud_armor_text",
+					},
+					{
+						type = "toggle",
+						name_id = "jimhud_fix_armor_sorting_title",
+						desc_id = "jimhud_fix_armor_sorting_desc",
+						value = {"INVENTORY", "FIX_ARMOR_SORTING"},
+						visible_reqs = {}, enabled_reqs = {},
+					},
+				},
+			},
+			{ -- Ingame
+				type = "divider",
+				size = 12,
+			},
+			{
+				type = "divider",
+				size = 12,
+				text_id = "jimhud_ingame_options_text",
+			},
+			{ -- Instant restart
+				type = "toggle",
+				name_id = "jimhud_instant_restart_title",
+				desc_id = "jimhud_instant_restart_desc",
+				value = {"SkipIt", "INSTANT_RESTART"},
+				visible_reqs = {}, enabled_reqs = {},
+			},
+			{ -- Ingame tweaks
 				type = "menu",
 				menu_id = "jimhud_customhud_options_menu",
 				name_id = "jimhud_panels_options_name",
@@ -439,7 +701,7 @@ if JimHUD then
 					},
 					{
 						type = "divider",
-						size = 8,
+						size = 12,
 					},
 					{	--CustomHUD Player
 						type = "menu",
@@ -490,7 +752,7 @@ if JimHUD then
 							},
 							{
 								type = "divider",
-								size = 8,
+								size = 12,
 							},
 							{
 								type = "toggle",
@@ -616,7 +878,7 @@ if JimHUD then
 							},
 							{
 								type = "divider",
-								size = 8,
+								size = 12,
 							},
 							{
 								type = "multi_choice",
@@ -734,7 +996,7 @@ if JimHUD then
 							},
 							{
 								type = "divider",
-								size = 8,
+								size = 12,
 							},
 							{
 								type = "toggle",
@@ -863,7 +1125,7 @@ if JimHUD then
 							},
 							{
 								type = "divider",
-								size = 8,
+								size = 12,
 							},
 							{
 								type = "toggle",
@@ -891,7 +1153,7 @@ if JimHUD then
 							},
 							{
 								type = "divider",
-								size = 8,
+								size = 12,
 							},
 							{
 								type = "multi_choice",
@@ -960,7 +1222,7 @@ if JimHUD then
 							},
 							{
 								type = "divider",
-								size = 8,
+								size = 12,
 							},
 							{
 								type = "toggle",
@@ -1005,7 +1267,7 @@ if JimHUD then
 							},
 							{
 								type = "divider",
-								size = 8,
+								size = 12,
 							},
 							{
 								type = "toggle",
@@ -1031,7 +1293,7 @@ if JimHUD then
 					},
 					{
 						type = "divider",
-						size = 8
+						size = 12,
 					},
 					{	--KillCounter
 						type = "menu",
@@ -1082,7 +1344,7 @@ if JimHUD then
 							},
 							{
 								type = "divider",
-								size = 8,
+								size = 12,
 							},
 							{
 								type = "toggle",
@@ -1093,7 +1355,7 @@ if JimHUD then
 							},
 							{
 								type = "divider",
-								size = 32,
+								size = 12,
 							},
 							{
 								type = "toggle",
@@ -1164,7 +1426,7 @@ if JimHUD then
 					},
 					{
 						type = "divider",
-						size = 16,
+						size = 12,
 					},
 					{	--Chat
 						type = "menu",
@@ -1242,7 +1504,7 @@ if JimHUD then
 							},
 							{
 								type = "divider",
-								size = 8,
+								size = 12,
 							},
 							{
 								type = "toggle",
@@ -1295,7 +1557,7 @@ if JimHUD then
 							},
 							{
 								type = "divider",
-								size = 24,
+								size = 12,
 							},
 							{
 								type = "toggle",
@@ -1394,7 +1656,7 @@ if JimHUD then
 							},
 							{
 								type = "divider",
-								size = 16,
+								size = 12,
 							},
 							{
 								type = "multi_choice",
@@ -1465,7 +1727,7 @@ if JimHUD then
 					},
 					{
 						type = "divider",
-						size = 16,
+						size = 12,
 					},
 					{ -- EnemyHealthbar
 						type = "menu",
@@ -1652,7 +1914,7 @@ if JimHUD then
 					},
 					{
 						type = "divider",
-						size = 16,
+						size = 12,
 					},
 					{ -- drivingHUD
 						type = "menu",
@@ -1682,7 +1944,7 @@ if JimHUD then
 							},
 							{
 								type = "divider",
-								size = 16,
+								size = 12,
 							},
 							{
 								type = "toggle",
@@ -1769,11 +2031,7 @@ if JimHUD then
 					},
 				},
 			},
-			{
-				type ="divider",
-				size = 8,
-			},
-			{	--HUDList
+			{ --HUDList
 				type = "menu",
 				menu_id = "jimhud_hudlist_options_menu",
 				name_id = "jimhud_infopanels_options_name",
@@ -1788,7 +2046,7 @@ if JimHUD then
 					},
 					{
 						type ="divider",
-						size = 16,
+						size = 12,
 					},
 					{
 						type = "slider",
@@ -1831,7 +2089,7 @@ if JimHUD then
 					},
 					{
 						type ="divider",
-						size = 16,
+						size = 12,
 					},
 					{
 						type = "multi_choice",
@@ -1913,7 +2171,7 @@ if JimHUD then
 					},
 					{
 						type ="divider",
-						size = 8,
+						size = 12,
 					},
 					{
 						type = "slider",
@@ -1956,7 +2214,7 @@ if JimHUD then
 					},
 					{
 						type ="divider",
-						size = 16,
+						size = 12,
 					},
 					{	--HUDList Left List
 						type = "menu",
@@ -1976,7 +2234,7 @@ if JimHUD then
 							},
 							{
 								type = "divider",
-								size = 8,
+								size = 12,
 							},
 							{
 								type = "toggle",
@@ -2040,7 +2298,7 @@ if JimHUD then
 							},
 							{
 								type = "divider",
-								size = 8,
+								size = 12,
 							},
 							{
 								type = "toggle",
@@ -2064,7 +2322,7 @@ if JimHUD then
 							},
 							{
 								type = "divider",
-								size = 8,
+								size = 12,
 							},
 							{
 								type = "toggle",
@@ -2089,7 +2347,7 @@ if JimHUD then
 							},
 							{
 								type = "divider",
-								size = 8,
+								size = 12,
 							},
 							{
 								type = "toggle",
@@ -2103,7 +2361,7 @@ if JimHUD then
 							},
 							{
 								type = "divider",
-								size = 8,
+								size = 12,
 							},
 							{
 								type = "toggle",
@@ -2117,7 +2375,7 @@ if JimHUD then
 							},
 							{
 								type = "divider",
-								size = 8,
+								size = 12,
 							},
 							{
 								type = "toggle",
@@ -2210,7 +2468,7 @@ if JimHUD then
 							},
 							{
 								type = "divider",
-								size = 8,
+								size = 12,
 							},
 							{
 								type = "toggle",
@@ -2254,7 +2512,7 @@ if JimHUD then
 							},
 							{
 								type = "divider",
-								size = 8,
+								size = 12,
 							},
 							{
 								type = "toggle",
@@ -2300,7 +2558,7 @@ if JimHUD then
 							},
 							{
 								type = "divider",
-								size = 8,
+								size = 12,
 							},
 							{
 								type = "toggle",
@@ -2365,7 +2623,7 @@ if JimHUD then
 							},
 							{
 								type = "divider",
-								size = 16,
+								size = 12,
 							},
 							{
 								type = "toggle",
@@ -2424,7 +2682,7 @@ if JimHUD then
 							},
 							{
 								type = "divider",
-								size = 16,
+								size = 12,
 							},
 							{
 								type = "menu",
@@ -2445,7 +2703,7 @@ if JimHUD then
 									},
 									{
 										type = "divider",
-										size = 8
+										size = 12,
 									},
 									{
 										type = "toggle",
@@ -2559,7 +2817,7 @@ if JimHUD then
 									},
 									{
 										type = "divider",
-										size = 8,
+										size = 12,
 									},
 									{
 										type = "toggle",
@@ -2604,7 +2862,7 @@ if JimHUD then
 									},
 									{
 										type = "divider",
-										size = 8,
+										size = 12,
 									},
 									{
 										type = "toggle",
@@ -2652,7 +2910,7 @@ if JimHUD then
 									},
 									{
 										type = "divider",
-										size = 8,
+										size = 12,
 									},
 									{
 										type = "toggle",
@@ -3243,17 +3501,17 @@ if JimHUD then
 						name_id = "jimhud_waypoints_color_title",
 						desc_id = "jimhud_waypoints_color_desc",
 						value = {"CustomWaypoints", "WAYPOINTS_COLOR"},
-						visible_reqs = {
+						visible_reqs = {},
+						enabled_reqs = {
 							{ setting = {"CustomWaypoints", "WAYPOINTS_COLOR_ENABLE"}, invert = false }
 						},
-						visible_reqs = {}, enabled_reqs = {},
 						options = {},
 						add_color_options = true,
 						add_rainbow = false,
 					},
 					{
 						type = "divider",
-						size = 8,
+						size = 12,
 					},
 					{
 						type = "toggle",
@@ -3306,7 +3564,7 @@ if JimHUD then
 					},
 					{
 						type = "divider",
-						size = 8,
+						size = 12,
 					},
 					{
 						type = "toggle",
@@ -3331,7 +3589,7 @@ if JimHUD then
 					},
 					{
 						type = "divider",
-						size = 8,
+						size = 12,
 					},
 					{
 						type = "toggle",
@@ -3391,7 +3649,7 @@ if JimHUD then
 					},
 					{
 						type = "divider",
-						size = 8,
+						size = 12,
 					},
 					{
 						type = "toggle",
@@ -3401,10 +3659,6 @@ if JimHUD then
 						visible_reqs = {}, enabled_reqs = {},
 					},
 				},
-			},
-			{
-				type ="divider",
-				size = 8,
 			},
 			{ --INTERACTION
 				type = "menu",
@@ -3455,7 +3709,7 @@ if JimHUD then
 					},
 					{
 						type = "divider",
-						size = 8,
+						size = 12,
 					},
 					{
 						type = "toggle",
@@ -3515,7 +3769,7 @@ if JimHUD then
 					},
 					{
 						type = "divider",
-						size = 24,
+						size = 12,
 					},
 					{
 						type = "multi_choice",
@@ -3577,7 +3831,7 @@ if JimHUD then
 					},
 					{
 						type = "divider",
-						size = 16,
+						size = 12,
 					},
 					{
 						type = "toggle",
@@ -3595,29 +3849,29 @@ if JimHUD then
 					},
 				},
 			},
-			{ --GADGETS
+			{ -- Laser colors
 				type = "menu",
-				menu_id = "jimhud_gadget_options_menu",
-				name_id = "jimhud_gadget_options_name",
-				desc_id = "jimhud_gadget_options_help",
+				menu_id = "jimhud_laser_options_menu",
+				name_id = "jimhud_laser_options_name",
+				desc_id = "jimhud_laser_options_help",
 				options = {
-					{
-						type = "toggle",
-						name_id = "jimhud_laser_autoon_title",
-						desc_id = "jimhud_laser_autoon_desc",
-						value = {"GADGETS", "LASER_AUTO_ON"},
-						visible_reqs = {}, enabled_reqs = {},
-					},
-					{
-						type = "divider",
-						size = 16,
-					},
 					{
 						type = "menu",
 						menu_id = "jimhud_gadget_player_laser_options_menu",
 						name_id = "jimhud_gadget_player_laser_options_name",
 						desc_id = "jimhud_gadget_player_laser_options_help",
 						options = get_gadget_options("laser", "player")
+					},
+					{
+						type = "menu",
+						menu_id = "jimhud_gadget_team_laser_options_menu",
+						name_id = "jimhud_gadget_team_laser_options_name",
+						desc_id = "jimhud_gadget_team_laser_options_help",
+						options = get_gadget_options("laser", "team")
+					},
+					{
+						type = "divider",
+						size = 12,
 					},
 					{
 						type = "menu",
@@ -3628,17 +3882,14 @@ if JimHUD then
 					},
 					{
 						type = "menu",
-						menu_id = "jimhud_gadget_team_laser_options_menu",
-						name_id = "jimhud_gadget_team_laser_options_name",
-						desc_id = "jimhud_gadget_team_laser_options_help",
-						options = get_gadget_options("laser", "team")
-					},
-					{
-						type = "menu",
 						menu_id = "jimhud_gadget_team_sentry_laser_options_menu",
 						name_id = "jimhud_gadget_team_sentry_laser_options_name",
 						desc_id = "jimhud_gadget_team_sentry_laser_options_help",
 						options = get_gadget_options("laser", "team_sentry")
+					},
+					{
+						type = "divider",
+						size = 12,
 					},
 					{
 						type = "menu",
@@ -3646,6 +3897,10 @@ if JimHUD then
 						name_id = "jimhud_gadget_sniper_laser_options_name",
 						desc_id = "jimhud_gadget_sniper_laser_options_help",
 						options = get_gadget_options("laser", "cop_sniper")
+					},
+					{
+						type = "divider",
+						size = 12,
 					},
 					{
 						type = "menu",
@@ -3668,10 +3923,14 @@ if JimHUD then
 						desc_id = "jimhud_gadget_turret_laser_mad_options_help",
 						options = get_gadget_options("laser", "turret_module_mad")
 					},
-					{
-						type = "divider",
-						size = 24,
-					},
+				},
+			},
+			{ -- Flashlight cones
+				type = "menu",
+				menu_id = "jimhud_flashlight_options_menu",
+				name_id = "jimhud_flashlight_options_name",
+				desc_id = "jimhud_flashlight_options_help",
+				options = {
 					{
 						type = "menu",
 						menu_id = "jimhud_gadget_player_flashlight_options_menu",
@@ -3686,24 +3945,9 @@ if JimHUD then
 						desc_id = "jimhud_gadget_team_flashlight_options_help",
 						options = get_gadget_options("flashlight", "team")
 					},
-					{
-						type = "divider",
-						size = 24,
-					},
-					{
-						type = "toggle",
-						name_id = "jimhud_show_angeled_sight_title",
-						desc_id = "jimhud_show_angeled_sight_desc",
-						value = {"GADGETS", "SHOW_ANGELED_SIGHT"},
-						visible_reqs = {}, enabled_reqs = {},
-					},
 				},
 			},
-			{
-				type ="divider",
-				size = 8,
-			},
-			{ --TabStats
+			{ -- TabStats
 				type = "menu",
 				menu_id = "jimhud_tabstats_options_menu",
 				name_id = "jimhud_tabstats_options_name",
@@ -3724,7 +3968,7 @@ if JimHUD then
 					},
 					{
 						type = "divider",
-						size = 16,
+						size = 12,
 					},
 					{
 						type = "toggle",
@@ -3769,42 +4013,9 @@ if JimHUD then
 							{ setting = { "TabStats", "ENABLED" }, inverted = false }
 						},
 					},
-				},
-			},
-			{ --CrewLoadout
-				type = "menu",
-				menu_id = "jimhud_crewloadout_options_menu",
-				name_id = "jimhud_crewloadout_options_name",
-				desc_id = "jimhud_crewloadout_options_help",
-				options = {
-					{
-						type = "toggle",
-						name_id = "jimhud_crewloadout_lobby_title",
-						desc_id = "jimhud_crewloadout_lobby_desc",
-						value = {"CrewLoadout", "SHOW_IN_LOBBY"},
-						visible_reqs = {}, enabled_reqs = {},
-					},
-					{
-						type = "toggle",
-						name_id = "jimhud_crewloadout_cs_lobby_title",
-						desc_id = "jimhud_crewloadout_cs_lobby_desc",
-						value = {"CrewLoadout", "SHOW_IN_CS_LOBBY"},
-						visible_reqs = {}, enabled_reqs = {},
-					},
 					{
 						type = "divider",
-						size = 16,
-					},
-					{
-						type = "toggle",
-						name_id = "jimhud_crewloadout_briefing_title",
-						desc_id = "jimhud_crewloadout_briefing_desc",
-						value = {"CrewLoadout", "REPLACE_IN_BRIEFING"},
-						visible_reqs = {}, enabled_reqs = {},
-					},
-					{
-						type = "divider",
-						size = 16,
+						size = 12,
 					},
 					{
 						type = "toggle",
@@ -3813,72 +4024,39 @@ if JimHUD then
 						value = {"CrewLoadout", "SHOW_ON_STATS_PANEL"},
 						visible_reqs = {}, enabled_reqs = {},
 					},
-					{
-						type = "divider",
-						size = 16,
-					},
-					{
-						type = "toggle",
-						name_id = "jimhud_profilemenu_replace_title",
-						desc_id = "jimhud_profilemenu_replace_desc",
-						value = {"CrewLoadout", "REPLACE_PROFILE_MENU"},
-						visible_reqs = {}, enabled_reqs = {},
-					},
 				},
 			},
-			{
-				type ="divider",
-				size = 16,
-			},
-			--INVENTORY & EQUIPMENT
-			{
+			{ -- Gameplay
 				type = "menu",
-				menu_id = "jimhud_inventory_options_menu",
-				name_id = "jimhud_inventory_options_name",
-				desc_id = "jimhud_inventory_options_help",
+				menu_id = "jimhud_gameplay_options_menu",
+				name_id = "jimhud_gameplay_options_name",
+				desc_id = "jimhud_gameplay_options_help",
 				options = {
 					{
-						type = "toggle",
-						name_id = "jimhud_fix_armor_sorting_title",
-						desc_id = "jimhud_fix_armor_sorting_desc",
-						value = {"INVENTORY", "FIX_ARMOR_SORTING"},
-						visible_reqs = {}, enabled_reqs = {},
-					},
-					{
 						type = "divider",
-						size = 24,
+						size = 12,
+						text_id = "jimhud_general_text",
 					},
 					{
 						type = "toggle",
-						name_id = "jimhud_replace_weapon_names_title",
-						desc_id = "jimhud_replace_weapon_names_desc",
-						value = {"INVENTORY", "USE_REAL_WEAPON_NAMES"},
+						name_id = "jimhud_laser_autoon_title",
+						desc_id = "jimhud_laser_autoon_desc",
+						value = {"GADGETS", "LASER_AUTO_ON"},
 						visible_reqs = {}, enabled_reqs = {},
 					},
 					{
 						type = "toggle",
-						name_id = "jimhud_inventory_names_title",
-						desc_id = "jimhud_inventory_names_desc",
-						value = {"INVENTORY", "SHOW_WEAPON_NAMES"},
+						name_id = "jimhud_equipment_senty_auto_ap_title",
+						desc_id = "jimhud_equipment_senty_auto_ap_desc",
+						value = {"EQUIPMENT", "SENTRY_AUTO_AP"},
 						visible_reqs = {}, enabled_reqs = {},
 					},
 					{
 						type = "toggle",
-						name_id = "jimhud_show_mini_icons_title",
-						desc_id = "jimhud_show_mini_icons_desc",
-						value = {"INVENTORY", "SHOW_WEAPON_MINI_ICONS"},
+						name_id = "jimhud_no_slowmotion_title",
+						desc_id = "jimhud_no_slowmotion_desc",
+						value = {"SkipIt", "NO_SLOWMOTION"},
 						visible_reqs = {}, enabled_reqs = {},
-					},
-					{
-						type = "toggle",
-						name_id = "jimhud_skill_names_title",
-						desc_id = "jimhud_skill_names_desc",
-						value = {"INVENTORY", "SHOW_SKILL_NAMES"},
-						visible_reqs = {}, enabled_reqs = {},
-					},
-					{
-						type = "divider",
-						size = 24,
 					},
 					{
 						type = "toggle",
@@ -3889,10 +4067,26 @@ if JimHUD then
 					},
 					{
 						type = "toggle",
-						name_id = "jimhud_equipment_senty_auto_ap_title",
-						desc_id = "jimhud_equipment_senty_auto_ap_desc",
-						value = {"EQUIPMENT", "SENTRY_AUTO_AP"},
+						name_id = "jimhud_show_angeled_sight_title",
+						desc_id = "jimhud_show_angeled_sight_desc",
+						value = {"GADGETS", "SHOW_ANGELED_SIGHT"},
 						visible_reqs = {}, enabled_reqs = {},
+					},
+					{
+						type = "toggle",
+						name_id = "jimhud_equipment_keycard_doors_disabled_title",
+						desc_id = "jimhud_equipment_keycard_doors_disabled_desc",
+						value = {"EQUIPMENT", "KEYCARD_DOORS_DISABLED"},
+						visible_reqs = {}, enabled_reqs = {},
+					},
+					{
+						type = "divider",
+						size = 12,
+					},
+					{
+						type = "divider",
+						size = 12,
+						text_id = "jimhud_stealth_text",
 					},
 					{
 						type = "toggle",
@@ -3908,124 +4102,7 @@ if JimHUD then
 						value = {"EQUIPMENT", "SHAPED_CHARGE_STEALTH_DISABLED"},
 						visible_reqs = {}, enabled_reqs = {},
 					},
-					{
-						type = "toggle",
-						name_id = "jimhud_equipment_keycard_doors_disabled_title",
-						desc_id = "jimhud_equipment_keycard_doors_disabled_desc",
-						value = {"EQUIPMENT", "KEYCARD_DOORS_DISABLED"},
-						visible_reqs = {}, enabled_reqs = {},
-					},
 				},
-			},
-			{
-				type ="divider",
-				size = 16,
-			},
-			--SkipIt
-			{
-				type = "menu",
-				menu_id = "jimhud_skipit_options_menu",
-				name_id = "jimhud_skipit_options_name",
-				desc_id = "jimhud_skipit_options_help",
-				options = {
-					{
-						type = "toggle",
-						name_id = "jimhud_skip_blackscreen_title",
-						desc_id = "jimhud_skip_blackscreen_desc",
-						value = {"SkipIt", "SKIP_BLACKSCREEN"},
-						visible_reqs = {}, enabled_reqs = {},
-					},
-					{
-						type = "divider",
-						size = 8,
-					},
-					{
-						type = "toggle",
-						name_id = "jimhud_instant_restart_title",
-						desc_id = "jimhud_instant_restart_desc",
-						value = {"SkipIt", "INSTANT_RESTART"},
-						visible_reqs = {}, enabled_reqs = {},
-					},
-					{
-						type = "divider",
-						size = 8,
-					},
-					{
-						type = "toggle",
-						name_id = "jimhud_stat_screen_speedup_title",
-						desc_id = "jimhud_stat_screen_speedup_desc",
-						value = {"SkipIt", "STAT_SCREEN_SPEEDUP"},
-						visible_reqs = {}, enabled_reqs = {},
-					},
-					{
-						type = "slider",
-						name_id = "jimhud_stat_screen_delay_title",
-						desc_id = "jimhud_stat_screen_delay_desc",
-						value = {"SkipIt", "STAT_SCREEN_DELAY"},
-						visible_reqs = {}, enabled_reqs = {},
-						min_value = 0,
-						max_value = 20,
-						step_size = 0.1,
-					},
-					{
-						type = "divider",
-						size = 8,
-					},
-					{
-						type = "toggle",
-						name_id = "jimhud_loot_screen_pick_card_title",
-						desc_id = "jimhud_loot_screen_pick_card_desc",
-						value = {"SkipIt", "AUTOPICK_CARD"},
-						visible_reqs = {}, enabled_reqs = {},
-					},
-					{
-						type = "multi_choice",
-						name_id = "jimhud_loot_screen_pick_specific_card_title",
-						desc_id = "jimhud_loot_screen_pick_specific_card_desc",
-						options = {
-							"jimhud_multiselect_left",
-							"jimhud_multiselect_center",
-							"jimhud_multiselect_right",
-							"jimhud_multiselect_random",
-						},
-						visible_reqs = {},
-						enabled_reqs = {
-							{ setting = {"SkipIt", "AUTOPICK_CARD"}, invert = false },
-						},
-						value = {"SkipIt", "AUTOPICK_CARD_SPECIFIC"},
-					},
-					{
-						type = "slider",
-						name_id = "jimhud_loot_screen_delay_title",
-						desc_id = "jimhud_loot_screen_delay_desc",
-						value = {"SkipIt", "LOOT_SCREEN_DELAY"},
-						visible_reqs = {}, enabled_reqs = {},
-						min_value = 0,
-						max_value = 20,
-						step_size = 0.1,
-					},
-					{
-						type = "divider",
-						size = 8,
-					},
-					{
-						type = "toggle",
-						name_id = "jimhud_no_slowmotion_title",
-						desc_id = "jimhud_no_slowmotion_desc",
-						value = {"SkipIt", "NO_SLOWMOTION"},
-						visible_reqs = {}, enabled_reqs = {},
-					},
-				},
-			},
-			{
-				type = "divider",
-				size = 32,
-			},
-			{
-				type = "button",
-				name_id = "jimhud_reset_options_title",
-				desc_id = "jimhud_reset_options_desc",
-				clbk = "jimhud_reset_clbk",
 			},
 		},
 	}

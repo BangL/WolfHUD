@@ -256,8 +256,6 @@
 	"jimhud_loot_screen_pick_specific_card_desc" : "Выберите, какую карту выбирать автоматически.",
 	"jimhud_loot_screen_delay_title" : "Задержка экрана добычи",
 	"jimhud_loot_screen_delay_desc" : "Задержка X секунд после того как вы получите добычу.\n(Только хост, 0 = выключено)",
-	"jimhud_replace_weapon_names_title" : "Настоящие названия оружия",
-	"jimhud_replace_weapon_names_desc" : "Замена названий оружий на настоящие.\n(Необходимо сменить карту для принятия изменений...)",
 	"jimhud_inventory_tab_names_title" : "Исп. названия вкладок в инвентаре",
 	"jimhud_inventory_tab_names_desc" : "Настройте ваши имена вкладок в инвентаре.\n(Отредактируйте в '/mods/saves/JimHUD_InventoryNames.txt')",
 	"jimhud_inventory_names_title" : "Показать названия ячеек инвентаря",
@@ -272,9 +270,6 @@
 	"jimhud_reset_options_desc" : "Сбросить все Настройки по умолчанию.",
 	"jimhud_reset_options_confirm" : "Вы уверены, что хотите сбросить все настройки по умолчанию?",
 
-	"jimhud_panels_options_name" : "Общие настройки HUD панелей",
-	"jimhud_panels_options_help" : "Настройки для всех основных HUD панелей, таких как CustomHUD, Подозрительность, Индикатор урона, DrivingHUD и многиз других.",
-
 	"jimhud_use_customhud_title" : "Использовать CustomHUD",
 	"jimhud_use_customhud_desc" : "Заменяет HUD по умолчанию на расширенный CustomHUD, созданный Se7en.\n(Необходимо сменить карту...)",
 	"jimhud_adv_assault_title" : "Расширенный баннер штурма",
@@ -285,7 +280,6 @@
 	"jimhud_pacified_civs_desc" : "Заменяет иконку над головой усмиренного гражданского, когда он ложится.",
 	"jimhud_use_realammo_title" : "Исп. настоящие боеприпасы",
 	"jimhud_use_realammo_desc" : "Показывает остаток боеприпасов, не учитывая патроны в текущем магазине.",
-	"jimhud_enable_burstmode_title" : "Включить стрельбу очередями",
 	"jimhud_enable_burstmode_desc" : "Включает режим стрельбы очередями для вашего оружия.",
 
 	"jimhud_playerpanel_options_name" : "Панель Игрока",
@@ -751,7 +745,6 @@
 	"jimhud_tabstats_clock_mode_a" : "12ч",
 	"jimhud_tabstats_clock_mode_b" : "24ч",
 	"jimhud_tabstats_clock_mode_c" : "Время ограбления",
-	"jimhud_use_tabstats_title" : "Использовать TabStats",
 	"jimhud_use_tabstats_desc" : "Показывает вашу статистику на экране TAB вместо брифинга миссии.\n(Необходимо сменить карту для принятия изменений...)",
 	"jimhud_tabstats_font_size_title" : "Размер шрифта списка",
 	"jimhud_tabstats_font_size_desc" : "Размер шрифта для списка расширенной статистики.",
@@ -761,20 +754,6 @@
 	"jimhud_tabstats_actual_mask_desc" : "Использует фактическую маску вместо вашего изображения персонажа на экране TAB.\n(Необходимо сменить карту для принятия изменений...)",
 	"jimhud_tabstats_numberic_loot_title" : "Числовой счетчик добычи",
 	"jimhud_tabstats_numberic_loot_desc" : "Отключает миниигру подсчета добычи и отображает кол-во сразу же.",
-
-	"jimhud_crewloadout_options_name" : "Настройки экипировки команды",
-	"jimhud_crewloadout_options_help" : "Выберите, где вы хотите видеть информацию о том, какая экипировка и навыки используют ваши напарники.",
-
-	"jimhud_crewloadout_lobby_title" : "Показывать в лобби",
-	"jimhud_crewloadout_lobby_desc" : "Добавляет кнопку на экран вашего лобби, которая отображает экипировку вас и напарников.",
-	"jimhud_crewloadout_cs_lobby_title" : "Показывать в лобби серии ограблений",
-	"jimhud_crewloadout_cs_lobby_desc" : "Добавляет новую вкладку рядом с модификаторами и наградами в лобби серии ограблений.",
-	"jimhud_crewloadout_briefing_title" : "Заменить в брифинге",
-	"jimhud_crewloadout_briefing_desc" : "Заменяет панель экипировки команды по умолчанию в брифинге миссии.",
-	"jimhud_crewloadout_tabscreen_title" : "Показывать на экране TAB",
-	"jimhud_crewloadout_tabscreen_desc" : "Показывает навыки, перки и текущий пинг игроков в вашем лобби. \n(Отключено если вы используете данную функцию в Lobby Player Info)",
-	"jimhud_profilemenu_replace_title" : "Заменить меню выбора профиля",
-	"jimhud_profilemenu_replace_desc" : "Заменяет обычный выбор профиля на улучшенную версию из JimHUD.",
 
 	"jimhud_dmgindicator_options_name" : "Индикатор попадания",
 	"jimhud_dmgindicator_options_help" : "Установите время исчезания, размер и цвета для индикаторов попадания.",
@@ -892,9 +871,6 @@
 	"jimhud_equipment_keycard_doors_disabled_title" : "Подавление ключ-карт",
 	"jimhud_equipment_keycard_doors_disabled_desc" : "Когда выбрано, вам необходимо 2 раза нажать, чтобы закрыть двери на втором дне Спасения Хокстона. \nДля предотвращения случайных нажатий.",
 
-	"jimhud_gadget_options_name" : "Настройки гаджетов оружия",
-	"jimhud_gadget_options_help" : "Настройте пользовательские цвета лазеров.",
-
 	"jimhud_laser_autoon_title" : "Включение автолазера",
 	"jimhud_laser_autoon_desc" : "Автоматически включается гаджет лазера при запуске на оружии, которое его имеет.",
 	"jimhud_show_angeled_sight_title" : "Показать угол обзора",
@@ -976,8 +952,6 @@
 	"jimhud_gadgets_pulse_frequency_title" : "Частота импульса",
 	"jimhud_gadgets_pulse_frequency_desc" : "Определяет время, необходимое импульсу от минимальной до максимальной нерпозрачности мультипликатора.",
 
-	"jimhud_skipit_options_name" : "Настройки пропуска",
-	"jimhud_skipit_options_help" : "Настройки автоматического пропуска ненужных меню, для экономии времени.",
 	"jimhud_assaultbanner_options_name" : "Настройки баннера штурма",
 	"jimhud_assaultbanner_options_help" : "Настройки для изменений баннера штурма."
 }

@@ -257,8 +257,6 @@
 	"jimhud_loot_screen_pick_specific_card_desc" : "指定要自动选择的卡牌",
 	"jimhud_loot_screen_delay_title" : "抽卡界面延迟",
 	"jimhud_loot_screen_delay_desc" : "获得一张卡牌后，推迟X秒结束\n(仅主机)",
-	"jimhud_replace_weapon_names_title" : "真实武器名字",
-	"jimhud_replace_weapon_names_desc" : "更换武器名字，与真实武器的名称相同\n(需要重新载入使其生效...)",
 	"jimhud_inventory_tab_names_title" : "使用库存标签名称",
 	"jimhud_inventory_tab_names_desc" : "自定义您的库存标签名称\n(通过编辑 '/mods/saves/JimHUD_InventoryNames.txt' 自定义你的标签名称)",
 	"jimhud_inventory_names_title" : "显示库存框名称",
@@ -273,9 +271,6 @@
 	"jimhud_reset_options_desc" : "重置所有设置，恢复为默认值",
 	"jimhud_reset_options_confirm" : "你真的确定要重置所有设置，使之恢复为默认值吗？",
 
-	"jimhud_panels_options_name" : "HUD选项",
-	"jimhud_panels_options_help" : "HUD的一般选项，如自定义HUD、潜入侦测度、伤害指示器、驾驶HUD以及更多",
-
 	"jimhud_use_customhud_title" : "使用自定义HUD",
 	"jimhud_use_customhud_desc" : "用更好的自定义HUD代替默认的HUD\n(需要重新载入使其生效...)",
 	"jimhud_adv_assault_title" : "高级突击横幅",
@@ -286,7 +281,6 @@
 	"jimhud_pacified_civs_desc" : "将倒在地上的平民用蓝色“√”表示",
 	"jimhud_use_realammo_title" : "使用真实弹药",
 	"jimhud_use_realammo_desc" : "显示剩余的备用弹药，不包括当前枪支上正在使用的弹药",
-	"jimhud_enable_burstmode_title" : "启用连发模式",
 	"jimhud_enable_burstmode_desc" : "启用武器连发射击模式",
 
 	"jimhud_playerpanel_options_name" : "玩家面板",
@@ -752,7 +746,6 @@
 	"jimhud_tabstats_clock_mode_a" : "12-h",
 	"jimhud_tabstats_clock_mode_b" : "24-h",
 	"jimhud_tabstats_clock_mode_c" : "劫案时间",
-	"jimhud_use_tabstats_title" : "使用TAB统计",
 	"jimhud_use_tabstats_desc" : "按TAB键显示统计数据，而不是普通的统计及任务简报\n(需要重新载入使其生效...)",
 	"jimhud_tabstats_font_size_title" : "列表字体大小",
 	"jimhud_tabstats_font_size_desc" : "设置高级统计列表的字体大小",
@@ -762,20 +755,6 @@
 	"jimhud_tabstats_actual_mask_desc" : "用你实际使用的面具代替你当前使用角色的图片",
 	"jimhud_tabstats_numberic_loot_title" : "战利品计数器",
 	"jimhud_tabstats_numberic_loot_desc" : "停用袋子图标计数，直接用数字显示",
-
-	"jimhud_crewloadout_options_name" : "队友装备选项",
-	"jimhud_crewloadout_options_help" : "选择在哪显示队友的装备和技能",
-
-	"jimhud_crewloadout_lobby_title" : "在大厅显示",
-	"jimhud_crewloadout_lobby_desc" : "在大厅屏幕上添加一个按钮，可以显示你和你队友的装备",
-	"jimhud_crewloadout_cs_lobby_title" : "在罪无止境大厅显示",
-	"jimhud_crewloadout_cs_lobby_desc" : "在罪无止境大厅的配置和奖励旁边添加一个新的标签",
-	"jimhud_crewloadout_briefing_title" : "在简报中更换",
-	"jimhud_crewloadout_briefing_desc" : "替换任务简报中的默认“队友装备”面板",
-	"jimhud_crewloadout_tabscreen_title" : "在标签屏幕上显示",
-	"jimhud_crewloadout_tabscreen_desc" : "在大厅中显示技能，天赋和当前玩家延迟\n(如果您使用Lobby Player Info的功能，则为禁用)",
-	"jimhud_profilemenu_replace_title" : "更换配置文件菜单",
-	"jimhud_profilemenu_replace_desc" : "用JimHUD的配置文件菜单替换默认",
 
 	"jimhud_dmgindicator_options_name" : "伤害指示器",
 	"jimhud_dmgindicator_options_help" : "为你的伤害指示器设置淡化时间、大小和颜色",
@@ -893,9 +872,6 @@
 	"jimhud_equipment_keycard_doors_disabled_title" : "钥匙卡禁用",
 	"jimhud_equipment_keycard_doors_disabled_desc" : "越狱第二天需要双击才能关闭门\n以防止事故",
 
-	"jimhud_gadget_options_name" : "武器配件设置",
-	"jimhud_gadget_options_help" : "自定义激光颜色",
-
 	"jimhud_laser_autoon_title" : "自动打开激光",
 	"jimhud_laser_autoon_desc" : "每局开头前，自动将带有激光武器打开激光",
 	"jimhud_show_angeled_sight_title" : "显示角度视野",
@@ -977,8 +953,6 @@
 	"jimhud_gadgets_pulse_frequency_title" : "脉冲频率",
 	"jimhud_gadgets_pulse_frequency_desc" : "从最小透明度到最大透明度所需的脉冲时间",
 
-	"jimhud_skipit_options_name" : "跳过选项",
-	"jimhud_skipit_options_help" : "自动跳过不必要的菜单，节省你的时间",
 	"jimhud_assaultbanner_options_name" : "突击横幅选项",
 	"jimhud_assaultbanner_options_help" : "更改突击横幅的选项"
 }
