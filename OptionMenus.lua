@@ -4069,6 +4069,13 @@ if JimHUD then
 						visible_reqs = {}, enabled_reqs = {},
 					},
 					{
+						type = "toggle",
+						name_id = "jimhud_equipment_no_bot_catch_title",
+						desc_id = "jimhud_equipment_no_bot_catch_desc",
+						value = {"EQUIPMENT", "DISABLE_BOT_CATCH"},
+						visible_reqs = {}, enabled_reqs = {},
+					},
+					{
 						type = "divider",
 						size = 12,
 					},

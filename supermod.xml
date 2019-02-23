@@ -211,12 +211,13 @@
 					</group>
 				</group>
 
-				<group :hook_id="props/" :script_path="GameInfoManager.lua">
-					<post :hook_id="timergui"/>
-					<post :hook_id="digitalgui"/>
-					<post :hook_id="drill"/>
-					<post :hook_id="securitylockgui"/>
-					<post :hook_id="securitycamera"/>
+				<group :hook_id="props/">
+					<post :hook_id="timergui" :script_path="GameInfoManager.lua"/>
+					<post :hook_id="digitalgui" :script_path="GameInfoManager.lua"/>
+					<post :hook_id="drill" :script_path="GameInfoManager.lua"/>
+					<post :hook_id="securitylockgui" :script_path="GameInfoManager.lua"/>
+					<post :hook_id="securitycamera" :script_path="GameInfoManager.lua"/>
+					<post :hook_id="carrydata" :script_path="NoBotCatch.lua"/>
 				</group>
 
 				<group :hook_id="equipment/">

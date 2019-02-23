@@ -267,6 +267,9 @@
 	"jimhud_gameplay_options_name" : "Gameplay / Controls",
 	"jimhud_gameplay_options_help" : "Change some of the ingame gameplay/controls.",
 
+	"jimhud_equipment_no_bot_catch_title" : "Disable Bot Catch",
+	"jimhud_equipment_no_bot_catch_desc" : "Disables the vanilla feature that lets bots carry bags.",
+
 	"jimhud_skip_blackscreen_title" : "Skip Blackscreen",
 	"jimhud_skip_blackscreen_desc" : "Automatically skips the Blackscreen on Mission start.\n(Host only)",
 	"jimhud_instant_restart_title" : "Instant Restart",

@@ -447,6 +447,7 @@ function JimHUD:Reset()
 			SHAPED_CHARGE_STEALTH_DISABLED				= true,
 			KEYCARD_DOORS_DISABLED						= true,
 			ENABLE_BURSTMODE							= false,
+			DISABLE_BOT_CATCH							= true,
 		},
 		INVENTORY = {
 			FIX_ARMOR_SORTING							= true,
