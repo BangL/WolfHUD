@@ -1,6 +1,6 @@
 local PROFILE_MENU_ID = "jimhud_profile_switch_node_menu"
 
-if RequiredScript == "lib/managers/menumanager" then
+if string.lower(RequiredScript) == "lib/managers/menumanager" then
 	local function create_profile_menu_node(nodes, menu_id)
 		local arugements = {
 			gui_class = "MenuNodeProfileSwitchGui",
@@ -98,7 +98,7 @@ if RequiredScript == "lib/managers/menumanager" then
 
 		self:refresh_node()
 	end
-elseif RequiredScript == "lib/managers/menu/renderers/menunodeskillswitchgui" then
+elseif string.lower(RequiredScript) == "lib/managers/menu/renderers/menunodeskillswitchgui" then
 	MenuNodeProfileSwitchGui = MenuNodeProfileSwitchGui or class(MenuNodeSkillSwitchGui)
 	MenuNodeProfileSwitchGui.SKILL_POINTS_X = 0.24
 	MenuNodeProfileSwitchGui.STATUS_X = 0.52
@@ -229,7 +229,7 @@ elseif RequiredScript == "lib/managers/menu/renderers/menunodeskillswitchgui" th
 			self._previewing_outfit = profile_id
 		end
 	end
-elseif RequiredScript == "lib/managers/multiprofilemanager" then
+elseif string.lower(RequiredScript) == "lib/managers/multiprofilemanager" then
 	local open_quick_select_original = MultiProfileManager.open_quick_select
 	function MultiProfileManager:open_quick_select(...)
 		if JimHUD:getSetting({"CrewLoadout", "REPLACE_PROFILE_MENU"}, true) then
@@ -327,7 +327,7 @@ elseif RequiredScript == "lib/managers/multiprofilemanager" then
 		end
 		return amount
 	end
-elseif RequiredScript == "lib/managers/menu/multiprofileitemgui" then
+elseif string.lower(RequiredScript) == "lib/managers/menu/multiprofileitemgui" then
 	local init_orig = MultiProfileItemGui.init
 
 	function MultiProfileItemGui:init(...)
@@ -335,7 +335,7 @@ elseif RequiredScript == "lib/managers/menu/multiprofileitemgui" then
 
 		self._max_length = JimHUD:getTweakEntry("MAX_PROFILE_NAME_LENGTH", "number", 20)
 	end
-elseif RequiredScript == "lib/managers/menu/missionbriefinggui" then
+elseif string.lower(RequiredScript) == "lib/managers/menu/missionbriefinggui" then
 	local special_btn_pressed_orig = MissionBriefingGui.special_btn_pressed
 	local input_focus_orig = MissionBriefingGui.input_focus
 	local reload_loadout_orig = MissionBriefingGui.reload_loadout
@@ -386,7 +386,7 @@ elseif RequiredScript == "lib/managers/menu/missionbriefinggui" then
 	if CoreClass then
 		CoreClass.override_class(JukeboxItem, JukeboxItemNew)
 	end
-elseif RequiredScript == "lib/managers/menu/playerinventorygui" then
+elseif string.lower(RequiredScript) == "lib/managers/menu/playerinventorygui" then
 	local special_btn_pressed_orig = PlayerInventoryGui.special_btn_pressed
 	function PlayerInventoryGui:special_btn_pressed(button, ...)
 		if button == Idstring("menu_change_profile_right") and managers.menu:get_controller():get_input_bool("menu_change_profile_left") then

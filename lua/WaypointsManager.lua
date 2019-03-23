@@ -69,7 +69,7 @@ Special components:
 
 Last Note: Don't call any functions starting with "_" (or the update-functions) from the outside. Thanks!
 ]]
-if RequiredScript == "lib/setups/setup" then
+if string.lower(RequiredScript) == "lib/setups/setup" then
 
 	local function format_time_string(value)
 		local frmt_string
@@ -938,7 +938,7 @@ if RequiredScript == "lib/setups/setup" then
 
 end
 
-if RequiredScript == "lib/managers/hudmanagerpd2" then
+if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 
 	local init_original = HUDManager.init
 	local update_original = HUDManager.update

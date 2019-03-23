@@ -1,4 +1,4 @@
-if RequiredScript == "lib/managers/platformmanager" then
+if string.lower(RequiredScript) == "lib/managers/platformmanager" then
 	core:module("PlatformManager")
 
 	local set_rich_presence_original = WinPlatformManager.set_rich_presence
@@ -354,7 +354,7 @@ if RequiredScript == "lib/managers/platformmanager" then
 		log(string.format("Steam RP updated: %s", s))
 		return s
 	end
-elseif RequiredScript == "lib/managers/skirmishmanager" then
+elseif string.lower(RequiredScript) == "lib/managers/skirmishmanager" then
 	local update_matchmake_attributes_original = SkirmishManager.update_matchmake_attributes
 	function SkirmishManager:update_matchmake_attributes(...)
 		update_matchmake_attributes_original(self, ...)

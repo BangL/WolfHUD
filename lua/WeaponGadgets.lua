@@ -1,6 +1,6 @@
 local print_info = print_info or function(...) JimHUD:print_log(string.format(...), "info") end
 
-if RequiredScript == "lib/units/weapons/weapongadgetbase" then
+if string.lower(RequiredScript) == "lib/units/weapons/weapongadgetbase" then
 
 	WeaponGadgetBase.SPAWNED_UNITS = {
 		laser = {},
@@ -98,7 +98,7 @@ if RequiredScript == "lib/units/weapons/weapongadgetbase" then
 		end
 	end
 
-elseif RequiredScript == "lib/units/weapons/weaponlaser" then
+elseif string.lower(RequiredScript) == "lib/units/weapons/weaponlaser" then
 	local init_original = WeaponLaser.init
 	local update_original = WeaponLaser.update
 
@@ -183,7 +183,7 @@ elseif RequiredScript == "lib/units/weapons/weaponlaser" then
 		self._brush:set_color(self._brush_color)
 	end
 
-elseif RequiredScript == "lib/units/weapons/weaponflashlight" then
+elseif string.lower(RequiredScript) == "lib/units/weapons/weaponflashlight" then
 	local init_original = WeaponFlashLight.init
 	local update_original = WeaponFlashLight.update
 	local set_color_original = WeaponFlashLight.set_color
@@ -283,7 +283,7 @@ elseif RequiredScript == "lib/units/weapons/weaponflashlight" then
 		end
 	end
 
-elseif RequiredScript == "lib/units/weapons/raycastweaponbase" then
+elseif string.lower(RequiredScript) == "lib/units/weapons/raycastweaponbase" then
 
 	local setup_original = RaycastWeaponBase.setup
 
@@ -308,7 +308,7 @@ elseif RequiredScript == "lib/units/weapons/raycastweaponbase" then
 		--end
 	end
 
-elseif RequiredScript == "lib/units/weapons/newnpcraycastweaponbase" then
+elseif string.lower(RequiredScript) == "lib/units/weapons/newnpcraycastweaponbase" then
 
 	local setup_original = NewNPCRaycastWeaponBase.setup
 
@@ -317,7 +317,7 @@ elseif RequiredScript == "lib/units/weapons/newnpcraycastweaponbase" then
 		self:_update_gadget_owner(managers.weapon_factory:get_parts_from_weapon_by_type_or_perk("gadget", self._factory_id, self._blueprint))
 	end
 
-elseif RequiredScript == "lib/units/weapons/npcraycastweaponbase" then
+elseif string.lower(RequiredScript) == "lib/units/weapons/npcraycastweaponbase" then
 
 	local set_laser_enabled_original = NPCRaycastWeaponBase.set_laser_enabled
 
@@ -329,7 +329,7 @@ elseif RequiredScript == "lib/units/weapons/npcraycastweaponbase" then
 		end
 	end
 
-elseif RequiredScript == "lib/units/weapons/sentrygunweapon" then
+elseif string.lower(RequiredScript) == "lib/units/weapons/sentrygunweapon" then
 
 	local _set_laser_state_original = SentryGunWeapon._set_laser_state
 

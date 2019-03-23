@@ -3,19 +3,25 @@ if JimHUD:getSetting({"CustomHUD", "STYLE"}, 1) == 2 then
 	return
 end
 
-if RequiredScript == "lib/managers/hudmanagerpd2" then
+if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 
 	local set_stamina_value_original = HUDManager.set_stamina_value
 	local set_max_stamina_original = HUDManager.set_max_stamina
 	local teammate_progress_original = HUDManager.teammate_progress
 
 	function HUDManager:set_stamina_value(value, ...)
-		self._teammate_panels[HUDManager.PLAYER_PANEL]:set_current_stamina(value)
+		local panel = self._teammate_panels[HUDManager.PLAYER_PANEL]
+		if panel and panel.set_current_stamina then
+			panel:set_current_stamina(value)
+		end
 		return set_stamina_value_original(self, value, ...)
 	end
 
 	function HUDManager:set_max_stamina(value, ...)
-		self._teammate_panels[HUDManager.PLAYER_PANEL]:set_max_stamina(value)
+		local panel = self._teammate_panels[HUDManager.PLAYER_PANEL]
+		if panel and panel.set_max_stamina then
+			panel:set_max_stamina(value)
+		end
 		return set_max_stamina_original(self, value, ...)
 	end
 
@@ -26,13 +32,15 @@ if RequiredScript == "lib/managers/hudmanagerpd2" then
 			local teammate_panel = self._teammate_panels[character_data.panel_id]
 			local name_label = self:_name_label_by_peer_id(peer_id)
 			if name_label then
-				teammate_panel:set_interact_text(name_label.panel:child("action"):text())
+				if teammate_panel.set_interact_text then
+					teammate_panel:set_interact_text(name_label.panel:child("action"):text())
+				end
 			end
 			teammate_panel:set_interact_visibility(enabled and timer and JimHUD:getSetting({"CustomHUD", "TEAMMATE", "INTERACTION", "MIN_DURATION"}, 0) <= timer and not JimHUD:getSetting({"CustomHUD", "TEAMMATE", "INTERACTION", "HIDE"}, false) and JimHUD:getSetting({"CustomHUD", "TEAMMATE", "INTERACTION", "TEXT"}, true))
 		end
 	end
 
-elseif RequiredScript == "lib/managers/hud/hudteammate" then
+elseif string.lower(RequiredScript) == "lib/managers/hud/hudteammate" then
 
 	local init_original = HUDTeammate.init
 	local set_name_original = HUDTeammate.set_name

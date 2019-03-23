@@ -1,4 +1,4 @@
-if RequiredScript == "lib/units/enemies/cop/copdamage" then
+if string.lower(RequiredScript) == "lib/units/enemies/cop/copdamage" then
 
 	--This needs fixing for DoT kills (then again, so does the games own kill counter) as client somehow and a lot of testing
 
@@ -149,7 +149,7 @@ if RequiredScript == "lib/units/enemies/cop/copdamage" then
 
 	--TODO: Add sync damage checks for non-local bots and players
 
-elseif RequiredScript == "lib/units/equipment/sentry_gun/sentrygunbase" then
+elseif string.lower(RequiredScript) == "lib/units/equipment/sentry_gun/sentrygunbase" then
 
 	local sync_setup_original = SentryGunBase.sync_setup
 
@@ -158,7 +158,7 @@ elseif RequiredScript == "lib/units/equipment/sentry_gun/sentrygunbase" then
 		self._owner_id = self._owner_id or peer_id
 	end
 
-elseif RequiredScript == "lib/managers/statisticsmanager" then
+elseif string.lower(RequiredScript) == "lib/managers/statisticsmanager" then
 
 	local shot_fired_original = StatisticsManager.shot_fired
 
@@ -185,7 +185,7 @@ elseif RequiredScript == "lib/managers/statisticsmanager" then
 		managers.hud:set_teammate_accuracy(HUDManager.PLAYER_PANEL, self:session_hit_accuracy())
 	end
 
-elseif RequiredScript == "lib/managers/hudmanagerpd2" then
+elseif string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 
 	HUDManager.KILL_COUNTER_PLUGIN = true
 	HUDManager.ACCURACY_PLUGIN = true

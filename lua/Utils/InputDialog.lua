@@ -1,7 +1,6 @@
 --Dialog working fine, GUI not present...?
 
-local requiresScript = RequiredScript:lower()
-if requiresScript == "lib/managers/systemmenumanager" then
+if string.lower(RequiredScript) == "lib/managers/systemmenumanager" then
 
 	core:module("SystemMenuManager")
 	require("lib/managers/dialogs/SpecializationDialog")
@@ -13,7 +12,7 @@ if requiresScript == "lib/managers/systemmenumanager" then
 		local success = self:_show_class(data, self.GENERIC_INPUT_DIALOG_CLASS, self.INPUT_DIALOG_CLASS, data.force)
 		self:_show_result(success, data)
 	end
-elseif requiresScript == "lib/managers/dialogs/specializationdialog" then
+elseif string.lower(RequiredScript) == "lib/managers/dialogs/specializationdialog" then
 
 	core:module("SystemMenuManager")
 	require("lib/managers/dialogs/GenericDialog")
@@ -232,7 +231,7 @@ elseif requiresScript == "lib/managers/dialogs/specializationdialog" then
 			callback_func(button_index, self._data)
 		end
 	end
-elseif requiresScript == "lib/managers/menu/specializationboxgui" then
+elseif string.lower(RequiredScript) == "lib/managers/menu/specializationboxgui" then
 	TextInputBoxGui = TextInputBoxGui or class(TextBoxGui)
 	TextInputBoxGui.TEXT = ""
 

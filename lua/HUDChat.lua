@@ -1,4 +1,4 @@
-if RequiredScript == "lib/managers/hudmanagerpd2" then
+if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 
 	local setup_endscreen_hud_original = HUDManager.setup_endscreen_hud
 
@@ -11,7 +11,7 @@ if RequiredScript == "lib/managers/hudmanagerpd2" then
 
 end
 
-if RequiredScript == "lib/managers/hud/hudchat" then
+if string.lower(RequiredScript) == "lib/managers/hud/hudchat" then
 
 	HUDChat.LINE_HEIGHT = JimHUD:getSetting({"HUDChat", "LINE_HEIGHT"}, 15)			--Size of each line in chat (and hence the text size)
 	HUDChat.WIDTH = JimHUD:getSetting({"HUDChat", "WIDTH"}, 380)						--Width of the chat window

@@ -3,8 +3,7 @@
 --  Include Hint for taging plans as stealth/loud to input dialog
 -- Remove Save_ID from saved_plans node display.
 
-requiredScript = string.lower(RequiredScript)
-if requiredScript == "lib/managers/menumanager" then
+if string.lower(RequiredScript) == "lib/managers/menumanager" then
 	local modifiy_node_preplanning_original = MenuPrePlanningInitiator.modifiy_node_preplanning
 
 	function MenuPrePlanningInitiator:modifiy_node_preplanning(node, ...)
@@ -235,7 +234,7 @@ if requiredScript == "lib/managers/menumanager" then
 		end
 	end
 
-elseif requiredScript == "lib/managers/preplanningmanager" then
+elseif string.lower(RequiredScript) == "lib/managers/preplanningmanager" then
 
 	if not PrePlanningManager._PREPLANNING_SETUP then
 		PrePlanningManager._SAVE_FOLDER = Application:nice_path(SavePath .. "Preplanned/", true):gsub("\\", "/")

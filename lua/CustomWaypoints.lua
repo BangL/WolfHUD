@@ -1,4 +1,4 @@
-if RequiredScript == "lib/managers/hudmanager" then
+if string.lower(RequiredScript) == "lib/managers/hudmanager" then
 	local init_original = HUDManager.init
 	local add_waypoint_original = HUDManager.add_waypoint
 
@@ -784,7 +784,7 @@ if RequiredScript == "lib/managers/hudmanager" then
 	end
 end
 
-if RequiredScript == "lib/units/vehicles/vehicledrivingext" then
+if string.lower(RequiredScript) == "lib/units/vehicles/vehicledrivingext" then
 
 	local add_loot_original = VehicleDrivingExt.add_loot
 	function VehicleDrivingExt:add_loot(...)

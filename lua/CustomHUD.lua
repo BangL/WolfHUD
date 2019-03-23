@@ -22,7 +22,7 @@ local print_error = function(...)
 	JimHUD:print_log(unpack(params))
 end
 
-if RequiredScript == "lib/managers/hud/hudteammate" then
+if string.lower(RequiredScript) == "lib/managers/hud/hudteammate" then
 
 	local ReverseTable = function(tbl)
 		for i=1, math.floor(#tbl / 2) do
@@ -4082,7 +4082,7 @@ if RequiredScript == "lib/managers/hud/hudteammate" then
 
 end
 
-if RequiredScript == "lib/managers/hudmanagerpd2" then
+if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 
 	HUDManager.CUSTOM_TEAMMATE_PANELS = true	--External flag
 
@@ -4591,7 +4591,7 @@ if RequiredScript == "lib/managers/hudmanagerpd2" then
 	end
 end
 
-if RequiredScript == "lib/managers/hud/hudtemp" then
+if string.lower(RequiredScript) == "lib/managers/hud/hudtemp" then
 
 	local init_original = HUDTemp.init
 
@@ -4604,7 +4604,7 @@ if RequiredScript == "lib/managers/hud/hudtemp" then
 
 end
 
-if RequiredScript == "lib/managers/hud/hudwaitinglegend" then
+if string.lower(RequiredScript) == "lib/managers/hud/hudwaitinglegend" then
 	local update_buttons_orig = HUDWaitingLegend.update_buttons
 	function HUDWaitingLegend:update_buttons(...)
 		update_buttons_orig(self, ...)

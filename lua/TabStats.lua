@@ -1213,7 +1213,7 @@ elseif string.lower(RequiredScript) == "lib/units/enemies/cop/copdamage" then
 			end
 		end
 	end
-elseif RequiredScript == "lib/units/civilians/civiliandamage" then
+elseif string.lower(RequiredScript) == "lib/units/civilians/civiliandamage" then
 	local _on_damage_received_original = CivilianDamage._on_damage_received
 	function CivilianDamage:_on_damage_received(damage_info, ...)
 		if damage_info and type(damage_info) == "table" then
