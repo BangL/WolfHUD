@@ -2,7 +2,8 @@
 
 ## Description
 
-This is a Mod collection of several useful HUD altering mods, based on Kamikaze94's [WolfHUD](https://github.com/Kamikaze94/WolfHUD).
+This is a Mod collection of several useful HUD altering mods, based on Kamikaze94's [WolfHUD](https://github.com/Kamikaze94/WolfHUD).  
+
 For now this is basically just an updated copy of Kamikaze94's [SuperBLT version](https://github.com/Kamikaze94/WolfHUD/tree/superblt) with one or two extra features, some small changes.
 There are bigger plans though! Stay tuned...
 
@@ -10,7 +11,7 @@ There are bigger plans though! Stay tuned...
 
 To make this mod work you will need to install __[SuperBLT](https://superblt.znix.xyz)__.
 
-## Installation (Direct Download):
+## Installation:
 
 1. Click on the **Clone or Download** Button at the top of this site
 2. Click on the **Download .ZIP** Button
@@ -26,7 +27,20 @@ Please try to provide information from your crashlog and the actions you and you
 The Crashlog can be found at **%localappdata%/PAYDAY 2/crashlog.txt**.
 The BLT log can be found at **PAYDAY 2/mods/logs/**.
 
-## Included Mods
+## Changes & additional features/mods (compared to WolfHUD)
+
+* Based on WolfHUD - commit stage: https://github.com/Kamikaze94/WolfHUD/commit/6d37fff69dced1292cc5817dbfa8009566e3e20c
+* Changed default values
+* Added a few crash preventing null checks and other fixes
+* Updated advanced assault indicator
+* Reworked menus
+* Added option: Custom waypoints color (idea by kju8)
+* Added option: Timer in seconds (by FraudBatman)
+* Added feature: Colored cam feeds (idea by Sirgoodsmoke)
+* Added feature: Fixed armor sorting (idea by EdisLeado)
+* Added feature: Disable bots catching bags
+
+## WolfHUD-based included features/mods
 
 * [CustomHUD](https://bitbucket.org/pjal3urb/customhud/src) made by **Seven** modified by **Kamikaze94**
 * [HudPanelList](https://bitbucket.org/pjal3urb/hudlist/src/) made by **Seven**, modified by **Kamikaze94**
@@ -60,9 +74,9 @@ The BLT log can be found at **PAYDAY 2/mods/logs/**.
   * Show Skill Names made by **Kamikaze94**
   * [Skillset Info](http://modworkshop.net/mydownloads.php?action=view_down&did=15294) made by **Fooksie**
   * Increased the maximum chars of custom Weapon/Mask/Skillset names
-  * Federal Inventory (Mod Override), made by **Nervatel Hanging Closet Monster** and **Luffy**, updated by **Kamikaze94**
-    * [Weapon Icons](https://modworkshop.net/mydownloads.php?action=view_down&did=14240), [Melee Icons](http://modworkshop.net/mydownloads.php?action=view_down&did=13910) and [Mask Icons](http://modworkshop.net/mydownloads.php?action=view_down&did=13911) made by **Nervatel Hanging Closet Monster**
-    * [Throwables, Equipment, Armor and Heister Portraits](http://modworkshop.net/mydownloads.php?action=view_down&did=13916) made by **Luffy**
+  * ~~Federal Inventory (Mod Override), made by **Nervatel Hanging Closet Monster** and **Luffy**, updated by **Kamikaze94**~~
+    * ~~[Weapon Icons](https://modworkshop.net/mydownloads.php?action=view_down&did=14240), [Melee Icons](http://modworkshop.net/mydownloads.php?action=view_down&did=13910) and [Mask Icons](http://modworkshop.net/mydownloads.php?action=view_down&did=13911) made by **Nervatel Hanging Closet Monster**~~
+    * ~~[Throwables, Equipment, Armor and Heister Portraits](http://modworkshop.net/mydownloads.php?action=view_down&did=13916) made by **Luffy**~~
 
 ## Localizations
 

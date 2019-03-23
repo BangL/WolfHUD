@@ -509,48 +509,6 @@ elseif string.lower(RequiredScript) == "lib/tweak_data/guitweakdata" then
 		GuiTweakData_init_orig(self, ...)
 		self.rename_max_letters = JimHUD:getTweakEntry("MAX_WEAPON_NAME_LENGTH", "number", 30)
 		self.rename_skill_set_max_letters = JimHUD:getTweakEntry("MAX_SKILLSET_NAME_LENGTH", "number", 25)
-
-		if false then
-			table.insert(self.crime_net.special_contracts, {
-				id = "random_contract",
-				name_id = "menu_cn_random_contract",
-				desc_id = "menu_cn_random_contract_desc",
-				menu_node = nil,
-				x = 550,
-				y = 640,
-				icon = "guis/textures/pd2/crimenet_challenge"
-			})
-		end
-	end
-elseif string.lower(RequiredScript) == "lib/managers/crimenetmanager" then
-	local check_job_pressed = CrimeNetGui.check_job_pressed
-	function CrimeNetGui:check_job_pressed(...)
-		if self._jobs["random_contract"] and self._jobs["random_contract"].mouse_over == 1 then
-			local job_id = tweak_data.narrative._jobs_index[math.random(#tweak_data.narrative._jobs_index)]
-			local job_tweak = tweak_data.narrative:job_data(job_id)
-			local data = {
-				job_id = job_id,
-				difficulty = "normal",
-				difficulty_id = 2,
-				professional = job_tweak.professional or false,
-				competitive = job_tweak.competitive or false,
-				customize_contract = true,
-				contract_visuals = job_tweak.contract_visuals,
-				server = false,
-				special_node = Global.game_settings.single_player and "crimenet_contract_singleplayer" or "crimenet_contract_host",
-			}
-			for k, v in pairs(data) do
-				self._jobs["random_contract"][k] = v
-			end
-		end
-
-		return check_job_pressed(self, ...)
-	end
-
-	local _get_job_location_orig = CrimeNetGui._get_job_location
-	function CrimeNetGui:_get_job_location(data, ...)
-		-- Assign job pos per difficulty?
-		return _get_job_location_orig(self, data, ...)
 	end
 elseif string.lower(RequiredScript) == "core/lib/managers/menu/items/coremenuitemslider" then
 	core:module("CoreMenuItemSlider")

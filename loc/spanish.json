@@ -4,9 +4,6 @@
 
 	"jimhud_dialog_force_start_title" : "¿Forzar inicio de partida?",
 	"jimhud_dialog_force_start_desc" : "¿Deseas forzar el inicio de la partida?Seg?\n\nPor favor solo usa esto en lobbies bugeados, o si un jugador esta afk.\nAsegurate de que todos tienen el tiempo suficiente para elegir su equipo.\n\nGracias :)",
-	"jimhud_dialog_install_title" : "Instalar: $NAME",
-	"jimhud_dialog_install_desc" : "Quieres instalar '$NAME'?",
-	"jimhud_dialog_remind_later" : "Preguntar luego",
 	"jimhud_dialog_rename_inv_tab" : "Renombrar la pagina del inventario",
 	"jimhud_dialog_rename_inv_tab_desc" : "Por favor ingresa el nuevo nombre para la esta pagina del inventario.",
 	"jimhud_dialog_save" : "Guardar",

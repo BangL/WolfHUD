@@ -6,9 +6,6 @@
 
 	"jimhud_dialog_force_start_title" : "Erzwinge Spielstart?",
 	"jimhud_dialog_force_start_desc" : "Bist du sicher, das du den Spielstart erzwingen möchtest?\n\nBitte nutze diese Funktion nur für verbuggte Lobbies oder wenn Spieler afk sind.\nLasse deinen Mitspielern genügend Zeit, ihr Loadout zu wählen.\n\nDankeschön :)",
-	"jimhud_dialog_install_title" : "Installiere: $NAME",
-	"jimhud_dialog_install_desc" : "Möchtest du, dass wir '$NAME' installieren?\nWir werden die notwendigen Ordner erstellen, sodass BLT dich nach dem Neustart des Spiels auf ein Update hinweisen wird.\n(Das Erstellen der Ordner kann zur Minimierung des Spiels führen.)",
-	"jimhud_dialog_remind_later" : "Erinnere mich später",
 	"jimhud_dialog_rename_inv_tab" : "Benenne Inventar Seite",
 	"jimhud_dialog_rename_inv_tab_desc" : "Bitte gib einen neuen Namen für die aktuelle Inventarseite ein.",
 	"jimhud_dialog_save" : "Speichern",

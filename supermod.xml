@@ -20,7 +20,6 @@
 			<group :hook_id="managers/">
 				<post :hook_id="menumanagerdialogs" :script_path="MenuTweaks.lua"/>
 				<post :hook_id="chatmanager" :script_path="MenuTweaks.lua"/>
-				<post :hook_id="crimenetmanager" :script_path="MenuTweaks.lua"/>
 				<post :hook_id="localizationmanager" :script_path="AdvAssault.lua"/>
 				<post :hook_id="experiencemanager" :script_path="Scripts.lua"/>
 				<post :hook_id="moneymanager" :script_path="Scripts.lua"/>

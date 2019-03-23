@@ -4,9 +4,6 @@
 
 	"jimhud_dialog_force_start_title" : "Принудительно запустить игру?",
 	"jimhud_dialog_force_start_desc" : "Вы уверены, что хотите принудительно начать игру?\n\nИспользуйте эту функцию только если лобби заглючило или игрок отошел.\nУбедитесь, что у всех было достаточно времени для выбора снаряжения.\n\nСпасибо :)",
-	"jimhud_dialog_install_title" : "Установка: $NAME",
-	"jimhud_dialog_install_desc" : "Вы действительно хотите установить '$NAME'?",
-	"jimhud_dialog_remind_later" : "Спросить позже",
 	"jimhud_dialog_rename_inv_tab" : "Переименовать страницу инвентаря",
 	"jimhud_dialog_rename_inv_tab_desc" : "Введите новое имя для страницы инвентаря.",
 	"jimhud_dialog_save" : "Сохранить",

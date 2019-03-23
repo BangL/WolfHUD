@@ -4,9 +4,6 @@
 
 	"jimhud_dialog_force_start_title" : "Force start game?",
 	"jimhud_dialog_force_start_desc" : "Are you sure you want to force the game to start?\n\nPlease only use this for bugged lobbies, or if a player is afk.\nMake sure everyone had enough time to choose his loadout.\n\nThanks :)",
-	"jimhud_dialog_install_title" : "Install: $NAME",
-	"jimhud_dialog_install_desc" : "Do you want to install '$NAME'?",
-	"jimhud_dialog_remind_later" : "Ask me later",
 	"jimhud_dialog_rename_inv_tab" : "Rename Inventory Page",
 	"jimhud_dialog_rename_inv_tab_desc" : "Please enter the new name for this Inventory page.",
 	"jimhud_dialog_save" : "Save",
