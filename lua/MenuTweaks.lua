@@ -1,6 +1,12 @@
 if string.lower(RequiredScript) == "lib/managers/menumanager" then
-	function MenuCallbackHandler:is_dlc_latest_locked(...) return false end		--Hide DLC ad in the main menu
 
+
+	-- hide DLC ad in the main menu
+	function MenuCallbackHandler:is_dlc_latest_locked(...)
+		return false
+	end
+
+	-- add slider decimal places
 	local modify_controls_original = MenuOptionInitiator.modify_controls
 	function MenuOptionInitiator:modify_controls(...)
 		local new_node = modify_controls_original(self, ...)
@@ -16,6 +22,8 @@ if string.lower(RequiredScript) == "lib/managers/menumanager" then
 
 		return new_node
 	end
+
+	-- LOBBY SETTINGS --
 
 	function MenuCallbackHandler:save_lobby_settings(setting, value)
 		--Save lobby settings
@@ -36,37 +44,35 @@ if string.lower(RequiredScript) == "lib/managers/menumanager" then
 		JimHUD:Save()
 	end
 
-	Hooks:PostHook( MenuCallbackHandler , "choice_crimenet_lobby_job_plan" , "MenuCallbackHandlerPostSaveJobPlan_JimHUD" , function( self, ... )
+	Hooks:PostHook(MenuCallbackHandler, "choice_crimenet_lobby_job_plan", "MenuCallbackHandlerPostSaveJobPlan_JimHUD", function(self, ...)
 		self:save_lobby_settings("job_plan")
 	end)
-	Hooks:PostHook( MenuCallbackHandler , "choice_kicking_option" , "MenuCallbackHandlerPostSaveKickOption_JimHUD" , function( self, ... )
+	Hooks:PostHook(MenuCallbackHandler, "choice_kicking_option", "MenuCallbackHandlerPostSaveKickOption_JimHUD", function(self, ...)
 		self:save_lobby_settings("kick_option")
 	end)
-	Hooks:PostHook( MenuCallbackHandler , "choice_crimenet_lobby_permission" , "MenuCallbackHandlerPostSavePermission_JimHUD" , function( self, ... )
+	Hooks:PostHook(MenuCallbackHandler, "choice_crimenet_lobby_permission", "MenuCallbackHandlerPostSavePermission_JimHUD", function(self, ...)
 		self:save_lobby_settings("permission")
 	end)
-	Hooks:PostHook( MenuCallbackHandler , "choice_crimenet_lobby_reputation_permission" , "MenuCallbackHandlerPostSaveReputationPermission_JimHUD" , function( self, ... )
+	Hooks:PostHook(MenuCallbackHandler, "choice_crimenet_lobby_reputation_permission", "MenuCallbackHandlerPostSaveReputationPermission_JimHUD", function(self, ...)
 		self:save_lobby_settings("reputation_permission")
 	end)
-	Hooks:PostHook( MenuCallbackHandler , "choice_crimenet_drop_in" , "MenuCallbackHandlerPostSaveDropInOption_JimHUD" , function( self, ... )
+	Hooks:PostHook(MenuCallbackHandler, "choice_crimenet_drop_in", "MenuCallbackHandlerPostSaveDropInOption_JimHUD", function(self, ...)
 		self:save_lobby_settings("drop_in_option")
 	end)
-	Hooks:PostHook( MenuCallbackHandler , "choice_crimenet_team_ai" , "MenuCallbackHandlerPostSaveTeamAIOption_JimHUD" , function( self, ... )
+	Hooks:PostHook(MenuCallbackHandler, "choice_crimenet_team_ai", "MenuCallbackHandlerPostSaveTeamAIOption_JimHUD", function(self, ...)
 		self:save_lobby_settings("team_ai")
 		self:save_lobby_settings("team_ai_option")
 	end)
-	Hooks:PostHook( MenuCallbackHandler , "choice_crimenet_auto_kick" , "MenuCallbackHandlerPostSaveAutoKick_JimHUD" , function( self, ... )
+	Hooks:PostHook(MenuCallbackHandler, "choice_crimenet_auto_kick", "MenuCallbackHandlerPostSaveAutoKick_JimHUD", function(self, ...)
 		self:save_lobby_settings("auto_kick")
 	end)
-	Hooks:PostHook( MenuCallbackHandler , "change_contract_difficulty" , "MenuCallbackHandlerPostSaveDifficulty_JimHUD" , function( self, item, ... )
+	Hooks:PostHook(MenuCallbackHandler, "change_contract_difficulty", "MenuCallbackHandlerPostSaveDifficulty_JimHUD", function(self, item, ...)
 		self:save_lobby_settings("difficulty", tweak_data:index_to_difficulty(item:value()))
 	end)
-
-	Hooks:PostHook( MenuCallbackHandler , "choice_crimenet_one_down" , "MenuCallbackHandlerPostSaveOneDownMod_JimHUD" , function( self, item, ... )
+	Hooks:PostHook(MenuCallbackHandler, "choice_crimenet_one_down", "MenuCallbackHandlerPostSaveOneDownMod_JimHUD", function(self, item, ...)
 		self:save_lobby_settings("one_down", item:value() == "on")
 	end)
-
-	Hooks:PostHook( MenuCallbackHandler , "update_matchmake_attributes" , "MenuCallbackHandlerPostUpdateMatchmakeAttributes_JimHUD" , function( self, item, ... )
+	Hooks:PostHook(MenuCallbackHandler, "update_matchmake_attributes", "MenuCallbackHandlerPostUpdateMatchmakeAttributes_JimHUD", function(self, item, ...)
 		self:save_lobby_settings()
 	end)
 
@@ -106,6 +112,7 @@ if string.lower(RequiredScript) == "lib/managers/menumanager" then
 
 		return node, unpack(results or {})
 	end
+
 elseif string.lower(RequiredScript) == "lib/managers/menu/blackmarketgui" then
 	--Always enable mod mini icons, put ghost icon behind silent weapon names
 	local populate_weapon_category_new_original = BlackMarketGui.populate_weapon_category_new

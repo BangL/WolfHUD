@@ -284,11 +284,11 @@ if string.lower(RequiredScript) == "lib/setups/setup" then
 				end
 			end,
 
---[[		Vault_Door	closed_Wall		wine_Wall
-upstairs	100476		101423			105879
-bedroom		100490		101431			105876
-lounge		100421		100448			102049
-]]
+			--[[		Vault_Door	closed_Wall		wine_Wall
+			upstairs	100476		101423			105879
+			bedroom		100490		101431			105876
+			lounge		100421		100448			102049
+			]]
 
 			--FF3 lounge vault
 			[100548] = function() return GameInfoManager._INTERACTIONS.CONDITIONAL_IGNORE_IDS.ff3_vault(100448, 102049) end,

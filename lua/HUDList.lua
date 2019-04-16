@@ -704,12 +704,21 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 		local x = managers.hud:script(PlayerBase.PLAYER_INFO_HUD_PD2).panel:right() - list_width
 		local y = HUDListManager.ListOptions.right_list_height_offset or 0
 		local scale = HUDListManager.ListOptions.right_list_scale or 1
-		local list = self:register_list("right_side_list", HUDList.VerticalList, { align = "right", x = x, y = y, w = list_width, h = list_height, scale = scale, top_to_bottom = true, item_margin = 5 })
 
-		local unit_count_list = list:register_item("unit_count_list", HUDList.HorizontalList, { align = "top", w = list_width, h = 50 * scale, right_to_left = true, item_margin = 3, priority = 1 })
-		local stealth_list = list:register_item("stealth_list", HUDList.HorizontalList, { align = "top", w = list_width, h = 50 * scale, right_to_left = true, item_margin = 3, priority = 4 })
-		local loot_list = list:register_item("loot_list", HUDList.HorizontalList, { align = "top", w = list_width, h = 50 * scale, right_to_left = true, item_margin = 3, priority = 2 })
-		local special_equipment_list = list:register_item("special_pickup_list", HUDList.HorizontalList, { align = "top", w = list_width, h = 50 * scale, right_to_left = true, item_margin = 3, priority = 3 })
+		local list = self:register_list("right_side_list", HUDList.VerticalList,
+				{align = "right", x = x, y = y, w = list_width, h = list_height, scale = scale, top_to_bottom = true, item_margin = 5 })
+
+		local unit_count_list = list:register_item("unit_count_list", HUDList.HorizontalList,
+				{align = "top", w = list_width, h = 50 * scale, right_to_left = true, item_margin = 3, priority = 1})
+
+		local stealth_list = list:register_item("stealth_list", HUDList.HorizontalList,
+				{align = "top", w = list_width, h = 50 * scale, right_to_left = true, item_margin = 3, priority = 4})
+
+		local loot_list = list:register_item("loot_list", HUDList.HorizontalList,
+				{align = "top", w = list_width, h = 50 * scale, right_to_left = true, item_margin = 3, priority = 2})
+
+		local special_equipment_list = list:register_item("special_pickup_list", HUDList.HorizontalList,
+				{align = "top", w = list_width, h = 50 * scale, right_to_left = true, item_margin = 3, priority = 3})
 
 		self:_set_show_enemies()
 		self:_set_show_turrets()
