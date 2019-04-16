@@ -1,5 +1,11 @@
 if string.lower(RequiredScript) == "lib/managers/menumanager" then
 
+	-- fix 'allow mutated lobbies' being greyed out when 'friends only' is ticked (a vanilla bug)
+	local update_node_original = MenuCrimeNetFiltersInitiator.update_node
+	function MenuCrimeNetFiltersInitiator:update_node(node, ...)
+		update_node_original(self, node, ...)
+		node:item("toggle_mutated_lobby"):set_enabled(true)
+	end
 
 	-- hide DLC ad in the main menu
 	function MenuCallbackHandler:is_dlc_latest_locked(...)
