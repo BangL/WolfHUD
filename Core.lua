@@ -484,6 +484,20 @@ function JimHUD:Reset()
 			difficulty									= "sm_wish",
 			one_down									= false,
 		},
+		CRIMENET = {
+			SHOW_BROKER_IN_MAIN_MENU					= true,
+			SORT_BY_DIFFICULTY							= true,
+			COLORIZE_BY_DIFFICULTY						= true,
+			REDUCE_GLOW									= true,
+			JOB_SCALE									= 0.7,
+			HIDE_BORDERS								= true,
+			BROKER_LINE_HEIGHT							= 22,
+			BROKER_LINE_PADDING							= 1,
+			BROKER_HIDE_IMAGE							= true,
+			BROKER_HIDE_CONTACT							= false,
+			BROKER_HIDE_DLC_TAG							= true,
+			BROKER_HIDE_NEW_TAG							= true,
+		},
 	}
 end
 

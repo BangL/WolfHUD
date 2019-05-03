@@ -1,5 +1,12 @@
 if string.lower(RequiredScript) == "lib/managers/menumanager" then
 
+	-- add contract broker to main menu
+	Hooks:Add("MenuManagerBuildCustomMenus", "MenuManagerBuildCustomMenusAddContectBroker_JimHUD", function(menu_manager, nodes)
+		if nodes.main and JimHUD:getSetting({"CRIMENET", "SHOW_BROKER_IN_MAIN_MENU"}, true) then
+			MenuHelper:AddMenuItem(nodes.main, "contract_broker", "menu_cn_premium_buy", "menu_cn_premium_buy_desc", "crimenet", "after")
+		end
+	end)
+
 	-- fix 'allow mutated lobbies' being greyed out when 'friends only' is ticked (a vanilla bug)
 	local update_node_original = MenuCrimeNetFiltersInitiator.update_node
 	function MenuCrimeNetFiltersInitiator:update_node(node, ...)

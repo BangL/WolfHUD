@@ -20,6 +20,7 @@
 			<group :hook_id="managers/">
 				<post :hook_id="menumanagerdialogs" :script_path="MenuTweaks.lua"/>
 				<post :hook_id="chatmanager" :script_path="MenuTweaks.lua"/>
+				<post :hook_id="crimenetmanager" :script_path="CrimenetRemastered.lua"/>
 				<post :hook_id="localizationmanager" :script_path="AdvAssault.lua"/>
 				<post :hook_id="experiencemanager" :script_path="Scripts.lua"/>
 				<post :hook_id="moneymanager" :script_path="Scripts.lua"/>
@@ -122,7 +123,6 @@
 					<post :hook_id="skilltreeguinew" :script_path="MenuTweaks.lua"/>
 					<post :hook_id="playerinventorygui" :script_path="ProfileMenu.lua"/>
 					<post :hook_id="specializationboxgui" :script_path="Utils/InputDialog.lua"/>
-					<post :hook_id="items/multichoice" :script_path="Scripts.lua"/>
 
 					<group :hook_id="blackmarketgui">
 						<post :script_path="MenuTweaks.lua"/>
@@ -143,6 +143,11 @@
 					<group :hook_id="stageendscreengui">
 						<post :script_path="MenuTweaks.lua"/>
 						<post :script_path="TabStats.lua"/>
+					</group>
+
+					<group :hook_id="items/">
+						<post :hook_id="multichoice" :script_path="Scripts.lua"/>
+						<post :hook_id="contractbrokerheistitem" :script_path="CrimenetRemastered.lua"/>
 					</group>
 
 					<group :hook_id="renderers/menunodeskillswitchgui">

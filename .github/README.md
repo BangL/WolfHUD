@@ -39,6 +39,7 @@ The BLT log can be found at **PAYDAY 2/mods/logs/**.
 * Added feature: Colored cam feeds (idea by Sirgoodsmoke)
 * Added feature: Fixed armor sorting (idea by EdisLeado)
 * Added feature: Disable bots catching bags
+* Added feature: Crimenet Remastered
 
 ## WolfHUD-based included features/mods
 
