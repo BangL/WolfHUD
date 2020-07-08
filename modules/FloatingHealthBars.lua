@@ -303,8 +303,8 @@ if string.lower(RequiredScript) == "lib/setups/gamesetup" then
 		pDist = dx * dx + dy * dy
 		self.pnl:set_visible(dot > 0)
 		if dot > 0 then
-			local cHealth = unit:character_damage() and unit:character_damage()._health and unit:character_damage()._health * 10 or 0
-			local fHealth = cHealth > 0 and unit:character_damage() and (unit:character_damage()._HEALTH_INIT and unit:character_damage()._HEALTH_INIT * 10 or unit:character_damage()._health_max and unit:character_damage()._health_max * 10) or 1
+			local cHealth = unit:character_damage() and unit:character_damage()._health and unit:character_damage()._health * 1 or 0
+			local fHealth = cHealth > 0 and unit:character_damage() and (unit:character_damage()._HEALTH_INIT and unit:character_damage()._HEALTH_INIT * 1 or unit:character_damage()._health_max and unit:character_damage()._health_max * 1) or 1
 			local prog = cHealth / fHealth
 			local isEnemy = managers.enemy:is_enemy(unit)
 			local show = isEnemy or WolfgangHUD:getSetting({"HUD", "FHB", "SHOW_FRIENDLY"}, false)
