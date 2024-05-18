@@ -9,4 +9,4 @@
 -? custom hud layout
 -? fix/finish: AutoApplyWeaponSkills
 -?? synced revive pickup block?
-   (block clients as host, can easily block the 'consume', but would be probably tricky to actually prevent the pickup. and even if.. how to know if client has extra lives by skills?)
+   (block clients as host, can easily block the 'consume', but would be probably tricky to actually prevent the pickup (revive + health replenish is client side). and even if.. how to know if client has extra lives by skills?)
