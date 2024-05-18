@@ -27,15 +27,13 @@ if string.lower(RequiredScript) == "lib/units/interactions/interactionext" then
         if self.tweak_data == "health_bag_big" then
             local player_damage = player:character_damage()
             if player_damage:get_revives() >= (player_damage._class_tweak_data.damage.BASE_LIVES + managers.player:upgrade_value("player", "additional_lives", 0)) then
-                -- disallow when maximum revives, with custom hint
                 if WolfgangHUD:getSetting({ "GAMEPLAY", "INTERACTION", "REVIVE_BLOCK_MAX_REVIVES" }, true) then
+                    -- disallow when maximum revives, with custom hint
                     return true, false, "wolfganghud_hint_maximum_revives"
                 end
-            else
+            elseif WolfgangHUD:getSetting({ "GAMEPLAY", "INTERACTION", "REVIVE_ALLOW_FULL_HEALTH" }, true) then
                 -- allow when below maximum revives, even if full health
-                if WolfgangHUD:getSetting({ "GAMEPLAY", "INTERACTION", "REVIVE_ALLOW_FULL_HEALTH" }, true) then
-                    return false
-                end
+                return false
             end
         end
         return health_pickup_interact_blocked_original(self, player, ...)
@@ -51,13 +49,11 @@ if string.lower(RequiredScript) == "lib/units/interactions/interactionext" then
                     -- hide interaction prompt at max revives
                     self._hide_interaction_prompt = true
                 end
-            else
-                if WolfgangHUD:getSetting({ "GAMEPLAY", "INTERACTION", "REVIVE_ALLOW_FULL_HEALTH" }, true) then
-                    -- copy of original, but skipped health check
-                    local result = BaseInteractionExt.selected(self, player)
-                    self._hide_interaction_prompt = nil
-                    return result
-                end
+            elseif WolfgangHUD:getSetting({ "GAMEPLAY", "INTERACTION", "REVIVE_ALLOW_FULL_HEALTH" }, true) then
+                -- copy of original, but skipped health check
+                local result = BaseInteractionExt.selected(self, player)
+                self._hide_interaction_prompt = nil
+                return result
             end
         end
         return health_pickup_selected_original(self, player)
