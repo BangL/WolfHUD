@@ -120,6 +120,7 @@
 
 		<!-- Interaction Tweaks -->
 		<hook source_file="lib/units/interactions/interactionext"									file="modules/InteractionTweaks.lua"		/>
+		<hook source_file="lib/units/pickups/healthpackpickup"										file="modules/InteractionTweaks.lua"		/>
 
 		<!-- Ready On Num Enter -->
 		<hook source_file="lib/managers/hud/hudchat"												file="modules/ReadyOnNumEnter.lua"			/>
