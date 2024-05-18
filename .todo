@@ -2,10 +2,11 @@
 
 - tab stats
 - colorize above-head names
-- synced revive pickup block?
 -? warcry buffbar
 -? online/offline toggle (only if no clients)
 -? map timers
 -? review: realistic reload with all weapons
 -? custom hud layout
 -? fix/finish: AutoApplyWeaponSkills
+-?? synced revive pickup block?
+   (block clients as host, can easily block the 'consume', but would be probably tricky to actually prevent the pickup. and even if.. how to know if client has extra lives by skills?)
