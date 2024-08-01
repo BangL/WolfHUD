@@ -6,13 +6,13 @@
 		author="BangL"
 		color="Color('1144aa')"
 		cannot_be_disabled="false"
-		min_blt_version="1.65"
+		min_blt_version="1.81"
 		early_init="false">
 
 	<auto_updates
 			provider="modworkshop"
 			id="24551"
-			version="2.13"/>
+			version="2.15"/>
 
 	<localization directory="loc" default="english.json">
 		<loc file="chinese_simplified.json" language="chinese_simplified"/>
