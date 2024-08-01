@@ -121,7 +121,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 						icon = {
 							type = "icon",
 							show = WolfgangHUD:getSetting({ "CustomWaypoints", "LOOT", "ICON" }, true),
-							texture = "ui/ingame/textures/hud/hud_waypoint_icons_01",
+							texture = "ui/atlas/raid_atlas_waypoint",
 							texture_rect = { 96, 0, 32, 32 },
 							alpha = 0.5,
 							color = WolfgangHUD:getColorSetting({ "CustomWaypoints", "LOOT", "COLOR" }, "white"),
@@ -178,7 +178,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 			local icon_data = icon_table[data.interact_id]
 			if icon_data and not icon_data.ignore then
 				if icon_data.skills then
-					icon_data.texture = "ui/atlas/raid_atlas_skills"
+					icon_data.texture = "ui/atlas/skilltree/raid_atlas_skills"
 					local x, y = unpack(icon_data.skills)
 					icon_data.texture_rect = { x * 78 + 2, y * 78 + 2, 76, 76 }
 					--elseif ... then

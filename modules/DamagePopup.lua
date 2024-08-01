@@ -122,7 +122,7 @@ if string.lower(RequiredScript) == "lib/units/enemies/cop/copdamage" then
 						type = "icon",
 						show = dead,
 						scale = WolfgangHUD:getSetting({"HUD", "DamagePopup", "SKULL_SCALE"}, 0.9),
-						texture = "ui/hud/atlas/raid_atlas_waypoints",
+						texture = "ui/atlas/raid_atlas_waypoints",
 						texture_rect = {401, 437, 38, 38},
 						blend_mode = "normal",
 					},

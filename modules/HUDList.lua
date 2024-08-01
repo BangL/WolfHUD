@@ -39,7 +39,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 		local texture_rect = icon.texture_rect
 
 		if icon.skills then
-			texture = "ui/atlas/raid_atlas_skills"
+			texture = "ui/atlas/skilltree/raid_atlas_skills"
 			local x, y = unpack(icon.skills)
 			texture_rect = {x * 78 + 2, y * 78 + 2, 76, 76}
 		--elseif ... then
@@ -1467,7 +1467,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 		local icon = params.icon or {}
 		self._icon = self._panel:bitmap({
 			name = "icon_expansion",
-			texture = icon.texture or "ui/atlas/raid_atlas_skills",
+			texture = icon.texture or "ui/atlas/skilltree/raid_atlas_skills",
 			texture_rect = icon.texture_rect or {158, 470, 76, 76},
 			h = self:panel():h() * (icon.h or 1),
 			w = self:panel():w() * (icon.w or 0.8),

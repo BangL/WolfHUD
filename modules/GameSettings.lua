@@ -97,7 +97,7 @@ if string.lower(RequiredScript) == "lib/managers/menu/raid_menu/missionselection
     end
 
     function MissionSelectionGui:wg_layout_bots_amount()
-        self._bots_amount_stepper = self._settings_panel:stepper({
+        self._bots_amount_stepper = self._right_panel:stepper({
             name = "bots_amount_stepper",
             y = self._team_ai_checkbox:y() + self._team_ai_checkbox:h() + MissionSelectionGui.SETTINGS_PADDING,
             x = 0,
@@ -267,12 +267,6 @@ elseif string.lower(RequiredScript) == "lib/managers/menu/raid_menu/raidmainmenu
     function RaidMainMenuGui:wg_layout_game_settings()
         self._settings_controls = {}
 
-        local settings_panel_params = {
-            name = "settings_panel"
-        }
-
-        self._settings_panel = self._right_panel:panel(settings_panel_params)
-
         local permission_stepper_params = {
             name = "permission_stepper",
             x = 0,
@@ -286,7 +280,7 @@ elseif string.lower(RequiredScript) == "lib/managers/menu/raid_menu/raidmainmenu
             }
         }
 
-        self._permission_stepper = self._settings_panel:stepper(permission_stepper_params)
+        self._permission_stepper = self._right_panel:stepper(permission_stepper_params)
 
         self._permission_stepper:set_value_and_render(Global.game_settings.permission, true)
         table.insert(self._settings_controls, self._permission_stepper)
@@ -305,7 +299,7 @@ elseif string.lower(RequiredScript) == "lib/managers/menu/raid_menu/raidmainmenu
             }
         }
 
-        self._drop_in_checkbox = self._settings_panel:toggle_button(drop_in_checkbox_params)
+        self._drop_in_checkbox = self._right_panel:toggle_button(drop_in_checkbox_params)
 
         self._drop_in_checkbox:set_value_and_render(Global.game_settings.drop_in_allowed)
         table.insert(self._settings_controls, self._drop_in_checkbox)

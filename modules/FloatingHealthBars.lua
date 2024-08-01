@@ -240,7 +240,7 @@ if string.lower(RequiredScript) == "lib/setups/gamesetup" then
 			use_bg = false,
 			x = m + 2,
 			y = m + 2,
-			image = 'ui/hud/parts/player_panel_interaction_teammate_fill_hud',
+			image = 'ui/icons/radial/player_panel_interaction_teammate_fill_hud',
 			radius = size / 2 - 2,
 			sides = 64,
 			current = 20,
@@ -251,7 +251,7 @@ if string.lower(RequiredScript) == "lib/setups/gamesetup" then
 		self.pie._circle:set_texture_rect(64, 0, -64, 64)
 		self.pieBg = pnl:bitmap({
 			name = 'pieBg',
-			texture = 'ui/hud/parts/player_panel_interaction_teammate_fill_hud',
+			texture = 'ui/icons/radial/player_panel_interaction_teammate_fill_hud',
 			w = size,
 			h = size,
 			layer = 3,

@@ -40,7 +40,7 @@ if string.lower(RequiredScript) == "lib/managers/menu/raid_menu/controls/raidgui
 
     function RaidGUIControlListItemRaids:_init_stealthable_icon(x, y, partially)
         return self._object:bitmap({
-            texture = "ui/hud/atlas/raid_atlas_waypoints",
+            texture = "ui/atlas/raid_atlas_waypoints",
             texture_rect = { 439, 437, 38, 38 },
             x = x,
             y = y,

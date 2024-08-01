@@ -74,7 +74,7 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudteammateplayer" then
 		})
 		local icon_side_len = self._accuracy_panel:h() * 0.9
 		self._accuracy_icon = self._accuracy_panel:bitmap({
-			texture = "ui/hud/atlas/raid_atlas_waypoints",
+			texture = "ui/atlas/raid_atlas_waypoints",
 			texture_rect = {451, 291, 38, 38},
 			w = icon_side_len,
 			h = icon_side_len,
