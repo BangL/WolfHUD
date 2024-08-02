@@ -174,9 +174,7 @@
   "wolfganghud_add_join_menu_offline_title": "Кнопка \"Список серверов\" в оффлайн моде",
   "wolfganghud_remove_ad_box_title": "Убрать рекламный баннер",
   "wolfganghud_menu_ingame_name": "В игре",
-  "wolfganghud_transparent_pause_menu_title": "Прозрачные меню",
   "wolfganghud_ready_on_num_enter_title": "Готовность по кнопке Enter (Num)",
-  "wolfganghud_no_debriefing_title": "Пропуск заставок после миссии",
 
   "wolfganghud_menu_missions_name": "Миссии",
   "wolfganghud_mark_stealthables_title": "Пометить миссии со скрытым подходом",
@@ -194,8 +192,6 @@
   "wolfganghud_auto_reload_single_title": "Перезарядка пустого неавтоматического оружия",
   "wolfganghud_gameplay_hardcore_name": "Хардкор",
   "wolfganghud_realistic_reload_title": "Реалистичная перезарядка",
-  "wolfganghud_gameplay_cheesy_name": "Cheesy",
-  "wolfganghud_auto_apply_weapon_skills_title": "Ставить оруж. улучшения автоматически",
   "wolfganghud_gameplay_press2hold_name": "Press2Hold (Нажми, чтобы зажать)",
   "wolfganghud_press2hold_lock_mode_title": "Принцип работы",
   "wolfganghud_press2hold_lock_mode_progress": "По зажатию",

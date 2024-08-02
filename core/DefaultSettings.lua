@@ -73,9 +73,7 @@ if WolfgangHUD then
 			ADD_JOIN_MENU						= true,
 			ADD_JOIN_MENU_OFFLINE				= true,
 			REMOVE_AD_BOX						= true,
-			TRANSPARENT_PAUSE_MENU				= false,
 			READY_UP_ON_NUM_ENTER				= true,
-			NO_DEBRIEFING						= false,
 			MARK_STEALTHABLES					= true,
 			SHOW_HIDDEN_WEAPON_STATS			= true,
 			CONVERT_SIZES_TO_METERS				= true,
@@ -133,7 +131,6 @@ if WolfgangHUD then
 			NO_SLOWMOTION						= true,
 			AUTO_RELOAD							= true,
 			AUTO_RELOAD_SINGLE					= true,
-			--AUTO_APPLY_WEAPON_SKILLS			= true,
 			REALISTIC_RELOAD					= false,
 			INTERACTION = {
 				TURRETS_STEALTH_DISABLED			= true,

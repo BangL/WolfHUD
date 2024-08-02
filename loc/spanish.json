@@ -155,9 +155,7 @@
 	"wolfganghud_add_join_menu_offline_title"						:			"Agregar \"unirse online\" al campamento offline",
 	"wolfganghud_remove_ad_box_title"								:			"Remover publicidad",
 	"wolfganghud_menu_ingame_name"									:		"En juego",
-	"wolfganghud_transparent_pause_menu_title"						:			"Menús transparentes",
 	"wolfganghud_ready_on_num_enter_title"							:			"Listo en num-enter",
-	"wolfganghud_no_debriefing_title"								:			"Sin videos de informe",
 
 	"wolfganghud_menu_missions_name"								:	"Misiones",
 	"wolfganghud_mark_stealthables_title"							:		"Mostrar misiones sigilosas",
@@ -174,8 +172,6 @@
 	"wolfganghud_auto_reload_single_title"							:			"Recarga automática de armas de un solo disparo",
 	"wolfganghud_gameplay_hardcore_name"							:		"Hardcore",
 	"wolfganghud_realistic_reload_title"							:			"Recarga realista",
-	"wolfganghud_gameplay_cheesy_name"								:		"Cheesy",
-	"wolfganghud_auto_apply_weapon_skills_title"					:			"Auto aplicar mejoras de armas",
 	"wolfganghud_gameplay_press2hold_name"							:		"Bloquear interacción",
 	"wolfganghud_press2hold_lock_mode_title"						:			"Modo bloqueo",
 	"wolfganghud_press2hold_lock_mode_progress"						:				"Progreso",

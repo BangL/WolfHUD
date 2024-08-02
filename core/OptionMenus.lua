@@ -1243,22 +1243,8 @@ if WolfgangHUD then
 					},
 					{
 						type = "toggle",
-						name_id = "wolfganghud_transparent_pause_menu_title",
-						value = {"MENU", "TRANSPARENT_PAUSE_MENU"},
-						visible_reqs = {},
-						enabled_reqs = {},
-					},
-					{
-						type = "toggle",
 						name_id = "wolfganghud_ready_on_num_enter_title",
 						value = {"MENU", "READY_UP_ON_NUM_ENTER"},
-						visible_reqs = {},
-						enabled_reqs = {},
-					},
-					{
-						type = "toggle",
-						name_id = "wolfganghud_no_debriefing_title",
-						value = {"MENU", "NO_DEBRIEFING"},
 						visible_reqs = {},
 						enabled_reqs = {},
 					},
@@ -1352,18 +1338,6 @@ if WolfgangHUD then
 						visible_reqs = {},
 						enabled_reqs = {},
 					},
-					--[[
-					{ -- Cheesy
-						type = "header",
-						text_id = "wolfganghud_gameplay_cheesy_name",
-					},
-					{
-						type = "toggle",
-						name_id = "wolfganghud_auto_apply_weapon_skills_title",
-						value = {"GAMEPLAY", "AUTO_APPLY_WEAPON_SKILLS"},
-						visible_reqs = {},
-						enabled_reqs = {},
-					},]]
 					{
 						type = "divider",
 						y_offset = 100, -- shift for next header

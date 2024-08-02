@@ -161,9 +161,7 @@
 	"wolfganghud_add_join_menu_offline_title"						:			"Füge dem Offline-Camp \"Online beitreten\" hinzu",
 	"wolfganghud_remove_ad_box_title"								:			"Entferne Werbebox",
 	"wolfganghud_menu_ingame_name"									:		"Im Spiel",
-	"wolfganghud_transparent_pause_menu_title"						:			"Transparentes Menüs",
 	"wolfganghud_ready_on_num_enter_title"							:			"Bereit machen mit Num-Enter",
-	"wolfganghud_no_debriefing_title"								:			"Keine Nachbesprechungsvideos",
 
 	"wolfganghud_menu_missions_name"								:	"Missionen",
 	"wolfganghud_mark_stealthables_title"							:		"Markiere lautlose",
@@ -180,8 +178,6 @@
 	"wolfganghud_auto_reload_single_title"							:			"Auto. Nachladen bei Einzel-Schuss Waffen",
 	"wolfganghud_gameplay_hardcore_name"							:		"Hardcore",
 	"wolfganghud_realistic_reload_title"							:			"Realistisches Nachladen",
-	"wolfganghud_gameplay_cheesy_name"								:		"Fragwürdige Features",
-	"wolfganghud_auto_apply_weapon_skills_title"					:			"Automatisches Anwenden von Waffenverbesserungen",
 	"wolfganghud_gameplay_press2hold_name"							:		"Interaktionssperre",
 	"wolfganghud_press2hold_lock_mode_title"						:			"Sperrmodus",
 	"wolfganghud_press2hold_lock_mode_progress"						:				"Fortschritt",

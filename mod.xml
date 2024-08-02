@@ -77,12 +77,6 @@
 		<!-- NoAds -->
 		<hook source_file="lib/managers/menu/raid_menu/raidmainmenugui"								file="modules/NoAds.lua"					/>
 
-		<!-- NoDebriefing -->
-		<hook source_file="lib/states/eventcompletestate"											file="modules/NoDebriefing.lua"				/>
-
-		<!-- Transparent Pause Menu -->
-		<hook source_file="lib/managers/menu/raid_menu/raidmenuscenemanager"						file="modules/TransparentPauseMenu.lua"		/>
-
 		<!-- HUDList -->
 		<hook source_file="lib/managers/hudmanagerpd2"												file="modules/HUDList.lua"					/>
 
@@ -99,10 +93,6 @@
 		<hook source_file="lib/managers/hud/hudteammateplayer"										file="modules/KillCounter.lua"				/>
 		<hook source_file="lib/units/enemies/cop/copdamage"											file="modules/KillCounter.lua"				/>
 		<hook source_file="lib/units/equipment/sentry_gun/sentrygunbase"							file="modules/KillCounter.lua"				/>
-
-		<!-- Auto Apply Weapon Skills -->
-		<!--hook source_file="lib/managers/statisticsmanager"										file="modules/AutoApplyWeaponSkills.lua"	/-->
-		<!--hook source_file="lib/managers/weaponskillsmanager"										file="modules/AutoApplyWeaponSkills.lua"	/-->
 
 		<!-- Accuracy -->
 		<hook source_file="lib/managers/hudmanagerpd2"												file="modules/Accuracy.lua"					/>

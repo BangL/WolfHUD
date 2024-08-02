@@ -130,9 +130,7 @@
 	"wolfganghud_add_join_menu_title"								:			"在主界面增加“加入在线房间”选项",
 	"wolfganghud_remove_ad_box_title"								:			"移除广告显示框",
 	"wolfganghud_menu_ingame_name"									:		"游戏内相关",
-	"wolfganghud_transparent_pause_menu_title"						:			"透明化暂停页面",
 	"wolfganghud_ready_on_num_enter_title"							:			"按下小键盘回车键准备",
-	"wolfganghud_no_debriefing_title"								:			"跳过简报视频",
 
 	"wolfganghud_gameplay_options_name"								:	"游玩体验相关",
 	"wolfganghud_gameplay_general_name"								:		"一般设置",
@@ -141,8 +139,6 @@
 	"wolfganghud_auto_reload_title"									:			"自动装填全自动武器",
 	"wolfganghud_gameplay_hardcore_name"							:		"硬核相关设置",
 	"wolfganghud_realistic_reload_title"							:			"真实换弹方式",
-	"wolfganghud_gameplay_cheesy_name"								:		"Cheesy",
-	"wolfganghud_auto_apply_weapon_skills_title"					:			"自动应用武器相关技能",
 	"wolfganghud_gameplay_press2hold_name"							:		"互动锁定",
 	"wolfganghud_press2hold_lock_mode_title"						:			"锁定模式",
 	"wolfganghud_press2hold_lock_mode_progress"						:				"进度",
