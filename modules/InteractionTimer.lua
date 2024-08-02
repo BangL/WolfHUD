@@ -56,7 +56,7 @@ if string.lower(RequiredScript) == "lib/units/beings/player/states/playerstandar
 		end
 
 		if interrupt_key_press and self:_interacting() then
-			self:_interupt_action_interact()
+			self:_interupt_action_interact(t, input, false, true)
 			return true
 		elseif input.btn_interact_release and self._interact_params then
 			if self._interaction_locked then
