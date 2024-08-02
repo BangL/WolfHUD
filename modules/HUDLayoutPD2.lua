@@ -382,6 +382,7 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudnotification" then
     local init_raidunlocked_original = HUDNotificationRaidUnlocked.init
     local init_consumablepickup_original = HUDNotificationConsumablePickup.init
     local init_greeditem_original = HUDNotificationGreedItem.init
+    local _create_items_panel_original = HUDNotificationGreedItem._create_items_panel
     local init_cardfail_original = HUDNotificationCardFail.init
     local _create_panel_original = HUDNotificationWeaponChallenge._create_panel
     local _fit_size_original = HUDNotificationWeaponChallenge._fit_size
@@ -429,6 +430,13 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudnotification" then
     -- fixes HUDNotificationGreedItem
     function HUDNotificationGreedItem:init(notification_data, ...)
         self:wh_fix_bottom(init_greeditem_original, notification_data, ...)
+    end
+
+    function HUDNotificationGreedItem:_create_items_panel(...)
+        _create_items_panel_original(self, ...)
+        if managers.hud:wolfganghud_layout_is_pd2() then
+            self._items_panel:set_bottom((self.BOTTOM - self.HEIGHT) + self.ITEMS_HEIGHT / 2)
+        end
     end
 
     -- fixes HUDNotificationCardFail
