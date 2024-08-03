@@ -15,7 +15,8 @@ if string.lower(RequiredScript) == "lib/managers/menumanager" then
 			local state = managers.player:player_unit():movement():current_state()
 			if alive(state._equipped_unit) then
 				local fov = managers.user:get_setting("fov_multiplier")
-				local scale = (state._equipped_unit:base():zoom() or 65) * (fov + 1) / 2 / (65 * fov)
+				local base = state._equipped_unit:base()
+				local scale = (base.zoom and base:zoom() or 65) * (fov + 1) / 2 / (65 * fov)
 				sense_x = sense_x * scale
 				sense_y = sense_y * scale
 			end
