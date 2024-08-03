@@ -380,7 +380,7 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudinteraction" then
 			self._interact_time:set_text(text)
 			self._interact_time:show()
 
-			if HUDInteraction.HIDE_MOTION_DOT and managers.user:get_setting("motion_dot") ~= 0 then
+			if HUDInteraction.HIDE_MOTION_DOT and managers.user:get_setting("motion_dot") >= 2 then
 				self._motion_dot_hidden = true
 				managers.hud:fade_out_motion_dot()
 			end
@@ -416,7 +416,7 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudinteraction" then
 			end
 		end
 
-		if self._motion_dot_hidden and managers.user:get_setting("motion_dot") ~= 0 then
+		if self._motion_dot_hidden and managers.user:get_setting("motion_dot") >= 2 then
 			self._motion_dot_hidden = nil
 			managers.hud:fade_in_motion_dot()
 		end
@@ -596,7 +596,7 @@ elseif string.lower(RequiredScript) == "lib/managers/menu/progressbarguiobject" 
 			self._interact_time:set_text(text)
 			self._interact_time:show()
 
-			if ProgressBarGuiObject.HIDE_MOTION_DOT and managers.user:get_setting("motion_dot") ~= 0 then
+			if ProgressBarGuiObject.HIDE_MOTION_DOT and managers.user:get_setting("motion_dot") >= 2 then
 				self._motion_dot_hidden = true
 				managers.hud:fade_out_motion_dot()
 			end
@@ -623,7 +623,7 @@ elseif string.lower(RequiredScript) == "lib/managers/menu/progressbarguiobject" 
 			self._progress_bar_locked = nil
 		end
 
-		if self._motion_dot_hidden and managers.user:get_setting("motion_dot") ~= 0 then
+		if self._motion_dot_hidden and managers.user:get_setting("motion_dot") >= 2 then
 			self._motion_dot_hidden = nil
 			managers.hud:fade_in_motion_dot()
 		end
