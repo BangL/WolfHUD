@@ -121,7 +121,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 						icon = {
 							type = "icon",
 							show = WolfgangHUD:getSetting({ "CustomWaypoints", "LOOT", "ICON" }, true),
-							texture = "ui/atlas/raid_atlas_waypoint",
+							texture = "guis/textures/raid/hud_waypoint_icons_01",
 							texture_rect = { 96, 0, 32, 32 },
 							alpha = 0.5,
 							color = WolfgangHUD:getColorSetting({ "CustomWaypoints", "LOOT", "COLOR" }, "white"),
