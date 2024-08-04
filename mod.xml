@@ -61,6 +61,7 @@
 		<hook source_file="lib/managers/hud/huddriving"												file="modules/HUDLayoutPD2.lua"				/>
 		<hook source_file="lib/managers/hud/hudturret"												file="modules/HUDLayoutPD2.lua"				/>
 		<hook source_file="lib/managers/hud/hudsaveicon"											file="modules/HUDLayoutPD2.lua"				/>
+		<hook source_file="lib/managers/hud/hudplayercustody"										file="modules/HUDLayoutPD2.lua"				/>
 
 		<!-- Custom Waypoints -->
 		<hook source_file="lib/managers/hudmanagerpd2"												file="modules/CustomWaypoints.lua"			/>

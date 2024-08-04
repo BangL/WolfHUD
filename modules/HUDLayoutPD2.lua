@@ -561,4 +561,15 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudsaveicon" then
             self._panel:set_center_x(self._workspace_panel:w() / 2)
         end
     end
+elseif string.lower(RequiredScript) == "lib/managers/hud/hudplayercustody" then
+    local _create_spectator_info_original = HUDPlayerCustody._create_spectator_info
+    function HUDPlayerCustody:_create_spectator_info(parent, ...)
+        _create_spectator_info_original(self, parent, ...)
+        if not managers.hud or not managers.hud:wolfganghud_layout_is_pd2() then
+            return
+        end
+
+        self._spectator_panel:set_bottom(parent:h() - HUDTeammatePeer.DEFAULT_H -
+            managers.hud.WOLFGANGHUD_PD2LAYOUT_PADDING)
+    end
 end
