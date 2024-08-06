@@ -4,16 +4,6 @@ if string.lower(RequiredScript) == "lib/managers/menu/raid_menu/controls/raidgui
     local icon_size = tweak_data.gui.font_sizes.small - 2
 
     local override_partially_stealthable = {
-        ["tnd"] = true,  -- Tiger Trap
-        ["convoy"] = true,  -- Last Orders
-        ["train_yard"] = true,  -- The Amber Train
-        ["silo"] = true,  -- Countdown
-        ["fury_railway"] = true,  -- Gold Diggers               // ends when closing gate
-        ["radio_defense"] = true, -- Wiretap                    // ends when Lange climbed the tower
-        ["bunker_test"] = true,   -- Bunker Busters             // ends when blowing up the dynamite
-        ["spies_test"] = true,    -- Extraction                 // ends when using the radio
-        ["tutorial"] = true,      -- 'Tutorial Online' compat   // ends when warcry is shown to the player
-
         -- 'Operation days as missions' compat:
         ["fake_mission_clear_skies_mini_raid_1_park"] = true,        -- Communication Breakdown / Clear Skies 1/6
         ["fake_mission_clear_skies_mini_raid_2_park"] = true,        -- Burning Man / Clear Skies 3/6
@@ -24,8 +14,9 @@ if string.lower(RequiredScript) == "lib/managers/menu/raid_menu/controls/raidgui
         ["fake_mission_oper_flamable_castle"] = true,                -- Firestarter / Rhinegold 4/4
     }
 
-    local override_not_stealthable = {
-        --["silo"] = true, -- Countdown               // doesnt even actually start in stealth
+    local override_completely_stealthable = {
+        -- 'Operation days as missions' compat:
+        ["fake_mission_clear_skies_gold_rush"] = true, -- Enigmatic / Clear Skies 2/6
     }
 
     function RaidGUIControlListItemRaids:_layout_raid_name(params, data, ...)
@@ -35,16 +26,17 @@ if string.lower(RequiredScript) == "lib/managers/menu/raid_menu/controls/raidgui
         end
 
         local raid_data = tweak_data.operations.missions[data.value]
-        if (raid_data.start_in_stealth and not override_not_stealthable[data.value]) or override_partially_stealthable[data.value] then
+        if (raid_data.stealth_description and raid_data.stealth_description ~= OperationsTweakData.RAID_NOT_STEALTHABLE)
+            or override_partially_stealthable[data.value] or override_completely_stealthable[data.value] then
             local x, _, w, _ = self._item_label:text_rect()
-            local partially_by_game = not raid_data.start_in_stealth
             self._stealhtable_icon = self:_init_stealthable_icon(x + w + 4, 0,
-                partially_by_game or override_partially_stealthable[data.value])
+                (raid_data.stealth_description == OperationsTweakData.RAID_COMPLETELY_STEALTHABLE)
+                or override_completely_stealthable[data.value])
             self._stealhtable_icon:set_center_y(RaidGUIControlListItemRaids.NAME_CENTER_Y)
         end
     end
 
-    function RaidGUIControlListItemRaids:_init_stealthable_icon(x, y, partially)
+    function RaidGUIControlListItemRaids:_init_stealthable_icon(x, y, completely_stealthable)
         return self._object:bitmap({
             texture = "ui/atlas/raid_atlas_waypoints",
             texture_rect = { 439, 437, 38, 38 },
@@ -53,7 +45,7 @@ if string.lower(RequiredScript) == "lib/managers/menu/raid_menu/controls/raidgui
             w = icon_size,
             h = icon_size,
             blend_mode = "normal",
-            color = partially and tweak_data.gui.colors.raid_grey or tweak_data.gui.colors.progress_green
+            color = completely_stealthable and tweak_data.gui.colors.progress_green or tweak_data.gui.colors.raid_grey
         })
     end
 end
