@@ -12,7 +12,7 @@
 	<auto_updates
 			provider="modworkshop"
 			id="24551"
-			version="2.19"/>
+			version="2.21"/>
 
 	<localization directory="loc" default="english.json">
 		<loc file="chinese_simplified.json" language="chinese_simplified"/>
