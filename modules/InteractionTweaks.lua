@@ -26,7 +26,7 @@ if string.lower(RequiredScript) == "lib/units/interactions/interactionext" then
     function HealthPickupInteractionExt:_interact_blocked(player, ...)
         if self.tweak_data == "health_bag_big" then
             local player_damage = player:character_damage()
-            if player_damage:get_revives() >= (player_damage._class_tweak_data.damage.BASE_LIVES + managers.player:upgrade_value("player", "additional_lives", 0)) then
+            if player_damage:get_revives() >= (player_damage._class_tweak_data.damage.BASE_LIVES + managers.player:upgrade_value("player", "revenant_additional_life", 0)) then
                 if WolfgangHUD:getSetting({ "GAMEPLAY", "INTERACTION", "REVIVE_BLOCK_MAX_REVIVES" }, true) then
                     -- disallow when maximum revives, with custom hint
                     return true, false, "wolfganghud_hint_maximum_revives"
@@ -44,7 +44,7 @@ if string.lower(RequiredScript) == "lib/units/interactions/interactionext" then
             and self.tweak_data == "health_bag_big"
             and self:can_select(player) then
             local player_damage = player:character_damage()
-            if player_damage:get_revives() >= (player_damage._class_tweak_data.damage.BASE_LIVES + managers.player:upgrade_value("player", "additional_lives", 0)) then
+            if player_damage:get_revives() >= (player_damage._class_tweak_data.damage.BASE_LIVES + managers.player:upgrade_value("player", "revenant_additional_life", 0)) then
                 if WolfgangHUD:getSetting({ "GAMEPLAY", "INTERACTION", "REVIVE_BLOCK_MAX_REVIVES" }, true) then
                     -- hide interaction prompt at max revives
                     self._hide_interaction_prompt = true
