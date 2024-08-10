@@ -35,7 +35,6 @@
 
 	"wolfganghud_options_name"										: "WolfgangHUD",
 
-	"wolfganghud_menu_joinonline"									: "Join online",
 	"wolfganghud_menu_bots_amount_title"							: "Maximum Team AI",
 	"wolfganghud_menu_weapons_stats_concealment"					: "Concealment",
 	"wolfganghud_menu_weapons_stats_suppression"					: "Suppression",
@@ -170,8 +169,7 @@
 	"wolfganghud_menu_main_menu_name"								:		"Main Menu",
 	"wolfganghud_straight_to_main_menu_title"						:			"Straight to main menu (EXPERIMENTAL)",
 	"wolfganghud_streamline_menu_title"								:			"Streamline main menu",
-	"wolfganghud_add_join_menu_title"								:			"Add \"join online\" to main menu",
-	"wolfganghud_add_join_menu_offline_title"						:			"Add \"join online\" to offline camp",
+	"wolfganghud_add_join_menu_offline_title"						:			"Add \"servers\" to offline camp",
 	"wolfganghud_remove_ad_box_title"								:			"Remove ad-box",
 	"wolfganghud_menu_ingame_name"									:		"In-Game",
 	"wolfganghud_ready_on_num_enter_title"							:			"Ready up on num-enter",

@@ -33,7 +33,6 @@
 
 	"wolfganghud_options_name"										: "WolfgangHUD",
 
-	"wolfganghud_menu_joinonline"									: "Online beitreten",
 	"wolfganghud_menu_bots_amount_title"							: "Maximale Team-KI",
 	"wolfganghud_menu_weapons_stats_concealment"					: "Tarnung",
 	"wolfganghud_menu_weapons_stats_suppression"					: "Unterdrückung",
@@ -157,8 +156,7 @@
 	"wolfganghud_menu_main_menu_name"								:		"Hauptmenü",
 	"wolfganghud_straight_to_main_menu_title"						:			"Direkt ins Hauptmenü (EXPERIMENTELL)",
 	"wolfganghud_streamline_menu_title"								:			"Hauptmenü rationalisieren",
-	"wolfganghud_add_join_menu_title"								:			"Füge dem Hauptmenü \"Online beitreten\" hinzu",
-	"wolfganghud_add_join_menu_offline_title"						:			"Füge dem Offline-Camp \"Online beitreten\" hinzu",
+	"wolfganghud_add_join_menu_offline_title"						:			"Füge dem Offline-Camp \"Server\" hinzu",
 	"wolfganghud_remove_ad_box_title"								:			"Entferne Werbebox",
 	"wolfganghud_menu_ingame_name"									:		"Im Spiel",
 	"wolfganghud_ready_on_num_enter_title"							:			"Bereit machen mit Num-Enter",

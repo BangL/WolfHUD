@@ -28,8 +28,6 @@
 
 	"wolfganghud_options_name"										: "WolfgangHUD",
 
-	"wolfganghud_menu_joinonline"									: "加入在线房间",
-
 	"wolfganghud_hud_options_name"									:	"HUD",
 	"wolfganghud_hud_general_name"									:		"一般设置",
 	"wolfganghud_hide_in_camp_title"								:			"在营地中时隐藏所选的 WolfgangHUD 面板",
@@ -127,7 +125,7 @@
 	"wolfganghud_menu_main_menu_name"								:		"主界面",
 	"wolfganghud_straight_to_main_menu_title"						:			"直接返回到主界面",
 	"wolfganghud_streamline_menu_title"								:			"主界面简化",
-	"wolfganghud_add_join_menu_title"								:			"在主界面增加“加入在线房间”选项",
+	"wolfganghud_add_join_menu_offline_title"						:			"在主界面增加“加入在线房间”选项",
 	"wolfganghud_remove_ad_box_title"								:			"移除广告显示框",
 	"wolfganghud_menu_ingame_name"									:		"游戏内相关",
 	"wolfganghud_ready_on_num_enter_title"							:			"按下小键盘回车键准备",

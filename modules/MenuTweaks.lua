@@ -38,16 +38,6 @@ elseif string.lower(RequiredScript) == "lib/managers/menu/raid_menu/raidmainmenu
 
     function RaidMainMenuGui:_list_menu_data_source(...)
         local _list_items = _list_menu_data_source_original(self, ...)
-        if WolfgangHUD:getSetting({ "MENU", "ADD_JOIN_MENU" }, true) then
-            table.insert(_list_items, 5, {
-                callback = "on_multiplayer_clicked",
-                availability_flags = {
-                    RaidGUIItemAvailabilityFlag.IS_IN_MAIN_MENU,
-                    RaidGUIItemAvailabilityFlag.SHOULD_NOT_SHOW_TUTORIAL
-                },
-                text = utf8.to_upper(managers.localization:text("wolfganghud_menu_joinonline"))
-            })
-        end
         if WolfgangHUD:getSetting({ "MENU", "ADD_JOIN_MENU_OFFLINE" }, true) then
             table.insert(_list_items, 6, {
                 callback = "on_multiplayer_clicked",
@@ -55,7 +45,7 @@ elseif string.lower(RequiredScript) == "lib/managers/menu/raid_menu/raidmainmenu
                     RaidGUIItemAvailabilityFlag.IS_IN_CAMP,
                     RaidGUIItemAvailabilityFlag.IS_SINGLEPLAYER
                 },
-                text = utf8.to_upper(managers.localization:text("wolfganghud_menu_joinonline"))
+                text = utf8.to_upper(managers.localization:text("menu_servers"))
             })
         end
         if WolfgangHUD:getSetting({ "MENU", "STREAMLINE" }, true) then

@@ -35,7 +35,6 @@
 
   "wolfganghud_options_name": "WolfgangHUD",
 
-  "wolfganghud_menu_joinonline": "Список серверов",
   "wolfganghud_menu_bots_amount_title": "Кол-во ботов",
   "wolfganghud_menu_weapons_stats_concealment": "Скрытность",
   "wolfganghud_menu_weapons_stats_suppression": "Подавление",
@@ -170,7 +169,6 @@
   "wolfganghud_menu_main_menu_name": "Главное меню",
   "wolfganghud_straight_to_main_menu_title": "Пропуск начальных заставок",
   "wolfganghud_streamline_menu_title": "Выравнивание главного меню",
-  "wolfganghud_add_join_menu_title": "Кнопка \"Список серверов\"",
   "wolfganghud_add_join_menu_offline_title": "Кнопка \"Список серверов\" в оффлайн моде",
   "wolfganghud_remove_ad_box_title": "Убрать рекламный баннер",
   "wolfganghud_menu_ingame_name": "В игре",

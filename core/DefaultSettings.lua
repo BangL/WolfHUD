@@ -70,7 +70,6 @@ if WolfgangHUD then
 		MENU = {
 			STRAIGHT_TO_MAIN_MENU				= false,
 			STREAMLINE							= true,
-			ADD_JOIN_MENU						= true,
 			ADD_JOIN_MENU_OFFLINE				= true,
 			REMOVE_AD_BOX						= true,
 			READY_UP_ON_NUM_ENTER				= true,

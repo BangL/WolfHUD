@@ -1218,13 +1218,6 @@ if WolfgangHUD then
 					},
 					{
 						type = "toggle",
-						name_id = "wolfganghud_add_join_menu_title",
-						value = {"MENU", "ADD_JOIN_MENU"},
-						visible_reqs = {},
-						enabled_reqs = {},
-					},
-					{
-						type = "toggle",
 						name_id = "wolfganghud_add_join_menu_offline_title",
 						value = {"MENU", "ADD_JOIN_MENU_OFFLINE"},
 						visible_reqs = {},
