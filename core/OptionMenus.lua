@@ -1223,13 +1223,6 @@ if WolfgangHUD then
 						visible_reqs = {},
 						enabled_reqs = {},
 					},
-					{
-						type = "toggle",
-						name_id = "wolfganghud_remove_ad_box_title",
-						value = {"MENU", "REMOVE_AD_BOX"},
-						visible_reqs = {},
-						enabled_reqs = {},
-					},
 					{ -- In-Game
 						type = "header",
 						text_id = "wolfganghud_menu_ingame_name",

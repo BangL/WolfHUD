@@ -75,9 +75,6 @@
 		<hook source_file="lib/setups/menusetup"													file="modules/StraightToMainMenu.lua"		/>
 		<hook source_file="lib/states/menutitlescreenstate"											file="modules/StraightToMainMenu.lua"		/>
 
-		<!-- NoAds -->
-		<hook source_file="lib/managers/menu/raid_menu/raidmainmenugui"								file="modules/NoAds.lua"					/>
-
 		<!-- HUDList -->
 		<hook source_file="lib/managers/hudmanagerpd2"												file="modules/HUDList.lua"					/>
 
