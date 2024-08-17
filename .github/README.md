@@ -29,9 +29,7 @@ a workaround is in the pipeline.
 
 ## Included mods / features
 
-* [Transparent Pause Menu](https://modworkshop.net/mydownloads.php?action=view_down&did=21088) made by **Luffy**
 * [Straight To Main Menu](https://modworkshop.net/mydownloads.php?action=view_down&did=21405) made by **Snh20**, ported to RAIDWW2 by **AdayDr1en**
-* [NoDebriefing](https://modworkshop.net/mydownloads.php?action=view_down&did=21804) aka 'No Budget Hitler Cutscenes' made by **>:3/Pawcio1337**
 * [Kick a Friend](https://modworkshop.net/mydownloads.php?action=view_down&did=15175) made by **FishTaco**
 * [HUD Lists](https://bitbucket.org/pjal3urb/hudlist/src/) originally made by **Seven**, modified by **Kamikaze94** in [WolfHUD](https://modworkshop.net/mydownloads.php?action=view_down&did=15901), rewritten to RAIDWW2 by **me**
 * [KillCounter](https://bitbucket.org/pjal3urb/customhud/src) made by **Seven**, modified by **Kamikaze94**, ported to RAIDWW2 by **me**
@@ -39,18 +37,15 @@ a workaround is in the pipeline.
 * [Floating Health Bars](https://modworkshop.net/mydownloads.php?action=view_down&did=20330) originally made by **Zenyr** for [PocoHud](https://steamcommunity.com/groups/pocomods), made standalone and then ported to RAIDWW2 by **me**
 * Interaction lock & timer, reload & melee charge indicator rewritten for RAIDWW2 by **me**, based on WolfHUD's implementation, which was basically made by **Seven**, **Kamikaze94** and **me**. There are several others out there, you may know it as Push2Interact or Press2Hold etc.
 * DamagePopups made by **Kamikaze94** for WolfHUD
-* CustomWaypoints made by **Kamikaze94** for WolfHUD, rewritten for RAIDWW2 by **me**
 * NoSlowMotion made by **Kamikaze94** for WolfHUD (i think)
 * InstantRestart made by **Kamikaze94** for WolfHUD (i think)
 * RestartHotkey made by **me**
 * AutoReload made by **me**
 * ReadyUpOnNumEnter made by **me**
-* NoAds made by **me**
 * RealisticReload made by **me**
 * FOVBasedSensivity ported from PD2 by **me** (original code by Frankelstner)
 * PD2 Suspicion HUD ported by **me**
 * PD2 Style HUD Layout made by **me**
-* ~~AutoApplyWeaponSkills made by **me**~~ disabled for now, due to stability issues, needs more testing, and much time, and energy, and tea, and other things that keep my brain running
 
 Pretty much all features are optional, and can be configured in game.
 
