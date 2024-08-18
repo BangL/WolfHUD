@@ -28,7 +28,9 @@ if string.lower(RequiredScript) == "lib/managers/menu/raid_menu/missionselection
             WolfgangHUD:Save()
 
             Global.player_manager.game_settings_difficulty = data.value
+            Global.game_settings.difficulty = data.value
 
+            managers.network:session():chk_server_joinable_state()
             managers.network:update_matchmake_attributes()
         end
 
