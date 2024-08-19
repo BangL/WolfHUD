@@ -30,10 +30,10 @@ if string.lower(RequiredScript) == "lib/managers/menu/raid_menu/missionselection
             Global.player_manager.game_settings_difficulty = data.value
 
             if Network:is_server() then
-            Global.game_settings.difficulty = data.value
-            managers.network:session():chk_server_joinable_state()
-            managers.network:update_matchmake_attributes()
-        end
+                Global.game_settings.difficulty = data.value
+                managers.network:session():chk_server_joinable_state()
+                managers.network:update_matchmake_attributes()
+            end
         end
 
         return result
@@ -48,11 +48,11 @@ if string.lower(RequiredScript) == "lib/managers/menu/raid_menu/missionselection
             WolfgangHUD:Save()
 
             if Network:is_server() then
-            Global.game_settings.permission = data.value
+                Global.game_settings.permission = data.value
 
-            managers.network:session():chk_server_joinable_state()
-            managers.network:update_matchmake_attributes()
-        end
+                managers.network:session():chk_server_joinable_state()
+                managers.network:update_matchmake_attributes()
+            end
         end
 
         return result
@@ -67,11 +67,11 @@ if string.lower(RequiredScript) == "lib/managers/menu/raid_menu/missionselection
             WolfgangHUD:Save()
 
             if Network:is_server() then
-            Global.game_settings.drop_in_allowed = value
+                Global.game_settings.drop_in_allowed = value
 
-            managers.network:session():chk_server_joinable_state()
-            managers.network:update_matchmake_attributes()
-        end
+                managers.network:session():chk_server_joinable_state()
+                managers.network:update_matchmake_attributes()
+            end
         end
 
         return result
@@ -183,8 +183,11 @@ if string.lower(RequiredScript) == "lib/managers/menu/raid_menu/missionselection
         end
 
         managers.criminals.MAX_NR_TEAM_AI = new_count
+
         if diff > 0 then
-            ai_state:fill_criminal_team_with_AI(nil)
+            for _ = 1, diff do
+                ai_state:spawn_one_teamAI(nil, nil, nil, nil)
+            end
         elseif diff < 0 then
             for _ = 1, -diff do
                 ai_state:remove_one_teamAI()
