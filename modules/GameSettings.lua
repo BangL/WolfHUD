@@ -184,14 +184,11 @@ if string.lower(RequiredScript) == "lib/managers/menu/raid_menu/missionselection
 
         managers.criminals.MAX_NR_TEAM_AI = new_count
 
-        if diff > 0 then
-            for _ = 1, diff do
-                ai_state:spawn_one_teamAI(nil, nil, nil, nil)
-            end
-        elseif diff < 0 then
-            for _ = 1, -diff do
-                ai_state:remove_one_teamAI()
-            end
+        while managers.criminals:nr_AI_criminals() < managers.criminals.MAX_NR_TEAM_AI do
+            ai_state:spawn_one_teamAI()
+        end
+        while managers.criminals:nr_AI_criminals() > managers.criminals.MAX_NR_TEAM_AI do
+            ai_state:remove_one_teamAI()
         end
     end
 elseif string.lower(RequiredScript) == "lib/managers/criminalsmanager" then
