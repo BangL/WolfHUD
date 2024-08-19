@@ -165,8 +165,10 @@ if string.lower(RequiredScript) == "lib/managers/menu/raid_menu/missionselection
             WolfgangHUD:setSetting({ "GAME_SETTINGS", "MAX_TEAM_AI" }, new_value)
             WolfgangHUD:Save()
 
-            -- kick/add bots otf, if ingame
-            self:wg_update_bots_amount(new_value)
+            -- kick/add bots otf
+            if Network:is_server() then
+                self:wg_update_bots_amount(new_value)
+            end
         end
     end
 
