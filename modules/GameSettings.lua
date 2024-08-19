@@ -28,10 +28,12 @@ if string.lower(RequiredScript) == "lib/managers/menu/raid_menu/missionselection
             WolfgangHUD:Save()
 
             Global.player_manager.game_settings_difficulty = data.value
-            Global.game_settings.difficulty = data.value
 
+            if Network:is_server() then
+            Global.game_settings.difficulty = data.value
             managers.network:session():chk_server_joinable_state()
             managers.network:update_matchmake_attributes()
+        end
         end
 
         return result
@@ -45,10 +47,12 @@ if string.lower(RequiredScript) == "lib/managers/menu/raid_menu/missionselection
             WolfgangHUD:setSetting({ "GAME_SETTINGS", "PERMISSION" }, table.index_of(tweak_data.permissions, data.value))
             WolfgangHUD:Save()
 
+            if Network:is_server() then
             Global.game_settings.permission = data.value
 
             managers.network:session():chk_server_joinable_state()
             managers.network:update_matchmake_attributes()
+        end
         end
 
         return result
@@ -62,10 +66,12 @@ if string.lower(RequiredScript) == "lib/managers/menu/raid_menu/missionselection
             WolfgangHUD:setSetting({ "GAME_SETTINGS", "DROP_IN_ALLOWED" }, value)
             WolfgangHUD:Save()
 
+            if Network:is_server() then
             Global.game_settings.drop_in_allowed = value
 
             managers.network:session():chk_server_joinable_state()
             managers.network:update_matchmake_attributes()
+        end
         end
 
         return result
