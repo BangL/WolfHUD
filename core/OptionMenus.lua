@@ -1234,6 +1234,10 @@ if WolfgangHUD then
 						visible_reqs = {},
 						enabled_reqs = {},
 					},
+					{
+						type = "divider",
+						y_offset = 100, -- shift for next header
+					},
 					{ -- Missions
 						y_offset = 320,
 						type = "header",
