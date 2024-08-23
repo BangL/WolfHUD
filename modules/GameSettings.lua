@@ -248,27 +248,6 @@ elseif string.lower(RequiredScript) == "lib/managers/menu/raid_menu/raidmainmenu
         if self._settings_shown then
             self:wg_layout_right_panel()
             self:wg_layout_game_settings()
-            self:wg_align_kick_mute_widget()
-        end
-    end
-
-    function RaidMainMenuGui:_layout_kick_mute_widget(...)
-        _layout_kick_mute_widget_original(self, ...)
-
-        if self._settings_shown then
-            self:wg_align_kick_mute_widget()
-        end
-    end
-
-    function RaidMainMenuGui:wg_align_kick_mute_widget()
-        if self._widget_panel and self._settings_controls and self._right_panel then
-            local settings_bottom = 0
-            for _, v in pairs(self._settings_controls) do
-                if settings_bottom < v:bottom() then
-                    settings_bottom = v:bottom()
-                end
-            end
-            self._widget_panel:set_y(settings_bottom + self._right_panel:y() + (RaidGUIControlKickMuteWidget.HEIGHT or 64))
         end
     end
 
@@ -276,7 +255,7 @@ elseif string.lower(RequiredScript) == "lib/managers/menu/raid_menu/raidmainmenu
         local right_panel_params = {
             name = "right_panel",
             h = 640,
-            y = 192,
+            y = 96,
             w = 480,
             x = 0,
             layer = 1
