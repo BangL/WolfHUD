@@ -186,10 +186,10 @@ if string.lower(RequiredScript) == "lib/managers/menu/raid_menu/missionselection
 
         managers.criminals.MAX_NR_TEAM_AI = new_count
 
-        while managers.criminals:nr_AI_criminals() < managers.criminals.MAX_NR_TEAM_AI do
+        while managers.criminals:nr_taken_criminals() < CriminalsManager.MAX_NR_CRIMINALS and managers.criminals:nr_AI_criminals() < managers.criminals.MAX_NR_TEAM_AI do
             ai_state:spawn_one_teamAI()
         end
-        while managers.criminals:nr_AI_criminals() > managers.criminals.MAX_NR_TEAM_AI do
+        while managers.criminals:nr_taken_criminals() > CriminalsManager.MAX_NR_CRIMINALS or managers.criminals:nr_AI_criminals() > managers.criminals.MAX_NR_TEAM_AI do
             ai_state:remove_one_teamAI()
         end
     end
