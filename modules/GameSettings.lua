@@ -27,10 +27,10 @@ if string.lower(RequiredScript) == "lib/managers/menu/raid_menu/missionselection
             WolfgangHUD:setSetting({ "GAME_SETTINGS", "DIFFICULTY" }, table.index_of(tweak_data.difficulties, data.value))
             WolfgangHUD:Save()
 
-            Global.player_manager.game_settings_difficulty = data.value
-
-            if Network:is_server() then
+            if not Network:is_client() then
+                Global.player_manager.game_settings_difficulty = data.value
                 Global.game_settings.difficulty = data.value
+
                 managers.network:session():chk_server_joinable_state()
                 managers.network:update_matchmake_attributes()
             end
@@ -47,7 +47,7 @@ if string.lower(RequiredScript) == "lib/managers/menu/raid_menu/missionselection
             WolfgangHUD:setSetting({ "GAME_SETTINGS", "PERMISSION" }, table.index_of(tweak_data.permissions, data.value))
             WolfgangHUD:Save()
 
-            if Network:is_server() then
+            if not Network:is_client() then
                 Global.game_settings.permission = data.value
 
                 managers.network:session():chk_server_joinable_state()
@@ -66,7 +66,7 @@ if string.lower(RequiredScript) == "lib/managers/menu/raid_menu/missionselection
             WolfgangHUD:setSetting({ "GAME_SETTINGS", "DROP_IN_ALLOWED" }, value)
             WolfgangHUD:Save()
 
-            if Network:is_server() then
+            if not Network:is_client() then
                 Global.game_settings.drop_in_allowed = value
 
                 managers.network:session():chk_server_joinable_state()
@@ -153,8 +153,10 @@ if string.lower(RequiredScript) == "lib/managers/menu/raid_menu/missionselection
             return
         end
 
-        Global.game_settings.team_ai = enabled          -- SP
-        Global.game_settings.selected_team_ai = enabled -- MP
+        if not Network:is_client() then
+            Global.game_settings.team_ai = enabled          -- SP
+            Global.game_settings.selected_team_ai = enabled -- MP
+        end
         ai_state:on_criminal_team_AI_enabled_state_changed()
     end
 
@@ -166,7 +168,7 @@ if string.lower(RequiredScript) == "lib/managers/menu/raid_menu/missionselection
             WolfgangHUD:Save()
 
             -- kick/add bots otf
-            if Network:is_server() then
+            if not Network:is_client() then
                 self:wg_update_bots_amount(new_value)
             end
         end
@@ -174,7 +176,7 @@ if string.lower(RequiredScript) == "lib/managers/menu/raid_menu/missionselection
 
     function MissionSelectionGui:wg_update_bots_amount(new_count)
         local ai_state = managers.groupai and managers.groupai:state() or nil
-        if not (managers.criminals and ai_state) then
+        if not (managers.criminals and ai_state and not Network:is_client()) then
             return
         end
 
@@ -234,7 +236,6 @@ elseif string.lower(RequiredScript) == "lib/managers/dynamicresourcemanager" the
     end
 elseif string.lower(RequiredScript) == "lib/managers/menu/raid_menu/raidmainmenugui" then
     local _layout_original = RaidMainMenuGui._layout
-    local _layout_kick_mute_widget_original = RaidMainMenuGui._layout_kick_mute_widget
 
     function RaidMainMenuGui:_layout(...)
         self._settings_shown = false
