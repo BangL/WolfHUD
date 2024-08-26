@@ -109,7 +109,9 @@ elseif string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 
     function HUDManager:get_pd2style_notification_bottom()
         return self:get_pd2style_carry_bottom() -
-            (self._carry_hud._object:alpha() ~= 0 and (self._carry_hud:h() + self.WOLFGANGHUD_PD2LAYOUT_PADDING) or 0)
+            --(self._carry_hud._object:alpha() ~= 0 and
+            (self._carry_hud:h() + self.WOLFGANGHUD_PD2LAYOUT_PADDING)
+        --or 0)
     end
 
     function HUDManager:_create_objectives(hud, ...)
