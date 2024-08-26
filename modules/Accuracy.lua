@@ -69,7 +69,7 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudteammateplayer" then
 			w = 100,
 			h = self.ACCURACY_FONT_SIZE,
 			x = right_panel:w() - 100,
-			y = ((self._kills_panel and self._kills_panel:visible()) and self._kills_panel:top() or right_panel:h()) - self.ACCURACY_FONT_SIZE,
+			y = right_panel:h() - self.ACCURACY_FONT_SIZE,
 			halign = "right"
 		})
 		local icon_side_len = self._accuracy_panel:h() * 0.9
@@ -101,7 +101,9 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudteammateplayer" then
 	function HUDTeammatePlayer:set_accuracy(value)
 		self._accuracy_text:set_text(tostring(value) .. "%")
 		local _, _, w, _ = self._accuracy_text:text_rect()
-		self._accuracy_icon:set_right(self._accuracy_panel:w() - w)
+		self._accuracy_text:set_w(w)
+		self._accuracy_panel:set_w(self._accuracy_icon:w() + w)
+		self._accuracy_panel:set_right(self._right_panel:w())
 	end
 
 end
