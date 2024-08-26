@@ -51,7 +51,7 @@
 	"wolfganghud_colorize_modes_by_local_ui_panels"					:				"Host",
 	"wolfganghud_levels_before_name_title"							:			"Zeige Level vor Namen",
 	"wolfganghud_hide_in_camp_title"								:			"Verstecke WolfgangHUD-Boxen im Lager",
-	"wolfganghud_player_panel_options_name"							:		"Spielerboxen",
+	"wolfganghud_player_panel_options_name"							:		"Spielerbox",
 	"wolfganghud_peer_panels_options_name"							:		"Mitspielerboxen",
 	"wolfganghud_ai_panels_options_name"							:		"KI-Boxen",
 	"wolfganghud_killcount_name"									:			"Tötungszähler",

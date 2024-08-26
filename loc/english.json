@@ -53,7 +53,7 @@
 	"wolfganghud_colorize_modes_by_local_ui_panels"					:				"Emulate-Host",
 	"wolfganghud_levels_before_name_title"							:			"Show levels before names",
 	"wolfganghud_hide_in_camp_title"								:			"Hide WolfgangHUD panels in camp",
-	"wolfganghud_player_panel_options_name"							:		"Player panels",
+	"wolfganghud_player_panel_options_name"							:		"Player panel",
 	"wolfganghud_peer_panels_options_name"							:		"Teammate panels",
 	"wolfganghud_ai_panels_options_name"							:		"Bot panels",
 	"wolfganghud_killcount_name"									:			"Kill counters",
