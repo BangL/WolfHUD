@@ -32,7 +32,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 
 	-- HUDList --
 
-	local HUDLIST_FONT = "lato_outlined_18"
+	local HUDLIST_FONT = "din_compressed_outlined_20"
 
 	local function get_icon_data(icon)
 		local texture = icon.texture
@@ -1561,7 +1561,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 			h = box:h(),
 			color = self._default_text_color,
 			font = tweak_data.gui.fonts[HUDLIST_FONT],
-			font_size = box:h() * 0.5
+			font_size = box:h() * 0.6
 		})
 
 		self._count = 0
