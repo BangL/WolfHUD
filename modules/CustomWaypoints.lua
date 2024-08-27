@@ -206,7 +206,12 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 						texture = icon_data.texture,
 						texture_rect = icon_data.texture_rect,
 					},
-					component_order = { { "icon" } },
+					debug_txt = {
+						type = "label",
+						show = debug,
+						text = string.format("Editor ID: %s", (data.unit:editor_id() or "N/A")),
+					},
+					component_order = { { "icon" }, { "debug_txt" } },
 				}
 
 				managers.waypoints:add_waypoint(id, "CustomWaypoint", params)
@@ -249,6 +254,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 				managers.waypoints:set_waypoint_setting(id, "visible_angle", { max = pickups_settings.angle })
 				managers.waypoints:set_waypoint_setting(id, "fade_angle",
 					{ start_angle = pickups_settings.angle, end_angle = pickups_settings.angle - 5, final_scale = 8 })
+				managers.waypoints:set_waypoint_component_setting(id, "debug_txt", "show", enable)
 			end
 		end
 	end
