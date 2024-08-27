@@ -98,16 +98,16 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 
 	function HUDManager:custom_waypoint_loot_clbk(event, key, data)
 		local id = "loot_wp_" .. key
-		local tweak_entry = data.carry_id and tweak_data.carry[data.carry_id]
 
 		if event == "add" then
-			if tweak_entry and not tweak_entry.is_vehicle and not tweak_entry.skip_exit_secure and (not string.ends(data.carry_id, "_body")) then
+			local tweak_entry = data.carry_id and tweak_data.carry[data.carry_id]
+			if tweak_entry and tweak_entry.loot_greed_value then
 				local debug = HUDManager.CUSTOM_WAYPOINTS.DEBUGGING
 				local settings = self:make_loot_waypoint_settings(debug)
-				local name_id = data.carry_id and tweak_data.carry[data.carry_id] and
-					tweak_data.carry[data.carry_id].name_id
+				local name_id = tweak_entry.name_id
 				local bag_name = name_id and managers.localization:to_upper_text(name_id)
 				local count = data.count or 1
+				local icon = tweak_data.gui.icons[tweak_entry.hud_icon]
 				if bag_name then
 					local params = {
 						unit = data.unit,
@@ -121,8 +121,8 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 						icon = {
 							type = "icon",
 							show = WolfgangHUD:getSetting({ "CustomWaypoints", "LOOT", "ICON" }, true),
-							texture = "guis/textures/raid/hud_waypoint_icons_01",
-							texture_rect = { 96, 0, 32, 32 },
+							texture = icon.texture,
+							texture_rect = icon.texture_rect,
 							alpha = 0.5,
 							color = WolfgangHUD:getColorSetting({ "CustomWaypoints", "LOOT", "COLOR" }, "white"),
 						},
