@@ -135,7 +135,7 @@ if string.lower(RequiredScript) == "lib/setups/setup" then
 			]]
 		},
 		INTERACTION_TO_CARRY = {
-			corpse_dispose =					"dead_body", -- fresh corpse
+			corpse_dispose =					"corpse_body", -- fresh corpse
 		},
 		COMPOSITE_LOOT_UNITS = {
 			[3141918] = 4, [3141917] = 3, [3141916] = 2, --[3141932] = 1, -- Kelly vault gold

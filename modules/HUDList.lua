@@ -197,7 +197,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 		--money_print_plate
 		--ladder_4m
 
-		dead_body =											"corpse",
+		corpse_body =										"corpse",
 		german_grunt_body =									"corpse",
 		german_grunt_light_body =							"corpse",
 		german_grunt_mid_body =								"corpse",
