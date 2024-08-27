@@ -50,6 +50,7 @@ if string.lower(RequiredScript) == "lib/setups/setup" then
 			take_thermite =						"_pickup_interaction_handler", -- thermite
 			gen_pku_thermite =					"_pickup_interaction_handler", -- thermite
 			hold_pku_intelligence =				"_pickup_interaction_handler", -- mission documents
+			open_crate_3 =						"_pickup_interaction_handler", -- crowbar crate
 
 			-- combat pickups
 			health_bag =						"_pickup_interaction_handler", -- health bag

@@ -264,6 +264,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 		--take_tank_shell =					"tank_shell",
 		--take_thermite =					"thermite",
 		--gen_pku_thermite =				"thermite",
+		open_crate_3 =						"army_crate",
 
 		-- pickups
 		health_bag =						"health_bag",
@@ -304,6 +305,9 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 		--safe_keychain =		{class = "PickupItem",	texture = "ui/atlas/raid_atlas_hud", texture_rect = {683, 1717, 32, 32},		color_id = "mission_pickup_color",	priority = 10,	category = "mission_pickups",	ignore = not WolfgangHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "mission_pickups"}, true)	},
 		--tank_shell =			{class = "PickupItem",	texture = "ui/atlas/raid_atlas_hud", texture_rect = {717, 1717, 32, 32},		color_id = "mission_pickup_color",	priority = 10,	category = "mission_pickups",	ignore = not WolfgangHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "mission_pickups"}, true)	},
 		--thermite =			{class = "PickupItem",	texture = "ui/atlas/raid_atlas_hud", texture_rect = {557, 1165, 32, 32},		color_id = "mission_pickup_color",	priority = 10,	category = "mission_pickups",	ignore = not WolfgangHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "mission_pickups"}, true)	},
+
+		-- army (crowbar) crates
+		army_crate =			{class = "PickupItem",	skills = {5, 3},																color_id = "mission_pickup_color",	priority = 10,	category = "mission_pickups",   ignore = not WolfgangHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "mission_pickups"}, true)	},
 
 		-- pickups
 		health_bag_big =		{class = "PickupItem",	skills = {2, 9},																color_id = "revive_pickup_color",	priority = 23,	category = "combat_pickups",	ignore = WolfgangHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "combat_pickups_mode"}, 2) < 2	},
