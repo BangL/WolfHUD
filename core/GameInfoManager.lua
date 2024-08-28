@@ -138,14 +138,165 @@ if string.lower(RequiredScript) == "lib/setups/setup" then
 			corpse_dispose =					"corpse_body", -- fresh corpse
 		},
 		COMPOSITE_LOOT_UNITS = {
-			[3141918] = 4, [3141917] = 3, [3141916] = 2, --[3141932] = 1, -- Kelly vault gold
-			[3141938] = 4, [3141937] = 3, [3141933] = 2, --[3141919] = 1, -- Kelly vault gold
-			[3141942] = 4, [3141941] = 3, [3141940] = 2, --[3141939] = 1, -- Kelly vault gold
-			[3141946] = 4, [3141945] = 3, [3141944] = 2, --[3141943] = 1, -- Kelly vault gold
-			[3141950] = 4, [3141949] = 3, [3141948] = 2, --[3141947] = 1, -- Kelly vault gold
-			[3141954] = 4, [3141953] = 3, [3141952] = 2, --[3141951] = 1, -- Kelly vault gold
-			[3141958] = 4, [3141957] = 3, [3141956] = 2, --[3141955] = 1, -- Kelly vault gold
-			[3141962] = 4, [3141961] = 3, [3141960] = 2, --[3141959] = 1, -- Kelly vault gold
+			[141918] = 4, [141917] = 3, [141916] = 2, --[141932] = 1, -- Kelly vault gold
+			[141938] = 4, [141937] = 3, [141933] = 2, --[141919] = 1, -- Kelly vault gold
+			[141942] = 4, [141941] = 3, [141940] = 2, --[141939] = 1, -- Kelly vault gold
+			[141946] = 4, [141945] = 3, [141944] = 2, --[141943] = 1, -- Kelly vault gold
+			[141950] = 4, [141949] = 3, [141948] = 2, --[141947] = 1, -- Kelly vault gold
+			[141954] = 4, [141953] = 3, [141952] = 2, --[141951] = 1, -- Kelly vault gold
+			[141958] = 4, [141957] = 3, [141956] = 2, --[141955] = 1, -- Kelly vault gold
+			[141962] = 4, [141961] = 3, [141960] = 2, --[141959] = 1, -- Kelly vault gold
+		},
+        IGNORE_IDS = {
+			-- Extraction
+			spies_test = {
+				[100614] = true, -- small loot in unreachable wall part
+			},
+
+			-- Clear Skies
+			clear_skies = {
+				-- Enigmatic
+				gold_rush = {
+					[100695] = true, -- dogtag
+					[100698] = true, -- dogtag
+					[100700] = true, -- dogtag
+					[101157] = true, -- greed cache
+					[101241] = true, -- small loot
+					[101248] = true, -- small loot
+				},
+				-- Rolling Stock
+				train_yard = {
+					[100361] = true, -- small loot
+					[100366] = true, -- small loot
+					[100367] = true, -- small loot
+					[100370] = true, -- small loot
+					[100371] = true, -- small loot
+					[100372] = true, -- small loot
+					[100374] = true, -- small loot
+					[100376] = true, -- small loot
+					[100378] = true, -- small loot
+					[100384] = true, -- small loot
+					[100387] = true, -- small loot
+					[100391] = true, -- small loot
+					[100392] = true, -- small loot
+					[100394] = true, -- small loot
+					[100395] = true, -- small loot
+					[100398] = true, -- small loot
+					[100399] = true, -- small loot
+					[100400] = true, -- small loot
+					[100401] = true, -- small loot
+					[100405] = true, -- small loot
+					[100406] = true, -- small loot
+					[100407] = true, -- small loot
+					[100417] = true, -- small loot
+					[100419] = true, -- small loot
+					[100422] = true, -- small loot
+					[100424] = true, -- small loot
+					[100428] = true, -- small loot
+					[100429] = true, -- small loot
+					[100431] = true, -- small loot
+					[100432] = true, -- small loot
+					[100433] = true, -- small loot
+					[100436] = true, -- small loot
+					[100438] = true, -- small loot
+					[100441] = true, -- small loot
+					[100442] = true, -- small loot
+					[100444] = true, -- small loot
+					[100446] = true, -- small loot
+					[100449] = true, -- small loot
+					[100450] = true, -- small loot
+					[100452] = true, -- small loot
+					[100455] = true, -- small loot
+					[100460] = true, -- small loot
+					[100462] = true, -- small loot
+					[100464] = true, -- small loot
+					[100466] = true, -- small loot
+					[100468] = true, -- small loot
+					[100469] = true, -- small loot
+					[100470] = true, -- small loot
+					[100474] = true, -- small loot
+					[100479] = true, -- small loot
+					[100481] = true, -- small loot
+					[100482] = true, -- small loot
+					[100483] = true, -- small loot
+					[100487] = true, -- small loot
+					[100488] = true, -- small loot
+					[100493] = true, -- small loot
+					[100495] = true, -- small loot
+					[100503] = true, -- small loot
+					[100505] = true, -- small loot
+					[100507] = true, -- small loot
+					[100515] = true, -- small loot
+					[100516] = true, -- small loot
+					[100518] = true, -- small loot
+					[100519] = true, -- small loot
+					[100520] = true, -- small loot
+					[100526] = true, -- small loot
+					[100527] = true, -- small loot
+					[100531] = true, -- small loot
+					[100532] = true, -- small loot
+					[100533] = true, -- small loot
+					[100535] = true, -- small loot
+					[100542] = true, -- small loot
+					[100548] = true, -- small loot
+					[100550] = true, -- small loot
+					[100556] = true, -- small loot
+					[100557] = true, -- small loot
+					[100565] = true, -- small loot
+					[100566] = true, -- small loot
+					[100568] = true, -- small loot
+					[100569] = true, -- small loot
+					[100570] = true, -- small loot
+					[100574] = true, -- greed cache
+					[100578] = true, -- greed cache
+					[100690] = true, -- dogtag
+					[401423] = true, -- small loot
+					[401425] = true, -- small loot
+					[401426] = true, -- small loot
+					[401427] = true, -- small loot
+					[401435] = true, -- small loot
+					[401442] = true, -- small loot
+					[401443] = true, -- small loot
+					[401447] = true, -- small loot
+					[401449] = true, -- small loot
+					[401450] = true, -- small loot
+				},
+				-- Blinding Heimdall
+				flakturm = {
+					[200235] = true, -- crowbar
+					[200237] = true, -- crowbar
+					[200238] = true, -- crowbar
+					[200239] = true, -- crowbar
+					[800526] = true, -- small loot
+					[800536] = true, -- small loot
+					[800544] = true, -- small loot
+					[800545] = true, -- small loot
+					[800546] = true, -- small loot
+					[800547] = true, -- small loot
+					[800556] = true, -- small loot
+					[800557] = true, -- small loot
+					[800559] = true, -- small loot
+					[800560] = true, -- small loot
+					[800561] = true, -- small loot
+					[800569] = true, -- small loot
+					[800571] = true, -- small loot
+					[800572] = true, -- small loot
+					[800573] = true, -- small loot
+					[800584] = true, -- small loot
+					[800600] = true, -- small loot
+					[800602] = true, -- small loot
+					[800621] = true, -- small loot
+					[800624] = true, -- small loot
+					[800625] = true, -- small loot
+					[800637] = true, -- small loot
+					[800647] = true, -- small loot
+					[800648] = true, -- small loot
+					[800658] = true, -- small loot
+					[800659] = true, -- small loot
+					[800670] = true, -- small loot
+					[800674] = true, -- small loot
+				},
+			},
 		},
 	}
 
@@ -255,6 +406,18 @@ if string.lower(RequiredScript) == "lib/setups/setup" then
 
 	function GameInfoManager:_interactive_unit_event(event, key, data)
 		local lookup = GameInfoManager._INTERACTIONS
+
+		local job_id = managers.raid_job:current_job_id()
+        if lookup.IGNORE_IDS[job_id] and (lookup.IGNORE_IDS[job_id][data.editor_id % 1000000]) then
+            return
+        end
+		if managers.raid_job:current_job_type() == OperationsTweakData.JOB_TYPE_OPERATION then
+			if lookup.IGNORE_IDS[job_id] and lookup.IGNORE_IDS[job_id][managers.raid_job:current_operation_event().level_id] and
+				lookup.IGNORE_IDS[job_id][managers.raid_job:current_operation_event().level_id][data.editor_id % 1000000]  then
+				return
+			end
+		end
+
 		local interact_clbk = lookup.INTERACTION_TO_CALLBACK[data.interact_id]
 		if interact_clbk then
 			self[interact_clbk](self, event, key, data)
@@ -317,7 +480,7 @@ if string.lower(RequiredScript) == "lib/setups/setup" then
 		if event == "add" then
 			if not self._loot[key] then
 				local composite_lookup = GameInfoManager._INTERACTIONS.COMPOSITE_LOOT_UNITS
-				local count = composite_lookup[data.editor_id] or composite_lookup[data.interact_id] or 1
+				local count = composite_lookup[data.editor_id % 1000000] or composite_lookup[data.interact_id] or 1
 
 				self._loot[key] = {unit = data.unit, carry_id = data.carry_id, count = count }
 				self:_listener_callback("loot", "add", key, self._loot[key])
@@ -330,7 +493,7 @@ if string.lower(RequiredScript) == "lib/setups/setup" then
 				self._loot[key] = nil
 			elseif event == "interact" then
 				local composite_lookup = GameInfoManager._INTERACTIONS.COMPOSITE_LOOT_UNITS
-				local count = composite_lookup[data.editor_id] or composite_lookup[data.interact_id] or 1
+				local count = composite_lookup[data.editor_id % 1000000] or composite_lookup[data.interact_id] or 1
 				local change = count - self._loot[key].count
 
 				self._loot[key].count = count
