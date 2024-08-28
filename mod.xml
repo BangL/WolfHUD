@@ -159,17 +159,13 @@
 		<hook source_file="lib/managers/menu/raid_menu/controls/raidguicontrolgrenadeweaponstats"	file="modules/HiddenStats.lua"				/>
 	</hooks>
 
-	<keybinds>
-
-		<!-- Restart Hotkey -->
-		<keybind keybind_id="wolfganghud_restart_hotkey"
-				name="wolfganghud_restart_hotkey_title"
-				localized="true"
-				run_in_menu="false"
-				run_in_game="true"
-				run_in_paused_game="true"
-				script_path="keybinds/RestartHotkey.lua" />
-
-	</keybinds>
+	<!-- Restart Hotkey -->
+	<keybind keybind_id="wolfganghud_restart_hotkey"
+			name="wolfganghud_restart_hotkey_title"
+			localized="true"
+			run_in_menu="false"
+			run_in_game="true"
+			run_in_paused_game="true"
+			script_path="keybinds/RestartHotkey.lua" />
 
 </table>
