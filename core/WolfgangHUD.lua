@@ -123,7 +123,7 @@ if not _G.WolfgangHUD then
 	end
 
 	function WolfgangHUD:getVersion()
-		local mod = BeardLib and BeardLib.Frameworks.Base:GetModByName(WolfgangHUD.identifier or "")
+		local mod = BeardLib and BeardLib.Frameworks[FrameworkBase.type_name]:GetModByName(WolfgangHUD.identifier or "")
 		return tostring(mod and mod.AssetUpdates and mod.AssetUpdates.version or "(n/a)")
 	end
 
