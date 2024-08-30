@@ -19,7 +19,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 			ICON_MAP = {
 
 				-- VALUABLES
-				consumable_mission = { texture = "ui/atlas/raid_atlas_hud", texture_rect = { 963, 175, 56, 56 } },
+				folder_outlaw = { texture = "ui/atlas/raid_atlas_hud", texture_rect = { 963, 175, 56, 56 } },
 				regular_cache_box = { texture = "ui/atlas/raid_atlas_hud", texture_rect = { 677, 1317, 32, 32 } },
 				hold_take_loot = { texture = "ui/atlas/raid_atlas_missions", texture_rect = { 8, 68, 64, 64 } },
 				press_take_loot = { texture = "ui/atlas/raid_atlas_missions", texture_rect = { 8, 68, 64, 64 } },

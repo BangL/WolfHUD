@@ -234,7 +234,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 	HUDListManager.PICKUP_TYPES = {
 
 		-- valuables
-		consumable_mission =				"document",
+		folder_outlaw =						"document",
 		regular_cache_box =					"cache",
 		hold_take_loot =					"loot",
 		press_take_loot =					"loot",

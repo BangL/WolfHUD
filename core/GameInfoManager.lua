@@ -19,7 +19,7 @@ if string.lower(RequiredScript) == "lib/setups/setup" then
 		INTERACTION_TO_CALLBACK = {
 
 			-- valuables
-			consumable_mission =				"_pickup_interaction_handler", -- outlaw raid documents
+			folder_outlaw =						"_pickup_interaction_handler", -- outlaw raid documents
 			regular_cache_box =					"_pickup_interaction_handler", -- gold cache
 			hold_take_loot =					"_pickup_interaction_handler", -- loot
 			press_take_loot =					"_pickup_interaction_handler", -- loot
