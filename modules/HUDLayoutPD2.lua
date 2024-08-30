@@ -107,6 +107,13 @@ elseif string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
             - self._teammate_panels[self.PLAYER_PANEL]:h() - self.WOLFGANGHUD_PD2LAYOUT_PADDING
     end
 
+    function HUDManager:get_vanilla_notification_bottom()
+        if managers.hudlist and managers.hudlist:get_y() then
+            return managers.hudlist:get_y() - self.WOLFGANGHUD_PD2LAYOUT_PADDING
+        end
+        return nil
+    end
+
     function HUDManager:get_pd2style_notification_bottom()
         return self:get_pd2style_carry_bottom() -
             --(self._carry_hud._object:alpha() ~= 0 and
@@ -390,11 +397,16 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudnotification" then
     local _fit_size_original = HUDNotificationWeaponChallenge._fit_size
 
     function HUDNotification:wh_fix_bottom(original_init_func, ...)
+        if not self.ORIGINAL_BOTTOM then
+            self.ORIGINAL_BOTTOM = self.BOTTOM
+        end
         if managers.hud:wolfganghud_layout_is_pd2() then
             self.BOTTOM = managers.hud:get_pd2style_notification_bottom() -- fixes all other (but HUDNotification and HUDNotificationWeaponChallenge)
+        elseif managers.hud:get_vanilla_notification_bottom() then
+            self.BOTTOM = managers.hud:get_vanilla_notification_bottom()
         end
         original_init_func(self, ...)
-        if managers.hud:wolfganghud_layout_is_pd2() then -- fixes HUDNotification
+        if self.ORIGINAL_BOTTOM ~= self.BOTTOM then -- fixes HUDNotification
             self._object:set_bottom(self.BOTTOM)
         end
     end
@@ -402,7 +414,7 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudnotification" then
     -- fixes HUDNotification
     function HUDNotification:init(notification_data, ...)
         self:wh_fix_bottom(init_original, notification_data, ...)
-        if managers.hud:wolfganghud_layout_is_pd2() then -- fixes HUDNotification
+        if self.ORIGINAL_BOTTOM ~= self.BOTTOM then -- fixes HUDNotification
             if self._panel_shape_y and self._panel_shape_h then
                 self._panel_shape_y = self.BOTTOM - self._panel_shape_h
             end
@@ -436,7 +448,7 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudnotification" then
 
     function HUDNotificationGreedItem:_create_items_panel(...)
         _create_items_panel_original(self, ...)
-        if managers.hud:wolfganghud_layout_is_pd2() then
+        if self.ORIGINAL_BOTTOM ~= self.BOTTOM then
             self._items_panel:set_bottom((self.BOTTOM - self.HEIGHT) + self.ITEMS_HEIGHT / 2)
         end
     end
@@ -450,13 +462,15 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudnotification" then
     function HUDNotificationWeaponChallenge:_create_panel(...)
         if managers.hud:wolfganghud_layout_is_pd2() then
             self.Y = managers.hud:get_pd2style_notification_bottom() - self.HEIGHT
+        elseif managers.hud:get_vanilla_notification_bottom() then
+            self.Y = managers.hud:get_vanilla_notification_bottom() - self.HEIGHT
         end
         _create_panel_original(self, ...)
     end
 
     function HUDNotificationWeaponChallenge:_fit_size(...)
         _fit_size_original(self, ...)
-        if managers.hud:wolfganghud_layout_is_pd2() and self.Y then
+        if self.Y then
             self._object:set_y(self.Y)
         end
     end

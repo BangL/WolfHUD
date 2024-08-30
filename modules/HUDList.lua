@@ -334,6 +334,21 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 		end
 	end
 
+    function HUDListManager:get_y()
+		local lowest_y = nil
+		for _, list in pairs(self:lists()) do
+			for _, sublist in pairs(list:items()) do
+				for _, item in pairs(sublist:items()) do
+					local abs_y = list:y() + sublist:y() + item:y()
+					if item:visible() and item:is_active() and ((lowest_y == nil) or (abs_y < lowest_y)) then
+						lowest_y = abs_y
+					end
+				end
+			end
+		end
+        return lowest_y
+    end
+
 	function HUDListManager:list(name)
 		return self._lists[name]
 	end
