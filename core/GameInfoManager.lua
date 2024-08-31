@@ -297,6 +297,32 @@ if string.lower(RequiredScript) == "lib/setups/setup" then
 					[800674] = true, -- small loot
 				},
 			},
+
+			-- rhinegold
+			oper_flamable = {
+				-- Urgent Delivery
+				bridge = {
+					[100818] = true, -- small loot
+					[100822] = true, -- small loot
+					[100864] = true, -- small loot
+					[100865] = true, -- small loot
+					[100872] = true, -- small loot
+					[100873] = true, -- small loot
+					[100881] = true, -- small loot
+					[100884] = true, -- small loot
+					[100893] = true, -- small loot
+					[100894] = true, -- small loot
+					[100904] = true, -- small loot
+					[100909] = true, -- small loot
+				},
+				-- Firestarter
+				castle = {
+					[100282] = true, -- dogtag
+					[100239] = true, -- dogtag
+					[100623] = true, -- greed cache
+					[100629] = true, -- greed cache
+				},
+			},
 		},
 	}
 
@@ -445,8 +471,11 @@ if string.lower(RequiredScript) == "lib/setups/setup" then
 		if event == "add" then
 			if not self._pickups[key] then
 				self._pickups[key] = {unit = data.unit, interact_id = data.interact_id, value = 1}
-				if WolfgangHUD:getSetting({"HUDList", "use_dogtag_values"}, true) and data.unit.loot_drop and data.unit:loot_drop() then
+				if data.unit.loot_drop and data.unit:loot_drop() and WolfgangHUD:getSetting({"HUDList", "use_dogtag_values"}, true) then
 					self._pickups[key].value = data.unit:loot_drop():value()
+				end
+				if data.unit.greed and data.unit:greed() and data.unit:greed().reserve_left and data.unit:greed():reserve_left() == 0 then -- ignore emptied greed caches as drop-in
+					return
 				end
 				self:_listener_callback("pickup", "add", key, self._pickups[key])
 				self:_pickup_count_event("change", data.interact_id, self._pickups[key].value, self._pickups[key])
@@ -627,7 +656,7 @@ elseif string.lower(RequiredScript) == "lib/units/pickups/greedcacheitem" then
 	function GreedCacheItem:on_interacted(amount, ...)
 		local pickup_amount = on_interacted_original(self, amount, ...)
 
-		if self._current_amount == 0 then
+		if self:reserve_left() == 0 then
 			local unit = self._unit
 			local key = tostring(unit:key())
 			local editor_id = unit:editor_id()
