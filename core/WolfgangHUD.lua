@@ -123,8 +123,13 @@ if not _G.WolfgangHUD then
 	end
 
 	function WolfgangHUD:getVersion()
-		local mod = BLT and BLT.Mods:GetMod(WolfgangHUD.identifier or "")
-		return tostring(mod and mod:GetVersion() or "(n/a)")
+		if BeardLib then
+			local mod = BeardLib.Frameworks.Base:GetModByName(WolfgangHUD.identifier or "")
+			return tostring(mod and mod.AssetUpdates and mod.AssetUpdates.version or "(n/a)")
+		elseif BLT then
+			local mod = BLT.Mods:GetMod(WolfgangHUD.identifier or "")
+			return tostring(mod and mod:GetVersion() or "(n/a)")
+		end
 	end
 
 	function WolfgangHUD:SafeTableConcat(tbl, str)
