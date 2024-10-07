@@ -1,0 +1,192 @@
+<?xml version="1.0"?>
+<mod name="WolfgangHUD"
+	description="This is a Mod Collection of HUD altering scripts, as well as quality of life changes to the game and its menus."
+	priority="1"
+	author="BangL"
+	version="2.30.2"
+	color="17 68 170">
+
+    <updates>
+        <update provider="modworkshop" identifier="24551"/>
+    </updates>
+
+	<localization directory="loc">
+		<loc file="chinese_simplified.json" language="chinese_simplified"/>
+		<loc file="english.json" language="english"/>
+		<loc file="french.json" language="french"/>
+		<loc file="german.json" language="german"/>
+		<loc file="italian.json" language="italian"/>
+		<loc file="russian.json" language="russian"/>
+		<loc file="spanish.json" language="spanish"/>
+	</localization>
+
+	<hooks>
+		<group script_path="core/">
+			<pre hook_id="lib/entry" :script_path="WolfgangHUD.lua"/>
+			<post hook_id="lib/managers/menu/menucomponentmanager" :script_path="WolfgangHUDMenu.lua"/>
+
+			<group :script_path="GameInfoManager.lua">
+				<post hook_id="lib/setups/setup"/>
+				<post hook_id="lib/managers/enemymanager"/>
+				<post hook_id="lib/managers/objectinteractionmanager"/>
+				<post hook_id="lib/units/interactions/interactionext"/>
+				<post hook_id="lib/units/pickups/greedcacheitem"/>
+			</group>
+
+			<group :script_path="WaypointsManager.lua">
+				<post hook_id="lib/setups/setup" />
+				<post hook_id="lib/managers/hudmanagerpd2" />
+			</group>
+		</group>
+
+		<group script_path="modules/">
+			<group :script_path="HUDTweaks.lua">
+				<post hook_id="lib/managers/hud/hudteammatebase" />
+				<post hook_id="lib/managers/hud/hudteammatepeer" />
+				<post hook_id="lib/managers/hud/hudteammateplayer" />
+				<post hook_id="lib/units/beings/player/huskplayermovement" />
+			</group>
+
+			<group :script_path="HUDLayoutPD2.lua">
+				<post hook_id="lib/managers/hudmanager" />
+				<post hook_id="lib/managers/hudmanagerpd2" />
+				<post hook_id="lib/managers/hud/hudcarry" />
+				<post hook_id="lib/managers/hud/hudobjectivebase" />
+				<post hook_id="lib/managers/hud/hudobjectivesub" />
+				<post hook_id="lib/managers/hud/hudobjectivemain" />
+				<post hook_id="lib/managers/hud/hudnotification" />
+				<post hook_id="lib/managers/hud/huddriving" />
+				<post hook_id="lib/managers/hud/hudturret" />
+				<post hook_id="lib/managers/hud/hudsaveicon" />
+				<post hook_id="lib/managers/hud/hudplayercustody" />
+			</group>
+
+			<group :script_path="CustomWaypoints.lua">
+				<post hook_id="lib/managers/hudmanagerpd2" />
+				<post hook_id="lib/units/vehicles/vehicledrivingext" />
+			</group>
+
+			<group :script_path="DamagePopup.lua">
+				<post hook_id="lib/units/civilians/civiliandamage" />
+				<post hook_id="lib/units/enemies/cop/copdamage" />
+			</group>
+
+			<group :script_path="StraightToMainMenu.lua">
+				<post hook_id="lib/setups/menusetup" />
+				<post hook_id="lib/states/menutitlescreenstate" />
+			</group>
+
+			<group :script_path="HUDList.lua">
+				<post hook_id="lib/managers/hudmanagerpd2" />
+			</group>
+
+			<group :script_path="HUDSuspicion.lua">
+				<post hook_id="lib/managers/hudmanagerpd2" />
+				<post hook_id="lib/managers/hud/hudsuspicion" />
+			</group>
+
+			<group :script_path="KillCounter.lua">
+				<post hook_id="lib/managers/hudmanagerpd2"/>
+				<post hook_id="lib/managers/raidjobmanager"/>
+				<post hook_id="lib/managers/hud/hudteammatebase"/>
+				<post hook_id="lib/managers/hud/hudteammateai"/>
+				<post hook_id="lib/managers/hud/hudteammatepeer"/>
+				<post hook_id="lib/managers/hud/hudteammateplayer"/>
+				<post hook_id="lib/units/enemies/cop/copdamage"/>
+				<post hook_id="lib/units/equipment/sentry_gun/sentrygunbase"/>
+			</group>
+
+			<group :script_path="Accuracy.lua">
+				<post hook_id="lib/managers/hudmanagerpd2"/>
+				<post hook_id="lib/managers/raidjobmanager"/>
+				<post hook_id="lib/managers/statisticsmanager"/>
+				<post hook_id="lib/managers/hud/hudteammateplayer"/>
+			</group>
+
+			<group :script_path="InteractionTimer.lua">
+				<post hook_id="lib/managers/hudmanagerpd2"/>
+				<post hook_id="lib/units/beings/player/states/playerstandard"/>
+				<post hook_id="lib/units/beings/player/states/playerdriving"/>
+				<post hook_id="lib/units/beings/player/states/playerfoxhole"/>
+				<post hook_id="lib/managers/hud/hudinteraction"/>
+				<post hook_id="lib/managers/menu/progressbarguiobject"/>
+			</group>
+
+			<group :script_path="InteractionTweaks.lua">
+				<post hook_id="lib/units/interactions/interactionext"/>
+				<post hook_id="lib/units/pickups/healthpackpickup"/>
+			</group>
+
+			<group :script_path="ReadyOnNumEnter.lua">
+				<post hook_id="lib/managers/hud/hudchat"/>
+			</group>
+
+			<group :script_path="FloatingHealthBars.lua">
+				<post hook_id="lib/setups/gamesetup"/>
+			</group>
+
+			<group :script_path="NoSlowMo.lua">
+				<post hook_id="lib/tweak_data/timespeedeffecttweakdata"/>
+			</group>
+
+			<group :script_path="AutoReload.lua">
+				<post hook_id="lib/units/beings/player/states/playerstandard"/>
+			</group>
+
+			<group :script_path="InstantRestart.lua">
+				<post hook_id="lib/tweak_data/tweakdata"/>
+			</group>
+
+			<group :script_path="KickAFriend.lua">
+				<post hook_id="lib/network/base/basenetworksession"/>
+			</group>
+
+			<group :script_path="RealisticReload.lua">
+				<post hook_id="lib/units/weapons/raycastweaponbase"/>
+			</group>
+
+			<group :script_path="FOVBasedSensitivity.lua">
+				<post hook_id="lib/managers/menumanager"/>
+			</group>
+
+			<group :script_path="MenuTweaks.lua">
+				<post hook_id="lib/managers/menumanager"/>
+				<post hook_id="lib/managers/menu/raid_menu/raidmainmenugui"/>
+				<post hook_id="lib/managers/menu/raid_menu/missionjoingui"/>
+			</group>
+
+			<group :script_path="NoToastSound.lua">
+				<post hook_id="lib/managers/hud/hudtoastnotification"/>
+			</group>
+
+			<group :script_path="GameSettings.lua">
+				<post hook_id="lib/managers/menu/raid_menu/missionselectiongui"/>
+				<post hook_id="lib/managers/criminalsmanager"/>
+				<post hook_id="lib/managers/dynamicresourcemanager"/>
+				<post hook_id="lib/managers/menu/raid_menu/raidmainmenugui"/>
+			</group>
+
+			<group :script_path="StealthableMissions.lua">
+				<post hook_id="lib/managers/menu/raid_menu/controls/raidguicontrollistitemraids"/>
+			</group>
+
+			<group :script_path="HiddenStats.lua">
+				<post hook_id="lib/managers/menu/menucomponentmanager"/>
+				<post hook_id="lib/managers/menu/raid_menu/weaponselectiongui"/>
+				<post hook_id="lib/managers/menu/raid_menu/controls/raidguicontrolweaponstats"/>
+				<post hook_id="lib/managers/menu/raid_menu/controls/raidguicontrolmeleeweaponstats"/>
+				<post hook_id="lib/managers/menu/raid_menu/controls/raidguicontrolgrenadeweaponstats"/>
+			</group>
+		</group>
+	</hooks>
+
+	<keybinds>
+		<keybind keybind_id="wolfganghud_restart_hotkey"
+				name="wolfganghud_restart_hotkey_title"
+				localized="true"
+				run_in_menu="false"
+				run_in_game="true"
+				run_in_paused_game="true"
+				script_path="keybinds/RestartHotkey.lua" />
+	</keybinds>
+</mod>
