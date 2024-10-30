@@ -393,6 +393,7 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudnotification" then
     local init_greeditem_original = HUDNotificationGreedItem.init
     local _create_items_panel_original = HUDNotificationGreedItem._create_items_panel
     local init_cardfail_original = HUDNotificationCardFail.init
+    local init_candyprogression_original = HUDNotificationCandyProgression.init
     local _create_panel_original = HUDNotificationWeaponChallenge._create_panel
     local _fit_size_original = HUDNotificationWeaponChallenge._fit_size
 
@@ -402,7 +403,7 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudnotification" then
         end
         if managers.hud:wolfganghud_layout_is_pd2() then
             self.BOTTOM = managers.hud:get_pd2style_notification_bottom() -- fixes all other (but HUDNotification and HUDNotificationWeaponChallenge)
-        elseif managers.hud:get_vanilla_notification_bottom() then
+        else--if managers.hud:wolfganghud_layout_is_vanilla() then
             self.BOTTOM = managers.hud:get_vanilla_notification_bottom()
         end
         original_init_func(self, ...)
@@ -456,6 +457,11 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudnotification" then
     -- fixes HUDNotificationCardFail
     function HUDNotificationCardFail:init(notification_data, ...)
         self:wh_fix_bottom(init_cardfail_original, notification_data, ...)
+    end
+
+    -- fixes HUDNotificationCandyProgression
+    function HUDNotificationCandyProgression:init(notification_data, ...)
+        self:wh_fix_bottom(init_candyprogression_original, notification_data, ...)
     end
 
     -- fixes HUDNotificationWeaponChallenge
@@ -587,5 +593,19 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudplayercustody" then
 
         self._spectator_panel:set_bottom(parent:h() - HUDTeammatePeer.DEFAULT_H -
             managers.hud.WOLFGANGHUD_PD2LAYOUT_PADDING)
+    end
+elseif string.lower(RequiredScript) == "lib/managers/hud/hudstatuseffects" then
+    local init_original = HUDStatusEffects.init
+
+    function HUDStatusEffects:init(hud, ...)
+        if not self.ORIGINAL_BOTTOM then
+            self.ORIGINAL_BOTTOM = self.BOTTOM
+        end
+        if managers.hud:wolfganghud_layout_is_pd2() then
+            self.BOTTOM = 160
+        else
+            self.BOTTOM = self.ORIGINAL_BOTTOM
+        end
+        return init_original(self, hud, ...)
     end
 end

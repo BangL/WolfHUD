@@ -12,7 +12,7 @@
 	<auto_updates
 			provider="modworkshop"
 			id="24551"
-			version="2.30.2"/>
+			version="2.30.3"/>
 
 	<localization directory="loc" default="english.json">
 		<loc file="chinese_simplified.json" language="chinese_simplified"/>
@@ -62,6 +62,7 @@
 		<hook source_file="lib/managers/hud/hudturret"												file="modules/HUDLayoutPD2.lua"				/>
 		<hook source_file="lib/managers/hud/hudsaveicon"											file="modules/HUDLayoutPD2.lua"				/>
 		<hook source_file="lib/managers/hud/hudplayercustody"										file="modules/HUDLayoutPD2.lua"				/>
+		<hook source_file="lib/managers/hud/hudstatuseffects"										file="modules/HUDLayoutPD2.lua"				/>
 
 		<!-- Custom Waypoints -->
 		<hook source_file="lib/managers/hudmanagerpd2"												file="modules/CustomWaypoints.lua"			/>

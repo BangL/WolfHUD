@@ -3,7 +3,7 @@
 	description="This is a Mod Collection of HUD altering scripts, as well as quality of life changes to the game and its menus."
 	priority="1"
 	author="BangL"
-	version="2.30.2"
+	version="2.30.3"
 	color="17 68 170">
 
     <updates>
@@ -59,6 +59,7 @@
 				<post hook_id="lib/managers/hud/hudturret" />
 				<post hook_id="lib/managers/hud/hudsaveicon" />
 				<post hook_id="lib/managers/hud/hudplayercustody" />
+				<post hook_id="lib/managers/hud/hudstatuseffects" />
 			</group>
 
 			<group :script_path="CustomWaypoints.lua">
@@ -180,7 +181,7 @@
 		</group>
 	</hooks>
 
-	<keybinds>
+	<!-- <keybinds> -->
 		<keybind keybind_id="wolfganghud_restart_hotkey"
 				name="wolfganghud_restart_hotkey_title"
 				localized="true"
@@ -188,5 +189,5 @@
 				run_in_game="true"
 				run_in_paused_game="true"
 				script_path="keybinds/RestartHotkey.lua" />
-	</keybinds>
+	<!-- </keybinds> -->
 </mod>
