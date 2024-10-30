@@ -181,7 +181,7 @@
 		</group>
 	</hooks>
 
-	<!-- <keybinds> -->
+	<keybinds>
 		<keybind keybind_id="wolfganghud_restart_hotkey"
 				name="wolfganghud_restart_hotkey_title"
 				localized="true"
@@ -189,5 +189,5 @@
 				run_in_game="true"
 				run_in_paused_game="true"
 				script_path="keybinds/RestartHotkey.lua" />
-	<!-- </keybinds> -->
+	</keybinds>
 </mod>
