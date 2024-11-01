@@ -147,7 +147,7 @@ if string.lower(RequiredScript) == "lib/setups/setup" then
 			[141958] = 4, [141957] = 3, [141956] = 2, --[141955] = 1, -- Kelly vault gold
 			[141962] = 4, [141961] = 3, [141960] = 2, --[141959] = 1, -- Kelly vault gold
 		},
-        IGNORE_IDS = {
+		IGNORE_IDS = {
 			-- Extraction
 			spies_test = {
 				[100614] = true, -- small loot in unreachable wall part
@@ -158,15 +158,33 @@ if string.lower(RequiredScript) == "lib/setups/setup" then
 				-- Enigmatic
 				gold_rush = {
 					[100695] = true, -- dogtag
+					[100696] = true, -- dogtag
 					[100698] = true, -- dogtag
 					[100700] = true, -- dogtag
+					[100981] = true, -- small loot
 					[101157] = true, -- greed cache
+					[101159] = true, -- greed cache
+					[101160] = true, -- greed cache
+					[101235] = true, -- small loot
+					[101236] = true, -- small loot
+					[101237] = true, -- small loot
+					[101238] = true, -- small loot
+					[101239] = true, -- small loot
+					[101240] = true, -- small loot
 					[101241] = true, -- small loot
+					[101242] = true, -- small loot
+					[101243] = true, -- small loot
+					[101245] = true, -- small loot
+					[101246] = true, -- small loot
+					[101247] = true, -- small loot
 					[101248] = true, -- small loot
+					[101284] = true, -- greed cache
+					[101285] = true, -- greed cache
 				},
 				-- Rolling Stock
 				train_yard = {
 					[100361] = true, -- small loot
+					[100362] = true, -- small loot
 					[100366] = true, -- small loot
 					[100367] = true, -- small loot
 					[100370] = true, -- small loot
@@ -175,12 +193,15 @@ if string.lower(RequiredScript) == "lib/setups/setup" then
 					[100374] = true, -- small loot
 					[100376] = true, -- small loot
 					[100378] = true, -- small loot
+					[100383] = true, -- small loot
 					[100384] = true, -- small loot
 					[100387] = true, -- small loot
 					[100391] = true, -- small loot
 					[100392] = true, -- small loot
+					[100393] = true, -- small loot
 					[100394] = true, -- small loot
 					[100395] = true, -- small loot
+					[100397] = true, -- small loot
 					[100398] = true, -- small loot
 					[100399] = true, -- small loot
 					[100400] = true, -- small loot
@@ -188,6 +209,9 @@ if string.lower(RequiredScript) == "lib/setups/setup" then
 					[100405] = true, -- small loot
 					[100406] = true, -- small loot
 					[100407] = true, -- small loot
+					[100408] = true, -- small loot
+					[100410] = true, -- small loot
+					[100415] = true, -- small loot
 					[100417] = true, -- small loot
 					[100419] = true, -- small loot
 					[100422] = true, -- small loot
@@ -199,14 +223,19 @@ if string.lower(RequiredScript) == "lib/setups/setup" then
 					[100433] = true, -- small loot
 					[100436] = true, -- small loot
 					[100438] = true, -- small loot
+					[100439] = true, -- small loot
 					[100441] = true, -- small loot
 					[100442] = true, -- small loot
+					[100443] = true, -- small loot
 					[100444] = true, -- small loot
+					[100445] = true, -- small loot
 					[100446] = true, -- small loot
 					[100449] = true, -- small loot
 					[100450] = true, -- small loot
 					[100452] = true, -- small loot
 					[100455] = true, -- small loot
+					[100457] = true, -- small loot
+					[100459] = true, -- small loot
 					[100460] = true, -- small loot
 					[100462] = true, -- small loot
 					[100464] = true, -- small loot
@@ -214,18 +243,23 @@ if string.lower(RequiredScript) == "lib/setups/setup" then
 					[100468] = true, -- small loot
 					[100469] = true, -- small loot
 					[100470] = true, -- small loot
+					[100471] = true, -- small loot
+					[100472] = true, -- small loot
 					[100474] = true, -- small loot
 					[100479] = true, -- small loot
 					[100481] = true, -- small loot
 					[100482] = true, -- small loot
 					[100483] = true, -- small loot
+					[100485] = true, -- small loot
 					[100487] = true, -- small loot
 					[100488] = true, -- small loot
 					[100493] = true, -- small loot
 					[100495] = true, -- small loot
+					[100502] = true, -- small loot
 					[100503] = true, -- small loot
 					[100505] = true, -- small loot
 					[100507] = true, -- small loot
+					[100509] = true, -- small loot
 					[100515] = true, -- small loot
 					[100516] = true, -- small loot
 					[100518] = true, -- small loot
@@ -233,30 +267,43 @@ if string.lower(RequiredScript) == "lib/setups/setup" then
 					[100520] = true, -- small loot
 					[100526] = true, -- small loot
 					[100527] = true, -- small loot
+					[100528] = true, -- small loot
 					[100531] = true, -- small loot
 					[100532] = true, -- small loot
 					[100533] = true, -- small loot
 					[100535] = true, -- small loot
+					[100537] = true, -- small loot
 					[100542] = true, -- small loot
+					[100543] = true, -- small loot
+					[100546] = true, -- small loot
+					[100547] = true, -- small loot
 					[100548] = true, -- small loot
 					[100550] = true, -- small loot
+					[100551] = true, -- small loot
 					[100556] = true, -- small loot
 					[100557] = true, -- small loot
+					[100564] = true, -- small loot
 					[100565] = true, -- small loot
 					[100566] = true, -- small loot
 					[100568] = true, -- small loot
 					[100569] = true, -- small loot
 					[100570] = true, -- small loot
 					[100574] = true, -- greed cache
+					[100576] = true, -- greed cache
 					[100578] = true, -- greed cache
 					[100690] = true, -- dogtag
 					[401423] = true, -- small loot
 					[401425] = true, -- small loot
 					[401426] = true, -- small loot
 					[401427] = true, -- small loot
+					[401428] = true, -- small loot
 					[401435] = true, -- small loot
+					[401438] = true, -- small loot
+					[401439] = true, -- small loot
+					[401440] = true, -- small loot
 					[401442] = true, -- small loot
 					[401443] = true, -- small loot
+					[401444] = true, -- small loot
 					[401447] = true, -- small loot
 					[401449] = true, -- small loot
 					[401450] = true, -- small loot
@@ -434,9 +481,9 @@ if string.lower(RequiredScript) == "lib/setups/setup" then
 		local lookup = GameInfoManager._INTERACTIONS
 
 		local job_id = managers.raid_job:current_job_id()
-        if lookup.IGNORE_IDS[job_id] and (lookup.IGNORE_IDS[job_id][data.editor_id % 1000000]) then
-            return
-        end
+		if lookup.IGNORE_IDS[job_id] and (lookup.IGNORE_IDS[job_id][data.editor_id % 1000000]) then
+			return
+		end
 		if managers.raid_job:current_job_type() == OperationsTweakData.JOB_TYPE_OPERATION then
 			if lookup.IGNORE_IDS[job_id] and lookup.IGNORE_IDS[job_id][managers.raid_job:current_operation_event().level_id] and
 				lookup.IGNORE_IDS[job_id][managers.raid_job:current_operation_event().level_id][data.editor_id % 1000000]  then
