@@ -1,3 +1,58 @@
+local function publish_settings()
+    if Network:is_server() then
+        managers.network:session():chk_server_joinable_state()
+        managers.network:update_matchmake_attributes()
+    end
+end
+
+local function set_difficulty(value, publish)
+    Global.DEFAULT_DIFFICULTY = value
+	tweak_data:set_difficulty(value)
+    if Global.game_settings then
+        Global.game_settings.difficulty = value
+    end
+    if Global.player_manager then
+        Global.player_manager.game_settings_difficulty = value
+    end
+    if publish then
+        publish_settings()
+    end
+end
+
+local function set_permission(value, publish)
+    Global.DEFAULT_PERMISSION = value
+    if Global.game_settings then
+        Global.game_settings.permission = value
+    end
+    if Global.player_manager then
+        Global.player_manager.game_settings_permission = value
+    end
+    if publish then
+        publish_settings()
+    end
+end
+
+local function set_drop_in_allowed(value, publish)
+    Global.game_settings.drop_in_allowed = value
+    if Global.player_manager then
+        Global.player_manager.game_settings_drop_in_allowed = value
+    end
+    if publish then
+        publish_settings()
+    end
+end
+
+local function set_team_ai(value, publish)
+    Global.game_settings.team_ai = value
+    Global.game_settings.selected_team_ai = value
+    if Global.player_manager then
+        Global.player_manager.game_settings_team_ai = value
+    end
+    if publish then
+        publish_settings()
+    end
+end
+
 if string.lower(RequiredScript) == "lib/managers/menu/raid_menu/missionselectiongui" then
     local _layout_settings_original = MissionSelectionGui._layout_settings
     local _layout_settings_offline_original = MissionSelectionGui._layout_settings_offline
@@ -28,11 +83,7 @@ if string.lower(RequiredScript) == "lib/managers/menu/raid_menu/missionselection
             WolfgangHUD:Save()
 
             if not Network:is_client() then
-                Global.player_manager.game_settings_difficulty = data.value
-                Global.game_settings.difficulty = data.value
-
-                managers.network:session():chk_server_joinable_state()
-                managers.network:update_matchmake_attributes()
+                set_difficulty(data.value, true)
             end
         end
 
@@ -48,10 +99,7 @@ if string.lower(RequiredScript) == "lib/managers/menu/raid_menu/missionselection
             WolfgangHUD:Save()
 
             if not Network:is_client() then
-                Global.game_settings.permission = data.value
-
-                managers.network:session():chk_server_joinable_state()
-                managers.network:update_matchmake_attributes()
+                set_permission(data.value, true)
             end
         end
 
@@ -67,10 +115,7 @@ if string.lower(RequiredScript) == "lib/managers/menu/raid_menu/missionselection
             WolfgangHUD:Save()
 
             if not Network:is_client() then
-                Global.game_settings.drop_in_allowed = value
-
-                managers.network:session():chk_server_joinable_state()
-                managers.network:update_matchmake_attributes()
+                set_drop_in_allowed(value, true)
             end
         end
 
@@ -154,8 +199,7 @@ if string.lower(RequiredScript) == "lib/managers/menu/raid_menu/missionselection
         end
 
         if not Network:is_client() then
-            Global.game_settings.team_ai = enabled          -- SP
-            Global.game_settings.selected_team_ai = enabled -- MP
+            set_team_ai(enabled)
         end
         ai_state:on_criminal_team_AI_enabled_state_changed()
     end
@@ -206,11 +250,7 @@ elseif string.lower(RequiredScript) == "lib/managers/criminalsmanager" then
 
     function CriminalsManager:on_mission_end_callback(...)
         on_mission_end_callback_original(self, ...)
-        if Global.game_settings.single_player then
-            Global.game_settings.team_ai = WolfgangHUD:getSetting({ "GAME_SETTINGS", "TEAM_AI" }, true)
-        else
-            Global.game_settings.selected_team_ai = WolfgangHUD:getSetting({ "GAME_SETTINGS", "TEAM_AI" }, true)
-        end
+        set_team_ai(WolfgangHUD:getSetting({ "GAME_SETTINGS", "TEAM_AI" }, true))
     end
 elseif string.lower(RequiredScript) == "lib/managers/dynamicresourcemanager" then
     -- chose to hook this, only because it's pretty much the first call in Setup:init_managers, right after building Global.game_settings
@@ -218,18 +258,11 @@ elseif string.lower(RequiredScript) == "lib/managers/dynamicresourcemanager" the
 
     function DynamicResourceManager:init(...)
         if Network:is_server() and Global.game_settings.level_id == OperationsTweakData.ENTRY_POINT_LEVEL then
-            Global.DEFAULT_DIFFICULTY = tweak_data.difficulties
-                [WolfgangHUD:getSetting({ "GAME_SETTINGS", "DIFFICULTY" }, 2)]
-            Global.game_settings.difficulty = Global.DEFAULT_DIFFICULTY
+            set_difficulty(tweak_data.difficulties[WolfgangHUD:getSetting({ "GAME_SETTINGS", "DIFFICULTY" }, 2)])
+            set_team_ai(WolfgangHUD:getSetting({ "GAME_SETTINGS", "TEAM_AI" }, true))
             if not Global.game_settings.single_player then
-                Global.DEFAULT_PERMISSION = tweak_data.permissions
-                    [WolfgangHUD:getSetting({ "GAME_SETTINGS", "PERMISSION" }, 1)]
-                Global.game_settings.permission = Global.DEFAULT_PERMISSION
-                Global.game_settings.drop_in_allowed = WolfgangHUD:getSetting({ "GAME_SETTINGS", "DROP_IN_ALLOWED" },
-                    true)
-                Global.game_settings.selected_team_ai = WolfgangHUD:getSetting({ "GAME_SETTINGS", "TEAM_AI" }, true)
-            else
-                Global.game_settings.team_ai = WolfgangHUD:getSetting({ "GAME_SETTINGS", "TEAM_AI" }, true)
+                set_permission(tweak_data.permissions[WolfgangHUD:getSetting({ "GAME_SETTINGS", "PERMISSION" }, 1)])
+                set_drop_in_allowed(WolfgangHUD:getSetting({ "GAME_SETTINGS", "DROP_IN_ALLOWED" }, true))
             end
         end
         return init_original(self, ...)
@@ -335,13 +368,7 @@ elseif string.lower(RequiredScript) == "lib/managers/menu/raid_menu/raidmainmenu
             WolfgangHUD:setSetting({ "GAME_SETTINGS", "PERMISSION" }, table.index_of(tweak_data.permissions, data.value))
             WolfgangHUD:Save()
 
-            Global.game_settings.permission = data.value
-            if Global.player_manager then
-                Global.player_manager.game_settings_permission = data.value
-            end
-
-            managers.network:session():chk_server_joinable_state()
-            managers.network:update_matchmake_attributes()
+            set_permission(data.value, true)
         end
     end
 
@@ -351,13 +378,7 @@ elseif string.lower(RequiredScript) == "lib/managers/menu/raid_menu/raidmainmenu
             WolfgangHUD:setSetting({ "GAME_SETTINGS", "DROP_IN_ALLOWED" }, value)
             WolfgangHUD:Save()
 
-            Global.game_settings.drop_in_allowed = value
-            if Global.player_manager then
-                Global.player_manager.game_settings_drop_in_allowed = value
-            end
-
-            managers.network:session():chk_server_joinable_state()
-            managers.network:update_matchmake_attributes()
+            set_drop_in_allowed(value, true)
         end
     end
 end
