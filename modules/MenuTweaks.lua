@@ -3,7 +3,7 @@ if string.lower(RequiredScript) == "lib/managers/menumanager" then
     function MenuManager:create_controller(...)
         create_controller_original(self, ...)
         if self._is_start_menu then
-            self:register_menu_new({
+            RaidMenuHelper:RegisterMenu({
                 input = "MenuInput",
                 name = "mission_join_menu",
                 renderer = "MenuRenderer",
