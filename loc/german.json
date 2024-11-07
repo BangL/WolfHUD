@@ -140,6 +140,7 @@
 	"wolfganghud_suspicion_scale_title"								:				"Skalierung",
 	"wolfganghud_suspicion_show_pd2hud_title"						:				"Zeige HUD im PD2-Stil",
 	"wolfganghud_suspicion_show_detected_text_title"				:				"Zeige 'Entdeckt' Text",
+	"wolfganghud_suspicion_show_ring_bg_title"						:				"Zeige Hintergrund-Ring",
 	"wolfganghud_suspicion_show_percentage_numeric_title"			:				"Zeige numerische Prozentzahl",
 	"wolfganghud_suspicion_percentage_color_start_title"			:				"Farbe (Start)",
 	"wolfganghud_suspicion_percentage_color_end_title"				:				"Farbe (Ende)",

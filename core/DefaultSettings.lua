@@ -61,10 +61,11 @@ if WolfgangHUD then
 			Suspicion = {
 				SCALE							= 1.0,
 				SHOW_PD2HUD						= true,
+				SHOW_DETECTED_TEXT				= false,
+				SHOW_RING_BG					= false,
 				SHOW_PERCENTAGE_NUMERIC			= true,
 				COLOR_START						= "light_blue",
 				COLOR_END						= "red",
-				SHOW_DETECTED_TEXT				= false,
 			},
 		},
 		MENU = {

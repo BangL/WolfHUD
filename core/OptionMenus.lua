@@ -999,6 +999,13 @@ if WolfgangHUD then
 							},
 							{
 								type = "toggle",
+								name_id = "wolfganghud_suspicion_show_ring_bg_title",
+								visible_reqs = {},
+								enabled_reqs = {},
+								value = { "HUD", "Suspicion", "SHOW_RING_BG" },
+							},
+							{
+								type = "toggle",
 								name_id = "wolfganghud_suspicion_show_percentage_numeric_title",
 								visible_reqs = {},
 								enabled_reqs = {},

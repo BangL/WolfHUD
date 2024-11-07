@@ -150,6 +150,9 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudsuspicion" then
         self._misc_panel:child("hud_stealth_eye"):set_visible(visible)
         self._misc_panel:child("hud_stealth_exclam"):set_visible(visible)
 
+        local show_ring = WolfgangHUD:getSetting({"HUD", "Suspicion", "SHOW_RING_BG"}, false)
+        self._suspicion_panel:child("ring"):set_visible(not show_ring)
+
         if WolfgangHUD:getSetting({"HUD", "Suspicion", "SHOW_PERCENTAGE_NUMERIC"}, true) and not self._text_animation then
             self._text_animation = self._suspicion_text_panel:animate(callback(self, self, "_animate_text"),
                 self._suspicion_text)

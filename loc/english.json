@@ -145,6 +145,7 @@
 	"wolfganghud_suspicion_scale_title"								:				"Scale",
 	"wolfganghud_suspicion_show_pd2hud_title"						:				"Show PD2-Style HUD",
 	"wolfganghud_suspicion_show_detected_text_title"				:				"Show 'Detected' Text",
+	"wolfganghud_suspicion_show_ring_bg_title"						:				"Show ring background",
 	"wolfganghud_suspicion_show_percentage_numeric_title"			:				"Show numeric percentage",
 	"wolfganghud_suspicion_percentage_color_start_title"			:				"Color (start)",
 	"wolfganghud_suspicion_percentage_color_end_title"				:				"Color (end)",
