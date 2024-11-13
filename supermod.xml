@@ -20,6 +20,19 @@
 		<loc file="spanish.json" language="spanish"/>
 	</localization>
 
+	<assets base_path="assets/" load="startup">
+		<group name="guis/textures/">
+			<group :name="pd2/">
+				<file :name="hud_stealth_exclam.texture"/>
+				<file :name="hud_stealth_eye.texture"/>
+				<file :name="hud_stealthmeter.texture"/>
+			</group>
+			<group :name="raid/">
+				<file :name="hud_waypoint_icons_01.texture"/>
+			</group>
+		</group>
+	</assets>
+
 	<hooks>
 		<group script_path="core/">
 			<pre hook_id="lib/entry" :script_path="WolfgangHUD.lua"/>

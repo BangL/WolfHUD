@@ -241,34 +241,6 @@ if not _G.WolfgangHUD then
 		return nil
 	end
 
-	function WolfgangHUD:getFilesR(root, sub, files)
-		local sub = sub or ''
-		local files = files or {}
-		local path = Application:nice_path(root .. sub, true)
-		for _, file in ipairs(SystemFS:list(path)) do
-			table.insert(files, '.' .. sub .. '/' .. file)
-		end
-		for _, sub_dir in ipairs(SystemFS:list(path, true)) do
-			files = self:getFilesR(root, sub .. '/' .. sub_dir, files)
-		end
-		return files
-	end
-
-	local new_textures = {}
-	local assets = Application:nice_path(WolfgangHUD.mod_path .. "/assets", false)
-	for _, file in ipairs(WolfgangHUD:getFilesR(assets)) do
-		local f = string.sub(file, 3)
-		local dot = string.find(string.reverse(f), '%.')
-		local id = string.sub(f, 1, -1 - dot)
-		local ext = string.sub(f, 1 - dot)
-		local file_id = Idstring(id)
-		DB:create_entry(Idstring(ext), file_id, assets .. '/' .. id .. '.' .. ext)
-		if (ext == "texture") then
-			table.insert(new_textures, file_id)
-		end
-	end
-	Application:reload_textures(new_textures)
-
 	if not WolfgangHUD.tweak_path then		-- Populate tweak data
 		local tweak_path = string.format("%s%s", WolfgangHUD.save_path, WolfgangHUD.tweak_file)
 		if not io.file_is_readable(tweak_path) then
