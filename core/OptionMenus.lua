@@ -174,6 +174,17 @@ if WolfgangHUD then
 								},
 								value = {"HUD", "PEER", "KILLCOUNTER", "SHOW_HEADSHOT_KILLS"},
 							},
+							{ -- Ping
+								type = "header",
+								text_id = "wolfganghud_client_ping_name",
+							},
+							{
+								type = "toggle",
+								name_id = "wolfganghud_show_client_ping_title",
+								visible_reqs = {},
+								enabled_reqs = {},
+								value = {"HUD", "PEER", "PING", "SHOW"},
+							},
 						},
 					},
 					{	-- Bot Panels

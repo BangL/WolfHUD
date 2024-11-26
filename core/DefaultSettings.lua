@@ -22,6 +22,9 @@ if WolfgangHUD then
 					SHOW_HEADSHOT_KILLS			= true,
 					COLOR						= "orange",
 				},
+				PING = {
+					SHOW                        = true,
+				},
 			},
 			AI = {
 				KILLCOUNTER = {

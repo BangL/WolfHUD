@@ -117,6 +117,11 @@
 				<post hook_id="lib/managers/hud/hudteammateplayer"/>
 			</group>
 
+			<group :script_path="Ping.lua">
+				<post hook_id="lib/managers/hudmanagerpd2"/>
+				<post hook_id="lib/managers/hud/hudteammatepeer"/>
+			</group>
+
 			<group :script_path="InteractionTimer.lua">
 				<post hook_id="lib/managers/hudmanagerpd2"/>
 				<post hook_id="lib/units/beings/player/states/playerstandard"/>

@@ -55,6 +55,8 @@
 	"wolfganghud_hide_in_camp_title"								:			"Hide WolfgangHUD panels in camp",
 	"wolfganghud_player_panel_options_name"							:		"Player panel",
 	"wolfganghud_peer_panels_options_name"							:		"Teammate panels",
+	"wolfganghud_client_ping_name"									:			"Client Pings",
+	"wolfganghud_show_client_ping_title"							:				"Enabled",
 	"wolfganghud_ai_panels_options_name"							:		"Bot panels",
 	"wolfganghud_killcount_name"									:			"Kill counters",
 	"wolfganghud_show_killcount_title"								:				"Enabled",
