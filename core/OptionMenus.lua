@@ -1281,13 +1281,6 @@ if WolfgangHUD then
 					},
 					{
 						type = "toggle",
-						name_id = "wolfganghud_show_detection_risk_title",
-						value = {"MENU", "SHOW_DETECTION_RISK"},
-						visible_reqs = {},
-						enabled_reqs = {},
-					},
-					{
-						type = "toggle",
 						name_id = "wolfganghud_convert_sizes_meters_title",
 						value = {"MENU", "CONVERT_SIZES_TO_METERS"},
 						visible_reqs = {},

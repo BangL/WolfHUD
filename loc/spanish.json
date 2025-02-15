@@ -34,8 +34,6 @@
 	"wolfganghud_options_name"										: "WolfgangHUD",
 
 	"wolfganghud_menu_bots_amount_title"							: "Equipo Maximo AI",
-	"wolfganghud_menu_weapons_stats_concealment"					: "Ocultación",
-	"wolfganghud_menu_weapons_detection_risk"						: "Riesgo Detección",
 
 	"wolfganghud_hud_options_name"									:	"HUD",
 	"wolfganghud_hud_general_name"									:		"General",
@@ -159,7 +157,6 @@
 
 	"wolfganghud_menu_weapons_name"									:	"Armas",
 	"wolfganghud_show_weapon_concealment_title"						:		"Mostrar ocultamiento armas",
-	"wolfganghud_show_detection_risk_title"							:		"Mostrar riesgo de detección",
 
 	"wolfganghud_gameplay_options_name"								:	"Jugabilidad",
 	"wolfganghud_gameplay_general_name"								:		"General",

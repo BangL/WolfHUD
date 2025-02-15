@@ -36,11 +36,8 @@
 	"wolfganghud_options_name"										: "WolfgangHUD",
 
 	"wolfganghud_menu_bots_amount_title"							: "Maximum Team AI",
-	"wolfganghud_menu_weapons_stats_concealment"					: "Concealment",
-	"wolfganghud_menu_weapons_stats_suppression"					: "Suppression",
 	"wolfganghud_menu_weapons_stats_alert_size"						: "Alert Size",
 	"wolfganghud_menu_weapons_stats_zoom"							: "Zoom",
-	"wolfganghud_menu_weapons_detection_risk"						: "Detection risk",
 
 	"wolfganghud_hud_options_name"									:	"HUD",
 	"wolfganghud_hud_general_name"									:		"General",
@@ -181,7 +178,6 @@
 
 	"wolfganghud_menu_weapons_name"									:	"Weapons",
 	"wolfganghud_show_hidden_weapon_stats_title"					:		"Show hidden weapon stats",
-	"wolfganghud_show_detection_risk_title"							:		"Show detection risk",
 	"wolfganghud_convert_sizes_meters_title"						:		"Convert sizes to meters",
 
 	"wolfganghud_gameplay_options_name"								:	"Gameplay",

@@ -36,11 +36,8 @@
   "wolfganghud_options_name": "WolfgangHUD",
 
   "wolfganghud_menu_bots_amount_title": "Кол-во ботов",
-  "wolfganghud_menu_weapons_stats_concealment": "Скрытность",
-  "wolfganghud_menu_weapons_stats_suppression": "Подавление",
   "wolfganghud_menu_weapons_stats_alert_size": "Шум выстрела",
   "wolfganghud_menu_weapons_stats_zoom": "Увеличение",
-  "wolfganghud_menu_weapons_detection_risk": "Риск обнаружения",
 
   "wolfganghud_hud_options_name": "HUD",
   "wolfganghud_hud_general_name": "Основные",
@@ -178,7 +175,6 @@
 
   "wolfganghud_menu_weapons_name": "Оружия",
   "wolfganghud_show_hidden_weapon_stats_title": "Показывать скрытые характеристики",
-  "wolfganghud_show_detection_risk_title": "Показывать риск обнаружения",
   "wolfganghud_convert_sizes_meters_title": "Конвертация некоторых хар-к в метры",
 
   "wolfganghud_gameplay_options_name": "Игровой процесс",

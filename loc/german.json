@@ -34,11 +34,8 @@
 	"wolfganghud_options_name"										: "WolfgangHUD",
 
 	"wolfganghud_menu_bots_amount_title"							: "Maximale Team-KI",
-	"wolfganghud_menu_weapons_stats_concealment"					: "Tarnung",
-	"wolfganghud_menu_weapons_stats_suppression"					: "Unterdrückung",
 	"wolfganghud_menu_weapons_stats_alert_size"						: "Alarmierungsgröße",
 	"wolfganghud_menu_weapons_stats_zoom"							: "Sichtvergrößerung",
-	"wolfganghud_menu_weapons_detection_risk"						: "Entdeckungsrisiko",
 
 	"wolfganghud_hud_options_name"									:	"HUD",
 	"wolfganghud_hud_general_name"									:		"Allgemein",
@@ -166,7 +163,6 @@
 
 	"wolfganghud_menu_weapons_name"									:	"Waffen",
 	"wolfganghud_show_hidden_weapon_stats_title"					:		"Versteckte Werte anzeigen",
-	"wolfganghud_show_detection_risk_title"							:		"Entdeckungsrisiko anzeigen",
 
 	"wolfganghud_gameplay_options_name"								:	"Gameplay",
 	"wolfganghud_gameplay_general_name"								:		"Allgemein",

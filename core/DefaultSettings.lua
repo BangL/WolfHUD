@@ -79,7 +79,6 @@ if WolfgangHUD then
 			MARK_STEALTHABLES					= true,
 			SHOW_HIDDEN_WEAPON_STATS			= true,
 			CONVERT_SIZES_TO_METERS				= true,
-			SHOW_DETECTION_RISK					= true,
 		},
 		HUDList = {
 			ENABLED								= true,
