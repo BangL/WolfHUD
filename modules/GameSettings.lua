@@ -62,6 +62,14 @@ if string.lower(RequiredScript) == "lib/managers/menu/raid_menu/missionselection
     local _on_toggle_team_ai_original = MissionSelectionGui._on_toggle_team_ai
     local _set_settings_enabled_original = MissionSelectionGui._set_settings_enabled
 
+    local _on_save_selected_original = MissionSelectionGui._on_save_selected
+    function MissionSelectionGui:_on_save_selected(...)
+        _on_save_selected_original(self, ...)
+        -- vanilla fix: hide settings, when switching between saved operations
+        self._secondary_paper:stop()
+        self._secondary_paper:animate(callback(self, self, "_animate_show_secondary_paper"))
+    end
+
     function MissionSelectionGui:_layout_settings(...)
         _layout_settings_original(self, ...)
 
