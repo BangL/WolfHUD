@@ -344,7 +344,7 @@ function WolfgangHUDMenu:Reset(value, item)
 					end
 					report_settings_changed(old_settings)
 					self:ReloadMenu()
-					--managers.viewport:resolution_changed() -- FIXME: causes crash when going back to main menu (raid-blt bug on every res change)
+					managers.viewport:resolution_changed()
 					WolfgangHUD:print_log("Settings reset!", "info")
 				end,
 			},
