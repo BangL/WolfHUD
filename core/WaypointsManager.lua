@@ -61,10 +61,6 @@ Timer exclusive settings:
 Duration exclusive settings:
 	initial_value:			(number)	Start value of the component (e.g. 30 for a waypoint duration of 30 seconds)
 
-Special components:
-	arrow		-- This component gets always created. It represents the small arrows shown for off-screen waypoints. It has all settings a general component has, no exclusive ones.
-				-- Don't add it to the component_order table, nor give any of you components this name.
-
 Last Note: Don't call any functions starting with "_" (or the update-functions) from the outside. Thanks!
 ]]
 if string.lower(RequiredScript) == "lib/setups/setup" then
@@ -279,7 +275,7 @@ if string.lower(RequiredScript) == "lib/setups/setup" then
 		self._timer_components = {}
 		self._duration_components = {}
 		self._distance_components = {}
-		self._component_order = data.component_order or {}		--Top to bottom, left to right (Don't add "arrow" to the component list...)
+		self._component_order = data.component_order or {}		--Top to bottom, left to right
 		self._settings = {
 			show = true,
 			show_offscreen = data.show_offscreen and true or false,
@@ -302,8 +298,6 @@ if string.lower(RequiredScript) == "lib/setups/setup" then
 				end
 			end
 		end
-
-		self:_setup_arrow(data, self._base_size, self._base_scale)
 
 		self:_arrange()
 	end
@@ -542,7 +536,7 @@ if string.lower(RequiredScript) == "lib/setups/setup" then
 		end
 
 		if is_enabled and self._state == (on_screen and "on_screen" or "off_screen") then
-			self:_update_visuals(mvector3.x(screen_pos), mvector3.y(screen_pos), math.acos(dot), dir_normalized)
+			self:_update_visuals(mvector3.x(screen_pos), mvector3.y(screen_pos), math.acos(dot))
 		elseif is_enabled and ( on_screen or self._settings.show_offscreen ) then
 			if self._state == "on_screen" then
 				self._state = "transition_off_screen"
@@ -555,7 +549,7 @@ if string.lower(RequiredScript) == "lib/setups/setup" then
 			local x_diff, y_diff = mvector3.x(screen_pos) - x, mvector3.y(screen_pos) - y
 			local x_move, y_move = x_diff / self._transition_time * dt + x, y_diff / self._transition_time * dt + y
 			self._transition_time = self._transition_time - dt
-			self:_update_visuals(x_move, y_move, math.acos(dot), dir_normalized)
+			self:_update_visuals(x_move, y_move, math.acos(dot))
 
 			if self._transition_time <= 0 then
 				self._transition_time = nil
@@ -567,7 +561,6 @@ if string.lower(RequiredScript) == "lib/setups/setup" then
 			end
 		elseif self._panel:visible() then
 			self._panel:hide()
-			self._components.arrow:hide()
 		end
 
 	end
@@ -602,12 +595,9 @@ if string.lower(RequiredScript) == "lib/setups/setup" then
 		end
 	end
 
-	function CustomWaypoint:_update_visuals(x, y, angle, arrow_direction)
+	function CustomWaypoint:_update_visuals(x, y, angle)
 		if self:_update_component_visuals(self._panel, self._settings, angle) then	--Main panel
 			local rearrange = false
-			if self._settings.arrow then
-				self._settings.arrow.show = not self:is_on_screen()
-			end
 
 			for name, component in pairs(self._components) do
 				if component and self._settings[name] then
@@ -621,15 +611,8 @@ if string.lower(RequiredScript) == "lib/setups/setup" then
 			end
 
 			self._panel:set_center(x, y)
-
-			if self._components.arrow and self._components.arrow:visible() then
-				local angle = math.X:angle(arrow_direction) * math.sign(arrow_direction.y)
-				self._components.arrow:set_rotation(angle)
-				self._components.arrow:set_center(x + arrow_direction.x * (self._panel:w() + 3), y + arrow_direction.y * (self._panel:h() + 3))
-			end
 		elseif not self._settings.show_offscreen then
 			self._state = "on_screen"
-			self._components.arrow:hide()
 		end
 
 	end
@@ -788,18 +771,6 @@ if string.lower(RequiredScript) == "lib/setups/setup" then
 			visible = show,
 			blend_mode = data[name].blend_mode or "add",
 		})
-	end
-
-	function CustomWaypoint:_setup_arrow(data, base_size, base_scale)
-		data.arrow = data.arrow or {}
-		--data.arrow.std_wp = "wp_arrow" -- FIXME
-		data.arrow.alpha = 0.5
-		data.arrow.show_offscreen = (data.arrow.show_offscreen ~= false)
-		data.arrow.w_ratio = 2
-
-		self:_setup_image_component("arrow", data, base_size, base_scale, self._panel:parent())
-
-		self._components.arrow:set_rotation(270)
 	end
 
 	function CustomWaypoint:_setup_icon_component(name, data, base_size, base_scale)
