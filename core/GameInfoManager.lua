@@ -23,6 +23,7 @@ if string.lower(RequiredScript) == "lib/setups/setup" then
 			regular_cache_box =					"_pickup_interaction_handler", -- gold cache
 			hold_take_loot =					"_pickup_interaction_handler", -- loot
 			press_take_loot =					"_pickup_interaction_handler", -- loot
+			press_take_loot_tight =				"_pickup_interaction_handler", -- loot
 			hold_take_dogtags =					"_pickup_interaction_handler", -- dogtags
 			press_take_dogtags =				"_pickup_interaction_handler", -- dogtags
 
@@ -492,6 +493,18 @@ if string.lower(RequiredScript) == "lib/setups/setup" then
 				},
 			},
 		},
+		IGNORE_INACTIVE = {
+			hold_take_canister = true,
+			press_take_canister = true,
+			gold_pile_inactive = true,
+			gold_pile_inactive_repeating = true,
+			carry_drop_gold = true,
+			take_flak_shell = true,
+			take_painting = true,
+			hold_take_crate_canisters = true,
+			take_ladder = true,
+			take_conspiracy_board = true,
+		},
 	}
 
 	function GameInfoManager:init()
@@ -792,26 +805,39 @@ elseif string.lower(RequiredScript) == "lib/managers/objectinteractionmanager" t
 	function ObjectInteractionManager:_process_queued_units(t)
 		for key, unit in pairs(self._queued_units) do
 			if alive(unit) then
-				local interact_id = unit:interaction().tweak_data
+				local interaction = unit:interaction()
+				local interact_id = interaction.tweak_data
 				local editor_id = unit:editor_id()
+				if interaction:active() or not GameInfoManager._INTERACTIONS.IGNORE_INACTIVE[interact_id] then
 				managers.gameinfo:event("interactive_unit", "add", key, {unit = unit, editor_id = editor_id, interact_id = interact_id})
 			end
+				self._queued_units[key] = nil
 		end
-
-		self._queued_units = {}
+		end
 	end
 
 elseif string.lower(RequiredScript) == "lib/units/interactions/interactionext" then
 
+	local init_original = BaseInteractionExt.init
+	local destroy_original = BaseInteractionExt.destroy
 	local set_tweak_data_original = BaseInteractionExt.set_tweak_data
+
+	function BaseInteractionExt:init(unit, ...)
+		init_original(self, unit, ...)
+		managers.interaction:add_unit_clbk(self._unit)
+	end
+
+	function BaseInteractionExt:destroy(...)
+		managers.interaction:remove_unit_clbk(self._unit, self.tweak_data)
+		destroy_original(self, ...)
+	end
 
 	function BaseInteractionExt:set_tweak_data(...)
 		local old_tweak = self.tweak_data
-		local was_active = self:active()
 
 		set_tweak_data_original(self, ...)
 
-		if was_active and self:active() and self.tweak_data ~= old_tweak then
+		if self.tweak_data ~= old_tweak then
 			managers.interaction:remove_unit_clbk(self._unit, old_tweak)
 			managers.interaction:add_unit_clbk(self._unit)
 		end

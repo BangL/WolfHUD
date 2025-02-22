@@ -23,35 +23,39 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 				regular_cache_box = { texture = "ui/atlas/raid_atlas_hud", texture_rect = { 677, 1317, 32, 32 } },
 				hold_take_loot = { texture = "ui/atlas/raid_atlas_missions", texture_rect = { 8, 68, 64, 64 } },
 				press_take_loot = { texture = "ui/atlas/raid_atlas_missions", texture_rect = { 8, 68, 64, 64 } },
+				press_take_loot_tight = { texture = "ui/atlas/raid_atlas_missions", texture_rect = { 8, 68, 64, 64 } },
 				hold_take_dogtags = { texture = "ui/atlas/raid_atlas_missions", texture_rect = { 398, 2, 64, 64 } },
 				press_take_dogtags = { texture = "ui/atlas/raid_atlas_missions", texture_rect = { 398, 2, 64, 64 } },
 
-				-- EQUIPMENT
-				take_sps_briefcase = { std_icon = "equipment_panel_sps_briefcase" }, -- untested
-				--take_code_book =					{std_icon = "equipment_panel_code_book"},
-				gen_pku_crowbar = { std_icon = "equipment_panel_crowbar" }, -- FIXME: not working in all raids for some reason
-				--dynamite_x1_pku =					{std_icon = "equipment_panel_dynamite_stick"},
-				--dynamite_x4_pku =					{std_icon = "equipment_panel_dynamite_stick"},
-				--dynamite_x5_pku =					{std_icon = "equipment_panel_dynamite_stick"},
-				--take_dynamite_bag =				{std_icon = "equipment_panel_dynamite"},
-				hold_take_canister = { std_icon = "equipment_panel_fuel_full" },
-				press_take_canister = { std_icon = "equipment_panel_fuel_full" },
-				take_enigma = { std_icon = "equipment_panel_code_device" },  -- untested
-				hold_take_gas_can = { std_icon = "equipment_panel_fuel_full" }, -- untested
-				press_take_gas_can = { std_icon = "equipment_panel_fuel_full" }, -- untested
-				take_gas_tank = { std_icon = "equipment_panel_fuel_full" },  -- untested
-				--mine_pku =						{std_icon = "equipment_panel_cvy_landimine"},
-				take_portable_radio = { std_icon = "equipment_panel_recording_device" }, -- untested
-				take_tools = { std_icon = "equipment_panel_tools" },
-				take_safe_key = { std_icon = "equipment_panel_sto_safe_key" }, -- untested
-				take_safe_keychain = { std_icon = "equipment_panel_sto_safe_key" }, -- untested
-				take_tank_grenade = { std_icon = "equipment_panel_dynamite" }, -- untested
-				take_tank_shell = { std_icon = "equipment_panel_tools" },    -- untested
-				take_thermite = { std_icon = "equipment_panel_cvy_thermite" }, -- untested
-				gen_pku_thermite = { std_icon = "equipment_panel_cvy_thermite" }, -- untested
-				hold_pku_intelligence = { texture = "ui/atlas/raid_atlas_hud", texture_rect = { 963, 753, 56, 56 } },
+				-- MISSION PICKUPS
+				gen_pku_crowbar = { std_icon = "equipment_panel_crowbar" },
+				take_tools = { std_icon = "equipment_panel_tools" },                                      -- lange's tools
+				hold_take_canister = { std_icon = "equipment_panel_fuel_full" },                          -- canisters in odin's, radio bla and burning man
+				press_take_canister = { std_icon = "equipment_panel_fuel_full" },                         -- canisters in odin's, radio bla and burning man
+				hold_pku_intelligence = { texture = "ui/atlas/raid_atlas_hud", texture_rect = { 963, 753, 56, 56 } }, -- strongpoint docs
 
-				-- PICKUPS
+				take_sps_briefcase = { std_icon = "equipment_panel_sps_briefcase" },                      -- unknown
+				hold_take_gas_can = { std_icon = "equipment_panel_fuel_full" },                           -- unknown
+				press_take_gas_can = { std_icon = "equipment_panel_fuel_full" },                          -- unknown
+				take_gas_tank = { std_icon = "equipment_panel_fuel_full" },                               -- unknown
+				take_portable_radio = { std_icon = "equipment_panel_recording_device" },                  -- unknown
+				take_safe_key = { std_icon = "equipment_panel_sto_safe_key" },                            -- unknown
+				take_safe_keychain = { std_icon = "equipment_panel_sto_safe_key" },                       -- unknown
+				take_tank_grenade = { std_icon = "equipment_panel_dynamite" },                            -- unknown
+				take_tank_shell = { std_icon = "equipment_panel_tools" },                                 -- unknown
+				take_thermite = { std_icon = "equipment_panel_cvy_thermite" },                            -- unknown
+				gen_pku_thermite = { std_icon = "equipment_panel_cvy_thermite" },                         -- unknown
+
+				-- stuff that's pointless to hightligh
+				--take_code_book =					{std_icon = "equipment_panel_code_book"}, -- code books in burning man and full stop
+				--take_enigma =						{std_icon = "equipment_panel_code_device"}, -- enigma code machine in enigmatic
+				--dynamite_x1_pku =					{std_icon = "equipment_panel_dynamite_stick"}, -- ??
+				--dynamite_x4_pku =					{std_icon = "equipment_panel_dynamite_stick"}, -- ??
+				--dynamite_x5_pku =					{std_icon = "equipment_panel_dynamite_stick"}, -- ??
+				--take_dynamite_bag =				{std_icon = "equipment_panel_dynamite"}, -- ??
+				--mine_pku =						{std_icon = "equipment_panel_cvy_landimine"}, -- ??
+
+				-- COMBAT PICKUPS
 				--health_bag_small =				{skills = {5, 2}},
 				--health_bag =						{skills = {5, 2}},
 				health_bag_big = { skills = { 2, 9 }, color = WolfgangHUD:getColorSetting({ "CustomWaypoints", "PICKUPS", "REVIVES_COLOR" }, "light_green"), ignore = not WolfgangHUD:getSetting({ "CustomWaypoints", "PICKUPS", "REVIVES" }, true) },
@@ -101,7 +105,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 
 		if event == "add" then
 			local tweak_entry = data.carry_id and tweak_data.carry[data.carry_id]
-			if tweak_entry and tweak_entry.loot_greed_value then
+			if tweak_entry and not tweak_entry.is_corpse then
 				local debug = HUDManager.CUSTOM_WAYPOINTS.DEBUGGING
 				local settings = self:make_loot_waypoint_settings(debug)
 				local name_id = tweak_entry.name_id
@@ -120,9 +124,9 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 						scale = 1.5,
 						icon = {
 							type = "icon",
-							show = WolfgangHUD:getSetting({ "CustomWaypoints", "LOOT", "ICON" }, true),
-							texture = icon.texture,
-							texture_rect = icon.texture_rect,
+							show = icon and WolfgangHUD:getSetting({ "CustomWaypoints", "LOOT", "ICON" }, true),
+							texture = icon and icon.texture,
+							texture_rect = icon and icon.texture_rect,
 							alpha = 0.5,
 							color = WolfgangHUD:getColorSetting({ "CustomWaypoints", "LOOT", "COLOR" }, "white"),
 						},

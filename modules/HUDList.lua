@@ -159,6 +159,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 
 		painting_sto =										"painting",
 		painting_sto_cheap =								"painting",
+		conspiracy_board =									"painting",
 
 		baptismal_font =									"valuable",
 		candelabrum =										"valuable",
@@ -168,7 +169,9 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 		religious_figurine =								"valuable",
 		wine_crate =										"valuable",
 
+		-- objectives
 		plank =												"plank", -- urgent delivery
+		crate_explosives =									"dynamite", -- full stop
 
 		-- unneccessary stuff
 		--flak_shell =										"flak_shell",
@@ -176,11 +179,8 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 		--flak_shell_shot_explosive =						"flak_shell",
 		--flak_shell_pallete =								"unknown",
 		--tank_shell_explosive =							"flak_shell",
-		--crate_explosives =								"unknown",
 		--parachute =										"unknown",
 		--german_spy =										"alive",
-
-		-- leftovers from pd2?
 		--codemachine_part_01
 		--codemachine_part_02
 		--codemachine_part_03
@@ -222,9 +222,10 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 		painting =		{class = "LootItem",	texture = "ui/atlas/raid_atlas_hud", texture_rect = {951, 1405, 72, 72},	color_id = "valuable_color",	priority = 3	},
 		valuable =		{class = "LootItem",	texture = "ui/atlas/raid_atlas_hud", texture_rect = {387, 1279, 72, 72},	color_id = "valuable_color",	priority = 4	},
 		plank =			{class = "LootItem",	texture = "ui/atlas/raid_atlas_hud", texture_rect = {875, 1473, 72, 72},									priority = 5	},
-		--flak_shell =	{class = "LootItem",	texture = "ui/atlas/raid_atlas_hud", texture_rect = {535, 1279, 72, 72},									priority = 6	},
-		--alive =		{class = "LootItem",	texture = "ui/atlas/raid_atlas_hud", texture_rect = {887, 1281, 72, 72},									priority = 7	},
-		corpse =		{class = "LootItem",	texture = "ui/atlas/raid_atlas_hud", texture_rect = {461, 1279, 72, 72},									priority = 8	},
+		dynamite =		{class = "LootItem",	texture = "ui/atlas/raid_atlas_hud", texture_rect = {643, 1279, 32, 32},									priority = 6	},
+		--flak_shell =	{class = "LootItem",	texture = "ui/atlas/raid_atlas_hud", texture_rect = {535, 1279, 72, 72},									priority = 7	},
+		--alive =		{class = "LootItem",	texture = "ui/atlas/raid_atlas_hud", texture_rect = {887, 1281, 72, 72},									priority = 8	},
+		corpse =		{class = "LootItem",	texture = "ui/atlas/raid_atlas_hud", texture_rect = {461, 1279, 72, 72},									priority = 9	},
 
 		--unknown =		{class = "LootItem",	skills =	{3, 9},		color_id = "valuable_color",	priority = 9	}, -- Debug
 	}
@@ -238,6 +239,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 		regular_cache_box =					"cache",
 		hold_take_loot =					"loot",
 		press_take_loot =					"loot",
+		press_take_loot_tight =				"loot",
 		hold_take_dogtags =					"dogtags",
 		press_take_dogtags =				"dogtags",
 
