@@ -1222,8 +1222,8 @@ if WolfgangHUD then
 					},
 					{
 						type = "toggle",
-						name_id = "wolfganghud_straight_to_main_menu_title",
-						value = {"MENU", "STRAIGHT_TO_MAIN_MENU"},
+						name_id = "wolfganghud_skip_intro_title",
+						value = {"MENU", "SKIP_INTRO"},
 						visible_reqs = {},
 						enabled_reqs = {},
 					},

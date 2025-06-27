@@ -85,9 +85,8 @@
 				<post hook_id="lib/units/enemies/cop/copdamage" />
 			</group>
 
-			<group :script_path="StraightToMainMenu.lua">
+			<group :script_path="SkipIntro.lua">
 				<post hook_id="lib/setups/menusetup" />
-				<post hook_id="lib/states/menutitlescreenstate" />
 			</group>
 
 			<group :script_path="HUDList.lua">

@@ -146,7 +146,6 @@
 
 	"wolfganghud_menu_options_name"									:	"Menú",
 	"wolfganghud_menu_main_menu_name"								:		"Menú Principal",
-	"wolfganghud_straight_to_main_menu_title"						:			"Ir directo al menú principal (EXPERIMENTAL)",
 	"wolfganghud_streamline_menu_title"								:			"Optimiza el menú principal",
 	"wolfganghud_add_join_menu_offline_title"						:			"Agregar \"unirse online\" al campamento offline",
 	"wolfganghud_menu_ingame_name"									:		"En juego",

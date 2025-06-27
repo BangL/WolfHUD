@@ -123,7 +123,6 @@
 
 	"wolfganghud_menu_options_name"									:	"菜单相关",
 	"wolfganghud_menu_main_menu_name"								:		"主界面",
-	"wolfganghud_straight_to_main_menu_title"						:			"直接返回到主界面",
 	"wolfganghud_streamline_menu_title"								:			"主界面简化",
 	"wolfganghud_add_join_menu_offline_title"						:			"在主界面增加“加入在线房间”选项",
 	"wolfganghud_menu_ingame_name"									:		"游戏内相关",
