@@ -25,7 +25,6 @@ if string.lower(RequiredScript) == "lib/managers/menumanager" then
 		mvector3.set_x(multiplier, sense_x * self._look_multiplier.x)
 		mvector3.set_y(multiplier, sense_y * self._look_multiplier.y)
 		self._controller:get_setup():get_connection("look"):set_multiplier(multiplier)
-		managers.controller:rebind_connections()
 	end
 
 end

@@ -14,7 +14,6 @@ if string.lower(RequiredScript) == "lib/units/beings/player/states/playerstandar
 		["bleed_out"] = true,
 		["fatal"] = true,
 		["incapacitated"] = true,
-		["arrested"] = true,
 		["dead"] = true
 	}
 

@@ -29,7 +29,6 @@ a workaround is in the pipeline.
 
 ## Included mods / features
 
-* [Straight To Main Menu](https://modworkshop.net/mydownloads.php?action=view_down&did=21405) made by **Snh20**, ported to RAIDWW2 by **AdayDr1en**
 * [Kick a Friend](https://modworkshop.net/mydownloads.php?action=view_down&did=15175) made by **FishTaco**
 * [HUD Lists](https://bitbucket.org/pjal3urb/hudlist/src/) originally made by **Seven**, modified by **Kamikaze94** in [WolfHUD](https://modworkshop.net/mydownloads.php?action=view_down&did=15901), rewritten to RAIDWW2 by **me**
 * [KillCounter](https://bitbucket.org/pjal3urb/customhud/src) made by **Seven**, modified by **Kamikaze94**, ported to RAIDWW2 by **me**

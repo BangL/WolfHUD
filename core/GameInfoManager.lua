@@ -154,6 +154,11 @@ if string.lower(RequiredScript) == "lib/setups/setup" then
 				[100614] = true, -- small loot in unreachable wall part
 			},
 
+			-- -- Full Stop
+			-- forest_bunker = {
+			-- 	[105148] = true, -- small loot in unreachable box
+			-- },
+
 			-- Clear Skies
 			clear_skies = {
 				-- Enigmatic
@@ -809,10 +814,10 @@ elseif string.lower(RequiredScript) == "lib/managers/objectinteractionmanager" t
 				local interact_id = interaction.tweak_data
 				local editor_id = unit:editor_id()
 				if interaction:active() or not GameInfoManager._INTERACTIONS.IGNORE_INACTIVE[interact_id] then
-				managers.gameinfo:event("interactive_unit", "add", key, {unit = unit, editor_id = editor_id, interact_id = interact_id})
-			end
+					managers.gameinfo:event("interactive_unit", "add", key, {unit = unit, editor_id = editor_id, interact_id = interact_id})
+				end
 				self._queued_units[key] = nil
-		end
+			end
 		end
 	end
 
