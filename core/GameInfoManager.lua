@@ -154,10 +154,10 @@ if string.lower(RequiredScript) == "lib/setups/setup" then
 				[100614] = true, -- small loot in unreachable wall part
 			},
 
-			-- -- Full Stop
-			-- forest_bunker = {
-			-- 	[105148] = true, -- small loot in unreachable box
-			-- },
+			-- Full Stop
+			forest_bunker = {
+				[105148] = true, -- small loot in unreachable box
+			},
 
 			-- Clear Skies
 			clear_skies = {
@@ -189,7 +189,7 @@ if string.lower(RequiredScript) == "lib/setups/setup" then
 					[101285] = true, -- greed cache
 				},
 				-- Rolling Stock
-				train_yard = {
+				railyard = {
 					[100247] = true, -- intel
 					[100361] = true, -- small loot
 					[100362] = true, -- small loot
@@ -453,42 +453,79 @@ if string.lower(RequiredScript) == "lib/setups/setup" then
 			-- Rhinegold
 			oper_flamable = {
 				-- Urgent Delivery
-				ger_bridge_operation = {
+				bridge = {
+					[100765] = true, -- intel
+					[100766] = true, -- intel
+					[100767] = true, -- intel
+					[100768] = true, -- intel
+					[100769] = true, -- intel
+					[100770] = true, -- intel
+					[100813] = true, -- small loot
 					[100814] = true, -- small loot
+					[100815] = true, -- small loot
+					[100816] = true, -- small loot
+					[100817] = true, -- small loot
 					[100818] = true, -- small loot
 					[100819] = true, -- small loot
 					[100820] = true, -- small loot
 					[100821] = true, -- small loot
 					[100822] = true, -- small loot
+					[100823] = true, -- small loot
+					[100824] = true, -- small loot
+					[100825] = true, -- small loot
+					[100826] = true, -- small loot
+					[100827] = true, -- small loot
+					[100828] = true, -- small loot
+					[100829] = true, -- small loot
+					[100830] = true, -- small loot
+					[100831] = true, -- small loot
+					[100832] = true, -- small loot
+					[100833] = true, -- small loot
 					[100834] = true, -- small loot
-					[100838] = true, -- small loot
-					[100843] = true, -- small loot
-					[100851] = true, -- small loot
-					[100862] = true, -- small loot
-					[100863] = true, -- small loot
-					[100864] = true, -- small loot
-					[100865] = true, -- small loot
+					[100835] = true, -- small loot
+					[100836] = true, -- small loot
+					[100869] = true, -- small loot
+					[100870] = true, -- small loot
+					[100871] = true, -- small loot
 					[100872] = true, -- small loot
 					[100873] = true, -- small loot
+					[100874] = true, -- small loot
+					[100875] = true, -- small loot
+					[100876] = true, -- small loot
+					[100877] = true, -- small loot
+					[100878] = true, -- small loot
+					[100879] = true, -- small loot
 					[100880] = true, -- small loot
 					[100881] = true, -- small loot
 					[100882] = true, -- small loot
+					[100883] = true, -- small loot
 					[100884] = true, -- small loot
 					[100885] = true, -- small loot
-					[100893] = true, -- small loot
-					[100894] = true, -- small loot
-					[100903] = true, -- small loot
-					[100904] = true, -- small loot
-					[100906] = true, -- small loot
-					[100907] = true, -- small loot
-					[100908] = true, -- small loot
-					[100909] = true, -- small loot
-					[100910] = true, -- small loot
-					[100911] = true, -- small loot
-					[100912] = true, -- small loot
+					[100886] = true, -- small loot
+					[100887] = true, -- small loot
+					[100888] = true, -- small loot
+					[100889] = true, -- small loot
+					[100925] = true, -- small loot
+					[100926] = true, -- small loot
+					[100927] = true, -- small loot
+					[100928] = true, -- small loot
+					[100929] = true, -- small loot
+					[100930] = true, -- small loot
+					[100931] = true, -- small loot
+					[100933] = true, -- small loot
+					[100934] = true, -- small loot
+					[100945] = true, -- greed cache
+					[100946] = true, -- greed cache
+					[100947] = true, -- greed cache
+					[100948] = true, -- greed cache
+					[100949] = true, -- greed cache
+					[100950] = true, -- greed cache
+					[100952] = true, -- greed cache
+					[100953] = true, -- greed cache
+					[100981] = true, -- small loot
 				},
 				-- Firestarter
-				settlement = {
+				castle = {
 					[100282] = true, -- dogtag
 					[100239] = true, -- dogtag
 					[100623] = true, -- greed cache
@@ -511,6 +548,15 @@ if string.lower(RequiredScript) == "lib/setups/setup" then
 			take_conspiracy_board = true,
 		},
 	}
+
+	-- clear_skies free play map
+	GameInfoManager._INTERACTIONS.IGNORE_IDS.clear_skies_gold_rush = GameInfoManager._INTERACTIONS.IGNORE_IDS.clear_skies.gold_rush
+	GameInfoManager._INTERACTIONS.IGNORE_IDS.clear_skies_railyard = GameInfoManager._INTERACTIONS.IGNORE_IDS.clear_skies.railyard
+	GameInfoManager._INTERACTIONS.IGNORE_IDS.clear_skies_flakturm = GameInfoManager._INTERACTIONS.IGNORE_IDS.clear_skies.flakturm
+
+	-- oper_flamable free play map
+	GameInfoManager._INTERACTIONS.IGNORE_IDS.oper_flamable_bridge = GameInfoManager._INTERACTIONS.IGNORE_IDS.oper_flamable.bridge
+	GameInfoManager._INTERACTIONS.IGNORE_IDS.oper_flamable_castle = GameInfoManager._INTERACTIONS.IGNORE_IDS.oper_flamable.castle
 
 	function GameInfoManager:init()
 		self._t = 0
