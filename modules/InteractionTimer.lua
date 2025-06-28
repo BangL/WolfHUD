@@ -633,7 +633,7 @@ elseif string.lower(RequiredScript) == "lib/managers/menu/progressbarguiobject" 
 			self._progress_bar_locked:set_color(status and Color.green or Color.red)
 		end
 
-		if status then
+		if status and self._description then
 			self._old_text = self._description:text()
 			local locked_text = ""
 			if WolfgangHUD:getSetting({"INTERACTION", "SHOW_INTERRUPT_HINT"}, true) then
