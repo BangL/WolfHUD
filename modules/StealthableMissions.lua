@@ -8,19 +8,10 @@ if string.lower(RequiredScript) == "lib/managers/menu/raid_menu/controls/raidgui
     }
 
     local override_partially_stealthable = {
-        -- 'Operation days as missions' compat:
-        ["fake_mission_clear_skies_mini_raid_1_park"] = true,        -- Communication Breakdown / Clear Skies 1/6
-        ["fake_mission_clear_skies_mini_raid_2_park"] = true,        -- Burning Man / Clear Skies 3/6
-        ["fake_mission_clear_skies_radio_defense"] = true,           -- London Calling / Clear Skies 4/6
-        ["fake_mission_oper_flamable_mini_raid_1_park"] = true,      -- Cloak And Dagger / Rhinegold 1/4
-        ["fake_mission_oper_flamable_mini_raid_2_destroyed"] = true, -- Fuel For The Fire / Rhinegold 2/4
-        ["fake_mission_oper_flamable_castle"] = true,                -- Firestarter / Rhinegold 4/4
     }
 
     local override_completely_stealthable = {
-        ["flakturm"] = true,                               -- Odin's Fall
-        -- 'Operation days as missions' compat:
-        ["fake_mission_clear_skies_gold_rush"] = true, -- Enigmatic / Clear Skies 2/6
+        ["flakturm"] = true, -- Odin's Fall
     }
 
     function RaidGUIControlListItemRaids:_layout_raid_name(params, data, ...)
