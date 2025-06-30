@@ -349,10 +349,14 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudinteraction" then
 					alpha = 0.8,
 				})
 			end
+			self._progress_bar:set_alpha(1)
+			self._progress_bar_bg:set_alpha(1)
 		else
 			HUDInteraction.SHOW_LOCK_INDICATOR = false
 			self._progress_bar:set_visible(false)
 			self._progress_bar_bg:set_visible(false)
+			self._progress_bar:set_alpha(0)
+			self._progress_bar_bg:set_alpha(0)
 		end
 
 		if HUDInteraction.SHOW_TIME_REMAINING then
@@ -538,12 +542,14 @@ elseif string.lower(RequiredScript) == "lib/managers/menu/progressbarguiobject" 
 		end
 	end
 
-	function ProgressBarGuiObject:show()
+	function ProgressBarGuiObject:show(description, ...)
 		self:_rescale()
 		if self._progress_bar_locked then
 			self._progress_bar_locked:parent():remove(self._progress_bar_locked)
 			self._progress_bar_locked = nil
 		end
+
+		show_original(self, description, ...)
 
 		ProgressBarGuiObject.SHOW_LOCK_INDICATOR = WolfgangHUD:getSetting({"INTERACTION", "SHOW_LOCK_INDICATOR"}, false)
 		ProgressBarGuiObject.SHOW_TIME_REMAINING = WolfgangHUD:getSetting({"INTERACTION", "SHOW_TIME_REMAINING"}, true)
@@ -555,7 +561,6 @@ elseif string.lower(RequiredScript) == "lib/managers/menu/progressbarguiobject" 
 		ProgressBarGuiObject.GRADIENT_COLOR_NAME = WolfgangHUD:getSetting({"INTERACTION", "GRADIENT_COLOR"}, "white")
 		ProgressBarGuiObject.GRADIENT_COLOR_START = WolfgangHUD:getColorSetting({"INTERACTION", "GRADIENT_COLOR_START"}, "orange")
 		if ProgressBarGuiObject.SHOW_BAR then
-			show_original(self)
 			if ProgressBarGuiObject.LOCK_MODE > 1 and ProgressBarGuiObject.SHOW_LOCK_INDICATOR then
 				self._progress_bar_locked = self._panel:bitmap({
 					layer = 3,
@@ -567,8 +572,14 @@ elseif string.lower(RequiredScript) == "lib/managers/menu/progressbarguiobject" 
 					alpha = 0.8,
 				})
 			end
+			self._progress_bar:set_alpha(1)
+			self._progress_bar_bg:set_alpha(1)
 		else
 			ProgressBarGuiObject.SHOW_LOCK_INDICATOR = false
+			self._progress_bar:set_visible(false)
+			self._progress_bar_bg:set_visible(false)
+			self._progress_bar:set_alpha(0)
+			self._progress_bar_bg:set_alpha(0)
 		end
 
 		if ProgressBarGuiObject.SHOW_TIME_REMAINING then
