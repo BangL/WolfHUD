@@ -15,6 +15,7 @@ if string.lower(RequiredScript) == "lib/units/interactions/interactionext" then
         local t = Application:time()
         if WolfgangHUD:getSetting({ "GAMEPLAY", "INTERACTION", "TURRETS_STEALTH_DISABLED" }, true)
             and managers.groupai:state():whisper_mode()
+            and not managers.raid_job:is_camp_loaded()
             and self.tweak_data and table.has(TURRET_INTERACTIONS, self.tweak_data)
             and (t - (self._last_turret_interact_t or 0) >= BaseInteractionExt.STEALTH_TURRETS_TIMEOUT) then
             self._last_turret_interact_t = t
