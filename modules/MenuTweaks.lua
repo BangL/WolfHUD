@@ -45,7 +45,7 @@ elseif string.lower(RequiredScript) == "lib/managers/menu/raid_menu/raidmainmenu
                     RaidGUIItemAvailabilityFlag.IS_IN_CAMP,
                     RaidGUIItemAvailabilityFlag.IS_SINGLEPLAYER
                 },
-                text = utf8.to_upper(managers.localization:text("menu_servers")),
+                text = managers.localization:to_upper_text("menu_servers"),
                 icon = "menu_item_servers"
             })
         end

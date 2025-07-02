@@ -96,7 +96,7 @@ function WolfgangHUDMenu:Init(root, args)
 			local items = {}
 			for value, text_id in pairs(data.options) do
 				table.insert(items, {
-					text = utf8.to_upper(managers.localization:text(text_id)),
+					text = managers.localization:to_upper_text(text_id),
 					value = value,
 				})
 			end
@@ -105,7 +105,7 @@ function WolfgangHUDMenu:Init(root, args)
 				if type(tbl) == "table" then
 					for _, v in ipairs(tbl) do
 						if data.add_rainbow or v.name ~= "rainbow" then
-							local color_name = utf8.to_upper(managers.localization:text("wolfganghud_colors_" .. v.name))
+							local color_name = managers.localization:to_upper_text("wolfganghud_colors_" .. v.name)
 							color_name = not color_name:lower():find("error") and color_name or string.upper(v.name)
 							table.insert(items, {
 								text = color_name,
@@ -183,7 +183,7 @@ function WolfgangHUDMenu:Init(root, args)
 			local item = self:KeyBind({
 				index = index,
 				keybind_id = data.keybind_id,
-				text = utf8.to_upper(managers.localization:text(data.name_id)),
+				text = managers.localization:to_upper_text(data.name_id),
 				x_offset = data.x_offset or 0,
 				y_offset = data.y_offset or 10,
 			})

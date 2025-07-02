@@ -68,7 +68,7 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudsuspicion" then
             align = "center",
             alpha = 0,
             layer = 2,
-            text = utf8.to_upper(managers.localization:text("wolfganghud_suspicion_detected")),
+            text = managers.localization:to_upper_text("wolfganghud_suspicion_detected"),
             font_size = tweak_data.menu.pd2_medium_font_size,
             font = tweak_data.menu.pd2_medium_font
         })
