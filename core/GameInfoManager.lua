@@ -650,7 +650,7 @@ if string.lower(RequiredScript) == "lib/setups/setup" then
 	function GameInfoManager:_interactive_unit_event(event, key, data)
 		local lookup = GameInfoManager._INTERACTIONS
 
-		local job_id = managers.raid_job:current_operation_event()
+		local job_id = (managers.raid_job:current_job() and managers.raid_job:current_job().job_type == OperationsTweakData.JOB_TYPE_OPERATION)
 			and managers.raid_job:current_operation_event().mission_id
 			or managers.raid_job:current_job_id()
 		if lookup.IGNORE_IDS[job_id] and (lookup.IGNORE_IDS[job_id][data.editor_id % 1000000]) then
