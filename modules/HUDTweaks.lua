@@ -7,7 +7,7 @@ if string.lower(RequiredScript) == "lib/managers/hud/hudteammatebase" then
             self._player_level:set_valign("left")
             self._player_level:set_halign(self._player_name:halign())
             self._player_level:set_font_size(self._player_name:font_size())
-            MenuNodeBaseGui.make_fine_text(self._player_level)
+            BLT:make_fine_text(self._player_level)
             self:wh_refresh_name()
         end
     end
