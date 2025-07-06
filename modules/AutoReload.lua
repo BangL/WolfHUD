@@ -31,7 +31,7 @@ if string.lower(RequiredScript) == "lib/units/beings/player/states/playerstandar
 							fire_mode = "single"
 						end
 
-						if (fire_mode == "single" and reload_single or reload_auto)
+						if ((fire_mode == "single" and reload_single) or (fire_mode ~= "single" and reload_auto))
 							and weap_base.clip_empty and weap_base:clip_empty()
 							and not weap_base:out_of_ammo()
 							and not self:_is_using_bipod() then
