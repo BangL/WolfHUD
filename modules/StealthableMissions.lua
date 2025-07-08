@@ -3,15 +3,27 @@ if string.lower(RequiredScript) == "lib/managers/menu/raid_menu/controls/raidgui
 
     local icon_size = tweak_data.gui.font_sizes.small - 2
 
-    local override_not_stealthable = {
-        ["silo"] = true, -- Countdown
-    }
+    local overrides = {
+        -- not stealthable
+        ["silo"] = OperationsTweakData.RAID_NOT_STEALTHABLE, -- Countdown
 
-    local override_partially_stealthable = {
-    }
+        -- partially stealthable
+        ["clear_skies_mini_raid_1_park"] = OperationsTweakData.RAID_STARTS_STEALTHABLE,         -- Communication Breakdown v1
+        ["clear_skies_mini_raid_1_destroyed"] = OperationsTweakData.RAID_STARTS_STEALTHABLE,    -- Communication Breakdown v2
+        ["clear_skies_mini_raid_1_roundabout"] = OperationsTweakData.RAID_STARTS_STEALTHABLE,   -- Communication Breakdown v3
+        ["clear_skies_mini_raid_2_park"] = OperationsTweakData.RAID_STARTS_STEALTHABLE,         -- Burning Man v1
+        ["clear_skies_mini_raid_2_destroyed"] = OperationsTweakData.RAID_STARTS_STEALTHABLE,    -- Burning Man v2
+        ["clear_skies_radio_defense"] = OperationsTweakData.RAID_STARTS_STEALTHABLE,            -- London Calling
+        ["oper_flamable_mini_raid_1_park"] = OperationsTweakData.RAID_STARTS_STEALTHABLE,       -- Cloak And Dagger v1
+        ["oper_flamable_mini_raid_1_destroyed"] = OperationsTweakData.RAID_STARTS_STEALTHABLE,  -- Cloak And Dagger v2
+        ["oper_flamable_mini_raid_1_roundabout"] = OperationsTweakData.RAID_STARTS_STEALTHABLE, -- Cloak And Dagger v3
+        ["oper_flamable_mini_raid_2_destroyed"] = OperationsTweakData.RAID_STARTS_STEALTHABLE,  -- Fuel For The Fire v1
+        ["oper_flamable_mini_raid_2_roundabout"] = OperationsTweakData.RAID_STARTS_STEALTHABLE, -- Fuel For The Fire v2
+        ["oper_flamable_castle"] = OperationsTweakData.RAID_STARTS_STEALTHABLE,                 -- Firestarter
 
-    local override_completely_stealthable = {
-        ["flakturm"] = true, -- Odin's Fall
+        -- fully stealthable
+        ["flakturm"] = OperationsTweakData.RAID_COMPLETELY_STEALTHABLE,              -- Odin's Fall
+        ["clear_skies_gold_rush"] = OperationsTweakData.RAID_COMPLETELY_STEALTHABLE, -- Enigmatic
     }
 
     function RaidGUIControlListItemRaids:_layout_raid_name(params, data, ...)
@@ -19,7 +31,7 @@ if string.lower(RequiredScript) == "lib/managers/menu/raid_menu/controls/raidgui
         self:wghud_refresh_stealthable_icon()
     end
 
-    function RaidGUIControlListItemRaids:_init_stealthable_icon()
+    function RaidGUIControlListItemRaids:wghud_init_stealthable_icon()
         return self._object:bitmap({
             texture = "ui/atlas/raid_atlas_waypoints",
             texture_rect = { 439, 437, 38, 38 },
@@ -30,32 +42,59 @@ if string.lower(RequiredScript) == "lib/managers/menu/raid_menu/controls/raidgui
         })
     end
 
-    function RaidGUIControlListItemRaids:wghud_refresh_stealthable_icon()
-        if not self._object or not self._item_label or not self._data.value or not WolfgangHUD:getSetting({ "MENU", "MARK_STEALTHABLES" }, true) then
+    function RaidGUIControlListItemRaids:wghud_refresh_stealthable_icon(mission_id_data_field)
+        if (not WolfgangHUD:getSetting({ "MENU", "MARK_STEALTHABLES" }, true)) or
+            (not self._object) or
+            (not self._item_label) or
+            (not self._data) or
+            (type(self._data) ~= "table") then
+            return
+        end
+        local mission_id = self._data[mission_id_data_field or "value"]
+        if not mission_id then
             return
         end
 
-        if not self._stealthable_icon then
-            self._stealthable_icon = self:_init_stealthable_icon()
+        local raid_data = tweak_data.operations.missions[mission_id]
+        if raid_data then
+            local stealth_description = overrides[mission_id] or raid_data.stealth_description or
+                OperationsTweakData.RAID_NOT_STEALTHABLE
+            if stealth_description ~= OperationsTweakData.RAID_NOT_STEALTHABLE then
+                if not self._stealthable_icon then
+                    self._stealthable_icon = self:wghud_init_stealthable_icon()
+                end
+
+                local x, _, w, _ = self._item_label:text_rect()
+                self._stealthable_icon:set_x(x + w + 4)
+                self._stealthable_icon:set_center_y(self.NAME_CENTER_Y)
+
+                self._stealthable_icon:set_color(
+                    stealth_description == OperationsTweakData.RAID_COMPLETELY_STEALTHABLE
+                    and tweak_data.gui.colors.progress_green
+                    or tweak_data.gui.colors.raid_grey)
+
+                self._stealthable_icon:set_visible(true)
+                return
+            end
         end
 
-        local raid_data = tweak_data.operations.missions[self._data.value]
-        if ((raid_data.stealth_description and raid_data.stealth_description ~= OperationsTweakData.RAID_NOT_STEALTHABLE)
-                or override_partially_stealthable[self._data.value] or override_completely_stealthable[self._data.value])
-            and not override_not_stealthable[self._data.value] then
-            local x, _, w, _ = self._item_label:text_rect()
-            self._stealthable_icon:set_x(x + w + 4)
-            self._stealthable_icon:set_center_y(RaidGUIControlListItemRaids.NAME_CENTER_Y)
-
-            self._stealthable_icon:set_color(
-                ((raid_data.stealth_description == OperationsTweakData.RAID_COMPLETELY_STEALTHABLE)
-                    or override_completely_stealthable[self._data.value])
-                and tweak_data.gui.colors.progress_green
-                or tweak_data.gui.colors.raid_grey)
-
-            self._stealthable_icon:set_visible(true)
-        else
+        if self._stealthable_icon then
             self._stealthable_icon:set_visible(false)
         end
+    end
+elseif string.lower(RequiredScript) == "lib/managers/menu/raid_menu/controls/raidguicontrollistitemoperations" then
+    local _layout_operation_name_original = RaidGUIControlListItemOperations._layout_operation_name
+
+    function RaidGUIControlListItemOperations:_layout_operation_name(params, data, ...)
+        _layout_operation_name_original(self, params, data, ...)
+        self:wghud_refresh_stealthable_icon()
+    end
+
+    function RaidGUIControlListItemOperations:wghud_init_stealthable_icon()
+        return RaidGUIControlListItemRaids.wghud_init_stealthable_icon(self)
+    end
+
+    function RaidGUIControlListItemOperations:wghud_refresh_stealthable_icon()
+        return RaidGUIControlListItemRaids.wghud_refresh_stealthable_icon(self, "mission_id")
     end
 end

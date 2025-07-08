@@ -187,6 +187,7 @@
 
 			<group :script_path="StealthableMissions.lua">
 				<post hook_id="lib/managers/menu/raid_menu/controls/raidguicontrollistitemraids"/>
+				<post hook_id="lib/managers/menu/raid_menu/controls/raidguicontrollistitemoperations"/>
 			</group>
 
 			<group :script_path="HiddenStats.lua">
