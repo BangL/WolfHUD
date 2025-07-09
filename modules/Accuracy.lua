@@ -103,7 +103,7 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudteammateplayer" then
 		local _, _, w, _ = self._accuracy_text:text_rect()
 		self._accuracy_text:set_w(w)
 		self._accuracy_panel:set_w(self._accuracy_icon:w() + w)
-		self._accuracy_panel:set_right(self._right_panel:w())
+		self._accuracy_panel:set_right(self._object:w() - HUDTeammatePlayer.RIGHT_PANEL_X)
 	end
 
 end
