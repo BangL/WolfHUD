@@ -10,6 +10,9 @@
     <updates>
         <update provider="modworkshop" identifier="24551"/>
     </updates>
+	<dependencies>
+		<dependency name="WaypointsLib" download_url="https://api.modworkshop.net/mods/52686/download" />
+	</dependencies>
 
 	<localization directory="loc">
 		<loc file="chinese_simplified.json" language="chinese_simplified"/>
@@ -45,11 +48,6 @@
 				<post hook_id="lib/managers/objectinteractionmanager"/>
 				<post hook_id="lib/units/interactions/interactionext"/>
 				<post hook_id="lib/units/pickups/greedcacheitem"/>
-			</group>
-
-			<group :script_path="WaypointsManager.lua">
-				<post hook_id="lib/setups/setup" />
-				<post hook_id="lib/managers/hudmanagerpd2" />
 			</group>
 		</group>
 
