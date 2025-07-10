@@ -188,7 +188,7 @@ elseif string.lower(RequiredScript) == "lib/units/beings/player/states/playerdri
 		PlayerDriving.LOCK_MODE = WolfgangHUD:getSetting({"INTERACTION", "LOCK_MODE"}, 3) --Lock interaction, if MIN_TIMER_DURATION is longer then total interaction time, or current interaction time
 		PlayerDriving.MIN_TIMER_DURATION = WolfgangHUD:getSetting({"INTERACTION", "MIN_TIMER_DURATION"}, 0) --Min interaction duration (in seconds) for the toggle behavior to activate
 		local is_locked = false
-		if self._exit_vehicle_expire_t ~= nil then
+		if self._exit_vehicle_expire_t ~= nil and not WolfgangHUD:getSetting({"INTERACTION", "NO_LOCK_WHEN_DRIVING"}, false) then
 			if PlayerDriving.LOCK_MODE >= 3 then
 				is_locked = (PlayerDriving.EXIT_VEHICLE_TIMER >= PlayerDriving.MIN_TIMER_DURATION) -- lock interaction, when total timer time is longer then given time
 			elseif PlayerDriving.LOCK_MODE >= 2 then

@@ -164,6 +164,7 @@ if WolfgangHUD then
 			HIDE_MOTION_DOT						= false,
 			SHOW_RELOAD							= true,
 			SHOW_MELEE							= true,
+			NO_LOCK_WHEN_DRIVING				= false,
 		},
 		HOST = {
 			INSTANT_RESTART						= true,
