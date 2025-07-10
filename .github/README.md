@@ -20,7 +20,7 @@ To make this mod work you will need to install [Raid-SuperBLT](https://modworksh
 
 ## Bug reports
 
-If you encounter any bugs, feel free to post your callstacks it on the issues tab, or post them on modworkshop!
+If you encounter any bugs/crashes, feel free to post on the issues tab, or on [modworkshop](https://modworkshop.net/mod/24551)!
 
 ## Included mods / features
 
