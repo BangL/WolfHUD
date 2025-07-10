@@ -196,6 +196,7 @@
 	"wolfganghud_press2hold_show_lockindicator_title"				:			"Show Lock Indicator",
 	"wolfganghud_press2hold_equipment_cancel_title"					:			"Equipment Interrupt",
 	"wolfganghud_press2hold_interrupt_hint_title"					:			"Show Interrupt Hint",
+	"wolfganghud_press2hold_no_lock_when_driving"					:			"Don't lock interaction when driving",
 	"wolfganghud_interaction_tweaks_name"							:		"Interaction Tweaks",
 	"wolfganghud_interaction_turrets_stealth_disabled_title"		:			"Double-Tap turrets in stealth",
 	"wolfganghud_interaction_revive_allow_full_health_title"		:			"Pickup Revive on full health, but revives < max",

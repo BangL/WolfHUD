@@ -1401,6 +1401,15 @@ if WolfgangHUD then
 						},
 					},
 					{
+						type = "toggle",
+						name_id = "wolfganghud_press2hold_no_lock_when_driving",
+						value = {"INTERACTION", "NO_LOCK_WHEN_DRIVING"},
+						visible_reqs = {},
+						enabled_reqs = {
+							{setting = {"INTERACTION", "LOCK_MODE"}, min = 2, max = 3},
+						},
+					},
+					{
 						type = "divider",
 						y_offset = 100, -- shift for next header
 					},

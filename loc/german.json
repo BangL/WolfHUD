@@ -180,6 +180,7 @@
 	"wolfganghud_press2hold_show_lockindicator_title"				:			"Zeige Sperrindikator",
 	"wolfganghud_press2hold_equipment_cancel_title"					:			"Ausrüstungsunterbrechung",
 	"wolfganghud_press2hold_interrupt_hint_title"					:			"Zeige Unterbrechungshinweis",
+	"wolfganghud_press2hold_no_lock_when_driving"					:			"Sperre Interaktion nicht während der Fahrt",
 
 	"wolfganghud_sound_options_name"								:	"Ton",
 	"wolfganghud_sound_general_name"								:		"Allgemein",
