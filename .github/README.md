@@ -8,7 +8,7 @@ Keep in mind that this github version is a development version, which might cont
 
 ## Requirements
 
-To make this mod work you will need to install [Raid-SuperBLT](https://modworkshop.net/mod/49744).
+To make this mod work you will need to install [Raid-SuperBLT](https://modworkshop.net/mod/49744) and [WaypointsLib](https://modworkshop.net/mod/52686).
 
 ## Installation (Direct Download)
 
