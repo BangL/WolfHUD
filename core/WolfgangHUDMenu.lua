@@ -372,7 +372,8 @@ Hooks:Add("MenuComponentManagerInitialize", "MenuComponentManagerInitialize_Wolf
 				RaidMenuHelper:CreateMenu({
 					name = data.menu_id,
 					name_id = data.name_id,
-					inject_menu = data.is_root and "blt_options" or nil,
+					inject_list = data.is_root and "blt_options" or nil,
+					icon = data.is_root and "menu_item_video" or nil,
 					class = _G[menu_class],
 					args = data,
 				})
