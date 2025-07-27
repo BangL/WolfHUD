@@ -54,6 +54,7 @@ local function set_team_ai(value, publish)
 end
 
 if string.lower(RequiredScript) == "lib/managers/menu/raid_menu/missionselectiongui" then
+    local _on_save_selected_original = MissionSelectionGui._on_save_selected
     local _layout_settings_original = MissionSelectionGui._layout_settings
     local _layout_settings_offline_original = MissionSelectionGui._layout_settings_offline
     local _on_difficulty_selected_original = MissionSelectionGui._on_difficulty_selected
@@ -61,8 +62,8 @@ if string.lower(RequiredScript) == "lib/managers/menu/raid_menu/missionselection
     local _on_toggle_drop_in_original = MissionSelectionGui._on_toggle_drop_in
     local _on_toggle_team_ai_original = MissionSelectionGui._on_toggle_team_ai
     local _set_settings_enabled_original = MissionSelectionGui._set_settings_enabled
+    local _unselect_right_column_original = MissionSelectionGui._unselect_right_column
 
-    local _on_save_selected_original = MissionSelectionGui._on_save_selected
     function MissionSelectionGui:_on_save_selected(...)
         _on_save_selected_original(self, ...)
         -- vanilla fix: hide settings, when switching between saved operations
@@ -166,7 +167,6 @@ if string.lower(RequiredScript) == "lib/managers/menu/raid_menu/missionselection
             on_item_selected_callback = callback(self, self, "wg_on_bots_amount_selected"),
             data_source_callback = callback(self, self, "data_source_bots_amount_stepper"),
             on_menu_move = {
-                left = "audio_button",
                 up = "team_ai_checkbox",
             },
             enabled = Global.game_settings.single_player and Global.game_settings.team_ai or
@@ -245,6 +245,13 @@ if string.lower(RequiredScript) == "lib/managers/menu/raid_menu/missionselection
         end
         while managers.criminals:nr_taken_criminals() > CriminalsManager.MAX_NR_CRIMINALS or managers.criminals:nr_AI_criminals() > managers.criminals.MAX_NR_TEAM_AI do
             ai_state:remove_one_criminal_ai()
+        end
+    end
+
+    function MissionSelectionGui:_unselect_right_column(...)
+        _unselect_right_column_original(self, ...)
+        if self._bots_amount_stepper then
+            self._bots_amount_stepper:set_selected(false)
         end
     end
 elseif string.lower(RequiredScript) == "lib/managers/criminalsmanager" then
