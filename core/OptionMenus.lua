@@ -7,7 +7,7 @@ if WolfgangHUD then
 		options = {
 			{	-- HUD Options
 				type = "menu",
-				menu_id = "wolfganghud_hud_options_name",
+				menu_id = "wolfganghud_hud_options_menu",
 				name_id = "wolfganghud_hud_options_name",
 				visible_reqs = {},
 				enabled_reqs = {},
@@ -1210,7 +1210,7 @@ if WolfgangHUD then
 			},
 			{	-- Menu Options
 				type = "menu",
-				menu_id = "wolfganghud_menu_options_name",
+				menu_id = "wolfganghud_menu_options_menu",
 				name_id = "wolfganghud_menu_options_name",
 				visible_reqs = {},
 				enabled_reqs = {},
@@ -1290,7 +1290,7 @@ if WolfgangHUD then
 			},
 			{	-- Gameplay
 				type = "menu",
-				menu_id = "wolfganghud_gameplay_options_name",
+				menu_id = "wolfganghud_gameplay_options_menu",
 				name_id = "wolfganghud_gameplay_options_name",
 				visible_reqs = {},
 				enabled_reqs = {},
@@ -1443,7 +1443,7 @@ if WolfgangHUD then
 			},
 			{	-- Hosting
 				type = "menu",
-				menu_id = "wolfganghud_host_options_name",
+				menu_id = "wolfganghud_host_options_menu",
 				name_id = "wolfganghud_host_options_name",
 				visible_reqs = {},
 				enabled_reqs = {},
@@ -1478,7 +1478,7 @@ if WolfgangHUD then
 			},
 			{	-- Sound
 				type = "menu",
-				menu_id = "wolfganghud_sound_options_name",
+				menu_id = "wolfganghud_sound_options_menu",
 				name_id = "wolfganghud_sound_options_name",
 				visible_reqs = {},
 				enabled_reqs = {},

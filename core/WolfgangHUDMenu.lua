@@ -9,6 +9,7 @@ function WolfgangHUDMenu:Init(root, args)
 	local index = 0
 
 	self.enabled_req_maps = {}
+	self.additional_active_controls = {}
 
 	-- item create functions by type
 	local create_item_handlers = {
@@ -29,6 +30,7 @@ function WolfgangHUDMenu:Init(root, args)
 				y = next_menu_button_y,
 				h = 50,
 				w = 275,
+				auto_select_on_hover = true,
 			})
 			if data.visible_reqs or data.enabled_reqs then
 				self:_add_enabled_reqs(item, data)
@@ -40,6 +42,7 @@ function WolfgangHUDMenu:Init(root, args)
 				next_menu_button_x = 0
 				next_menu_button_y = next_menu_button_y + 70
 			end
+			table.insert(self.additional_active_controls, item)
 		end,
 		slider = function(menu_id, index, data, value)
 			local id = string.format("%s_%s_slider", menu_id, data.name_id)
@@ -59,6 +62,7 @@ function WolfgangHUDMenu:Init(root, args)
 				value_format = (data.value_format ~= nil and data.value_format or ("%." .. (data.decimal_places or 2) .. "f")),
 				x_offset = data.x_offset or 0,
 				y_offset = data.y_offset or 10,
+				auto_select_on_hover = true,
 			})
 			if data.visible_reqs or data.enabled_reqs then
 				self:_add_enabled_reqs(item, data)
@@ -85,6 +89,7 @@ function WolfgangHUDMenu:Init(root, args)
 				value = value,
 				x_offset = data.x_offset or 0,
 				y_offset = data.y_offset or 10,
+				auto_select_on_hover = true,
 			})
 			if data.visible_reqs or data.enabled_reqs then
 				self:_add_enabled_reqs(item, data)
@@ -129,6 +134,7 @@ function WolfgangHUDMenu:Init(root, args)
 					items = items,
 					x_offset = data.x_offset or 0,
 					y_offset = data.y_offset or 10,
+					auto_select_on_hover = true,
 				})
 				if data.visible_reqs or data.enabled_reqs then
 					self:_add_enabled_reqs(item, data)
@@ -150,6 +156,7 @@ function WolfgangHUDMenu:Init(root, args)
 					disabled_color = Color(0.6, 0.6, 0.6),
 					x_offset = data.x_offset or 0,
 					y_offset = data.y_offset or 10,
+					auto_select_on_hover = true,
 				})
 
 				MenuCallbackHandler[clbk_id] = function(self, item)
@@ -174,18 +181,23 @@ function WolfgangHUDMenu:Init(root, args)
 				callback = callback(self, self, clbk_id),
 				x_offset = data.x_offset or 0,
 				y_offset = data.y_offset or 10,
+				auto_select_on_hover = true,
 			})
 			if data.visible_reqs or data.enabled_reqs then
 				self:_add_enabled_reqs(item, data)
 			end
+			table.insert(self.additional_active_controls, item)
 		end,
 		keybind = function(menu_id, index, data)
+			local id = string.format("%s_keybind_%d", menu_id, index)
 			local item = self:KeyBind({
 				index = index,
+				name = id,
 				keybind_id = data.keybind_id,
 				text = managers.localization:to_upper_text(data.name_id),
 				x_offset = data.x_offset or 0,
 				y_offset = data.y_offset or 10,
+				auto_select_on_hover = true,
 			})
 			if data.visible_reqs or data.enabled_reqs then
 				self:_add_enabled_reqs(item, data)
@@ -201,6 +213,7 @@ function WolfgangHUDMenu:Init(root, args)
 				h = data.size or 12,
 				x_offset = data.x_offset or 0,
 				y_offset = data.y_offset or 10,
+				no_auto_bind = true,
 			})
 		end,
 		header = function(menu_id, index, data)
@@ -213,6 +226,7 @@ function WolfgangHUDMenu:Init(root, args)
 				h = data.size or 24,
 				x_offset = data.x_offset or 0,
 				y_offset = data.y_offset or 12,
+				no_auto_bind = true,
 			})
 		end,
 	}
@@ -234,8 +248,8 @@ function WolfgangHUDMenu:Init(root, args)
 		ignore_align = true,
 		y = title:h()
 	})
+	self:AutoBindNamedControlsBegin()
 	-- Populate menu items
-	local item_amount = #args.options
 	for _, data in ipairs(args.options) do
 		index = index + 1
 		local value = data.value and WolfgangHUD:getSetting(data.value, nil)
@@ -244,7 +258,7 @@ function WolfgangHUDMenu:Init(root, args)
 	-- Populate reset button
 	if args.is_root then -- only in main menu
 		index = index + 1
-		self:LongRoundedButton2({
+		local item = self:LongRoundedButton2({
 			index = index,
 			name = "wolfganghud_reset_options_button",
 			text = "wolfganghud_reset_options_title",
@@ -254,7 +268,13 @@ function WolfgangHUDMenu:Init(root, args)
 			y = 832,
 			x = 1472,
 		})
+		table.insert(self.additional_active_controls, item)
 	end
+	self:AutoBindNamedControlsEnd()
+end
+
+function WolfgangHUDMenu:_additional_active_controls()
+	return self.additional_active_controls or {}
 end
 
 function WolfgangHUDMenu:_check_enabled_reqs(req, value)
@@ -305,10 +325,19 @@ function WolfgangHUDMenu:_add_enabled_reqs(item, data)
 	for _, req in pairs(reqs) do
 		local key = WolfgangHUD:SafeTableConcat(req.setting, "->")
 		self.enabled_req_maps[key] = self.enabled_req_maps[key] or {}
-		table.insert(self.enabled_req_maps[key], {item = item, req = req})
+		table.insert(self.enabled_req_maps[key], { item = item, req = req })
 		local value = WolfgangHUD:getSetting(req.setting, nil)
 		if value ~= nil then
-			item:set_enabled(self:_check_enabled_reqs(req, value))
+			local state = self:_check_enabled_reqs(req, value)
+			if item.set_enabled then
+				item:set_enabled(state)
+			elseif item.enable and item.disable then
+				if state then
+					item:enable()
+				else
+					item:disable()
+				end
+			end
 		end
 	end
 end
@@ -318,11 +347,7 @@ function WolfgangHUDMenu:Reset(value, item)
 		managers.localization:text("wolfganghud_reset_options_title"),
 		managers.localization:text("wolfganghud_reset_options_confirm"),
 		{
-			[1] = {
-				text = managers.localization:text("dialog_no"),
-				is_cancel_button = true,
-			},
-			[2] = {
+			{
 				text = managers.localization:text("dialog_yes"),
 				callback = function()
 					local old_settings = deep_clone(WolfgangHUD.settings)
@@ -347,6 +372,10 @@ function WolfgangHUDMenu:Reset(value, item)
 					managers.viewport:resolution_changed()
 					WolfgangHUD:print_log("Settings reset!", "info")
 				end,
+			},
+			{
+				text = managers.localization:text("dialog_no"),
+				is_cancel_button = true,
 			},
 		},
 		true
@@ -383,5 +412,5 @@ Hooks:Add("MenuComponentManagerInitialize", "MenuComponentManagerInitialize_Wolf
 		end
 	end
 	-- create menus
-	create_menu({WolfgangHUD.options_menu_data})
+	create_menu({ WolfgangHUD.options_menu_data })
 end)
