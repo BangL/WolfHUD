@@ -267,6 +267,7 @@ function WolfgangHUDMenu:Init(root, args)
 			ignore_align = true,
 			y = 832,
 			x = 1472,
+			auto_select_on_hover = true,
 		})
 		table.insert(self.additional_active_controls, item)
 	end
